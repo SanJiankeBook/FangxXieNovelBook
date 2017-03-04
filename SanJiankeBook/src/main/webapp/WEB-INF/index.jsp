@@ -240,6 +240,18 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 			<div class="dahengfu">
 				<script>list1();</script>
 			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			<div id="novelslist1" class="novelslist">
 				<div class="content">
 					<h2>玄幻奇幻</h2>
@@ -337,6 +349,18 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 				</div>
 				<div class="clear"></div>
 			</div>
+			
+			
+			
+			
+			
+	
+	
+	
+			
+			
+			
+			
 			<div id="novelslist2" class="novelslist">
 				<div class="content">
 					<h2>历史军事</h2>
