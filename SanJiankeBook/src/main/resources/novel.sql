@@ -120,8 +120,10 @@ create table user(
 	primary key (uid)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3) values('巨无霸','469058237','123456','男',1,1,1);
-insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3) values('巨无霸2','469058','123','女',1,1,1);
+insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3)
+values('巨无霸','469058237','123456','男',1,1,1);
+insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3)
+values('巨无霸2','469058','123','女',1,1,1);
 
 drop table user;
 select * from user;
