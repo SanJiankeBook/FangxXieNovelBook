@@ -32,4 +32,11 @@ public class NovelController {
     	logger.info("toIndex.....");
     	return "index";
     }
+    
+    @RequestMapping(value="/tosousuo")
+    public String sousuo(){
+    	logger.info("tosousuo.....");
+    	//这个功能并没有从数据库中拿数据
+    	return "findnovel";
+    }
 }

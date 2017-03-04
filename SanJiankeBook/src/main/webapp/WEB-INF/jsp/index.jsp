@@ -119,7 +119,7 @@
 						<!-- 嵌入式 -->
 						<div class="bdcs-main bdcs-clearfix" id="default-searchbox">
 							<div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">
-								<form action="http://zhannei.baidu.com/cse/search" method="get"
+								<form action="tosousuo" method="get"
 									target="_blank" class="bdcs-search-form" autocomplete="off"
 									id="bdcs-search-form">
 									<input name="s" value="3677118700255927857" type="hidden" /> 
