@@ -22,21 +22,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
-import com.yc.biz.Hotbiz;
 
 @Controller
 public class NovelController {
     private static final Log logger=LogFactory.getLog(NovelController.class);
     
-    private Hotbiz hotbiz;
  
-    private 
     
     @RequestMapping(value="/toindex")
 	public String Index(Model  model){
     	logger.info("toIndex.....");
-    		List list=
-    	
+    
     	return "index";
     }
 }
