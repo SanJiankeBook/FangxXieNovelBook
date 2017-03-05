@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.yc.bean.NovelType;
 
-public interface Hotbiz {
+public interface NovelTypebiz {
 		
-	List showType(NovelType noveltype);
+	public List showType(Object object);
 	
 }

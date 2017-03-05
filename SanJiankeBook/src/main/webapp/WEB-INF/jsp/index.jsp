@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
 
@@ -251,7 +253,6 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 			
 			
 			
-			
 			<div id="novelslist1" class="novelslist">
 				<div class="content">
 					<h2>玄幻奇幻</h2>
@@ -354,9 +355,11 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 			
 			
 			
-	
-	
-	
+			
+			
+			
+			
+			
 			
 			
 			

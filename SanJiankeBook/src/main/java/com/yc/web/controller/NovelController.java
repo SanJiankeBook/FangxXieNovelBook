@@ -1,46 +1,42 @@
 package com.yc.web.controller;
 
+import java.io.IOException;
+
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
 import javax.annotation.Resource;
-
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.yc.bean.Novel;
-import com.yc.bean.NovelType;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.google.gson.Gson;
 import com.yc.biz.Hotbiz;
 
 @Controller
 public class NovelController {
-	
-	private NovelType nt;
-	private Hotbiz hb;
-	private Novel novel;
-	
-	
-	@Resource(name="novelType")
-	public void setNt(NovelType nt) {
-		this.nt = nt;
-	}
-	
-	@Resource(name="hotbizImpl")
-	public void setHb(Hotbiz hb) {
-		this.hb = hb;
-	}
-	
-	@Resource(name="novel")
-	public void setNovel(Novel novel) {
-		this.novel = novel;
-	}
-	
-	
-	@RequestMapping(value="ShowAll.action")
-	public String hello(Model model){
-		
-		return null;
-	}
-	
-	
+    private static final Log logger=LogFactory.getLog(NovelController.class);
+    
+    private Hotbiz hotbiz;
+ 
+    private 
+    
+    @RequestMapping(value="/toindex")
+	public String Index(Model  model){
+    	logger.info("toIndex.....");
+    		List list=
+    	
+    	return "index";
+    }
 }

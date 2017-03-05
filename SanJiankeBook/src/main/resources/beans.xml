@@ -18,7 +18,7 @@
 	<!-- xml与注解混合配置 -->
 
 	<!-- 加入包的扫描，以实例化bean -->
-	<context:component-scan base-package="com.yc.dao.impl,com.yc.biz.impl,com.yc.aspect,com.yc.web.controller" />
+	<context:component-scan base-package="com.yc" />
 	
 	<aop:aspectj-autoproxy />
 	<context:property-placeholder location="classpath*:jdbc.properties"/>
