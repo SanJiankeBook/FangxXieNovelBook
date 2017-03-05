@@ -22,21 +22,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
+import com.yc.bean.Author;
+import com.yc.bean.User;
+import com.yc.dao.BaseDao;
 
 @Controller
 public class NovelController {
     private static final Log logger=LogFactory.getLog(NovelController.class);
+    
+    
+    @Resource(name="")
+  
 
+	//跳转到前台
     @RequestMapping(value="/toindex")
 	public String Index(){
     	logger.info("toIndex.....");
     	return "index";
     }
     
+    //搜索
     @RequestMapping(value="/tosousuo")
     public String sousuo(){
     	logger.info("tosousuo.....");
     	//这个功能并没有从数据库中拿数据
     	return "findnovel";
     }
+    
+    //前往作家注册页面
+    @RequestMapping(value="/toauthor")
+    public String author(){
+    	logger.info("toauthor.....");
+    	return "author";
+    }
+    //注册成为作家
+    @RequestMapping(value="/registauthor")
+    public String registauthor(Author author,User user){
+    	logger.info("registauthor.....");
+    	//需要先注册成为一个用户
+    	//在注册成为一个作家
+    	return "author";
+    }
+    
+   
 }

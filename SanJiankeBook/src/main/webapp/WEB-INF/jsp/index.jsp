@@ -93,7 +93,10 @@
 							</div>
 						</div>
 						<div class="frii">
-							<input class="int" value="登录" type="submit" />
+							<input class="int" value="用户登录" type="submit" />
+						</div>
+						<div class="frii">
+							<input class="int" value="作家登录" type="submit" />
 						</div>
 						
 						<div class="ccc">
@@ -102,6 +105,15 @@
 								<a href="jsp/register.jsp">用户注册</a>
 							</div>
 						</div>
+						
+						<div class="ccc">
+							<div class="txtt"></div>
+							<div class="txtt">
+								<a href="toauthor">作家注册</a>
+							</div>
+						</div>
+						
+						
 					</form>
 				</div>
 			</div>
