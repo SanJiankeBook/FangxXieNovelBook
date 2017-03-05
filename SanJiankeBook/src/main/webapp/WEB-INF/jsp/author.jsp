@@ -16,7 +16,7 @@
 		作家联系方式<input type="text" name="atel"><br/><br/>
 		账号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="u_number"><br/><br/>
 		密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="upassword"><br/><br/>
-		性别<select id="usex" style="margin-left:100px">
+		性别<select id="usex" name="usex" style="margin-left:100px">
 			<option value="男">男</option>
 			<option value="女">女</option>
 		</select><br/>

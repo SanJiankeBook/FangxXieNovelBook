@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yc.mapper.AuthorMapper">
+	<!-- 检验用户登录
+	<select id="userLogin" parameterType="">
+		select uname,upassword from user where uname=#{uname} and upassword=#{upassword}
+	</select> -->
+	
+	<insert id="addAuthor" parameterType="Author">
+		insert into author(uid,aname,pan_name,aage,agrade,acard,atel) 
+		values(#{uid},#{aname},#{pan_name},#{aage},#{agrade},#{acard},#{atel});
+	</insert>
+</mapper>

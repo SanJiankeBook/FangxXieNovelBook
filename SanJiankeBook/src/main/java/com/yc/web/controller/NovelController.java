@@ -24,15 +24,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.yc.bean.Author;
 import com.yc.bean.User;
+import com.yc.biz.Authorbiz;
+import com.yc.biz.Userbiz;
 import com.yc.dao.BaseDao;
 
 @Controller
 public class NovelController {
     private static final Log logger=LogFactory.getLog(NovelController.class);
+    private Authorbiz authorbiz;
+    private Userbiz userbiz;
     
-    
-    @Resource(name="")
-  
+    @Resource(name="authorbizImpl")
+    public void setAuthorbiz(Authorbiz authorbiz) {
+		this.authorbiz = authorbiz;
+	}
+    @Resource(name="userbizImpl")
+	public void setUser(Userbiz userbiz) {
+		this.userbiz = userbiz;
+	}
+
 
 	//跳转到前台
     @RequestMapping(value="/toindex")
@@ -59,10 +69,20 @@ public class NovelController {
     @RequestMapping(value="/registauthor")
     public String registauthor(Author author,User user){
     	logger.info("registauthor.....");
+    	author.setPan_name(user.getUname());
     	//需要先注册成为一个用户
+    	this.userbiz.InsertUser(user);
+    	author.setUid(user.getUid());
     	//在注册成为一个作家
-    	return "author";
+    	this.authorbiz.insertAuthor(author);
+    	return "creatnovel";
+    }
+    @RequestMapping(value="/test")
+    public String test(){
+    	logger.info("test....");
+    	return "creatnovel";
     }
     
+ 
    
 }
