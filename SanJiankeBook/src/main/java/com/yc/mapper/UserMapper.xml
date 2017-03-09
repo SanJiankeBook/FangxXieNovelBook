@@ -7,6 +7,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="uid">
 		insert into user(uname,u_number,upassword,usex)
-		values(#{uname},#{u_number},#{upassword},#{usex});
+		values(#{uname},#{u_number},#{upassword},#{usex},'','','');
 	</insert>
+	
+	<!-- 检验用户登录 -->
+	<select id="userLogin" parameterType="User" resultMap="UserResultMap">
+		select uname,upassword from user where uname=#{uname} and upassword=#{upassword}
+	</select>
+	
+	<resultMap type="User" id="UserResultMap">
+		<id property="uid" column="uid" />
+		<result property="uname" column="uname"/>
+		<result property="upassword" column="upassword"/>
+	</resultMap>
 </mapper>

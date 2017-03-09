@@ -1,6 +1,6 @@
 ﻿function setCookie(c_name,value,expiredays){
-    var exdate=new Date()
-    exdate.setDate(exdate.getDate()+365)
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate()+365);
     document.cookie=c_name+ "=" +escape(value)+";expires="+exdate.toGMTString()+";path=/";
 }
 
@@ -23,7 +23,7 @@ function delCookie(name){
     var cval=getCookie(name);
     document.cookie= name + "=;expires="+exp.toGMTString();
 }
-var bookUserName=getCookie("member_username");
+var bookUserName=getCookie("member_uname");
 function login(){
 
 document.writeln("<div style=\"display:none\" >");
@@ -37,14 +37,11 @@ if(bookUserName != ''){
   document.write(' | <a href="/userdetail.php" target="_top">查看资料</a> | <a href="/logout.php" target="_top">退出登录</a>&nbsp;');
 }
 else{
-  var jumpurl="";
-  if(location.href.indexOf("jumpurl") == -1){
-    jumpurl=location.href;
-  }
-  document.write('<form name="mylogin" id="mylogin" method="post" action="/Login.php?action=login&usecookie=1&jumpurl="'+jumpurl+'>');
-  document.write('<div class="cc"><div class="txt">账号：</div><div class="inp"><input type="text" name="username" id="username" /></div></div>');
-  document.write('<div class="cc"><div class="txt">密码：</div><div class="inp"><input type="password" name="password" id="password" /></div></div>');
-  document.write('<div class="frii"><input type="submit" class="int" value="登录" /></div><div class="ccc"><div class="txtt"></div><div class="txtt"><a href="register.jsp">用户注册</a></div></div></form>');
+  
+  document.write('<form name="mylogin" id="mylogin" method="post" action="userLogin">');
+  document.write('<div class="cc"><div class="txt">账号：</div><div class="inp"><input type="text" name="uname" id="uname" /></div></div>');
+  document.write('<div class="cc"><div class="txt">密码：</div><div class="inp"><input type="password" name="upassword" id="upassword" /></div></div>');
+  document.write('<div class="frii"><input type="submit" class="int" value="登录" /></div><div class="ccc"><div class="txtt"></div><div class="txtt"><a href="jsp/register.jsp">用户注册</a></div></div></form>');
   }
  document.write('</div></div></div>');
 }

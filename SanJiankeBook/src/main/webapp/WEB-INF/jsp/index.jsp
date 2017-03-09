@@ -15,7 +15,7 @@
 
 
   
-<script type="text/javascript" src="js/xiaoshuo2.js"></script>
+	<script type="text/javascript" src="js/xiaoshuo.js"></script>
 	<script type="text/javascript" async="" src="js/js.js"></script>
 	<script type="text/javascript" src="js/wap.js"></script>
 	<script type="text/javascript" src="js/logger.js"></script>
@@ -32,7 +32,7 @@
 		<iframe id="bdsIfr"
 			style="position: absolute; display: none; z-index: 9999; top: 84px; left: 1044.08px; height: 314px; width: 212px;"
 			frameborder="0"></iframe>
-		<div id="bdshare_l" style="display: none; left: 1044.08px; top: 84px;">
+		  <div id="bdshare_l" style="display: none; left: 1044.08px; top: 84px;">
 			<div id="bdshare_l_c">
 				<h6>分享到</h6>
 				<ul>
@@ -62,10 +62,10 @@
 	<div id="wrapper">
 		<script>login();</script>
 		<div style="display: none">
-			<script src="php/stat.php" language="text/javascript"></script>
-			<script src="php/core.php" charset="utf-8" type="text/javascript"></script>
+			<script src="php/stat.php" language="JavaScript"></script>
+			<script src="php/core.php" charset="utf-8" language="JavaScript"></script>
 		</div>
-		<div class="ywtop">
+	<!--	<div class="ywtop">
 			<div class="ywtop_con">
 				<div class="ywtop_sethome">
 					<a
@@ -77,26 +77,23 @@
 						href="javascript:window.external.addFavorite('http://www.bixia.org','%E7%AC%94%E4%B8%8B%E6%96%87%E5%AD%A6')">三剑客文学</a>
 				</div>
 				<div class="nri">
-					<form name="mylogin" id="mylogin" method="post"
-						action="/Login.php?action=login&amp;usecookie=1&amp;jumpurl="
-						http:="" www.bixia.org="">
+				  	<form name="mylogin" id="mylogin" method="post"
+						action="userLogin"
+						>
 						<div class="cc">
 							<div class="txt">账号：</div>
 							<div class="inp">
-								<input name="username" id="username" type="text" />
+								<input name="uname" id="uname" type="text" />
 							</div>
 						</div>
 						<div class="cc">
 							<div class="txt">密码：</div>
 							<div class="inp">
-								<input name="password" id="password" type="password" />
+								<input name="upassword" id="upassword" type="password" />
 							</div>
 						</div>
 						<div class="frii">
-							<input class="int" value="用户登录" type="submit" />
-						</div>
-						<div class="frii">
-							<input class="int" value="作家登录" type="submit" />
+							<input class="int" value="登录" type="submit" />
 						</div>
 						
 						<div class="ccc">
@@ -105,16 +102,7 @@
 								<a href="jsp/register.jsp">用户注册</a>
 							</div>
 						</div>
-						
-						<div class="ccc">
-							<div class="txtt"></div>
-							<div class="txtt">
-								<a href="toauthor">作家注册</a>
-							</div>
-						</div>
-						
-						
-					</form>
+					</form>-->
 				</div>
 			</div>
 		</div>
@@ -151,14 +139,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="userpanel">
-				<script>banner();</script>
-				<!-- Baidu Button BEGIN -->
+			  <div class="userpanel">
+				<script>banner();</script>-->
 				<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
-					<a class="bds_tsina" title="分享到新浪微博" href="#"></a> <a
-						class="bds_renren" title="分享到人人网" href="#"></a> <span
-						class="bds_more"></span> <a class="shareCount" href="#"
-						title="累计分享57次">57</a>
+					<a class="bds_tsina" title="分享到新浪微博" href="#"></a> 
+					<a class="bds_renren" title="分享到人人网" href="#"></a> 
+					<span class="bds_more"></span> 
+					<a class="shareCount" href="#" title="累计分享57次">57</a>
 				</div>
 				<script type="text/javascript" id="bdshare_js"
 					data="type=tools&amp;uid=0" src="js/bds_s_v2.js"></script>
@@ -166,8 +153,8 @@
 				<script type="text/javascript">
 document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
 </script>
-				<!-- Baidu Button END -->
-			</div>
+				
+			</div> 
 		</div>
 		<div class="clear"></div>
 		<div class="nav">
