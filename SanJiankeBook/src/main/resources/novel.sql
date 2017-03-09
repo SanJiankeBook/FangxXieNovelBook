@@ -127,7 +127,7 @@ values('巨无霸2','469058','123','女',1,1,1);
 
 drop table user;
 select * from user;
-
+delete from user where uid=4
 
 
 --=======================================================================================
@@ -182,8 +182,8 @@ create table admin(
 	standby_2 varchar(100),
 	standby_3 varchar(100)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
-
+select * from admin;
+insert into admin(adnumber,adpassword) values(1001,'a');
 commit;
 
 --测试

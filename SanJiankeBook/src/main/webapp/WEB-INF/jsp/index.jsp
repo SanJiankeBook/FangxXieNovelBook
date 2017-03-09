@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
 
@@ -99,7 +100,7 @@
 						<div class="ccc">
 							<div class="txtt"></div>
 							<div class="txtt">
-								<a href="jsp/register.jsp">用户注册</a>
+								<a href="register.jsp">用户注册</a>
 							</div>
 						</div>
 					</form>-->
@@ -140,7 +141,7 @@
 				</div>
 			</div>
 			  <div class="userpanel">
-				<script>banner();</script>-->
+				<script>banner();</script>
 				<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
 					<a class="bds_tsina" title="分享到新浪微博" href="#"></a> 
 					<a class="bds_renren" title="分享到人人网" href="#"></a> 

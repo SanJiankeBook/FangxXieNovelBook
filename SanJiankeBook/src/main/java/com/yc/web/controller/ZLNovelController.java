@@ -8,7 +8,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.yc.bean.Admin;
 import com.yc.bean.User;
+import com.yc.biz.Adminbiz;
 import com.yc.biz.Userbiz;
 
 @Controller
@@ -16,21 +19,28 @@ public class ZLNovelController {
     private static final Log logger=LogFactory.getLog(ZLNovelController.class);
 
     private Userbiz userbiz;
-    
+    private Adminbiz adminbiz;
     
     @Resource(name="userbizImpl")
     public void setUserbiz(Userbiz userbiz) {
 		this.userbiz = userbiz;
 	}
+    
+    @Resource(name="adminbizImpl")
+    public void setAdminbiz(Adminbiz adminbiz) {
+		this.adminbiz = adminbiz;
+	}
 
-    //用户注册
-    	//TODO:有问题
+
+
+	//用户注册
     @RequestMapping(value="/toSave")
     public String addUser(User use){
     	logger.info("addUser called...");
     	this.userbiz.save(use);
 		return "index";
     }
+   
     
     //用户登录
     @RequestMapping(value="/userLogin")
@@ -52,5 +62,27 @@ public class ZLNovelController {
     	
     }
     
- 
+//管理员模块------------------------------------------------------------------------------
+   /**
+    * 管理员登录
+    * @param adnumber    编号
+    * @param adpassword   密码
+    * @param req
+    * @return
+    */
+    @RequestMapping(value="adminLogin")
+    public String BackIndex(@RequestParam(value="adnumber") String adnumber,@RequestParam(value="adpassword") String adpassword,HttpServletRequest req){
+		logger.info("this is backLogin .......");
+		
+		List<Admin> list=this.adminbiz.adminLogin(adnumber, adpassword);
+		
+		if(!list.isEmpty()){
+			return "../../back/BackIndex";
+		}else if(list.isEmpty()){
+			return "404";
+		}else{
+			return null;
+		}
+    	
+    }
 }

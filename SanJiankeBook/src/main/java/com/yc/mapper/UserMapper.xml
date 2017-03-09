@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="uid">
 		insert into user(uname,u_number,upassword,usex)
-		values(#{uname},#{u_number},#{upassword},#{usex},'','','');
+		values(#{uname},#{u_number},#{upassword},#{usex});
 	</insert>
 	
 	<!-- 检验用户登录 -->

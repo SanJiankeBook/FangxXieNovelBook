@@ -25,7 +25,7 @@ private  BaseDao bd;
 	}
 	@Override
 	public void save(User use) {
-		this.bd.add(new User(), "saveUser");
+		this.bd.add(use, "addUser");
 		
 	}
 	
