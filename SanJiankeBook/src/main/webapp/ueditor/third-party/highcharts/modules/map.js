@@ -1,13 +1,6 @@
-/*
- Map plugin v0.1 for Highcharts
 
 
 
-
- (c) 2011-2013 Torstein Hønsi
-
- License: www.highcharts.com/license
-*/
 
 (function(g){function x(a,b,c){for(var d=4,e=[];d--;)e[d]=Math.round(b.rgba[d]+(a.rgba[d]-b.rgba[d])*(1-c));return"rgba("+e.join(",")+")"}var r=g.Axis,y=g.Chart,s=g.Point,z=g.Pointer,l=g.each,v=g.extend,p=g.merge,n=g.pick,A=g.numberFormat,B=g.getOptions(),k=g.seriesTypes,q=B.plotOptions,t=g.wrap,u=g.Color,w=function(){};B.mapNavigation={buttonOptions:{align:"right",verticalAlign:"bottom",x:0,width:18,height:18,style:{fontSize:"15px",fontWeight:"bold",textAlign:"center"}},buttons:{zoomIn:{onclick:function(){this.mapZoom(0.5)},
 text:"+",y:-32},zoomOut:{onclick:function(){this.mapZoom(2)},text:"-",y:0}}};g.splitPath=function(a){var b,a=a.replace(/([A-Za-z])/g," $1 "),a=a.replace(/^\s*/,"").replace(/\s*$/,""),a=a.split(/[ ,]+/);for(b=0;b<a.length;b++)/[a-zA-Z]/.test(a[b])||(a[b]=parseFloat(a[b]));return a};g.maps={};t(r.prototype,"getSeriesExtremes",function(a){var b=this.isXAxis,c,d,e=[];l(this.series,function(a,b){if(a.useMapGeometry)e[b]=a.xData,a.xData=[]});a.call(this);c=n(this.dataMin,Number.MAX_VALUE);d=n(this.dataMax,

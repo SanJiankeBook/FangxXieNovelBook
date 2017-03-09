@@ -23,18 +23,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.yc.bean.Author;
+import com.yc.bean.Novel;
+import com.yc.bean.NovelType;
 import com.yc.bean.User;
 import com.yc.biz.Authorbiz;
+import com.yc.biz.NovelTypebiz;
 import com.yc.biz.Userbiz;
+import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.dao.BaseDao;
+import com.yc.help.StaticContain;
 
 @Controller
 public class NovelController {
     private static final Log logger=LogFactory.getLog(NovelController.class);
     private Authorbiz authorbiz;
     private Userbiz userbiz;
+    private NovelTypebiz noveltypebiz;
     
-    @Resource(name="authorbizImpl")
+    @Resource(name="novelTypebizImpl")
+    public void setNoveltypebiz(NovelTypebiz noveltypebiz) {
+		this.noveltypebiz = noveltypebiz;
+	}
+	@Resource(name="authorbizImpl")
     public void setAuthorbiz(Authorbiz authorbiz) {
 		this.authorbiz = authorbiz;
 	}
@@ -74,6 +84,7 @@ public class NovelController {
     	this.userbiz.InsertUser(user);
     	author.setUid(user.getUid());
     	//在注册成为一个作家
+    	StaticContain.USERID=author.getUid(); 
     	this.authorbiz.insertAuthor(author);
     	return "creatnovel";
     }
@@ -81,6 +92,26 @@ public class NovelController {
     public String test(){
     	logger.info("test....");
     	return "creatnovel";
+    }
+    //插入书籍信息
+    @RequestMapping(value="/InsertNovel")
+    public String InsertNovel(Novel novel,@RequestParam("des") String des,NovelType noveltype){
+    	logger.info("InsertNovel....");
+    	
+    	return "creatnovel";
+    }
+    
+    //produces告诉浏览器我是用utf8格式编码
+    //得到书籍类型
+    @RequestMapping(value="/showNovelTypes",produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String showNovelTypes(Model model){
+    	logger.info("showNovelTypes....");
+    	List list=this.noveltypebiz.AllNovelType(new NovelType());
+    	Gson gson=new Gson();
+		return gson.toJson(list);
+		
+		
     }
     
  

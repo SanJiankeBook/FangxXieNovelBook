@@ -25,6 +25,7 @@ public class TestSpring extends TestCase {
 		ApplicationContext ac=new ClassPathXmlApplicationContext("beans.xml");
 		System.out.println(ac.getBean("novelController"));
 		
+		
 	}
 	
 	

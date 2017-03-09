@@ -17,73 +17,109 @@
     <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.all.min.js"> </script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="../../ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script>
     
 </head>
-<body class="easyui-layout">
-<body class="easyui-layout">  
-    <div data-options="region:'north',title:'作品创作',split:true" style="height:300px;">
-    <p id="name"></p>
-    	<div id="yonghupl"></div>
-    </div>  
-    <div data-options="region:'center',title:'评论编写'" style="padding:5px;background:#eee;">
-    <p style="clear:both;">作品创作</p>
-		<div>
-		<script type="text/javascript" id="editor" style="width:98%;height:100px;"></script>
-	</div>
-	<input type="button" onclick="addGoods()" value="发表评论"/> 
-    </div>  
-</body>  
+<body class="easyui-layout" style="text-align:center; margin:auto auto">
+		<h1>创作之旅开始</h1><br/><hr/>
+		类型：<select id="tid" name="tid">
+		</select><br/>
+		小说名字：<input type="text" id="nname"/><br/>
+		小说描述：<textarea cols=60 rows=4 id="ndescription" style="font-size:9pt;line-height:100%"></textarea>
+		小说封面图片：<input type="file" id="npicture" /><br/>
+		<!-- style="border:2px dashed red;" -->
+		<div >
+            <p>
+                小说封面图片选取：<input type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"/>
+                <input type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
+                <input type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
+            </p>
+            <img id="xmTanImg"  height="200" width="200" style="margin-left:300px"/>
+            <div id="xmTanDiv"></div>
+        </div>
+        <hr />
+        <script type="text/javascript">            
+            //判断浏览器是否支持FileReader接口
+            if (typeof FileReader == 'undefined') {
+                document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+                //使选择控件不可操作
+                document.getElementById("xdaTanFileImg").setAttribute("disabled", "disabled");
+            }
+
+            //选择图片，马上预览
+            function xmTanUploadImg(obj) {
+                var file = obj.files[0];
+                
+                console.log(obj);console.log(file);
+                console.log("file.size = " + file.size);  //file.size 单位为byte
+
+                var reader = new FileReader();
+
+                //读取文件过程方法
+                reader.onloadstart = function (e) {
+                    console.log("开始读取....");
+                }
+                reader.onprogress = function (e) {
+                    console.log("正在读取中....");
+                }
+                reader.onabort = function (e) {
+                    console.log("中断读取....");
+                }
+                reader.onerror = function (e) {
+                    console.log("读取异常....");
+                }
+                reader.onload = function (e) {
+                    console.log("成功读取....");
+
+                    var img = document.getElementById("xmTanImg");
+                    img.src = e.target.result;
+                    //或者 img.src = this.result;  //e.target == this
+                }
+
+                reader.readAsDataURL(file)
+            }
+        </script>
+	<input type="button" onclick="addGoods()" value="开始创作"/>   
 
 	<script type="text/javascript">
-	function GetQueryString(name)
-	{
-	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-	     var r = window.location.search.substr(1).match(reg);
-	     if(r!=null)return  unescape(r[2]); return null;
-	}
+	
 	$(function(){
-		var id=GetQueryString("id");
-		$.ajax({//显示评论
-			url:"pinglun.action",
+		$.ajax({//显示书本类型
+			url:"showNovelTypes",
 			type:"post",
-			data:"op=getpinlun&id="+id,
+			data:"",
 			dataType:"JSON",
 			success:function( data ){
-				var art=document.getElementById("yonghupl");
-				$(art).html("");
-				for(var i=0;i<data.length;i++){
-					var buybtn1=document.createElement("p");
-					$(buybtn1).html("<span>"+data[i].obj1+"</span>&nbsp;&nbsp;&nbsp;<span>"+data[i].obj+"</span>");
-					art.appendChild(buybtn1);
-				}
+				var art=document.getElementById("usex");
+				$("#tid").html("");
+				var value="";
+				 $.each(data, function(index, element) {
+					 value+="<option value='"+element.tid+"'>"+element.tname+"</option>";
+		            });
+				 $("#tid").html(value);
 			}
 		});
 	});
 	var ue=UE.getEditor('editor');
+	//添加书籍信息及章节
 	function addGoods(){
-		var id=GetQueryString("id");
-		var des=ue.getContent();
-			$.ajax({//插入评论
-				url:"pinglun.action",
+		//var npicture= $("#xmTanImg").html();
+		alert($("#xmTanImg").html());
+	/*	var des=ue.getContent();
+		var tid=$("#tid").val();
+		var nname=$("#nname").val();
+		
+		var ndescription=$("#ndescription").val();
+			 $.ajax({//存入书本信息及章节信息
+				url:"InsertNovel",
 				type:"post",
-				data:"op=addpinlun&ue="+des+"&id="+id,
+				data:"des="+des+"&tid="+$("#tid")+"&",
+				data:{"des":des,"tid":tid,"ndescription":ndescription,"nname":nname},
 				dataType:"JSON",
 				success:function( data ){
-					if(data.code==0){
-						alert("请先去登入");
-						window.location.href="../../index.jsp";
-					}else{
-						var art=document.getElementById("yonghupl");
-						$(art).html("");
-						for(var i=0;i<data.length;i++){
-							var buybtn1=document.createElement("p");
-							$(buybtn1).html("<span>"+data[i].obj1+"</span style='color: #000000'>&nbsp;&nbsp;&nbsp;<span style='color:blue'>"+data[i].obj+"</span>");
-							art.appendChild(buybtn1);
-						}
-					}
 				}
 			});
+			*/
 	}
 	
 	</script>
