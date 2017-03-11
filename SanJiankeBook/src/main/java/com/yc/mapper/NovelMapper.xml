@@ -10,4 +10,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{tid},#{aid},#{nname},#{npicture},#{ndescription},#{nstatus});
 	</insert>
 	
+	<!-- 查找所有小说 -->
+		<select id="findAllNovel" parameterType="Novel" resultMap="NovelResultMap">
+			select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+		</select>
+		
+		<!-- 删除小说 -->
+		<delete id="delNovel" parameterType="Novel">
+			delete from novel where nid=#{nid}
+		</delete>
+		
+		
+		<resultMap type="Novel" id="NovelResultMap">
+			<id property="nid" column="nid"/>
+			<result property="tid" column="tid"/>
+			<result property="aid" column="aid"/>
+			<result property="tname" column="tname"/>
+			<result property="aname" column="aname"/>
+			<result property="pan_name" column="pan_name"/>
+			<result property="nname" column="nname"/>
+			<result property="npicture" column="npicture"/>
+			<result property="ndescription" column="ndescription"/>
+			<result property="nstatus" column="nstatus"/>
+			
+		</resultMap>
+	
 </mapper>
