@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+       <%
+	String path=request.getContextPath();  //douban
+								//http					localhost				8080               douban
+	String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html> 
+<base href="<%=basePath %>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>作品创作区</title>
@@ -18,19 +24,20 @@
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script>
-    
+ 
 </head>
 <body class="easyui-layout" style="text-align:center; margin:auto auto">
 		<h1>创作之旅开始</h1><br/><hr/>
-		类型：<select id="tid" name="tid">
+		<form action="InsertNovel" method="post" enctype="multipart/form-data">
+		类型：<select id="tid"  name="tid">
 		</select><br/>
-		小说名字：<input type="text" id="nname"/><br/>
-		小说描述：<textarea cols=60 rows=4 id="ndescription" style="font-size:9pt;line-height:100%"></textarea>
-		小说封面图片：<input type="file" id="npicture" /><br/>
+		小说名字：<input type="text" name="nname" id="nname"/><br/>
+		小说描述：<textarea cols=60 rows=4 name="ndescription" id="ndescription" style="font-size:9pt;line-height:100%"></textarea>
 		<!-- style="border:2px dashed red;" -->
 		<div >
             <p>
-                小说封面图片选取：<input type="file" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" accept="image/*"/>
+                小说封面图片选取：<input type="file" name="pdfsUrl" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" />
+                <input type="file" name="pdfsUrl" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"  style="display:none"/>
                 <input type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
                 <input type="button" value="显示图片" onclick="document.getElementById('xmTanImg').style.display = 'block';"/>
             </p>
@@ -79,10 +86,11 @@
                 reader.readAsDataURL(file)
             }
         </script>
-	<input type="button" onclick="addGoods()" value="开始创作"/>   
-
-	<script type="text/javascript">
+		<input type="submit" value="开始创作"/>   
+	</form>
 	
+	
+	<script type="text/javascript">
 	$(function(){
 		$.ajax({//显示书本类型
 			url:"showNovelTypes",
@@ -100,11 +108,10 @@
 			}
 		});
 	});
-	var ue=UE.getEditor('editor');
 	//添加书籍信息及章节
 	function addGoods(){
 		//var npicture= $("#xmTanImg").html();
-		alert($("#xmTanImg").html());
+		alert($("#xdaTanFileImg").val());
 	/*	var des=ue.getContent();
 		var tid=$("#tid").val();
 		var nname=$("#nname").val();

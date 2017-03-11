@@ -28,10 +28,13 @@ import com.yc.bean.NovelType;
 import com.yc.bean.User;
 import com.yc.biz.Authorbiz;
 import com.yc.biz.NovelTypebiz;
+import com.yc.biz.Novelbiz;
 import com.yc.biz.Userbiz;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.dao.BaseDao;
 import com.yc.help.StaticContain;
+import com.yc.web.upload.UploadFileUtil;
+import com.yc.web.upload.UploadFileUtil.UploadFile;
 
 @Controller
 public class NovelController {
@@ -39,8 +42,13 @@ public class NovelController {
     private Authorbiz authorbiz;
     private Userbiz userbiz;
     private NovelTypebiz noveltypebiz;
+    private Novelbiz novelbiz;
     
-    @Resource(name="novelTypebizImpl")
+    @Resource(name="novelbizImpl")
+    public void setNovelbiz(Novelbiz novelbiz) {
+		this.novelbiz = novelbiz;
+	}
+	@Resource(name="novelTypebizImpl")
     public void setNoveltypebiz(NovelTypebiz noveltypebiz) {
 		this.noveltypebiz = noveltypebiz;
 	}
@@ -91,14 +99,26 @@ public class NovelController {
     @RequestMapping(value="/test")
     public String test(){
     	logger.info("test....");
-    	return "creatnovel";
+    	return "writenovel";
     }
+    private String pdfRootName="uploadPdfs";
     //插入书籍信息
     @RequestMapping(value="/InsertNovel")
-    public String InsertNovel(Novel novel,@RequestParam("des") String des,NovelType noveltype){
+    public String InsertNovel(@ModelAttribute Novel novel,@ModelAttribute NovelType noveltype,Model model,HttpServletRequest request) throws IOException{
     	logger.info("InsertNovel....");
-    	
-    	return "creatnovel";
+    	String npicture="";
+		Map<String,UploadFile> map= UploadFileUtil.uploadFile(request, novel.getPdfsUrl(), pdfRootName);
+		for(Entry<String,UploadFile> entry:map.entrySet()){
+			UploadFile uploadFile=entry.getValue();
+			npicture+=uploadFile.getNewFileUrl();
+		}
+		novel.setNpicture(npicture);
+		//novel.setAid(StaticContain.USERID);
+		novel.setAid(1);
+		novel.setNstatus("更新");
+		this.novelbiz.InsertNovel(novel);
+		model.addAttribute("novel",novel);
+    	return "writenovel";
     }
     
     //produces告诉浏览器我是用utf8格式编码

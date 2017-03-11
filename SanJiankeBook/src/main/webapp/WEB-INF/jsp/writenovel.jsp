@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%
+	String path=request.getContextPath();  //douban
+								//http					localhost				8080               douban
+	String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<base href="<%=basePath %>">
 <head>
 <link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
@@ -10,6 +17,7 @@
 	<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/js/index.js"></script>
 	<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
+	
 	
 	<script type="text/javascript" charset="utf-8" src="ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.all.min.js"> </script>
@@ -20,10 +28,19 @@
 <title>作家创作区</title>
 </head>
 <body>
-	
-	<div>
+<body class="easyui-layout">  
+    <div data-options="region:'north',title:'小萌神餐厅大神评论',split:true" style="height:300px;">
+    <p id="name"></p>
+    	<div id="yonghupl"></div>
+    </div>  
+    <div data-options="region:'center',title:'评论编写'" style="padding:5px;background:#eee;">
+    <p style="clear:both;"></p>
+		<div>
 		<script type="text/javascript" id="editor" style="width:98%;height:100px;"></script>
 	</div>
+	<input type="button" onclick="addGoods()" value="发表评论"/> 
+    </div>  
+</body> 
 </body>
 
 </html>
