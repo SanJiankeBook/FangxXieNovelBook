@@ -24,7 +24,11 @@ insert into novel_type(tname,standby_1,standby_2,standby_3) values('科幻',1,1,
 drop table novel_type;
 select * from novel_type;
 
-
+select nid,tname,aname,nname,npicture,ndescription,nstatus from novel_type
+inner join novel
+on novel_type.tid=novel.tid
+inner join author
+on author.aid=novel.aid
 
 
 
@@ -47,9 +51,12 @@ create table novel(
 
 
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
-values(2,1,'君王再临','c:\aii\aa','某一天...','未完结',1,1,1);
+values(2,1,'君王再临','rudaozhisheng.jpg','某一天...','连载',1,1,1);
+
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
-values(2,2,'再临','c:\aii\aa','某一天...','未完结',1,1,1);
+values(2,2,'再临','jiuxiantu.jpg','某一天...','未完结',1,1,1);
+
+delete from novel where nid=9;
 
 select * from novel
 
@@ -99,8 +106,12 @@ create table author(
 
 insert into author(uid,aname,pan_name,aage,agrade,acard,atel,standby_1,standby_2,standby_3) 
 values(1,'赵亮','天魁',12,'至尊','45203696661233','123589666',1,1,1);
+
 insert into author(uid,aname,pan_name,aage,agrade,acard,atel,standby_1,standby_2,standby_3) 
 values(2,'赵亮_1','天魁_1',10,'大成','45203696661233','123589666',1,1,1);
+
+insert into author(uid,aname,pan_name,aage,agrade,acard,atel) 
+values(3,'a','a',4,'a','1111111111','222222222');
 
 drop table author;
 select * from author;
@@ -124,6 +135,14 @@ insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3)
 values('巨无霸','469058237','123456','男',1,1,1);
 insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3)
 values('巨无霸2','469058','123','女',1,1,1);
+ 
+insert into user(uname,u_number,upassword,usex) values('a','469058237','a','男');
+insert into user(uname,u_number,upassword,usex) values('b','469058237','b','男');
+insert into user(uname,u_number,upassword,usex) values('c','469058237','c','女');
+insert into user(uname,u_number,upassword,usex) values('d','469058237','d','男');
+insert into user(uname,u_number,upassword,usex) values('f','469058237','f','女');
+
+select * from user limit 0,5
 
 drop table user;
 select * from user;

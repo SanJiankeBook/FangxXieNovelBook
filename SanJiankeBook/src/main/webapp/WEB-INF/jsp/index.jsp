@@ -140,7 +140,7 @@
 					</div>
 				</div>
 			</div>
-			  <div class="userpanel">
+			    <div class="userpanel">
 				<script>banner();</script>
 				<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
 					<a class="bds_tsina" title="分享到新浪微博" href="#"></a> 

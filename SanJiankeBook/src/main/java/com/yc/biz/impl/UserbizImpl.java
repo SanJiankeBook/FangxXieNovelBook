@@ -37,4 +37,40 @@ private  BaseDao bd;
 		List<User> list=this.bd.findAll(use, "userLogin");
 		return list;
 	}
+	
+	/**
+	 * 查询所有用户
+	 */
+	@Override
+	public List<User> findUser() {
+		List<User> list=this.bd.findAll(new User(), "findAllUser");
+		return list;
+	}
+	
+	/**
+	 * 根据id查询用户
+	 */
+	@Override
+	public List<User> findUserById(int id) {
+		return null;
+	}
+	
+	/**
+	 * 分页查询用户
+	 */
+	@Override
+	public List<User> findUserByPage(int start,int end) {
+		List<User> list=this.bd.findAll(new User(), "findUserByPage");
+		return list;
+	}
+	
+	/**
+	 * 删除用户
+	 */
+	@Override
+	public void DelUser(int id) {
+		User use=new User();
+		use.setUid(id);
+		this.bd.delete(use, "delUser");
+	}
 }

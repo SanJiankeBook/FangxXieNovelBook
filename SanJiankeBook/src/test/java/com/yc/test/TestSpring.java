@@ -13,7 +13,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.yc.bean.Novel;
 import com.yc.bean.User;
+import com.yc.biz.Novelbiz;
+import com.yc.biz.Userbiz;
 import com.yc.dao.BaseDao;
 
 
@@ -29,13 +32,30 @@ public class TestSpring extends TestCase {
 		
 	}
 	
-	public void testApp(){
-		ApplicationContext ac=new ClassPathXmlApplicationContext("beans.xml");
-		User use=new User();
-		use.setUname("龙傲天");
-		use.setU_number("1");
-		use.setUpassword("a");
-		use.setUsex("男");
-		
+	public void TestApp(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );
+		Userbiz ub=ac.getBean("userbizImpl",Userbiz.class);
+		List<User> list=ub.findUser();
+		for(User u:list){
+			System.out.println(u);
+		}
+	}
+	
+	public void TestApp1(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );
+		Novelbiz nb=ac.getBean("novelbizImpl",Novelbiz.class);
+		List<Novel> list=nb.FindAllNovel();
+		for(Novel n:list){
+			System.out.println(n);
+		}
+	}
+	
+	public void TestApp2(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );
+		Userbiz ub=ac.getBean("userbizImpl",Userbiz.class);
+		List<User> list=ub.findUserByPage(0, 5);
+		for(User n:list){
+			System.out.println(n);
+		}
 	}
 }

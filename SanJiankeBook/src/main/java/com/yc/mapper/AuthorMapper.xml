@@ -13,4 +13,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into author(uid,aname,pan_name,aage,agrade,acard,atel) 
 		values(#{uid},#{aname},#{pan_name},#{aage},#{agrade},#{acard},#{atel});
 	</insert>
+	
+	<!-- 查找所有的作者 -->
+	<select id="findAllAuthor" parameterType="Author" resultMap="AuthorResultMap">
+		select aid,uid,aname,pan_name,aage,agrade,acard,atel from author
+	</select>
+	
+	<!-- 删除作者 -->
+	<delete id="delAuthor" parameterType="Author">
+		delete from author where aid=#{aid}
+	</delete>
+	
+	
+	
+	<resultMap type="Author" id="AuthorResultMap">
+		<id property="aid" column="aid" />
+		<result property="uid" column="uid" />
+		<result property="aname" column="aname" />
+		<result property="pan_name" column="pan_name" />
+		<result property="aage" column="aage" />
+		<result property="agrade" column="agrade" />
+		<result property="acard" column="acard" />
+		<result property="atel" column="atel" />
+	</resultMap>
 </mapper>

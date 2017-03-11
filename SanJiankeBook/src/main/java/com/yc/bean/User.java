@@ -15,7 +15,8 @@ public class User implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "User [uname=" + uname + ", upassword=" + upassword + "]";
+		return "User [uid=" + uid + ", uname=" + uname + ", u_number=" + u_number + ", upassword=" + upassword
+				+ ", usex=" + usex + "]";
 	}
 	public Integer getUid() {
 		return uid;

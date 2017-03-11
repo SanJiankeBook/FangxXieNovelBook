@@ -7,7 +7,7 @@
 <title>404页面</title>
 </head>
 <body>
-	用户名或密码填写错误,请核对正确在填写<br />
+	找不到对应的页面,请与管理员联系<br />
 	<a href="index.jsp">返回主页</a>
 </body>
 </html>
