@@ -1,5 +1,7 @@
 package com.yc.biz;
 
-public interface Authorbiz {
+import java.util.List;
 
+public interface Authorbiz {
+	List Show_Author(int nid);
 }

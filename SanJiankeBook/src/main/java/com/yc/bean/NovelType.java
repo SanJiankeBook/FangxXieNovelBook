@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 public class NovelType implements Serializable {
 	private static final long serialVersionUID = 3543506844781866277L;
 	private Integer tid ;		//--类型id
-	private String tname ;//			--小说类型名
+	private String tname ;		//--小说类型名
+
 	public Integer getTid() {
 		return tid;
 	}

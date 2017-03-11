@@ -50,9 +50,16 @@ insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_
 values(2,1,'君王再临','c:\aii\aa','某一天...','未完结',1,1,1);
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
 values(2,2,'再临','c:\aii\aa','某一天...','未完结',1,1,1);
+insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
+values(1,1,'神仙道','c:\aii\aa','某一天...','未完结',1,1,1);
+insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
+values(3,2,'Chaos Child','c:\aii\aa','某一天...','未完结',1,1,1);
+insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
+values(4,2,'再临123','c:\aii\aa','某一天...','未完结',1,1,1);
 
-select * from novel
-
+select * from novel;
+select nname from novel;
+commit;
 
 
 
@@ -77,7 +84,11 @@ values(1,'第一章：45651','d:\ssss\sswq',1,1,1);
 insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
 values(2,'第一章：45651','d:\ssss\sswq',1,1,1);
 select * from novel_chapter;
-
+insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
+values(1,'第二章：45651','d:\ssss\sswq',1,1,1);
+select * from novel_chapter;insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
+values(1,'第三章：45651','d:\ssss\sswq',1,1,1);
+select * from novel_chapter;
 
 
 --=======================================================================================
@@ -187,8 +198,26 @@ create table admin(
 commit;
 
 --测试
-	select from 
+	select a.aname 
+		from novel n
+		inner join author a
+		on n.aid=a.aid
+		where n.nid=1	
+
+	select cname from novel_chapter where nid=1 having max(cid);
+
+	select count(cid) from 	novel_chapter;
 
 
-
-
+	select nname 
+	from novel n
+	inner join novel_type nt
+	on n.tid=nt.tid
+	where nt.tname='修仙'
+	
+	
+	select novelType.tname 
+		from novel n
+		inner join novel_type novelType
+		on n.tid=novelType.tid
+		where n.nname='君王再临'

@@ -171,7 +171,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 				<li><a href="jsp/5-1.jsp">科幻灵异</a></li>
 				<li><a href="jsp/6-1.jsp">网游竞技</a></li>
 				<li><a href="jsp/7-1.jsp">女频频道</a></li>
-				<li><a href="jsp/rank.jsp">排行榜单</a></li>
+				<li><a href="toindex_type">排行榜单</a></li>
 				<li><a href="jsp/quanben.jsp/">全本小说</a></li>
 				<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
 			</ul>
@@ -255,8 +255,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 			
 			<div id="novelslist1" class="novelslist">
 				<div class="content">
-					<h2>玄幻奇幻</h2>
-
+					<h2>${list[0].tname}</h2>
 					<div class="top">
 						<div class="image">
 							<img src="images/rudaozhisheng.jpg" alt="儒道至圣" width="67"
@@ -264,12 +263,9 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 						</div>
 						<dl>
 							<dt>
-								<a href="http://www.bixia.org/2_2476/"> 儒道至圣 </a>
+								<a href="toindex_id/${novel[0].nid}"> ${novel[0].nname}</a>
 							</dt>
-							<dd>
-
-								这是一个读书人掌握天地之力的世界。&nbsp;&nbsp;&nbsp;&nbsp;才气在身，诗可杀敌，词能灭军，文章安天
-								下。&nbsp;&nbsp;&nbsp;&nbsp;秀才提笔，...</dd>
+							<dd></dd>
 						</dl>
 						<div class="clear"></div>
 					</div>
@@ -281,7 +277,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 					</ul>
 				</div>
 				<div class="content">
-					<h2>武侠仙侠</h2>
+					<h2>${list[1].tname}</h2>
 
 					<div class="top">
 						<div class="image">
@@ -328,7 +324,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 					</ul>
 				</div>
 				<div class="content border">
-					<h2>都市言情</h2>
+					<h2>${list[2].tname}</h2>
 
 					<div class="top">
 						<div class="image">
@@ -366,7 +362,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 			
 			<div id="novelslist2" class="novelslist">
 				<div class="content">
-					<h2>历史军事</h2>
+					<h2>${list[3].tname}</h2>
 
 					<div class="top">
 						<div class="image">
@@ -387,7 +383,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 					</ul>
 				</div>
 				<div class="content">
-					<h2>科幻灵异</h2>
+					<h2>${list[4].tname}</h2>
 
 					<div class="top">
 						<div class="image">
@@ -408,7 +404,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 					</ul>
 				</div>
 				<div class="content border">
-					<h2>网游竞技</h2>
+					<h2>${list[5].tname}</h2>
 
 					<div class="top">
 						<div class="image">

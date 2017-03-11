@@ -14,6 +14,25 @@ public class Novel implements Serializable {
 	private String npicture ;//		--小说封面存放地址	
 	private String ndescription ;//	--小说描述
 	private String nstatus ;//	--小说状态
+	
+	
+	private Author author;
+	private NovelType novelType;
+	
+	
+	
+	public Author getAuthor() {
+		return author;
+	}
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+	public NovelType getNovelType() {
+		return novelType;
+	}
+	public void setNovelType(NovelType novelType) {
+		this.novelType = novelType;
+	}
 	public Integer getNid() {
 		return nid;
 	}
@@ -118,7 +137,8 @@ public class Novel implements Serializable {
 	@Override
 	public String toString() {
 		return "Novel [nid=" + nid + ", tid=" + tid + ", aid=" + aid + ", nname=" + nname + ", npicture=" + npicture
-				+ ", ndescription=" + ndescription + ", nstatus=" + nstatus + "]";
+				+ ", ndescription=" + ndescription + ", nstatus=" + nstatus + ", author=" + author + ", novelType="
+				+ novelType + "]";
 	}
 	
 	

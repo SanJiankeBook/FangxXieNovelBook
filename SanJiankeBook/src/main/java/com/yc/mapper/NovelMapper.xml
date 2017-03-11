@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yc.mapper.NovelMapper">
+
+	<!-- 查询小说所有名字 -->
+	<select id="getAllnname" resultType="Novel">
+		select nname,nid
+		from novel
+	</select>
+
+	<!-- 根据id查询小说所有信息 -->
+	<select id="idgetAllnname" resultType="Novel" parameterType="Novel">
+		select * from novel where nid=#{nid}
+	</select>
+
+	<!-- 根据id查询小说对应的作者 -->
+	<select id="idgetauthor" resultMap="NovelMap" parameterType="Novel">
+		select a.* 
+		from novel n
+		inner join author a
+		on n.aid=a.aid
+		where n.nid=#{nid}	
+	</select>
+	
+	<!-- 根据类型显示数据 -->
+	<select id="typegetAllnname" resultMap="NovelTypeMap"  parameterType="NovelType">
+		select nname 
+		from novel n
+		inner join novel_type novelType
+		on n.tid=novelType.tid
+		where novelType.tname=#{novelType.tname}
+	</select>
+	
+	
+	<!-- 根据id查询最新小说信息 -->
+	<select id="newChapter" resultType="NovelChapter" parameterType="Novel">
+		select cname from novel_chapter where nid=#{nid} having max(cid);
+	</select>
+
+
+	 <!-- 根据类型查询小说信息-->
+	<resultMap type="Novel" id="NovelTypeMap">
+		<result property="nname" column="nname" />
+		<association property="novelType" javaType="NovelType">
+			<result property="tname" column="tname" />
+		</association>
+	</resultMap>
+
+
+	<!-- 根据小说id查询作者信息 -->
+	<resultMap type="Novel" id="NovelMap">
+		<id property="nid" column="nid"/>
+		<!-- property是写的bean类的别名,javaType是bean的名字 -->
+		<association property="author" javaType="Author">
+			<id property="aid" column="aid"/>
+			<result property="aname" column="aname" />
+			<result property="uid" column="uid" />
+			<result property="pan_name" column="pan_name" />
+			<result property="aage" column="aage" />
+			<result property="agrade" column="agrade" />
+			<result property="acard" column="acard" />
+			<result property="atel" column="atel" />
+		</association>
+	</resultMap>
+
+
+
+</mapper>

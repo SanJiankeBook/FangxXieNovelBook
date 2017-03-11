@@ -1,5 +1,8 @@
 package com.yc.biz;
 
-public interface NovelChapterbiz {
+import java.util.List;
 
+public interface NovelChapterbiz {
+	
+	public List NewChapter(int nid);
 }
