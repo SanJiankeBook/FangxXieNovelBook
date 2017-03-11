@@ -24,15 +24,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.yc.bean.Author;
 import com.yc.bean.Novel;
+import com.yc.bean.NovelChapter;
 import com.yc.bean.NovelType;
 import com.yc.bean.User;
 import com.yc.biz.Authorbiz;
+import com.yc.biz.NovelChapterbiz;
 import com.yc.biz.NovelTypebiz;
 import com.yc.biz.Novelbiz;
 import com.yc.biz.Userbiz;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.dao.BaseDao;
 import com.yc.help.StaticContain;
+import com.yc.web.upload.ForFile;
 import com.yc.web.upload.UploadFileUtil;
 import com.yc.web.upload.UploadFileUtil.UploadFile;
 
@@ -43,8 +46,14 @@ public class NovelController {
     private Userbiz userbiz;
     private NovelTypebiz noveltypebiz;
     private Novelbiz novelbiz;
+    private NovelChapterbiz novelchapterbiz;
     
-    @Resource(name="novelbizImpl")
+    
+    @Resource(name="novelChapterbizImpl")
+    public void setNovelchapterbiz(NovelChapterbiz novelchapterbiz) {
+		this.novelchapterbiz = novelchapterbiz;
+	}
+	@Resource(name="novelbizImpl")
     public void setNovelbiz(Novelbiz novelbiz) {
 		this.novelbiz = novelbiz;
 	}
@@ -92,8 +101,8 @@ public class NovelController {
     	this.userbiz.InsertUser(user);
     	author.setUid(user.getUid());
     	//在注册成为一个作家
-    	StaticContain.USERID=author.getUid(); 
     	this.authorbiz.insertAuthor(author);
+    	StaticContain.USERID=author.getAid();
     	return "creatnovel";
     }
     @RequestMapping(value="/test")
@@ -101,24 +110,49 @@ public class NovelController {
     	logger.info("test....");
     	return "writenovel";
     }
+    
+    
     private String pdfRootName="uploadPdfs";
     //插入书籍信息
     @RequestMapping(value="/InsertNovel")
     public String InsertNovel(@ModelAttribute Novel novel,@ModelAttribute NovelType noveltype,Model model,HttpServletRequest request) throws IOException{
     	logger.info("InsertNovel....");
     	String npicture="";
-		Map<String,UploadFile> map= UploadFileUtil.uploadFile(request, novel.getPdfsUrl(), pdfRootName);
-		for(Entry<String,UploadFile> entry:map.entrySet()){
-			UploadFile uploadFile=entry.getValue();
-			npicture+=uploadFile.getNewFileUrl();
+    	if(novel.getNname()!=null ){
+			Map<String,UploadFile> map= UploadFileUtil.uploadFile(request, novel.getPdfsUrl(), pdfRootName);
+			for(Entry<String,UploadFile> entry:map.entrySet()){
+				UploadFile uploadFile=entry.getValue();
+				npicture+=uploadFile.getNewFileUrl();
+			}
+			novel.setNpicture(npicture);
+			novel.setAid(StaticContain.USERID);
+			//novel.setAid(1);
+			novel.setNstatus("更新");
+			this.novelbiz.InsertNovel(novel);
+			model.addAttribute("novel",novel);
+			return "writenovel";
+    	}else{
+    		return "index";
+    	}
+    	
+    }
+    
+    @RequestMapping(value="/insertNovlChapter")
+    @ResponseBody
+    public String insertNovlChapter(@ModelAttribute NovelChapter novelchapter,@RequestParam String des,HttpServletRequest request,Model model) throws IOException{
+    	logger.info("insertNovlChapter....");
+    	String caddress=ForFile.createFile(request, des,novelchapter.getCname());
+    	novelchapter.setCaddress(caddress);
+    	novelchapter.setStandby_1("待审");
+    	String value="";
+    	try {
+			this.novelchapterbiz.insertNovelChapter(novelchapter);
+			value= "章节上传成功，正在等待审核";
+		} catch (Exception e) {
+			e.printStackTrace();
+			value= "章节上传失败，请与管理员联系";
 		}
-		novel.setNpicture(npicture);
-		//novel.setAid(StaticContain.USERID);
-		novel.setAid(1);
-		novel.setNstatus("更新");
-		this.novelbiz.InsertNovel(novel);
-		model.addAttribute("novel",novel);
-    	return "writenovel";
+    	return value;
     }
     
     //produces告诉浏览器我是用utf8格式编码

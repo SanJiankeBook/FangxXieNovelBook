@@ -27,20 +27,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>作家创作区</title>
 </head>
-<body>
-<body class="easyui-layout">  
-    <div data-options="region:'north',title:'小萌神餐厅大神评论',split:true" style="height:300px;">
-    <p id="name"></p>
-    	<div id="yonghupl"></div>
-    </div>  
-    <div data-options="region:'center',title:'评论编写'" style="padding:5px;background:#eee;">
-    <p style="clear:both;"></p>
-		<div>
-		<script type="text/javascript" id="editor" style="width:98%;height:100px;"></script>
-	</div>
-	<input type="button" onclick="addGoods()" value="发表评论"/> 
-    </div>  
-</body> 
+<body style="text-align:center; margin:auto auto">
+	<input type="text" id="nid"  value="${novel.nid}" style="display: none"/> 
+	章节名：<input type="text" id="cname"><br/><hr/><br/><br/>
+	<script type="text/javascript" id="editor" style="width:98%;height:300px;"></script>
+	<input type="button" onclick="addGoods()" value="上传章节"/> 
+	
+	<script type="text/javascript">
+	var ue=UE.getEditor('editor');
+	function addGoods(){
+		var nid=$("#nid").val();
+		alert(nid);
+		var cname=$("#cname").val();
+		alert(cname);
+		var des=ue.getContent();
+		alert(des);
+			$.ajax({//插入章节
+				url:"insertNovlChapter",
+				type:"post",
+				data:{"nid":nid,"cname":cname,"des":des},
+				dataType:"JSON",
+				success:function( data ){
+					alert(data.value);
+				}
+			});
+	}
+	</script>
 </body>
 
 </html>

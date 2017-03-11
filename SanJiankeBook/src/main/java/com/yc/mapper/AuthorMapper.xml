@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select uname,upassword from user where uname=#{uname} and upassword=#{upassword}
 	</select> -->
 	
-	<insert id="addAuthor" parameterType="Author">
+	<insert id="addAuthor" parameterType="Author" useGeneratedKeys="true" keyProperty="aid">
 		insert into author(uid,aname,pan_name,aage,agrade,acard,atel) 
 		values(#{uid},#{aname},#{pan_name},#{aage},#{agrade},#{acard},#{atel});
 	</insert>
