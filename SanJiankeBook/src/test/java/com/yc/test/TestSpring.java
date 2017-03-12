@@ -3,29 +3,21 @@ package com.yc.test;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.sql.DataSource;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yc.bean.Novel;
 import com.yc.bean.NovelType;
 import com.yc.biz.Authorbiz;
+import com.yc.biz.NovelChapterbiz;
 import com.yc.biz.NovelTypebiz;
 import com.yc.biz.Novelbiz;
-import com.yc.biz.impl.NovelTypebizImpl;
-import com.yc.biz.impl.NovelbizImpl;
 import com.yc.utils.RedisUtil;
 import com.yc.bean.User;
-import com.yc.biz.Novelbiz;
 import com.yc.biz.Userbiz;
-import com.yc.dao.BaseDao;
+
 
 
 import junit.framework.TestCase;
@@ -118,6 +110,14 @@ public class TestSpring extends TestCase {
 //			redis.ShowRank(st[j]);
 //		}
 		
+	}
+	
+	
+	public void testCache8() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		NovelChapterbiz sb =   (NovelChapterbiz) ac.getBean("novelChapterbizImpl");
+		List list=sb.ShowAllChapter(1);
+		System.out.println(list);
 	}
 	
 

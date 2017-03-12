@@ -10,4 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{nid},#{cname},#{caddress},#{standby_1});
 	</insert>
 	
+	<select id="allChapter" resultType="NovelChapter" parameterType="Novel">
+		select * from novel_chapter where nid=#{nid}
+	</select>
+	
 </mapper>

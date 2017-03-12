@@ -11,7 +11,7 @@ import com.yc.dao.BaseDao;
 
 @Service
 public class NovelChapterbizImpl implements NovelChapterbiz {
-private  BaseDao bd;
+	private  BaseDao bd;
 
 	
 	@Resource(name="baseDaoMybatisImpl")
@@ -32,5 +32,14 @@ private  BaseDao bd;
 	@Override
 	public void insertNovelChapter(NovelChapter novelchapter) {
 		this.bd.add(novelchapter, "insertNovel");
+	}
+
+
+	@Override
+	public List<NovelChapter> ShowAllChapter(int nid) {
+		NovelChapter nchpater=new NovelChapter();
+		nchpater.setNid(nid);
+		List<NovelChapter> list=bd.findAll(nchpater, "allChapter");
+		return list;
 	}
 }

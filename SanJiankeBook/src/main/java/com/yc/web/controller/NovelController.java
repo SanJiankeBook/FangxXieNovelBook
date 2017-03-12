@@ -1,42 +1,29 @@
 package com.yc.web.controller;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.yc.bean.Novel;
 import com.yc.bean.NovelType;
-import com.yc.bean.Rank;
 import com.yc.biz.impl.AuthorbizImpl;
 import com.yc.biz.impl.NovelChapterbizImpl;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.biz.impl.NovelbizImpl;
-import com.yc.utils.RedisUtil;
 import com.yc.bean.Author;
-import com.yc.bean.Novel;
 import com.yc.bean.NovelChapter;
-import com.yc.bean.NovelType;
 import com.yc.bean.User;
 import com.yc.biz.Authorbiz;
 import com.yc.biz.NovelChapterbiz;
@@ -120,14 +107,6 @@ public class NovelController {
 		this.novelChapterbizImpl = novelChapterbizImpl;
 	}
 
-
-
-	//跳转到前台
-    @RequestMapping(value="/toindex")
-	public String Index(){
-    	logger.info("toIndex.....");
-    	return "index";
-    }
     
     //搜索
     @RequestMapping(value="/tosousuo")
@@ -218,119 +197,6 @@ public class NovelController {
 		
 		
     }
-    
-    
-  //主页面显示数据
-  	@RequestMapping(value="/toindex")
-  	public String Index(Model  model){
-      	logger.info("toIndex.....");
-      	List list=novelTypebizImpl.showType(noveltype);
-      	List novel=novelbizImpl.ShowNovel();
-      	model.addAttribute("list", list);
-      	model.addAttribute("novel", novel);
-      	return "index";
-      }
-  	
-  	
-  	//显示小说的页面
-  	@RequestMapping(value="/toindex_id/{nid}")
-  	public String Index_id(@PathVariable int nid,Model  model){
-  		
-  		List list=new ArrayList();
-  		
-      	logger.info("toIndex.....");
-      	list=novelbizImpl.ShowNovel_id(nid);
-      	List author=authorbizImpl.Show_Author(nid);
-      	List chapter=novelChapterbizImpl.NewChapter(nid);
-      	//System.out.println(list+"=你是什么");
-      	//System.out.println(author+"=输出作者");
-      	model.addAttribute("novel_id",list);
-      	model.addAttribute("author",author);
-      	model.addAttribute("chapter",chapter);
-      	//System.out.println(list);
-      	
-      	/*
-      	 * 排行榜
-      	 */
-      		Novel nname= (Novel) list.get(0);
-      		String name=nname.getNname();
-      		RedisUtil redis=new RedisUtil();
-      		redis.Ranking(name);
-      	
-      	
-      	return "Novel";
-      }
-
-
-  	
-  
-	
-		//排行榜，按类型显示数据
-		@RequestMapping(value="/toindex_type")
-		public String Index_type(Model  model){
-			
-			logger.info("toIndex.....");
-/*			List<Object> listAll=new ArrayList<Object>();
-			List<String> dlist=new ArrayList<String>();//点击量
-			List<String> Ranklist=new ArrayList<String>();//排名
-			RedisUtil redis=new RedisUtil();
-	    	List<String> list=redis.ShowRankNum1();//小说名
-	    	
-	    	List list_type=novelTypebizImpl.showType(noveltype); //小说类型
-	    	
-	    	
-	    	
-	    	for(int i=0;i<list.size();i++){
-	    		String rname=(String) list.get(i);
-	    		Double num=redis.ShowRank(rname);
-	    		String Stnum=String.valueOf(num);
-	    		String inum=String.valueOf(i+1);
-	    		//System.out.println("num=====  "+num);	
-	    		dlist.add(Stnum);
-	    		Ranklist.add(inum);
-	    	} 
-	    	
-	    	for(int j=0;j<list.size();j++){
-	    		Rank rank=new Rank();
-	    		rank.setNovelname(list.get(j));
-	    		rank.setRanknum(dlist.get(j));
-	    		rank.setDoll(Ranklist.get(j));
-	    		listAll.add(rank);	
-	    	}
-	    	model.addAttribute("listAll",listAll);*/
-	    		
-			List<Object> listAll=new ArrayList<Object>();
-			List<String> dlist=new ArrayList<String>();//点击量
-			List<String> Ranklist=new ArrayList<String>();//排名
-			RedisUtil redis=new RedisUtil();
-			List typelist=novelTypebizImpl.showType(noveltype);
-			//System.out.println(typelist.get(1)+"=======你还不是修仙");  
-			
-				//System.out.println("进来没？");
-				List<Novel> list=novelbizImpl.TypeNovel("玄幻");
-				for(int i=0;i<list.size();i++){
-		    		String rname=  list.get(i).getNname();
-		    		Double num=redis.ShowRank(rname);
-		    		String Stnum=String.valueOf(num);
-		    		String inum=String.valueOf(i+1);
-		    		//System.out.println("num=====  "+num);	
-		    		dlist.add(Stnum);
-		    		Ranklist.add(inum);
-		    	} 
-		    	
-		    	for(int j=0;j<list.size();j++){
-		    		Rank rank=new Rank();
-		    		rank.setNovelname(list.get(j).getNname());
-		    		rank.setRanknum(dlist.get(j));
-		    		rank.setDoll(Ranklist.get(j));
-		    		listAll.add(rank);	
-		    	}
-		    	model.addAttribute("listAll",listAll);
-		    	
-			return "rank";
-	    }
-	
-
 	
 }
 
