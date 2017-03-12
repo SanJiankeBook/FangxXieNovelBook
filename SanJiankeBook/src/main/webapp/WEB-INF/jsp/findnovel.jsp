@@ -5,17 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>小说搜索</title>
-<link href="css/default.css" rel="stylesheet" type="text/css">
+<link href="/css/default.css" rel="stylesheet" type="text/css">
 <link href="css/gameresult.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/baidu-ajax.js"></script>
 <script type="text/javascript" src="js/statistic.js"></script>
 <style type="text/css" adt="123"></style>
 </head>
-<body>
+<body style="text-align:center; margin:auto auto">
 <div class="result-list">
 	<div class="result-item result-game-item">
-            
             <div class="result-game-item-pic">
                 <img src="images/nopic.gif"  class="result-game-item-pic-link-img" > 
         	</div>
