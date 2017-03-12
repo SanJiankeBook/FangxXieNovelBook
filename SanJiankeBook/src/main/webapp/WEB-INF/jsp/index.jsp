@@ -1,7 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
 
@@ -14,8 +16,6 @@
 	content="format=xhtml; url=http://m.bixia.org" />
 <title>三剑客小说网</title>
 
-
-  
 	<script type="text/javascript" src="js/xiaoshuo.js"></script>
 	<script type="text/javascript" async="" src="js/js.js"></script>
 	<script type="text/javascript" src="js/wap.js"></script>
@@ -33,6 +33,7 @@
 		<iframe id="bdsIfr"
 			style="position: absolute; display: none; z-index: 9999; top: 84px; left: 1044.08px; height: 314px; width: 212px;"
 			frameborder="0"></iframe>
+
 		  <div id="bdshare_l" style="display: none; left: 1044.08px; top: 84px;">
 			<div id="bdshare_l_c">
 				<h6>分享到</h6>
@@ -63,10 +64,13 @@
 	<div id="wrapper">
 		<script>login();</script>
 		<div style="display: none">
+
 			<script src="php/stat.php" language="JavaScript"></script>
 			<script src="php/core.php" charset="utf-8" language="JavaScript"></script>
 		</div>
-	<!--	<div class="ywtop">
+		
+		
+		<!-- <div class="ywtop">
 			<div class="ywtop_con">
 				<div class="ywtop_sethome">
 					<a
@@ -78,6 +82,7 @@
 						href="javascript:window.external.addFavorite('http://www.bixia.org','%E7%AC%94%E4%B8%8B%E6%96%87%E5%AD%A6')">三剑客文学</a>
 				</div>
 				<div class="nri">
+
 				  	<form name="mylogin" id="mylogin" method="post"
 						action="userLogin"
 						>
@@ -85,12 +90,15 @@
 							<div class="txt">账号：</div>
 							<div class="inp">
 								<input name="uname" id="uname" type="text" />
+
 							</div>
 						</div>
 						<div class="cc">
 							<div class="txt">密码：</div>
 							<div class="inp">
+
 								<input name="upassword" id="upassword" type="password" />
+
 							</div>
 						</div>
 						<div class="frii">
@@ -100,13 +108,18 @@
 						<div class="ccc">
 							<div class="txtt"></div>
 							<div class="txtt">
+
 								<a href="register.jsp">用户注册</a>
 							</div>
 						</div>
 					</form>-->
+
 				</div>
 			</div>
-		</div>
+		</div> -->
+		
+		
+		
 		<div class="header">
 			<div class="header_logo">
 				<a href="http://www.bixia.org/">三剑客文学</a>
@@ -120,6 +133,7 @@
 						<!-- 嵌入式 -->
 						<div class="bdcs-main bdcs-clearfix" id="default-searchbox">
 							<div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">
+
 								<form action="tosousuo" method="get"
 									target="_blank" class="bdcs-search-form" autocomplete="off"
 									id="bdcs-search-form">
@@ -140,6 +154,7 @@
 					</div>
 				</div>
 			</div>
+
 			    <div class="userpanel">
 				<script>banner();</script>
 				<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
@@ -153,9 +168,9 @@
 
 				<script type="text/javascript">
 document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-</script>
-				
+</script>		
 			</div> 
+
 		</div>
 		<div class="clear"></div>
 		<div class="nav">
@@ -169,7 +184,9 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 				<li><a href="jsp/5-1.jsp">科幻灵异</a></li>
 				<li><a href="jsp/6-1.jsp">网游竞技</a></li>
 				<li><a href="jsp/7-1.jsp">女频频道</a></li>
-				<li><a href="jsp/rank.jsp">排行榜单</a></li>
+				<li><a href="toindex_type">排行榜单</a></li>
+
+
 				<li><a href="jsp/quanben.jsp/">全本小说</a></li>
 				<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
 			</ul>
@@ -240,9 +257,21 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 			<div class="dahengfu">
 				<script>list1();</script>
 			</div>
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			<div id="novelslist1" class="novelslist">
 				<div class="content">
-					<h2>玄幻奇幻</h2>
+					<h2>${list[0].tname}</h2>
 
 					<div class="top">
 						<div class="image">
@@ -251,12 +280,10 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 						</div>
 						<dl>
 							<dt>
-								<a href="http://www.bixia.org/2_2476/"> 儒道至圣 </a>
+								<a href="toindex_id/${novel[0].nid}"> ${novel[0].nname}</a>
 							</dt>
-							<dd>
+							<dd></dd>
 
-								这是一个读书人掌握天地之力的世界。&nbsp;&nbsp;&nbsp;&nbsp;才气在身，诗可杀敌，词能灭军，文章安天
-								下。&nbsp;&nbsp;&nbsp;&nbsp;秀才提笔，...</dd>
 						</dl>
 						<div class="clear"></div>
 					</div>
@@ -268,7 +295,9 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 					</ul>
 				</div>
 				<div class="content">
-					<h2>武侠仙侠</h2>
+
+					<h2>${list[1].tname}</h2>
+
 
 					<div class="top">
 						<div class="image">
@@ -315,7 +344,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 					</ul>
 				</div>
 				<div class="content border">
-					<h2>都市言情</h2>
+					<h2>${list[2].tname}</h2>
+
 
 					<div class="top">
 						<div class="image">
@@ -337,9 +367,25 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 				</div>
 				<div class="clear"></div>
 			</div>
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			<div id="novelslist2" class="novelslist">
 				<div class="content">
-					<h2>历史军事</h2>
+					<h2>${list[3].tname}</h2>
+
 
 					<div class="top">
 						<div class="image">
@@ -360,7 +406,9 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 					</ul>
 				</div>
 				<div class="content">
-					<h2>科幻灵异</h2>
+
+					<h2>${list[4].tname}</h2>
+
 
 					<div class="top">
 						<div class="image">
@@ -381,7 +429,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 					</ul>
 				</div>
 				<div class="content border">
-					<h2>网游竞技</h2>
+					<h2>${list[5].tname}</h2>
+
 
 					<div class="top">
 						<div class="image">

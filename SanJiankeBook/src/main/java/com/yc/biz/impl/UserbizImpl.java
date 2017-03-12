@@ -4,13 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import java.util.List;
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
-
+import com.yc.biz.Userbiz;
+import com.yc.dao.BaseDao;
 import com.yc.bean.User;
 import com.yc.biz.Userbiz;
 import com.yc.dao.BaseDao;
+
 @Service
 public class UserbizImpl implements Userbiz {
 private  BaseDao bd;
@@ -19,6 +21,7 @@ private  BaseDao bd;
 	public void setBd(BaseDao bd) {
 		this.bd = bd;
 	}
+
 	//注册成为用户
 	@Override
 	public Integer InsertUser(Object obj) {
@@ -79,4 +82,5 @@ private  BaseDao bd;
 		use.setUid(uid);
 		this.bd.delete(use, "delUser");
 	}
+
 }

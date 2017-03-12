@@ -55,7 +55,6 @@ public class BaseDaoMybatisImpl<T> extends SqlSessionDaoSupport implements BaseD
 	}
 	
 	public List<T> findAll(T t,String sqlId) {
-		
 		return super.getSqlSession().selectList(getMapperId(t, sqlId), t);
 	}
 

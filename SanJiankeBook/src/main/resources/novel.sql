@@ -23,12 +23,16 @@ insert into novel_type(tname,standby_1,standby_2,standby_3) values('科幻',1,1,
 
 drop table novel_type;
 select * from novel_type;
+select tname from novel_type;
+
+
 
 select nid,tname,aname,nname,npicture,ndescription,nstatus from novel_type
 inner join novel
 on novel_type.tid=novel.tid
 inner join author
 on author.aid=novel.aid
+
 
 
 
@@ -54,12 +58,23 @@ insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_
 values(2,1,'君王再临','rudaozhisheng.jpg','某一天...','连载',1,1,1);
 
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
+<<<<<<< HEAD
+values(2,2,'再临','c:\aii\aa','某一天...','未完结',1,1,1);
+insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
+values(1,1,'神仙道','c:\aii\aa','某一天...','未完结',1,1,1);
+insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
+values(3,2,'Chaos Child','c:\aii\aa','某一天...','未完结',1,1,1);
+insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
+values(4,2,'再临123','c:\aii\aa','某一天...','未完结',1,1,1);
+
 values(2,2,'再临','jiuxiantu.jpg','某一天...','未完结',1,1,1);
 
 delete from novel where nid=9;
 
-select * from novel
 
+select * from novel;
+select nname from novel;
+commit;
 
 
 
@@ -84,8 +99,14 @@ values(1,'第一章：45651','d:\ssss\sswq',1,1,1);
 insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
 values(2,'第一章：45651','d:\ssss\sswq',1,1,1);
 select * from novel_chapter;
-
-
+insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
+values(1,'第二章：45651','d:\ssss\sswq',1,1,1);
+select * from novel_chapter;insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
+values(1,'第三章：45651','d:\ssss\sswq',1,1,1);
+select * from novel_chapter;
+select * from novel_chapter;insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
+values(1,'第四章：45651','d:\\ssss\\sswq',1,1,1);
+select * from novel_chapter;
 
 --=======================================================================================
 create table author(					
@@ -135,6 +156,7 @@ insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3)
 values('巨无霸','469058237','123456','男',1,1,1);
 insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3)
 values('巨无霸2','469058','123','女',1,1,1);
+
  
 insert into user(uname,u_number,upassword,usex) values('a','469058237','a','男');
 insert into user(uname,u_number,upassword,usex) values('b','469058237','b','男');
@@ -143,6 +165,7 @@ insert into user(uname,u_number,upassword,usex) values('d','469058237','d','男'
 insert into user(uname,u_number,upassword,usex) values('f','469058237','f','女');
 
 select * from user limit 0,5
+
 
 drop table user;
 select * from user;
@@ -206,8 +229,26 @@ insert into admin(adnumber,adpassword) values(1001,'a');
 commit;
 
 --测试
-	select from 
+	select a.aname 
+		from novel n
+		inner join author a
+		on n.aid=a.aid
+		where n.nid=1	
+
+	select cname from novel_chapter where nid=1 having max(cid);
+
+	select count(cid) from 	novel_chapter;
 
 
-
-
+	select nname 
+	from novel n
+	inner join novel_type nt
+	on n.tid=nt.tid
+	where nt.tname='修仙'
+	
+	
+	select novelType.tname 
+		from novel n
+		inner join novel_type novelType
+		on n.tid=novelType.tid
+		where n.nname='君王再临'

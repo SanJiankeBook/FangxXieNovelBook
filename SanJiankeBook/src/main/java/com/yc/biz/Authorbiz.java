@@ -1,7 +1,6 @@
 package com.yc.biz;
 
 import java.util.List;
-
 import com.yc.bean.Author;
 
 public interface Authorbiz {
@@ -16,4 +15,6 @@ public interface Authorbiz {
 	
 	//分页查找作家
 	List<Author> FindAuthorByPage(Integer start,Integer end);
+	//查询作者名
+	List Show_Author(int nid);
 }

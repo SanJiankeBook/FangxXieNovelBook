@@ -6,31 +6,33 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Service;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 import com.yc.bean.Novel;
+import com.yc.bean.NovelType;
 import com.yc.biz.Novelbiz;
 import com.yc.dao.BaseDao;
+
 @Service
 public class NovelbizImpl implements Novelbiz {
 private  BaseDao bd;
-	
+
 	@Resource(name="baseDaoMybatisImpl")
 	public void setBd(BaseDao bd) {
 		this.bd = bd;
 	}
-	//插入书本信息
-	@Override
-	public Integer InsertNovel(Novel novel) {
-		this.bd.add(novel, "addNovel");
-		return null;
-	}
+
 
 	@Override
 	public List<Novel> FindAllNovel() {
 		List<Novel> list=this.bd.findAll(new Novel(), "findAllNovel");
 		return list;
 	}
+
 
 	@Override
 	public void delNovel(int nid) {
@@ -46,4 +48,36 @@ private  BaseDao bd;
 		List<Novel> list=this.bd.findAll(new Novel(), map, "findNovelByPage");
 		return list;
 	}
+	
+	@Override
+	public List ShowNovel() {
+		List list=bd.findAll(new Novel(), "getAllnname");
+		return list;
+	}
+
+	@Override
+	public List ShowNovel_id(int nid) {
+		Novel novel=new Novel();
+		novel.setNid(nid);
+		List list=bd.findAll(novel, "idgetAllnname");
+		return list;
+	}
+
+	//根据类型查询小说名字	
+	@Override
+	public List<Novel> TypeNovel(String tname) {
+		Novel novel=new Novel();
+		NovelType ntype=new NovelType();
+		ntype.setTname(tname);
+		novel.setNovelType(ntype);
+		List<Novel> list=bd.findAll(novel, "typegetAllnname");
+		return list;
+	}
+
+	//插入书本信息
+		@Override
+		public Integer InsertNovel(Novel novel) {
+			this.bd.add(novel, "addNovel");
+			return null;
+		}
 }

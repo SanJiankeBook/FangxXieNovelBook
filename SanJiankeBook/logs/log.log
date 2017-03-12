@@ -1,0 +1,609 @@
+2017-03-11 19:47:56  [ main:0 ] - [ DEBUG ]  Adding [systemProperties] PropertySource with lowest search precedence
+2017-03-11 19:47:56  [ main:2 ] - [ DEBUG ]  Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-03-11 19:47:56  [ main:2 ] - [ DEBUG ]  Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-03-11 19:47:56  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1065c63: startup date [Sat Mar 11 19:47:56 AWST 2017]; root of context hierarchy
+2017-03-11 19:47:57  [ main:67 ] - [ DEBUG ]  Adding [systemProperties] PropertySource with lowest search precedence
+2017-03-11 19:47:57  [ main:68 ] - [ DEBUG ]  Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-03-11 19:47:57  [ main:75 ] - [ DEBUG ]  Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-03-11 19:47:57  [ main:89 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-11 19:47:57  [ main:109 ] - [ DEBUG ]  Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2017-03-11 19:47:57  [ main:154 ] - [ DEBUG ]  Loading schema mappings from [META-INF/spring.schemas]
+2017-03-11 19:47:57  [ main:161 ] - [ DEBUG ]  Loaded schema mappings: {http://www.springframework.org/schema/tx/spring-tx-4.3.xsd=org/springframework/transaction/config/spring-tx-4.3.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/cache/spring-cache-4.2.xsd=org/springframework/cache/config/spring-cache-4.2.xsd, http://www.springframework.org/schema/aop/spring-aop-4.1.xsd=org/springframework/aop/config/spring-aop-4.1.xsd, http://www.springframework.org/schema/context/spring-context-3.1.xsd=org/springframework/context/config/spring-context-3.1.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd=org/springframework/jdbc/config/spring-jdbc-4.1.xsd, http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd=org/springframework/web/servlet/config/spring-mvc-4.1.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://mybatis.org/schema/mybatis-spring-1.2.xsd=org/mybatis/spring/config/mybatis-spring-1.2.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-3.2.xsd=org/springframework/aop/config/spring-aop-3.2.xsd, http://www.springframework.org/schema/lang/spring-lang-4.1.xsd=org/springframework/scripting/config/spring-lang-4.1.xsd, http://www.springframework.org/schema/context/spring-context-4.0.xsd=org/springframework/context/config/spring-context-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd=org/springframework/web/servlet/config/spring-mvc-3.2.xsd, http://www.springframework.org/schema/beans/spring-beans-4.2.xsd=org/springframework/beans/factory/xml/spring-beans-4.2.xsd, http://www.springframework.org/schema/tool/spring-tool-4.1.xsd=org/springframework/beans/factory/xml/spring-tool-4.1.xsd, http://www.springframework.org/schema/lang/spring-lang-3.2.xsd=org/springframework/scripting/config/spring-lang-3.2.xsd, http://www.springframework.org/schema/cache/spring-cache-3.2.xsd=org/springframework/cache/config/spring-cache-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee-4.1.xsd=org/springframework/ejb/config/spring-jee-4.1.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd=org/springframework/jdbc/config/spring-jdbc-3.1.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/task/spring-task-4.2.xsd=org/springframework/scheduling/config/spring-task-4.2.xsd, http://www.springframework.org/schema/tool/spring-tool-3.2.xsd=org/springframework/beans/factory/xml/spring-tool-3.2.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-4.3.xsd, http://www.springframework.org/schema/tx/spring-tx-4.2.xsd=org/springframework/transaction/config/spring-tx-4.2.xsd, http://www.springframework.org/schema/cache/spring-cache-4.1.xsd=org/springframework/cache/config/spring-cache-4.1.xsd, http://www.springframework.org/schema/aop/spring-aop-4.0.xsd=org/springframework/aop/config/spring-aop-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.2.xsd=org/springframework/ejb/config/spring-jee-3.2.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd=org/springframework/jdbc/config/spring-jdbc-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd=org/springframework/web/servlet/config/spring-mvc-4.0.xsd, http://www.springframework.org/schema/util/spring-util-4.3.xsd=org/springframework/beans/factory/xml/spring-util-4.3.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.2.xsd=org/springframework/beans/factory/xml/spring-beans-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop-3.1.xsd=org/springframework/aop/config/spring-aop-3.1.xsd, http://www.springframework.org/schema/lang/spring-lang-4.0.xsd=org/springframework/scripting/config/spring-lang-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc.xsd=org/springframework/web/servlet/config/spring-mvc-4.3.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd=org/springframework/web/servlet/config/spring-mvc-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-4.1.xsd=org/springframework/beans/factory/xml/spring-beans-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool-4.0.xsd=org/springframework/beans/factory/xml/spring-tool-4.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.2.xsd=org/springframework/transaction/config/spring-tx-3.2.xsd, http://www.springframework.org/schema/lang/spring-lang-3.1.xsd=org/springframework/scripting/config/spring-lang-3.1.xsd, http://www.springframework.org/schema/cache/spring-cache-3.1.xsd=org/springframework/cache/config/spring-cache-3.1.xsd, http://www.springframework.org/schema/jee/spring-jee-4.0.xsd=org/springframework/ejb/config/spring-jee-4.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/task/spring-task-4.1.xsd=org/springframework/scheduling/config/spring-task-4.1.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-3.1.xsd=org/springframework/beans/factory/xml/spring-tool-3.1.xsd, http://www.springframework.org/schema/tx/spring-tx-4.1.xsd=org/springframework/transaction/config/spring-tx-4.1.xsd, http://www.springframework.org/schema/cache/spring-cache-4.0.xsd=org/springframework/cache/config/spring-cache-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.1.xsd=org/springframework/ejb/config/spring-jee-3.1.xsd, http://www.springframework.org/schema/util/spring-util-4.2.xsd=org/springframework/beans/factory/xml/spring-util-4.2.xsd, http://www.springframework.org/schema/task/spring-task-3.2.xsd=org/springframework/scheduling/config/spring-task-3.2.xsd, http://www.springframework.org/schema/beans/spring-beans-3.1.xsd=org/springframework/beans/factory/xml/spring-beans-3.1.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd=org/springframework/web/servlet/config/spring-mvc-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.0.xsd=org/springframework/beans/factory/xml/spring-beans-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-4.3.xsd, http://www.springframework.org/schema/tx/spring-tx-3.1.xsd=org/springframework/transaction/config/spring-tx-3.1.xsd, http://mybatis.org/schema/mybatis-spring.xsd=org/mybatis/spring/config/mybatis-spring-1.2.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/context/spring-context-4.3.xsd=org/springframework/context/config/spring-context-4.3.xsd, http://www.springframework.org/schema/task/spring-task-4.0.xsd=org/springframework/scheduling/config/spring-task-4.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-4.0.xsd=org/springframework/transaction/config/spring-tx-4.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/util/spring-util-4.1.xsd=org/springframework/beans/factory/xml/spring-util-4.1.xsd, http://www.springframework.org/schema/task/spring-task-3.1.xsd=org/springframework/scheduling/config/spring-task-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-4.3.xsd=org/springframework/aop/config/spring-aop-4.3.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd=org/springframework/jdbc/config/spring-jdbc-4.3.xsd, http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd=org/springframework/web/servlet/config/spring-mvc-4.3.xsd, http://www.springframework.org/schema/util/spring-util-3.2.xsd=org/springframework/beans/factory/xml/spring-util-3.2.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang-4.3.xsd=org/springframework/scripting/config/spring-lang-4.3.xsd, http://www.springframework.org/schema/context/spring-context-4.2.xsd=org/springframework/context/config/spring-context-4.2.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-4.3.xsd=org/springframework/beans/factory/xml/spring-tool-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-4.3.xsd=org/springframework/ejb/config/spring-jee-4.3.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/util/spring-util-4.0.xsd=org/springframework/beans/factory/xml/spring-util-4.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/cache/spring-cache-4.3.xsd=org/springframework/cache/config/spring-cache-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop-4.2.xsd=org/springframework/aop/config/spring-aop-4.2.xsd, http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-4.3.xsd, http://www.springframework.org/schema/context/spring-context-3.2.xsd=org/springframework/context/config/spring-context-3.2.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd=org/springframework/jdbc/config/spring-jdbc-4.2.xsd, http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd=org/springframework/web/servlet/config/spring-mvc-4.2.xsd, http://www.springframework.org/schema/util/spring-util-3.1.xsd=org/springframework/beans/factory/xml/spring-util-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/cache/spring-cache.xsd=org/springframework/cache/config/spring-cache-4.3.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-4.3.xsd, http://www.springframework.org/schema/lang/spring-lang-4.2.xsd=org/springframework/scripting/config/spring-lang-4.2.xsd, http://www.springframework.org/schema/context/spring-context-4.1.xsd=org/springframework/context/config/spring-context-4.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-4.3.xsd=org/springframework/beans/factory/xml/spring-beans-4.3.xsd, http://www.springframework.org/schema/tool/spring-tool-4.2.xsd=org/springframework/beans/factory/xml/spring-tool-4.2.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/jee/spring-jee-4.2.xsd=org/springframework/ejb/config/spring-jee-4.2.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd=org/springframework/jdbc/config/spring-jdbc-3.2.xsd, http://www.springframework.org/schema/task/spring-task-4.3.xsd=org/springframework/scheduling/config/spring-task-4.3.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-4.3.xsd}
+2017-03-11 19:47:57  [ main:162 ] - [ DEBUG ]  Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.3.xsd
+2017-03-11 19:47:57  [ main:213 ] - [ DEBUG ]  Found XML schema [http://www.springframework.org/schema/context/spring-context.xsd] in classpath: org/springframework/context/config/spring-context-4.3.xsd
+2017-03-11 19:47:57  [ main:220 ] - [ DEBUG ]  Found XML schema [http://www.springframework.org/schema/tool/spring-tool-4.3.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-4.3.xsd
+2017-03-11 19:47:57  [ main:227 ] - [ DEBUG ]  Found XML schema [http://www.springframework.org/schema/aop/spring-aop.xsd] in classpath: org/springframework/aop/config/spring-aop-4.3.xsd
+2017-03-11 19:47:57  [ main:238 ] - [ DEBUG ]  Found XML schema [http://www.springframework.org/schema/tx/spring-tx.xsd] in classpath: org/springframework/transaction/config/spring-tx-4.3.xsd
+2017-03-11 19:47:57  [ main:244 ] - [ DEBUG ]  Found XML schema [http://www.springframework.org/schema/mvc/spring-mvc.xsd] in classpath: org/springframework/web/servlet/config/spring-mvc-4.3.xsd
+2017-03-11 19:47:57  [ main:272 ] - [ DEBUG ]  Loading bean definitions
+2017-03-11 19:47:57  [ main:290 ] - [ DEBUG ]  Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/mvc=org.springframework.web.servlet.config.MvcNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/cache=org.springframework.cache.config.CacheNamespaceHandler, http://mybatis.org/schema/mybatis-spring=org.mybatis.spring.config.NamespaceHandler, http://www.springframework.org/schema/c=org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+2017-03-11 19:47:57  [ main:317 ] - [ DEBUG ]  Adding [systemProperties] PropertySource with lowest search precedence
+2017-03-11 19:47:57  [ main:317 ] - [ DEBUG ]  Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-03-11 19:47:57  [ main:318 ] - [ DEBUG ]  Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-03-11 19:47:57  [ main:326 ] - [ DEBUG ]  JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2017-03-11 19:47:57  [ main:334 ] - [ DEBUG ]  Resolved classpath location [com/yc/] to resources [URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/test-classes/com/yc/], URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/]]
+2017-03-11 19:47:57  [ main:335 ] - [ DEBUG ]  Looking for matching resources in directory tree [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\test-classes\com\yc]
+2017-03-11 19:47:57  [ main:335 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\test-classes\com\yc] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/test-classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:338 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\test-classes\com\yc\test] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/test-classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:340 ] - [ DEBUG ]  Looking for matching resources in directory tree [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc]
+2017-03-11 19:47:57  [ main:341 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:341 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:343 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:344 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:347 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\dao] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:350 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\dao\impl] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:351 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\mapper] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:352 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\utils] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:353 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\web] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:353 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\web\controller] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/**/*.class]
+2017-03-11 19:47:57  [ main:355 ] - [ DEBUG ]  Resolved location pattern [classpath*:com/yc/**/*.class] to resources [file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\test-classes\com\yc\test\TestSpring.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\Admin.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\Author.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\Novel.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\NovelChapter.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\NovelType.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\Rank.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\User.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\UserBook.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\UserTalk.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\Adminbiz.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\Authorbiz.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\AdminbizImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\AuthorbizImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\NovelbizImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\NovelChapterbizImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\NovelTypebizImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\UserbizImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\UserBookbizImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\UserTalkbizImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\Novelbiz.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\NovelChapterbiz.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\NovelTypebiz.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\Userbiz.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\UserBookbiz.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\UserTalkbiz.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\dao\BaseDao.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\dao\impl\BaseDaoMybatisImpl.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\utils\RedisUtil.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\utils\YcConstant.class], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\web\controller\NovelController.class]]
+2017-03-11 19:47:57  [ main:415 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\Admin.class]
+2017-03-11 19:47:57  [ main:417 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\Author.class]
+2017-03-11 19:47:57  [ main:418 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\Novel.class]
+2017-03-11 19:47:57  [ main:419 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\NovelChapter.class]
+2017-03-11 19:47:57  [ main:420 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\NovelType.class]
+2017-03-11 19:47:57  [ main:421 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\Rank.class]
+2017-03-11 19:47:57  [ main:422 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\User.class]
+2017-03-11 19:47:57  [ main:423 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\UserBook.class]
+2017-03-11 19:47:57  [ main:424 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\bean\UserTalk.class]
+2017-03-11 19:47:57  [ main:428 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\AdminbizImpl.class]
+2017-03-11 19:47:57  [ main:429 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\AuthorbizImpl.class]
+2017-03-11 19:47:57  [ main:429 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\NovelbizImpl.class]
+2017-03-11 19:47:57  [ main:432 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\NovelChapterbizImpl.class]
+2017-03-11 19:47:57  [ main:434 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\NovelTypebizImpl.class]
+2017-03-11 19:47:57  [ main:434 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\UserbizImpl.class]
+2017-03-11 19:47:57  [ main:435 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\UserBookbizImpl.class]
+2017-03-11 19:47:57  [ main:436 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\biz\impl\UserTalkbizImpl.class]
+2017-03-11 19:47:57  [ main:438 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\dao\impl\BaseDaoMybatisImpl.class]
+2017-03-11 19:47:57  [ main:439 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\utils\RedisUtil.class]
+2017-03-11 19:47:57  [ main:445 ] - [ DEBUG ]  Identified candidate component class: file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\web\controller\NovelController.class]
+2017-03-11 19:47:57  [ main:549 ] - [ DEBUG ]  Loaded 41 bean definitions from location pattern [beans.xml]
+2017-03-11 19:47:57  [ main:550 ] - [ DEBUG ]  Bean factory for org.springframework.context.support.ClassPathXmlApplicationContext@1065c63: org.springframework.beans.factory.support.DefaultListableBeanFactory@d6fe6: defining beans [admin,author,novel,novelChapter,novelType,rank,user,userBook,userTalk,adminbizImpl,authorbizImpl,novelbizImpl,novelChapterbizImpl,novelTypebizImpl,userbizImpl,userBookbizImpl,userTalkbizImpl,baseDaoMybatisImpl,redisUtil,novelController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.event.internalEventListenerProcessor,org.springframework.context.event.internalEventListenerFactory,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0,dataSource,sqlSessionFactory,org.springframework.transaction.config.internalTransactionalEventListenerFactory,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,txManager,org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,mvcCorsConfigurations,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter]; root of factory hierarchy
+2017-03-11 19:47:57  [ main:602 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-03-11 19:47:57  [ main:602 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-03-11 19:47:57  [ main:621 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:623 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-03-11 19:47:57  [ main:723 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0'
+2017-03-11 19:47:57  [ main:723 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0'
+2017-03-11 19:47:57  [ main:724 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:759 ] - [ DEBUG ]  Resolved classpath location [jdbc.properties] to resources [URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]]
+2017-03-11 19:47:57  [ main:761 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0'
+2017-03-11 19:47:57  [ main:762 ] - [ DEBUG ]  Adding [environmentProperties] PropertySource with lowest search precedence
+2017-03-11 19:47:57  [ main:762 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-11 19:47:57  [ main:762 ] - [ DEBUG ]  Adding [localProperties] PropertySource with lowest search precedence
+2017-03-11 19:47:57  [ main:767 ] - [ DEBUG ]  Could not find key 'jdbc.driverClassName' in any property source
+2017-03-11 19:47:57  [ main:768 ] - [ DEBUG ]  Found key 'jdbc.driverClassName' in [localProperties] with type [String] and value 'com.mysql.jdbc.Driver'
+2017-03-11 19:47:57  [ main:771 ] - [ DEBUG ]  Could not find key 'jdbc.url' in any property source
+2017-03-11 19:47:57  [ main:772 ] - [ DEBUG ]  Found key 'jdbc.url' in [localProperties] with type [String] and value 'jdbc:mysql://localhost:3306/novel'
+2017-03-11 19:47:57  [ main:772 ] - [ DEBUG ]  Could not find key 'jdbc.username' in any property source
+2017-03-11 19:47:57  [ main:772 ] - [ DEBUG ]  Found key 'jdbc.username' in [localProperties] with type [String] and value 'root'
+2017-03-11 19:47:57  [ main:773 ] - [ DEBUG ]  Could not find key 'jdbc.password' in any property source
+2017-03-11 19:47:57  [ main:773 ] - [ DEBUG ]  Found key 'jdbc.password' in [localProperties] with type [String] and value 'aaaa'
+2017-03-11 19:47:57  [ main:776 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-03-11 19:47:57  [ main:776 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-03-11 19:47:57  [ main:778 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:778 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-03-11 19:47:57  [ main:778 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-03-11 19:47:57  [ main:778 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-03-11 19:47:57  [ main:779 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:779 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-03-11 19:47:57  [ main:779 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-03-11 19:47:57  [ main:779 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-03-11 19:47:57  [ main:784 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:784 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-03-11 19:47:57  [ main:784 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-03-11 19:47:57  [ main:784 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-03-11 19:47:57  [ main:784 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:785 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-03-11 19:47:57  [ main:785 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-03-11 19:47:57  [ main:785 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-03-11 19:47:57  [ main:785 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:785 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-03-11 19:47:57  [ main:785 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+2017-03-11 19:47:57  [ main:785 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.aop.config.internalAutoProxyCreator'
+2017-03-11 19:47:57  [ main:818 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.aop.config.internalAutoProxyCreator' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:846 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.aop.config.internalAutoProxyCreator'
+2017-03-11 19:47:57  [ main:850 ] - [ DEBUG ]  Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@1597028]
+2017-03-11 19:47:57  [ main:853 ] - [ DEBUG ]  Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@18dfcc1]
+2017-03-11 19:47:57  [ main:854 ] - [ DEBUG ]  Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@d6fe6: defining beans [admin,author,novel,novelChapter,novelType,rank,user,userBook,userTalk,adminbizImpl,authorbizImpl,novelbizImpl,novelChapterbizImpl,novelTypebizImpl,userbizImpl,userBookbizImpl,userTalkbizImpl,baseDaoMybatisImpl,redisUtil,novelController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.event.internalEventListenerProcessor,org.springframework.context.event.internalEventListenerFactory,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0,dataSource,sqlSessionFactory,org.springframework.transaction.config.internalTransactionalEventListenerFactory,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,txManager,org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,mvcCorsConfigurations,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor]; root of factory hierarchy
+2017-03-11 19:47:57  [ main:855 ] - [ DEBUG ]  Creating shared instance of singleton bean 'admin'
+2017-03-11 19:47:57  [ main:855 ] - [ DEBUG ]  Creating instance of bean 'admin'
+2017-03-11 19:47:57  [ main:857 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:857 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:859 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.transaction.config.internalTransactionAdvisor' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:867 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+2017-03-11 19:47:57  [ main:868 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+2017-03-11 19:47:57  [ main:868 ] - [ DEBUG ]  Skipping currently created advisor 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:896 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:904 ] - [ DEBUG ]  Skipping currently created advisor 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:904 ] - [ DEBUG ]  Skipping currently created advisor 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:906 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+2017-03-11 19:47:57  [ main:907 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:908 ] - [ DEBUG ]  Eagerly caching bean 'admin' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:911 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:911 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:920 ] - [ DEBUG ]  Finished creating instance of bean 'admin'
+2017-03-11 19:47:57  [ main:920 ] - [ DEBUG ]  Creating shared instance of singleton bean 'author'
+2017-03-11 19:47:57  [ main:920 ] - [ DEBUG ]  Creating instance of bean 'author'
+2017-03-11 19:47:57  [ main:920 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:921 ] - [ DEBUG ]  Eagerly caching bean 'author' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:923 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:923 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:925 ] - [ DEBUG ]  Finished creating instance of bean 'author'
+2017-03-11 19:47:57  [ main:925 ] - [ DEBUG ]  Creating shared instance of singleton bean 'novel'
+2017-03-11 19:47:57  [ main:925 ] - [ DEBUG ]  Creating instance of bean 'novel'
+2017-03-11 19:47:57  [ main:925 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:926 ] - [ DEBUG ]  Eagerly caching bean 'novel' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:928 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:929 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:930 ] - [ DEBUG ]  Finished creating instance of bean 'novel'
+2017-03-11 19:47:57  [ main:930 ] - [ DEBUG ]  Creating shared instance of singleton bean 'novelChapter'
+2017-03-11 19:47:57  [ main:931 ] - [ DEBUG ]  Creating instance of bean 'novelChapter'
+2017-03-11 19:47:57  [ main:931 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:933 ] - [ DEBUG ]  Eagerly caching bean 'novelChapter' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:936 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:936 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:937 ] - [ DEBUG ]  Finished creating instance of bean 'novelChapter'
+2017-03-11 19:47:57  [ main:938 ] - [ DEBUG ]  Creating shared instance of singleton bean 'novelType'
+2017-03-11 19:47:57  [ main:938 ] - [ DEBUG ]  Creating instance of bean 'novelType'
+2017-03-11 19:47:57  [ main:938 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:939 ] - [ DEBUG ]  Eagerly caching bean 'novelType' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:942 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:942 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:944 ] - [ DEBUG ]  Finished creating instance of bean 'novelType'
+2017-03-11 19:47:57  [ main:944 ] - [ DEBUG ]  Creating shared instance of singleton bean 'rank'
+2017-03-11 19:47:57  [ main:944 ] - [ DEBUG ]  Creating instance of bean 'rank'
+2017-03-11 19:47:57  [ main:944 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:945 ] - [ DEBUG ]  Eagerly caching bean 'rank' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:946 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:946 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:948 ] - [ DEBUG ]  Finished creating instance of bean 'rank'
+2017-03-11 19:47:57  [ main:948 ] - [ DEBUG ]  Creating shared instance of singleton bean 'user'
+2017-03-11 19:47:57  [ main:949 ] - [ DEBUG ]  Creating instance of bean 'user'
+2017-03-11 19:47:57  [ main:949 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:950 ] - [ DEBUG ]  Eagerly caching bean 'user' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:958 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:958 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:959 ] - [ DEBUG ]  Finished creating instance of bean 'user'
+2017-03-11 19:47:57  [ main:959 ] - [ DEBUG ]  Creating shared instance of singleton bean 'userBook'
+2017-03-11 19:47:57  [ main:960 ] - [ DEBUG ]  Creating instance of bean 'userBook'
+2017-03-11 19:47:57  [ main:960 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:960 ] - [ DEBUG ]  Eagerly caching bean 'userBook' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:962 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:962 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:963 ] - [ DEBUG ]  Finished creating instance of bean 'userBook'
+2017-03-11 19:47:57  [ main:963 ] - [ DEBUG ]  Creating shared instance of singleton bean 'userTalk'
+2017-03-11 19:47:57  [ main:963 ] - [ DEBUG ]  Creating instance of bean 'userTalk'
+2017-03-11 19:47:57  [ main:963 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:965 ] - [ DEBUG ]  Eagerly caching bean 'userTalk' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:967 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:967 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:968 ] - [ DEBUG ]  Finished creating instance of bean 'userTalk'
+2017-03-11 19:47:57  [ main:969 ] - [ DEBUG ]  Creating shared instance of singleton bean 'adminbizImpl'
+2017-03-11 19:47:57  [ main:969 ] - [ DEBUG ]  Creating instance of bean 'adminbizImpl'
+2017-03-11 19:47:57  [ main:969 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:975 ] - [ DEBUG ]  Registered injected element on class [com.yc.biz.impl.AdminbizImpl]: ResourceElement for public void com.yc.biz.impl.AdminbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:57  [ main:976 ] - [ DEBUG ]  Eagerly caching bean 'adminbizImpl' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:976 ] - [ DEBUG ]  Processing injected element of bean 'adminbizImpl': ResourceElement for public void com.yc.biz.impl.AdminbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:57  [ main:976 ] - [ DEBUG ]  Creating shared instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:57  [ main:976 ] - [ DEBUG ]  Creating instance of bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:57  [ main:976 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:992 ] - [ DEBUG ]  Registered injected element on class [com.yc.dao.impl.BaseDaoMybatisImpl]: ResourceElement for public void com.yc.dao.impl.BaseDaoMybatisImpl.setSqlSessionFactory(org.apache.ibatis.session.SqlSessionFactory)
+2017-03-11 19:47:57  [ main:993 ] - [ DEBUG ]  Eagerly caching bean 'baseDaoMybatisImpl' to allow for resolving potential circular references
+2017-03-11 19:47:57  [ main:993 ] - [ DEBUG ]  Processing injected element of bean 'baseDaoMybatisImpl': ResourceElement for public void com.yc.dao.impl.BaseDaoMybatisImpl.setSqlSessionFactory(org.apache.ibatis.session.SqlSessionFactory)
+2017-03-11 19:47:57  [ main:993 ] - [ DEBUG ]  Creating shared instance of singleton bean 'sqlSessionFactory'
+2017-03-11 19:47:57  [ main:993 ] - [ DEBUG ]  Creating instance of bean 'sqlSessionFactory'
+2017-03-11 19:47:57  [ main:993 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:57  [ main:1017 ] - [ DEBUG ]  Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+2017-03-11 19:47:58  [ main:1020 ] - [ DEBUG ]  Eagerly caching bean 'sqlSessionFactory' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1030 ] - [ DEBUG ]  Creating shared instance of singleton bean 'dataSource'
+2017-03-11 19:47:58  [ main:1030 ] - [ DEBUG ]  Creating instance of bean 'dataSource'
+2017-03-11 19:47:58  [ main:1030 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1034 ] - [ DEBUG ]  Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1046 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-11 19:47:58  [ main:1046 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1046 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1047 ] - [ DEBUG ]  Finished creating instance of bean 'dataSource'
+2017-03-11 19:47:58  [ main:1053 ] - [ DEBUG ]  Resolved classpath location [com/yc/mapper/] to resources [URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/mapper/]]
+2017-03-11 19:47:58  [ main:1053 ] - [ DEBUG ]  Looking for matching resources in directory tree [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\mapper]
+2017-03-11 19:47:58  [ main:1054 ] - [ DEBUG ]  Searching directory [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\mapper] for files matching pattern [C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/mapper/*.xml]
+2017-03-11 19:47:58  [ main:1054 ] - [ DEBUG ]  Resolved location pattern [classpath*:com/yc/mapper/*.xml] to resources [file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\mapper\NovelMapper.xml], file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\mapper\NovelTypeMapper.xml]]
+2017-03-11 19:47:58  [ main:1055 ] - [ DEBUG ]  Invoking afterPropertiesSet() on bean with name 'sqlSessionFactory'
+2017-03-11 19:47:58  [ main:1055 ] - [ DEBUG ]  Property `configuration` or 'configLocation' not specified, using default MyBatis Configuration
+2017-03-11 19:47:58  [ main:1136 ] - [ DEBUG ]  Class not found: org.jboss.vfs.VFS
+2017-03-11 19:47:58  [ main:1136 ] - [ DEBUG ]  JBoss 6 VFS API is not available in this environment.
+2017-03-11 19:47:58  [ main:1137 ] - [ DEBUG ]  Class not found: org.jboss.vfs.VirtualFile
+2017-03-11 19:47:58  [ main:1143 ] - [ DEBUG ]  VFS implementation org.apache.ibatis.io.JBoss6VFS is not valid in this environment.
+2017-03-11 19:47:58  [ main:1144 ] - [ DEBUG ]  Using VFS adapter org.apache.ibatis.io.DefaultVFS
+2017-03-11 19:47:58  [ main:1144 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean
+2017-03-11 19:47:58  [ main:1144 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean
+2017-03-11 19:47:58  [ main:1185 ] - [ DEBUG ]  Reader entry: Admin.class
+2017-03-11 19:47:58  [ main:1189 ] - [ DEBUG ]  Reader entry: Author.class
+2017-03-11 19:47:58  [ main:1189 ] - [ DEBUG ]  Reader entry: Novel.class
+2017-03-11 19:47:58  [ main:1189 ] - [ DEBUG ]  Reader entry: NovelChapter.class
+2017-03-11 19:47:58  [ main:1189 ] - [ DEBUG ]  Reader entry: NovelType.class
+2017-03-11 19:47:58  [ main:1190 ] - [ DEBUG ]  Reader entry: Rank.class
+2017-03-11 19:47:58  [ main:1190 ] - [ DEBUG ]  Reader entry: User.class
+2017-03-11 19:47:58  [ main:1190 ] - [ DEBUG ]  Reader entry: UserBook.class
+2017-03-11 19:47:58  [ main:1191 ] - [ DEBUG ]  Reader entry: UserTalk.class
+2017-03-11 19:47:58  [ main:1191 ] - [ DEBUG ]  Listing file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean
+2017-03-11 19:47:58  [ main:1191 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/Admin.class
+2017-03-11 19:47:58  [ main:1191 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/Admin.class
+2017-03-11 19:47:58  [ main:1192 ] - [ DEBUG ]  Reader entry: ����   3 ]  com/yc/bean/Admin  java/lang/Object  java/io/Serializable serialVersionUID J 
+2017-03-11 19:47:58  [ main:1193 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/Author.class
+2017-03-11 19:47:58  [ main:1193 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/Author.class
+2017-03-11 19:47:58  [ main:1194 ] - [ DEBUG ]  Reader entry: ����   3 �  com/yc/bean/Author  java/lang/Object  java/io/Serializable serialVersionUID J 
+2017-03-11 19:47:58  [ main:1194 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/Novel.class
+2017-03-11 19:47:58  [ main:1194 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/Novel.class
+2017-03-11 19:47:58  [ main:1195 ] - [ DEBUG ]  Reader entry: ����   3 �  com/yc/bean/Novel  java/lang/Object  java/io/Serializable serialVersionUID J 
+2017-03-11 19:47:58  [ main:1195 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/NovelChapter.class
+2017-03-11 19:47:58  [ main:1195 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/NovelChapter.class
+2017-03-11 19:47:58  [ main:1196 ] - [ DEBUG ]  Reader entry: ����   3 d  com/yc/bean/NovelChapter  java/lang/Object  java/io/Serializable serialVersionUID J 
+2017-03-11 19:47:58  [ main:1196 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/NovelType.class
+2017-03-11 19:47:58  [ main:1196 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/NovelType.class
+2017-03-11 19:47:58  [ main:1196 ] - [ DEBUG ]  Reader entry: ����   3 ^  com/yc/bean/NovelType  java/lang/Object  java/io/Serializable serialVersionUID J 
+2017-03-11 19:47:58  [ main:1197 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/Rank.class
+2017-03-11 19:47:58  [ main:1197 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/Rank.class
+2017-03-11 19:47:58  [ main:1198 ] - [ DEBUG ]  Reader entry: ����   3 7  com/yc/bean/Rank  java/lang/Object ranknum Ljava/lang/String; 	novelname doll <init> ()V Code
+2017-03-11 19:47:58  [ main:1200 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/User.class
+2017-03-11 19:47:58  [ main:1200 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/User.class
+2017-03-11 19:47:58  [ main:1201 ] - [ DEBUG ]  Reader entry: ����   3 k  com/yc/bean/User  java/lang/Object  java/io/Serializable serialVersionUID J 
+2017-03-11 19:47:58  [ main:1201 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/UserBook.class
+2017-03-11 19:47:58  [ main:1201 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/UserBook.class
+2017-03-11 19:47:58  [ main:1202 ] - [ DEBUG ]  Reader entry: ����   3 d  com/yc/bean/UserBook  java/lang/Object  java/io/Serializable serialVersionUID J 
+2017-03-11 19:47:58  [ main:1202 ] - [ DEBUG ]  Find JAR URL: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/UserTalk.class
+2017-03-11 19:47:58  [ main:1203 ] - [ DEBUG ]  Not a JAR: file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/com/yc/bean/UserTalk.class
+2017-03-11 19:47:58  [ main:1203 ] - [ DEBUG ]  Reader entry: ����   3 k  com/yc/bean/UserTalk  java/lang/Object  java/io/Serializable serialVersionUID J 
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.Admin matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.Author matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.Novel matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.NovelChapter matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.NovelType matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.Rank matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.User matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.UserBook matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1204 ] - [ DEBUG ]  Checking to see if class com.yc.bean.UserTalk matches criteria [is assignable to Object]
+2017-03-11 19:47:58  [ main:1205 ] - [ DEBUG ]  Scanned package: 'com.yc.bean' for aliases
+2017-03-11 19:47:58  [ main:1337 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\mapper\NovelMapper.xml]'
+2017-03-11 19:47:58  [ main:1350 ] - [ DEBUG ]  Parsed mapper file: 'file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\mapper\NovelTypeMapper.xml]'
+2017-03-11 19:47:58  [ main:1351 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1351 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1352 ] - [ DEBUG ]  Finished creating instance of bean 'sqlSessionFactory'
+2017-03-11 19:47:58  [ main:1352 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1352 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1363 ] - [ DEBUG ]  Invoking afterPropertiesSet() on bean with name 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1363 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1363 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1367 ] - [ DEBUG ]  Finished creating instance of bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1367 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1367 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1367 ] - [ DEBUG ]  Finished creating instance of bean 'adminbizImpl'
+2017-03-11 19:47:58  [ main:1368 ] - [ DEBUG ]  Creating shared instance of singleton bean 'authorbizImpl'
+2017-03-11 19:47:58  [ main:1368 ] - [ DEBUG ]  Creating instance of bean 'authorbizImpl'
+2017-03-11 19:47:58  [ main:1368 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1370 ] - [ DEBUG ]  Registered injected element on class [com.yc.biz.impl.AuthorbizImpl]: ResourceElement for public void com.yc.biz.impl.AuthorbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1370 ] - [ DEBUG ]  Eagerly caching bean 'authorbizImpl' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1371 ] - [ DEBUG ]  Processing injected element of bean 'authorbizImpl': ResourceElement for public void com.yc.biz.impl.AuthorbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1371 ] - [ DEBUG ]  Returning cached instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1371 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1371 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1371 ] - [ DEBUG ]  Finished creating instance of bean 'authorbizImpl'
+2017-03-11 19:47:58  [ main:1371 ] - [ DEBUG ]  Creating shared instance of singleton bean 'novelbizImpl'
+2017-03-11 19:47:58  [ main:1372 ] - [ DEBUG ]  Creating instance of bean 'novelbizImpl'
+2017-03-11 19:47:58  [ main:1372 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1376 ] - [ DEBUG ]  Registered injected element on class [com.yc.biz.impl.NovelbizImpl]: ResourceElement for public void com.yc.biz.impl.NovelbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1376 ] - [ DEBUG ]  Eagerly caching bean 'novelbizImpl' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1376 ] - [ DEBUG ]  Processing injected element of bean 'novelbizImpl': ResourceElement for public void com.yc.biz.impl.NovelbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1376 ] - [ DEBUG ]  Returning cached instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1377 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1377 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1377 ] - [ DEBUG ]  Finished creating instance of bean 'novelbizImpl'
+2017-03-11 19:47:58  [ main:1378 ] - [ DEBUG ]  Creating shared instance of singleton bean 'novelChapterbizImpl'
+2017-03-11 19:47:58  [ main:1378 ] - [ DEBUG ]  Creating instance of bean 'novelChapterbizImpl'
+2017-03-11 19:47:58  [ main:1378 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1380 ] - [ DEBUG ]  Registered injected element on class [com.yc.biz.impl.NovelChapterbizImpl]: ResourceElement for public void com.yc.biz.impl.NovelChapterbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1380 ] - [ DEBUG ]  Eagerly caching bean 'novelChapterbizImpl' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1381 ] - [ DEBUG ]  Processing injected element of bean 'novelChapterbizImpl': ResourceElement for public void com.yc.biz.impl.NovelChapterbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1381 ] - [ DEBUG ]  Returning cached instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1381 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1381 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1382 ] - [ DEBUG ]  Finished creating instance of bean 'novelChapterbizImpl'
+2017-03-11 19:47:58  [ main:1383 ] - [ DEBUG ]  Creating shared instance of singleton bean 'novelTypebizImpl'
+2017-03-11 19:47:58  [ main:1383 ] - [ DEBUG ]  Creating instance of bean 'novelTypebizImpl'
+2017-03-11 19:47:58  [ main:1383 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1386 ] - [ DEBUG ]  Registered injected element on class [com.yc.biz.impl.NovelTypebizImpl]: ResourceElement for public void com.yc.biz.impl.NovelTypebizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1386 ] - [ DEBUG ]  Eagerly caching bean 'novelTypebizImpl' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1386 ] - [ DEBUG ]  Processing injected element of bean 'novelTypebizImpl': ResourceElement for public void com.yc.biz.impl.NovelTypebizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1386 ] - [ DEBUG ]  Returning cached instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1386 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1386 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1387 ] - [ DEBUG ]  Finished creating instance of bean 'novelTypebizImpl'
+2017-03-11 19:47:58  [ main:1387 ] - [ DEBUG ]  Creating shared instance of singleton bean 'userbizImpl'
+2017-03-11 19:47:58  [ main:1387 ] - [ DEBUG ]  Creating instance of bean 'userbizImpl'
+2017-03-11 19:47:58  [ main:1387 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1390 ] - [ DEBUG ]  Registered injected element on class [com.yc.biz.impl.UserbizImpl]: ResourceElement for public void com.yc.biz.impl.UserbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1390 ] - [ DEBUG ]  Eagerly caching bean 'userbizImpl' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1390 ] - [ DEBUG ]  Processing injected element of bean 'userbizImpl': ResourceElement for public void com.yc.biz.impl.UserbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1390 ] - [ DEBUG ]  Returning cached instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1390 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1391 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1391 ] - [ DEBUG ]  Finished creating instance of bean 'userbizImpl'
+2017-03-11 19:47:58  [ main:1391 ] - [ DEBUG ]  Creating shared instance of singleton bean 'userBookbizImpl'
+2017-03-11 19:47:58  [ main:1391 ] - [ DEBUG ]  Creating instance of bean 'userBookbizImpl'
+2017-03-11 19:47:58  [ main:1391 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1394 ] - [ DEBUG ]  Registered injected element on class [com.yc.biz.impl.UserBookbizImpl]: ResourceElement for public void com.yc.biz.impl.UserBookbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1394 ] - [ DEBUG ]  Eagerly caching bean 'userBookbizImpl' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1394 ] - [ DEBUG ]  Processing injected element of bean 'userBookbizImpl': ResourceElement for public void com.yc.biz.impl.UserBookbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1394 ] - [ DEBUG ]  Returning cached instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1394 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1394 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1395 ] - [ DEBUG ]  Finished creating instance of bean 'userBookbizImpl'
+2017-03-11 19:47:58  [ main:1395 ] - [ DEBUG ]  Creating shared instance of singleton bean 'userTalkbizImpl'
+2017-03-11 19:47:58  [ main:1395 ] - [ DEBUG ]  Creating instance of bean 'userTalkbizImpl'
+2017-03-11 19:47:58  [ main:1395 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1399 ] - [ DEBUG ]  Registered injected element on class [com.yc.biz.impl.UserTalkbizImpl]: ResourceElement for public void com.yc.biz.impl.UserTalkbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1399 ] - [ DEBUG ]  Eagerly caching bean 'userTalkbizImpl' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1399 ] - [ DEBUG ]  Processing injected element of bean 'userTalkbizImpl': ResourceElement for public void com.yc.biz.impl.UserTalkbizImpl.setBd(com.yc.dao.BaseDao)
+2017-03-11 19:47:58  [ main:1399 ] - [ DEBUG ]  Returning cached instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1399 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1400 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1400 ] - [ DEBUG ]  Finished creating instance of bean 'userTalkbizImpl'
+2017-03-11 19:47:58  [ main:1400 ] - [ DEBUG ]  Returning cached instance of singleton bean 'baseDaoMybatisImpl'
+2017-03-11 19:47:58  [ main:1400 ] - [ DEBUG ]  Creating shared instance of singleton bean 'redisUtil'
+2017-03-11 19:47:58  [ main:1400 ] - [ DEBUG ]  Creating instance of bean 'redisUtil'
+2017-03-11 19:47:58  [ main:1400 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1425 ] - [ DEBUG ]  Eagerly caching bean 'redisUtil' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1426 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1426 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1427 ] - [ DEBUG ]  Finished creating instance of bean 'redisUtil'
+2017-03-11 19:47:58  [ main:1427 ] - [ DEBUG ]  Creating shared instance of singleton bean 'novelController'
+2017-03-11 19:47:58  [ main:1427 ] - [ DEBUG ]  Creating instance of bean 'novelController'
+2017-03-11 19:47:58  [ main:1427 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1433 ] - [ DEBUG ]  Registered injected element on class [com.yc.web.controller.NovelController]: ResourceElement for public void com.yc.web.controller.NovelController.setNovel(com.yc.bean.Novel)
+2017-03-11 19:47:58  [ main:1433 ] - [ DEBUG ]  Registered injected element on class [com.yc.web.controller.NovelController]: ResourceElement for public void com.yc.web.controller.NovelController.setNoveltype(com.yc.bean.NovelType)
+2017-03-11 19:47:58  [ main:1433 ] - [ DEBUG ]  Registered injected element on class [com.yc.web.controller.NovelController]: ResourceElement for public void com.yc.web.controller.NovelController.setAuthorbizImpl(com.yc.biz.impl.AuthorbizImpl)
+2017-03-11 19:47:58  [ main:1433 ] - [ DEBUG ]  Registered injected element on class [com.yc.web.controller.NovelController]: ResourceElement for public void com.yc.web.controller.NovelController.setNovelbizImpl(com.yc.biz.impl.NovelbizImpl)
+2017-03-11 19:47:58  [ main:1434 ] - [ DEBUG ]  Registered injected element on class [com.yc.web.controller.NovelController]: ResourceElement for public void com.yc.web.controller.NovelController.setNovelTypebizImpl(com.yc.biz.impl.NovelTypebizImpl)
+2017-03-11 19:47:58  [ main:1434 ] - [ DEBUG ]  Registered injected element on class [com.yc.web.controller.NovelController]: ResourceElement for public void com.yc.web.controller.NovelController.setNovelChapterbizImpl(com.yc.biz.impl.NovelChapterbizImpl)
+2017-03-11 19:47:58  [ main:1434 ] - [ DEBUG ]  Eagerly caching bean 'novelController' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1435 ] - [ DEBUG ]  Processing injected element of bean 'novelController': ResourceElement for public void com.yc.web.controller.NovelController.setNovel(com.yc.bean.Novel)
+2017-03-11 19:47:58  [ main:1435 ] - [ DEBUG ]  Returning cached instance of singleton bean 'novel'
+2017-03-11 19:47:58  [ main:1435 ] - [ DEBUG ]  Processing injected element of bean 'novelController': ResourceElement for public void com.yc.web.controller.NovelController.setNoveltype(com.yc.bean.NovelType)
+2017-03-11 19:47:58  [ main:1435 ] - [ DEBUG ]  Returning cached instance of singleton bean 'novelType'
+2017-03-11 19:47:58  [ main:1435 ] - [ DEBUG ]  Processing injected element of bean 'novelController': ResourceElement for public void com.yc.web.controller.NovelController.setAuthorbizImpl(com.yc.biz.impl.AuthorbizImpl)
+2017-03-11 19:47:58  [ main:1435 ] - [ DEBUG ]  Returning cached instance of singleton bean 'authorbizImpl'
+2017-03-11 19:47:58  [ main:1435 ] - [ DEBUG ]  Processing injected element of bean 'novelController': ResourceElement for public void com.yc.web.controller.NovelController.setNovelbizImpl(com.yc.biz.impl.NovelbizImpl)
+2017-03-11 19:47:58  [ main:1435 ] - [ DEBUG ]  Returning cached instance of singleton bean 'novelbizImpl'
+2017-03-11 19:47:58  [ main:1436 ] - [ DEBUG ]  Processing injected element of bean 'novelController': ResourceElement for public void com.yc.web.controller.NovelController.setNovelTypebizImpl(com.yc.biz.impl.NovelTypebizImpl)
+2017-03-11 19:47:58  [ main:1438 ] - [ DEBUG ]  Returning cached instance of singleton bean 'novelTypebizImpl'
+2017-03-11 19:47:58  [ main:1438 ] - [ DEBUG ]  Processing injected element of bean 'novelController': ResourceElement for public void com.yc.web.controller.NovelController.setNovelChapterbizImpl(com.yc.biz.impl.NovelChapterbizImpl)
+2017-03-11 19:47:58  [ main:1439 ] - [ DEBUG ]  Returning cached instance of singleton bean 'novelChapterbizImpl'
+2017-03-11 19:47:58  [ main:1439 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1439 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1440 ] - [ DEBUG ]  Finished creating instance of bean 'novelController'
+2017-03-11 19:47:58  [ main:1441 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-03-11 19:47:58  [ main:1441 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-03-11 19:47:58  [ main:1441 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-03-11 19:47:58  [ main:1441 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-03-11 19:47:58  [ main:1441 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2017-03-11 19:47:58  [ main:1441 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.event.internalEventListenerProcessor'
+2017-03-11 19:47:58  [ main:1442 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1444 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.event.internalEventListenerProcessor' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1450 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1450 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1451 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.event.internalEventListenerProcessor'
+2017-03-11 19:47:58  [ main:1451 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2017-03-11 19:47:58  [ main:1451 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.context.event.internalEventListenerFactory'
+2017-03-11 19:47:58  [ main:1451 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1451 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.context.event.internalEventListenerFactory' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1454 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1454 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1454 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.context.event.internalEventListenerFactory'
+2017-03-11 19:47:58  [ main:1454 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+2017-03-11 19:47:58  [ main:1454 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0'
+2017-03-11 19:47:58  [ main:1454 ] - [ DEBUG ]  Returning cached instance of singleton bean 'dataSource'
+2017-03-11 19:47:58  [ main:1454 ] - [ DEBUG ]  Returning cached instance of singleton bean 'sqlSessionFactory'
+2017-03-11 19:47:58  [ main:1455 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory'
+2017-03-11 19:47:58  [ main:1455 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory'
+2017-03-11 19:47:58  [ main:1455 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1456 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1462 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1462 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1462 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory'
+2017-03-11 19:47:58  [ main:1462 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+2017-03-11 19:47:58  [ main:1462 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+2017-03-11 19:47:58  [ main:1462 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+2017-03-11 19:47:58  [ main:1466 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1471 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+2017-03-11 19:47:58  [ main:1471 ] - [ DEBUG ]  Invoking afterPropertiesSet() on bean with name 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+2017-03-11 19:47:58  [ main:1472 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.transaction.interceptor.TransactionInterceptor#0'
+2017-03-11 19:47:58  [ main:1472 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1472 ] - [ DEBUG ]  Creating shared instance of singleton bean 'txManager'
+2017-03-11 19:47:58  [ main:1472 ] - [ DEBUG ]  Creating instance of bean 'txManager'
+2017-03-11 19:47:58  [ main:1472 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1478 ] - [ DEBUG ]  Eagerly caching bean 'txManager' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1487 ] - [ DEBUG ]  Returning cached instance of singleton bean 'dataSource'
+2017-03-11 19:47:58  [ main:1487 ] - [ DEBUG ]  Invoking afterPropertiesSet() on bean with name 'txManager'
+2017-03-11 19:47:58  [ main:1487 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1487 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1488 ] - [ DEBUG ]  Finished creating instance of bean 'txManager'
+2017-03-11 19:47:58  [ main:1488 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 19:47:58  [ main:1488 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 19:47:58  [ main:1488 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1488 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1493 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1493 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1493 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 19:47:58  [ main:1493 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0'
+2017-03-11 19:47:58  [ main:1493 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0'
+2017-03-11 19:47:58  [ main:1494 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1509 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1526 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 19:47:58  [ main:1526 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 19:47:58  [ main:1527 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1527 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1527 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0'
+2017-03-11 19:47:58  [ main:1527 ] - [ DEBUG ]  Creating shared instance of singleton bean 'mvcCorsConfigurations'
+2017-03-11 19:47:58  [ main:1527 ] - [ DEBUG ]  Creating instance of bean 'mvcCorsConfigurations'
+2017-03-11 19:47:58  [ main:1527 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1529 ] - [ DEBUG ]  Eagerly caching bean 'mvcCorsConfigurations' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1542 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1542 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1543 ] - [ DEBUG ]  Finished creating instance of bean 'mvcCorsConfigurations'
+2017-03-11 19:47:58  [ main:1543 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping'
+2017-03-11 19:47:58  [ main:1543 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping'
+2017-03-11 19:47:58  [ main:1543 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1545 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1554 ] - [ DEBUG ]  Returning cached instance of singleton bean 'mvcCorsConfigurations'
+2017-03-11 19:47:58  [ main:1555 ] - [ DEBUG ]  Looking for URL mappings in application context: org.springframework.context.support.ClassPathXmlApplicationContext@1065c63: startup date [Sat Mar 11 19:47:56 AWST 2017]; root of context hierarchy
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'admin': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'author': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'novel': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'novelChapter': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'novelType': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'rank': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'user': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'userBook': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'userTalk': no URL paths identified
+2017-03-11 19:47:58  [ main:1556 ] - [ DEBUG ]  Rejected bean name 'adminbizImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'authorbizImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'novelbizImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'novelChapterbizImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'novelTypebizImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'userbizImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'userBookbizImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'userTalkbizImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'baseDaoMybatisImpl': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'redisUtil': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'novelController': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.annotation.internalRequiredAnnotationProcessor': no URL paths identified
+2017-03-11 19:47:58  [ main:1557 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.annotation.internalCommonAnnotationProcessor': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.event.internalEventListenerProcessor': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.event.internalEventListenerFactory': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'org.springframework.aop.config.internalAutoProxyCreator': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'dataSource': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'sqlSessionFactory': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'org.springframework.transaction.config.internalTransactionalEventListenerFactory': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'org.springframework.transaction.interceptor.TransactionInterceptor#0': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'org.springframework.transaction.config.internalTransactionAdvisor': no URL paths identified
+2017-03-11 19:47:58  [ main:1558 ] - [ DEBUG ]  Rejected bean name 'txManager': no URL paths identified
+2017-03-11 19:47:58  [ main:1559 ] - [ DEBUG ]  Rejected bean name 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0': no URL paths identified
+2017-03-11 19:47:58  [ main:1559 ] - [ DEBUG ]  Rejected bean name 'org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0': no URL paths identified
+2017-03-11 19:47:58  [ main:1559 ] - [ DEBUG ]  Rejected bean name 'mvcCorsConfigurations': no URL paths identified
+2017-03-11 19:47:58  [ main:1559 ] - [ DEBUG ]  Rejected bean name 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping': no URL paths identified
+2017-03-11 19:47:58  [ main:1559 ] - [ DEBUG ]  Rejected bean name 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter': no URL paths identified
+2017-03-11 19:47:58  [ main:1559 ] - [ DEBUG ]  Rejected bean name 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter': no URL paths identified
+2017-03-11 19:47:58  [ main:1559 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor': no URL paths identified
+2017-03-11 19:47:58  [ main:1560 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor': no URL paths identified
+2017-03-11 19:47:58  [ main:1560 ] - [ DEBUG ]  Rejected bean name 'environment': no URL paths identified
+2017-03-11 19:47:58  [ main:1560 ] - [ DEBUG ]  Rejected bean name 'systemProperties': no URL paths identified
+2017-03-11 19:47:58  [ main:1560 ] - [ DEBUG ]  Rejected bean name 'systemEnvironment': no URL paths identified
+2017-03-11 19:47:58  [ main:1560 ] - [ DEBUG ]  Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry': no URL paths identified
+2017-03-11 19:47:58  [ main:1561 ] - [ DEBUG ]  Rejected bean name 'messageSource': no URL paths identified
+2017-03-11 19:47:58  [ main:1561 ] - [ DEBUG ]  Rejected bean name 'applicationEventMulticaster': no URL paths identified
+2017-03-11 19:47:58  [ main:1561 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1561 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1561 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping'
+2017-03-11 19:47:58  [ main:1562 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter'
+2017-03-11 19:47:58  [ main:1562 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter'
+2017-03-11 19:47:58  [ main:1562 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1562 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1567 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1567 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1567 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter'
+2017-03-11 19:47:58  [ main:1568 ] - [ DEBUG ]  Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter'
+2017-03-11 19:47:58  [ main:1568 ] - [ DEBUG ]  Creating instance of bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter'
+2017-03-11 19:47:58  [ main:1568 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1568 ] - [ DEBUG ]  Eagerly caching bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter' to allow for resolving potential circular references
+2017-03-11 19:47:58  [ main:1570 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1570 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2017-03-11 19:47:58  [ main:1571 ] - [ DEBUG ]  Finished creating instance of bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter'
+2017-03-11 19:47:58  [ main:1571 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-03-11 19:47:58  [ main:1571 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-03-11 19:47:58  [ main:1572 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2017-03-11 19:47:58  [ main:1572 ] - [ DEBUG ]  Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory'
+2017-03-11 19:47:58  [ main:1607 ] - [ DEBUG ]  Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@422e18]
+2017-03-11 19:47:58  [ main:1607 ] - [ DEBUG ]  Returning cached instance of singleton bean 'lifecycleProcessor'
+2017-03-11 19:47:58  [ main:1610 ] - [ DEBUG ]  Returning cached instance of singleton bean 'sqlSessionFactory'
+2017-03-11 19:47:58  [ main:1611 ] - [ DEBUG ]  Could not find key 'spring.liveBeansView.mbeanDomain' in any property source
+2017-03-11 19:47:58  [ main:1613 ] - [ DEBUG ]  Returning cached instance of singleton bean 'novelTypebizImpl'
+2017-03-11 19:47:58  [ main:1618 ] - [ DEBUG ]  Creating a new SqlSession
+2017-03-11 19:47:58  [ main:1629 ] - [ DEBUG ]  SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@109217e] was not registered for synchronization because synchronization is not active
+2017-03-11 19:47:58  [ main:1645 ] - [ DEBUG ]  Fetching JDBC Connection from DataSource
+2017-03-11 19:47:58  [ main:1647 ] - [ DEBUG ]  Creating new JDBC DriverManager Connection to [jdbc:mysql://localhost:3306/novel]
+2017-03-11 19:47:58  [ main:2012 ] - [ DEBUG ]  JDBC Connection [com.mysql.jdbc.JDBC4Connection@168f0dc] will not be managed by Spring
+2017-03-11 19:47:58  [ main:2018 ] - [ DEBUG ]  ==>  Preparing: select tname from novel_type 
+2017-03-11 19:47:59  [ main:2050 ] - [ DEBUG ]  ==> Parameters: 
+2017-03-11 19:47:59  [ main:2073 ] - [ DEBUG ]  <==      Total: 8
+2017-03-11 19:47:59  [ main:2073 ] - [ DEBUG ]  Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@109217e]
+2017-03-11 19:47:59  [ main:2074 ] - [ DEBUG ]  Returning JDBC Connection to DataSource
+2017-03-11 19:49:01  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1baa894: startup date [Sat Mar 11 19:49:01 AWST 2017]; root of context hierarchy
+2017-03-11 19:49:01  [ main:60 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-11 19:49:02  [ main:616 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-11 19:49:02  [ main:815 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-11 19:49:02  [ main:1190 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 19:49:13  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1baa894: startup date [Sat Mar 11 19:49:13 AWST 2017]; root of context hierarchy
+2017-03-11 19:49:14  [ main:64 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-11 19:49:14  [ main:624 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-11 19:49:14  [ main:828 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-11 19:49:15  [ main:1229 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 19:49:15  [ main:1618 ] - [ DEBUG ]  ==>  Preparing: select a.* from novel n inner join author a on n.aid=a.aid where n.nid=? 
+2017-03-11 19:49:15  [ main:1648 ] - [ DEBUG ]  ==> Parameters: 1(Integer)
+2017-03-11 19:49:15  [ main:1672 ] - [ DEBUG ]  <==      Total: 1
+2017-03-11 19:49:32  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1baa894: startup date [Sat Mar 11 19:49:32 AWST 2017]; root of context hierarchy
+2017-03-11 19:49:32  [ main:77 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-11 19:49:32  [ main:726 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-11 19:49:32  [ main:931 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-11 19:49:33  [ main:1334 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 20:16:00  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1baa894: startup date [Sat Mar 11 20:16:00 AWST 2017]; root of context hierarchy
+2017-03-11 20:16:00  [ main:69 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-11 20:16:01  [ main:680 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-11 20:16:01  [ main:870 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-11 20:16:02  [ main:1223 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 20:16:02  [ main:1595 ] - [ DEBUG ]  ==>  Preparing: select n.nname from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
+2017-03-11 20:16:02  [ main:1624 ] - [ DEBUG ]  ==> Parameters: 玄幻(String)
+2017-03-11 20:16:02  [ main:1650 ] - [ DEBUG ]  <==      Total: 1
+2017-03-11 20:31:21  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1baa894: startup date [Sat Mar 11 20:31:21 AWST 2017]; root of context hierarchy
+2017-03-11 20:31:21  [ main:65 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-11 20:31:22  [ main:577 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-11 20:31:22  [ main:758 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-11 20:31:22  [ main:1198 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 20:31:23  [ main:1581 ] - [ DEBUG ]  ==>  Preparing: select n.nname from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
+2017-03-11 20:31:23  [ main:1610 ] - [ DEBUG ]  ==> Parameters: 玄幻(String)
+2017-03-11 20:31:23  [ main:1625 ] - [ DEBUG ]  <==      Total: 1
+2017-03-11 20:46:35  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1baa894: startup date [Sat Mar 11 20:46:35 AWST 2017]; root of context hierarchy
+2017-03-11 20:46:35  [ main:60 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-11 20:46:36  [ main:558 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-11 20:46:36  [ main:760 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-11 20:46:36  [ main:1164 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 20:46:37  [ main:1521 ] - [ DEBUG ]  ==>  Preparing: select n.nname from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
+2017-03-11 20:46:37  [ main:1551 ] - [ DEBUG ]  ==> Parameters: 玄幻(String)
+2017-03-11 20:46:37  [ main:1564 ] - [ DEBUG ]  <==      Total: 1
+2017-03-11 21:12:11  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1baa894: startup date [Sat Mar 11 21:12:11 AWST 2017]; root of context hierarchy
+2017-03-11 21:12:11  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-11 21:12:12  [ main:607 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-11 21:12:12  [ main:802 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-11 21:12:13  [ main:1173 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-11 21:12:13  [ main:1542 ] - [ DEBUG ]  ==>  Preparing: select nname from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
+2017-03-11 21:12:13  [ main:1570 ] - [ DEBUG ]  ==> Parameters: 玄幻(String)
+2017-03-11 21:12:13  [ main:1586 ] - [ DEBUG ]  <==      Total: 1
+2017-03-12 14:46:32  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sun Mar 12 14:46:32 AWST 2017]; root of context hierarchy
+2017-03-12 14:46:32  [ main:90 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-12 14:46:32  [ main:821 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-12 14:46:33  [ main:1051 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-12 14:46:33  [ main:1579 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-12 14:46:34  [ main:2069 ] - [ DEBUG ]  ==>  Preparing: select * from novel_chapter where nid=? 
+2017-03-12 14:46:34  [ main:2110 ] - [ DEBUG ]  ==> Parameters: 1(Integer)
+2017-03-12 14:46:34  [ main:2135 ] - [ DEBUG ]  <==      Total: 3
+2017-03-12 14:51:27  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sun Mar 12 14:51:27 AWST 2017]; root of context hierarchy
+2017-03-12 14:51:27  [ main:61 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-12 14:51:28  [ main:589 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-12 14:51:28  [ main:767 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-12 14:51:28  [ main:1184 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-12 14:51:29  [ main:1522 ] - [ DEBUG ]  ==>  Preparing: select * from novel_chapter where nid=? 
+2017-03-12 14:51:29  [ main:1554 ] - [ DEBUG ]  ==> Parameters: 1(Integer)
+2017-03-12 14:51:29  [ main:1578 ] - [ DEBUG ]  <==      Total: 4

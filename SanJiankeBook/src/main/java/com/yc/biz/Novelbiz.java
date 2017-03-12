@@ -15,5 +15,16 @@ public interface Novelbiz {
 	
 	//分页查询
 	List<Novel> FindNovelByPage(Integer start,Integer end);
+		
+		//查询小说信息
+		public List ShowNovel();
+		
+		//根据id查询小说信息
+		public List ShowNovel_id(int nid);
+		
+		//根据类型查询小说名
+		public List TypeNovel(String tname);
+
+
 }
 

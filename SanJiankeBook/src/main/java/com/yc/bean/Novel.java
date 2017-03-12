@@ -20,11 +20,25 @@ public class Novel implements Serializable {
 	private String tname;      //类型名
 	private String aname;      //作者名
 	private String pan_name;  //笔名
+
+	private Author author;
+	private NovelType novelType;
 	
 	private List<String> originalFilename;//小说图片的原名
 	private List<MultipartFile> pdfsUrl;//文件集合，对应前台上的<input type="file" name="pdfsUrl">
 	
-	
+	public Author getAuthor() {
+		return author;
+	}
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+	public NovelType getNovelType() {
+		return novelType;
+	}
+	public void setNovelType(NovelType novelType) {
+		this.novelType = novelType;
+	}
 	public List<String> getOriginalFilename() {
 		return originalFilename;
 	}
@@ -36,6 +50,7 @@ public class Novel implements Serializable {
 	}
 	public void setPdfsUrl(List<MultipartFile> pdfsUrl) {
 		this.pdfsUrl = pdfsUrl;
+
 	}
 	
 
@@ -72,7 +87,6 @@ public class Novel implements Serializable {
 
 	
 	
-	//>>>>>>> Stashed changes
 	public Integer getNid() {
 		return nid;
 	}
@@ -174,7 +188,7 @@ public class Novel implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	
 	
 }

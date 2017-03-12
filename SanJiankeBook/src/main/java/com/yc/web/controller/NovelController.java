@@ -1,31 +1,29 @@
 package com.yc.web.controller;
 
-import java.io.IOException;
 
-import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
+import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
-import com.yc.bean.Author;
 import com.yc.bean.Novel;
-import com.yc.bean.NovelChapter;
 import com.yc.bean.NovelType;
+import com.yc.biz.impl.AuthorbizImpl;
+import com.yc.biz.impl.NovelChapterbizImpl;
+import com.yc.biz.impl.NovelTypebizImpl;
+import com.yc.biz.impl.NovelbizImpl;
+import com.yc.bean.Author;
+import com.yc.bean.NovelChapter;
 import com.yc.bean.User;
 import com.yc.biz.Authorbiz;
 import com.yc.biz.NovelChapterbiz;
@@ -42,11 +40,18 @@ import com.yc.web.upload.UploadFileUtil.UploadFile;
 @Controller
 public class NovelController {
     private static final Log logger=LogFactory.getLog(NovelController.class);
+
     private Authorbiz authorbiz;
     private Userbiz userbiz;
     private NovelTypebiz noveltypebiz;
     private Novelbiz novelbiz;
     private NovelChapterbiz novelchapterbiz;
+    private NovelType noveltype;
+    private Novel novel;
+    private NovelTypebizImpl novelTypebizImpl;
+    private NovelbizImpl novelbizImpl;
+    private AuthorbizImpl authorbizImpl;
+    private NovelChapterbizImpl novelChapterbizImpl;
     
     
     @Resource(name="novelChapterbizImpl")
@@ -69,14 +74,39 @@ public class NovelController {
 	public void setUser(Userbiz userbiz) {
 		this.userbiz = userbiz;
 	}
+    
+    
+    @Resource(name="novel")
+    public void setNovel(Novel novel) {
+		this.novel = novel;
+	}
 
+	@Resource(name="novelType")
+    public void setNoveltype(NovelType noveltype) {
+		this.noveltype = noveltype;
+	}
 
-	//跳转到前台
-    @RequestMapping(value="/toindex")
-	public String Index(){
-    	logger.info("toIndex.....");
-    	return "index";
-    }
+	@Resource(name="novelbizImpl")
+    public void setNovelbizImpl(NovelbizImpl novelbizImpl) {
+		this.novelbizImpl = novelbizImpl;
+	}
+
+	@Resource(name="novelTypebizImpl")
+	public void setNovelTypebizImpl(NovelTypebizImpl novelTypebizImpl) {
+		this.novelTypebizImpl = novelTypebizImpl;
+	}
+	
+	@Resource(name="authorbizImpl")
+	public void setAuthorbizImpl(AuthorbizImpl authorbizImpl) {
+		this.authorbizImpl = authorbizImpl;
+	}
+	
+	
+	@Resource(name="novelChapterbizImpl")
+	public void setNovelChapterbizImpl(NovelChapterbizImpl novelChapterbizImpl) {
+		this.novelChapterbizImpl = novelChapterbizImpl;
+	}
+
     
     //搜索
     @RequestMapping(value="/tosousuo")
@@ -167,7 +197,6 @@ public class NovelController {
 		
 		
     }
-    
- 
-   
+	
 }
+
