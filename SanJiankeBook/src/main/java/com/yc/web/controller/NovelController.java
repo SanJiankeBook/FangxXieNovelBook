@@ -261,71 +261,76 @@ public class NovelController {
       	return "Novel";
       }
 
+
   	
-  		//排行榜，按类型显示数据
-  		@RequestMapping(value="/toindex_type")
-  		public String Index_type(Model  model){
-  			
-  			logger.info("toIndex.....");
-  /*			List<Object> listAll=new ArrayList<Object>();
-  			List<String> dlist=new ArrayList<String>();//点击量
-  			List<String> Ranklist=new ArrayList<String>();//排名
-  			RedisUtil redis=new RedisUtil();
-  	    	List<String> list=redis.ShowRankNum1();//小说名
-  	    	
-  	    	List list_type=novelTypebizImpl.showType(noveltype); //小说类型
-  	    	
-  	    	
-  	    	
-  	    	for(int i=0;i<list.size();i++){
-  	    		String rname=(String) list.get(i);
-  	    		Double num=redis.ShowRank(rname);
-  	    		String Stnum=String.valueOf(num);
-  	    		String inum=String.valueOf(i+1);
-  	    		//System.out.println("num=====  "+num);	
-  	    		dlist.add(Stnum);
-  	    		Ranklist.add(inum);
-  	    	} 
-  	    	
-  	    	for(int j=0;j<list.size();j++){
-  	    		Rank rank=new Rank();
-  	    		rank.setNovelname(list.get(j));
-  	    		rank.setRanknum(dlist.get(j));
-  	    		rank.setDoll(Ranklist.get(j));
-  	    		listAll.add(rank);	
-  	    	}
-  	    	model.addAttribute("listAll",listAll);*/
-  	    		
-  			List<Object> listAll=new ArrayList<Object>();
-  			List<String> dlist=new ArrayList<String>();//点击量
-  			List<String> Ranklist=new ArrayList<String>();//排名
-  			RedisUtil redis=new RedisUtil();
-  			List typelist=novelTypebizImpl.showType(noveltype);
-  			//System.out.println(typelist.get(1)+"=======你还不是修仙");  
-  			
-  				//System.out.println("进来没？");
-  				List<Novel> list=novelbizImpl.TypeNovel("修仙");
-  				for(int i=0;i<list.size();i++){
-  		    		String rname=  list.get(i).getNname();
-  		    		Double num=redis.ShowRank(rname);
-  		    		String Stnum=String.valueOf(num);
-  		    		String inum=String.valueOf(i+1);
-  		    		//System.out.println("num=====  "+num);	
-  		    		dlist.add(Stnum);
-  		    		Ranklist.add(inum);
-  		    	} 
-  		    	
-  		    	for(int j=0;j<list.size();j++){
-  		    		Rank rank=new Rank();
-  		    		rank.setNovelname(list.get(j).getNname());
-  		    		rank.setRanknum(dlist.get(j));
-  		    		rank.setDoll(Ranklist.get(j));
-  		    		listAll.add(rank);	
-  		    	}
-  		    	model.addAttribute("listAll",listAll);
-  		    	
-  			return "rank";
-  	    }  	
-   
+  
+	
+		//排行榜，按类型显示数据
+		@RequestMapping(value="/toindex_type")
+		public String Index_type(Model  model){
+			
+			logger.info("toIndex.....");
+/*			List<Object> listAll=new ArrayList<Object>();
+			List<String> dlist=new ArrayList<String>();//点击量
+			List<String> Ranklist=new ArrayList<String>();//排名
+			RedisUtil redis=new RedisUtil();
+	    	List<String> list=redis.ShowRankNum1();//小说名
+	    	
+	    	List list_type=novelTypebizImpl.showType(noveltype); //小说类型
+	    	
+	    	
+	    	
+	    	for(int i=0;i<list.size();i++){
+	    		String rname=(String) list.get(i);
+	    		Double num=redis.ShowRank(rname);
+	    		String Stnum=String.valueOf(num);
+	    		String inum=String.valueOf(i+1);
+	    		//System.out.println("num=====  "+num);	
+	    		dlist.add(Stnum);
+	    		Ranklist.add(inum);
+	    	} 
+	    	
+	    	for(int j=0;j<list.size();j++){
+	    		Rank rank=new Rank();
+	    		rank.setNovelname(list.get(j));
+	    		rank.setRanknum(dlist.get(j));
+	    		rank.setDoll(Ranklist.get(j));
+	    		listAll.add(rank);	
+	    	}
+	    	model.addAttribute("listAll",listAll);*/
+	    		
+			List<Object> listAll=new ArrayList<Object>();
+			List<String> dlist=new ArrayList<String>();//点击量
+			List<String> Ranklist=new ArrayList<String>();//排名
+			RedisUtil redis=new RedisUtil();
+			List typelist=novelTypebizImpl.showType(noveltype);
+			//System.out.println(typelist.get(1)+"=======你还不是修仙");  
+			
+				//System.out.println("进来没？");
+				List<Novel> list=novelbizImpl.TypeNovel("玄幻");
+				for(int i=0;i<list.size();i++){
+		    		String rname=  list.get(i).getNname();
+		    		Double num=redis.ShowRank(rname);
+		    		String Stnum=String.valueOf(num);
+		    		String inum=String.valueOf(i+1);
+		    		//System.out.println("num=====  "+num);	
+		    		dlist.add(Stnum);
+		    		Ranklist.add(inum);
+		    	} 
+		    	
+		    	for(int j=0;j<list.size();j++){
+		    		Rank rank=new Rank();
+		    		rank.setNovelname(list.get(j).getNname());
+		    		rank.setRanknum(dlist.get(j));
+		    		rank.setDoll(Ranklist.get(j));
+		    		listAll.add(rank);	
+		    	}
+		    	model.addAttribute("listAll",listAll);
+		    	
+			return "rank";
+	    }
+	
+
+	
 }
 

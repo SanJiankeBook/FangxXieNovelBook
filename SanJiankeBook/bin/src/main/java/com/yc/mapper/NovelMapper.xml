@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yc.mapper.NovelMapper">
+
+	<insert id="addNovel" parameterType="Novel" useGeneratedKeys="true"
+		keyProperty="nid">
+		insert into
+		novel(tid,aid,nname,npicture,ndescription,nstatus)
+		values(#{tid},#{aid},#{nname},#{npicture},#{ndescription},#{nstatus});
+	</insert>
+
+	<!-- 查找所有小说 -->
+	<select id="findAllNovel" parameterType="Novel" resultMap="NovelResultMap">
+		select
+		nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus
+		from novel_type
+		inner join novel
+		on novel_type.tid=novel.tid
+		inner join author
+		on author.aid=novel.aid
+	</select>
+
+	<!-- 删除小说 -->
+	<delete id="delNovel" parameterType="Novel">
+		delete from novel where nid=#{nid}
+	</delete>
+
+
+	<!-- 查询小说所有名字 -->
+	<select id="getAllnname" resultType="Novel">
+		select nname,nid
+		from novel
+	</select>
+
+	<!-- 根据id查询小说所有信息 -->
+	<select id="idgetAllnname" resultType="Novel" parameterType="Novel">
+		select * from novel where nid=#{nid}
+	</select>
+
+	<!-- 根据id查询小说对应的作者 -->
+	<select id="idgetauthor" resultMap="NovelMap" parameterType="Novel">
+		select a.*
+		from novel n
+		inner join author a
+		on n.aid=a.aid
+		where n.nid=#{nid}
+	</select>
+
+	<!-- 根据类型显示数据 -->
+	<select id="typegetAllnname" resultMap="NovelTypeMap"
+		parameterType="NovelType">
+		select nname
+		from novel n
+		inner join novel_type novelType
+		on n.tid=novelType.tid
+		where
+		novelType.tname=#{novelType.tname}
+	</select>
+
+
+	<!-- 根据id查询最新小说信息 -->
+	<select id="newChapter" resultType="NovelChapter" parameterType="Novel">
+		select cname from novel_chapter where nid=#{nid} having max(cid);
+	</select>
+
+
+	<resultMap type="Novel" id="NovelResultMap">
+		<id property="nid" column="nid" />
+		<result property="tid" column="tid" />
+		<result property="aid" column="aid" />
+		<result property="tname" column="tname" />
+		<result property="aname" column="aname" />
+		<result property="pan_name" column="pan_name" />
+		<result property="nname" column="nname" />
+		<result property="npicture" column="npicture" />
+		<result property="ndescription" column="ndescription" />
+		<result property="nstatus" column="nstatus" />
+	</resultMap>
+
+
+	<!-- 根据类型查询小说信息 -->
+	<resultMap type="Novel" id="NovelTypeMap">
+		<result property="nname" column="nname" />
+		<association property="novelType" javaType="NovelType">
+			<result property="tname" column="tname" />
+		</association>
+	</resultMap>
+
+
+	<!-- 根据小说id查询作者信息 -->
+	<resultMap type="Novel" id="NovelMap">
+		<id property="nid" column="nid" />
+		<!-- property是写的bean类的别名,javaType是bean的名字 -->
+		<association property="author" javaType="Author">
+			<id property="aid" column="aid" />
+			<result property="aname" column="aname" />
+			<result property="uid" column="uid" />
+			<result property="pan_name" column="pan_name" />
+			<result property="aage" column="aage" />
+			<result property="agrade" column="agrade" />
+			<result property="acard" column="acard" />
+			<result property="atel" column="atel" />
+		</association>
+	</resultMap>
+
+</mapper>
