@@ -122,7 +122,6 @@ public class TestSpring extends TestCase {
 	
 
 		
-	}
 	
 	public void TestApp(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );

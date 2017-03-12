@@ -1,23 +1,13 @@
 package com.yc.biz.impl;
 
-<<<<<<< HEAD
-=======
+
 import java.util.List;
-
->>>>>>> f36a3cf5ef558ccaca2a3c75466ba37b65dcaa9e
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
-
-<<<<<<< HEAD
 import com.yc.biz.Userbiz;
 import com.yc.dao.BaseDao;
-
-=======
 import com.yc.bean.User;
-import com.yc.biz.Userbiz;
-import com.yc.dao.BaseDao;
->>>>>>> f36a3cf5ef558ccaca2a3c75466ba37b65dcaa9e
+
 @Service
 public class UserbizImpl implements Userbiz {
 private  BaseDao bd;
@@ -26,8 +16,7 @@ private  BaseDao bd;
 	public void setBd(BaseDao bd) {
 		this.bd = bd;
 	}
-<<<<<<< HEAD
-=======
+
 	//注册成为用户
 	@Override
 	public Integer InsertUser(Object obj) {
@@ -84,5 +73,5 @@ private  BaseDao bd;
 		use.setUid(id);
 		this.bd.delete(use, "delUser");
 	}
->>>>>>> f36a3cf5ef558ccaca2a3c75466ba37b65dcaa9e
+
 }

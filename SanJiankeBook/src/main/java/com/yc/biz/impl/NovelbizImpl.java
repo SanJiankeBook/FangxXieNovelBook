@@ -1,37 +1,28 @@
 package com.yc.biz.impl;
 
-<<<<<<< HEAD
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-=======
->>>>>>> f36a3cf5ef558ccaca2a3c75466ba37b65dcaa9e
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
-
 import com.yc.bean.Novel;
-<<<<<<< HEAD
 import com.yc.bean.NovelType;
 import com.yc.biz.Novelbiz;
 import com.yc.dao.BaseDao;
 
-@Service
-public class NovelbizImpl implements Novelbiz {
-	//private Novel novel;
-	private  BaseDao bd;
-=======
-import com.yc.biz.Novelbiz;
-import com.yc.dao.BaseDao;
+
 @Service
 public class NovelbizImpl implements Novelbiz {
 private  BaseDao bd;
->>>>>>> f36a3cf5ef558ccaca2a3c75466ba37b65dcaa9e
+
 	
 	@Resource(name="baseDaoMybatisImpl")
 	public void setBd(BaseDao bd) {
 		this.bd = bd;
 	}
-<<<<<<< HEAD
+
 
 	@Override
 	public List ShowNovel() {
@@ -47,6 +38,7 @@ private  BaseDao bd;
 		return list;
 	}
 
+	//根据类型查询小说名字	
 	@Override
 	public List<Novel> TypeNovel(String tname) {
 		Novel novel=new Novel();
@@ -55,12 +47,33 @@ private  BaseDao bd;
 		novel.setNovelType(ntype);
 		List<Novel> list=bd.findAll(novel, "typegetAllnname");
 		return list;
-=======
-	//插入书本信息
-	@Override
-	public Integer InsertNovel(Novel novel) {
-		this.bd.add(novel, "addNovel");
-		return null;
->>>>>>> f36a3cf5ef558ccaca2a3c75466ba37b65dcaa9e
 	}
+
+	//插入书本信息
+		@Override
+		public Integer InsertNovel(Novel novel) {
+			this.bd.add(novel, "addNovel");
+			return null;
+		}
+
+		@Override
+		public List<Novel> FindAllNovel() {
+			List<Novel> list=this.bd.findAll(new Novel(), "findAllNovel");
+			return list;
+		}
+
+		@Override
+		public void delNovel(int nid) {
+			Novel novel=new Novel();
+			novel.setNid(nid);
+			this.bd.delete(novel, "delNovel");
+		}
+		@Override
+		public List<Novel> FindNovelByPage(Integer start, Integer end) {
+			Map<String,Integer> map=new HashMap<String,Integer>();
+			map.put("start", start);
+			map.put("end", end);
+			List<Novel> list=this.bd.findAll(new Novel(), map, "");
+			return list;
+		}
 }
