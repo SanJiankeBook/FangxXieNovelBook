@@ -1,5 +1,6 @@
 package com.yc.biz.impl;
 
+
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -7,11 +8,14 @@ import com.yc.bean.Novel;
 import com.yc.bean.NovelChapter;
 import com.yc.biz.NovelChapterbiz;
 import com.yc.dao.BaseDao;
-
+import com.yc.bean.NovelChapter;
+import com.yc.biz.NovelChapterbiz;
+import com.yc.dao.BaseDao;
 
 @Service
 public class NovelChapterbizImpl implements NovelChapterbiz {
-	private  BaseDao bd;
+private  BaseDao bd;
+
 
 	
 	@Resource(name="baseDaoMybatisImpl")
@@ -26,14 +30,8 @@ public class NovelChapterbizImpl implements NovelChapterbiz {
 		novel.setNid(nid);
 		List list=bd.findAll(novel, "newChapter");
 		return list;
-	}	
 
-	//插入小说章节详细信息
-	@Override
-	public void insertNovelChapter(NovelChapter novelchapter) {
-		this.bd.add(novelchapter, "insertNovel");
 	}
-
 
 	@Override
 	public List<NovelChapter> ShowAllChapter(int nid) {
@@ -41,5 +39,13 @@ public class NovelChapterbizImpl implements NovelChapterbiz {
 		nchpater.setNid(nid);
 		List<NovelChapter> list=bd.findAll(nchpater, "allChapter");
 		return list;
+
+	}
+	//插入小说章节详细信息
+	@Override
+	public void insertNovelChapter(NovelChapter novelchapter) {
+		this.bd.add(novelchapter, "insertNovel");
+
+
 	}
 }

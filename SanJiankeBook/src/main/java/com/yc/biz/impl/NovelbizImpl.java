@@ -12,18 +12,37 @@ import com.yc.bean.NovelType;
 import com.yc.biz.Novelbiz;
 import com.yc.dao.BaseDao;
 
-
 @Service
 public class NovelbizImpl implements Novelbiz {
 private  BaseDao bd;
 
-	
 	@Resource(name="baseDaoMybatisImpl")
 	public void setBd(BaseDao bd) {
 		this.bd = bd;
 	}
 
 
+	@Override
+	public List<Novel> FindAllNovel() {
+		List<Novel> list=this.bd.findAll(new Novel(), "findAllNovel");
+		return list;
+	}
+
+	@Override
+	public void delNovel(int nid) {
+		Novel novel=new Novel();
+		novel.setNid(nid);
+		this.bd.delete(novel, "delNovel");
+	}
+	@Override
+	public List<Novel> FindNovelByPage(Integer start, Integer end) {
+		Map<String,Integer> map=new HashMap<String,Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		List<Novel> list=this.bd.findAll(new Novel(), map, "");
+		return list;
+	}
+	
 	@Override
 	public List ShowNovel() {
 		List list=bd.findAll(new Novel(), "getAllnname");
@@ -56,24 +75,4 @@ private  BaseDao bd;
 			return null;
 		}
 
-		@Override
-		public List<Novel> FindAllNovel() {
-			List<Novel> list=this.bd.findAll(new Novel(), "findAllNovel");
-			return list;
-		}
-
-		@Override
-		public void delNovel(int nid) {
-			Novel novel=new Novel();
-			novel.setNid(nid);
-			this.bd.delete(novel, "delNovel");
-		}
-		@Override
-		public List<Novel> FindNovelByPage(Integer start, Integer end) {
-			Map<String,Integer> map=new HashMap<String,Integer>();
-			map.put("start", start);
-			map.put("end", end);
-			List<Novel> list=this.bd.findAll(new Novel(), map, "");
-			return list;
-		}
 }

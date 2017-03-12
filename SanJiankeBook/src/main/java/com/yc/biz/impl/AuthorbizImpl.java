@@ -7,10 +7,14 @@ import com.yc.bean.Author;
 import com.yc.bean.Novel;
 import com.yc.biz.Authorbiz;
 import com.yc.dao.BaseDao;
+import com.yc.biz.Authorbiz;
+import com.yc.dao.BaseDao;
+
 
 @Service
 public class AuthorbizImpl implements Authorbiz {
-	private  BaseDao bd;
+private  BaseDao bd;
+
 
 	
 	@Resource(name="baseDaoMybatisImpl")
@@ -26,8 +30,8 @@ public class AuthorbizImpl implements Authorbiz {
 		List list=bd.findAll(novel, "idgetauthor");
 		return list;
 	}
-	
-	
+
+
 	//注册成为作家
 	@Override
 	public void insertAuthor(Object obj) {

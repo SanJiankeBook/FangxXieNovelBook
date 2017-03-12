@@ -20,12 +20,10 @@ public class NovelTypebizImpl implements NovelTypebiz {
 		return this.bd;
 	}
 	
+	
 	@Override
 	public List showType( Object object) {
-		//System.out.println("showType");
 		List list=bd.findAll(object, "getAllType");
-		//System.out.println(bd.findAll(object, "getAllType"));
-		//System.out.println(list+"输出");
 		return list;
 	}
 	
