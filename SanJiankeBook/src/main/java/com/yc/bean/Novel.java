@@ -2,11 +2,13 @@ package com.yc.bean;
 
 import java.io.Serializable;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 @Repository
 public class Novel implements Serializable {
 	private static final long serialVersionUID = -3615390225191887788L;
-	
 	private Integer nid ;//		--小说ID
 	private Integer tid ;//			--类型id
 	private Integer aid ;//		--作者id
@@ -14,12 +16,12 @@ public class Novel implements Serializable {
 	private String npicture ;//		--小说封面存放地址	
 	private String ndescription ;//	--小说描述
 	private String nstatus ;//	--小说状态
-	
-	
+
 	private Author author;
 	private NovelType novelType;
 	
-	
+	private List<String> originalFilename;//小说图片的原名
+	private List<MultipartFile> pdfsUrl;//文件集合，对应前台上的<input type="file" name="pdfsUrl">
 	
 	public Author getAuthor() {
 		return author;
@@ -32,6 +34,19 @@ public class Novel implements Serializable {
 	}
 	public void setNovelType(NovelType novelType) {
 		this.novelType = novelType;
+	
+	public List<String> getOriginalFilename() {
+		return originalFilename;
+	}
+	public void setOriginalFilename(List<String> originalFilename) {
+		this.originalFilename = originalFilename;
+	}
+	public List<MultipartFile> getPdfsUrl() {
+		return pdfsUrl;
+	}
+	public void setPdfsUrl(List<MultipartFile> pdfsUrl) {
+		this.pdfsUrl = pdfsUrl;
+
 	}
 	public Integer getNid() {
 		return nid;

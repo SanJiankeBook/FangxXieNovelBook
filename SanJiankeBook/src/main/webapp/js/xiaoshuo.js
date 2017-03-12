@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 ﻿function setCookie(c_name,value,expiredays)
 {
     var exdate=new Date()
     exdate.setDate(exdate.getDate()+365)
+=======
+﻿function setCookie(c_name,value,expiredays){
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate()+365);
+>>>>>>> f36a3cf5ef558ccaca2a3c75466ba37b65dcaa9e
     document.cookie=c_name+ "=" +escape(value)+";expires="+exdate.toGMTString()+";path=/";
 }
 
@@ -25,7 +31,7 @@ function delCookie(name){
     var cval=getCookie(name);
     document.cookie= name + "=;expires="+exp.toGMTString();
 }
-var bookUserName=getCookie("member_username");
+var bookUserName=getCookie("member_uname");
 function login(){
 document.writeln("<div style=\"display:none\" >");
 document.writeln("<script src=\"http://s11.cnzz.com/stat.php?id=1261165914&web_id=1261165914\" language=\"JavaScript\"></script>");
@@ -36,6 +42,7 @@ document.write('<div class="nri">');
 if(bookUserName != ''){
   document.write('Hi,<a href="/userdetail.php" target="_top">'+bookUserName+'</a>&nbsp;&nbsp;<a href="/modules/article/bookcase.php" target="_top">我的书架</a>');
   document.write(' | <a href="/userdetail.php" target="_top">查看资料</a> | <a href="/logout.php" target="_top">退出登录</a>&nbsp;');
+<<<<<<< HEAD
 }else{
   var jumpurl="";
   if(location.href.indexOf("jumpurl") == -1){
@@ -45,6 +52,15 @@ if(bookUserName != ''){
   document.write('<div class="cc"><div class="txt">账号：</div><div class="inp"><input type="text" name="username" id="username" /></div></div>');
   document.write('<div class="cc"><div class="txt">密码：</div><div class="inp"><input type="password" name="password" id="password" /></div></div>');
   document.write('<div class="frii"><input type="submit" class="int" value=" " /></div><div class="ccc"><div class="txtt"></div><div class="txtt"><a href="/register.php">用户注册</a></div></div></form>');
+=======
+}
+else{
+  
+  document.write('<form name="mylogin" id="mylogin" method="post" action="userLogin">');
+  document.write('<div class="cc"><div class="txt">账号：</div><div class="inp"><input type="text" name="uname" id="uname" /></div></div>');
+  document.write('<div class="cc"><div class="txt">密码：</div><div class="inp"><input type="password" name="upassword" id="upassword" /></div></div>');
+  document.write('<div class="frii"><input type="submit" class="int" value="登录" /></div><div class="ccc"><div class="txtt"></div><div class="txtt"><a href="jsp/register.jsp">用户注册</a></div></div></form>');
+>>>>>>> f36a3cf5ef558ccaca2a3c75466ba37b65dcaa9e
   }
  document.write('</div></div></div>');
 }

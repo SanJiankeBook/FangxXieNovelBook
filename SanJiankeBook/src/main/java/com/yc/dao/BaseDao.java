@@ -10,6 +10,8 @@ public interface BaseDao<T>  {
     
     public void add(T t,String sqlId);
     
+    public Integer add1(T t,String sqlId);
+    
     public void add(T t,Map map,String sqlId);
     
     public void addMany(T t,List list,String sqlId);

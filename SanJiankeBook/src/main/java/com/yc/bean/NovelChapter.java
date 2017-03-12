@@ -12,6 +12,15 @@ public class NovelChapter implements Serializable {
 	private Integer nid ;//			--小说id
 	private String cname ;//			--章节名字
 	private String caddress ;//		--章节存放地址
+	private String standby_1 ;//章节状态 --通过，未通过，待审
+	
+	
+	public String getStandby_1() {
+		return standby_1;
+	}
+	public void setStandby_1(String standby_1) {
+		this.standby_1 = standby_1;
+	}
 	public Integer getCid() {
 		return cid;
 	}
@@ -44,6 +53,7 @@ public class NovelChapter implements Serializable {
 		result = prime * result + ((cid == null) ? 0 : cid.hashCode());
 		result = prime * result + ((cname == null) ? 0 : cname.hashCode());
 		result = prime * result + ((nid == null) ? 0 : nid.hashCode());
+		result = prime * result + ((standby_1 == null) ? 0 : standby_1.hashCode());
 		return result;
 	}
 	@Override
@@ -75,11 +85,17 @@ public class NovelChapter implements Serializable {
 				return false;
 		} else if (!nid.equals(other.nid))
 			return false;
+		if (standby_1 == null) {
+			if (other.standby_1 != null)
+				return false;
+		} else if (!standby_1.equals(other.standby_1))
+			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "NovelChapter [cid=" + cid + ", nid=" + nid + ", cname=" + cname + ", caddress=" + caddress + "]";
+		return "NovelChapter [cid=" + cid + ", nid=" + nid + ", cname=" + cname + ", caddress=" + caddress
+				+ ", standby_1=" + standby_1 + "]";
 	}
 	
 	
