@@ -1,6 +1,7 @@
 package com.yc.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yc.bean.User;
 
@@ -20,7 +21,8 @@ public interface Userbiz {
 	List<User> findUserById(int id);
 	
 	//分页查询用户
-	List<User> findUserByPage(int start,int end);
+	List<User> findUserByPage(Integer start,Integer end);
 	
+	//删除用户
 	void DelUser(int id);
 }

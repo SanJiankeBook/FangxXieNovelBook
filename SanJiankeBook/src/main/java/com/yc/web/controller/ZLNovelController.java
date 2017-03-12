@@ -2,6 +2,7 @@ package com.yc.web.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,10 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -55,6 +53,8 @@ public class ZLNovelController {
 	public void setAuthorbiz(Authorbiz authorbiz) {
 		this.authorbiz = authorbiz;
 	}
+    
+
 
 	//用户注册
     @RequestMapping(value="/toSave")
@@ -67,7 +67,7 @@ public class ZLNovelController {
     
     //用户登录
     @RequestMapping(value="/userLogin")
-    public String userLogin(@RequestParam(value="uname") String uname,@RequestParam(value="upassword") String upassword,HttpServletRequest req){
+    public String userLogin(@RequestParam(value="uname") String uname,@RequestParam(value="upassword") String upassword,HttpServletRequest req,HttpServletResponse resp){
     	logger.info("this is the userLogin.....");
     	
     	List<User> list= this.userbiz.userLogin(uname, upassword);
@@ -84,6 +84,7 @@ public class ZLNovelController {
     	}
     	
     }
+    
     
 //后台管理员模块------------------------------------------------------------------------------
    /**
@@ -123,26 +124,27 @@ public class ZLNovelController {
     	return gson.toJson(list);
     }
     
+    
     /**
-     * 分页查询用户
+     * 用户分页查询
      */
     @RequestMapping(value="/findAllUserByPage",produces = {"application/text;charset=UTF-8"})
-    public @ResponseBody String FindUserByPage(HttpServletRequest request) throws UnsupportedEncodingException{
-    	logger.info("this is findAllUser.....");
+    public @ResponseBody String FindUserByPage2(HttpServletRequest request){
+    	logger.info("this is use map findAllUser.....");
     	String page=request.getParameter("page");    
     	String rows=request.getParameter("rows");
     	int currentPage=Integer.parseInt(page);     //当前的页数
     	int end=Integer.parseInt(rows);           //每页的条数
     	int start=0;
     	start=(currentPage-1)*end;
+    	
+    	List<User> lists=this.userbiz.findUser();
     	List<User> list=this.userbiz.findUserByPage(start, end);
-    	//request.setAttribute("list", list);
     	EasyuiFindByPage ebp=new EasyuiFindByPage();
-    	ebp.setTotal(list.size());
+    	ebp.setTotal(lists.size());
     	ebp.setRows(list);
     	Gson gson=new Gson();
 		return gson.toJson(ebp);
-    	
     }
     
     /**
@@ -151,7 +153,7 @@ public class ZLNovelController {
      * @return
      */
     @RequestMapping(value="/delUser")
-    public @ResponseBody void DelUser(int uid){
+    public @ResponseBody void DelUser(int uid ){
     	logger.info("this is easyUI delUser.....");
     	this.userbiz.DelUser(uid);
     } 
@@ -168,6 +170,29 @@ public class ZLNovelController {
     	
     }
     
+    /**
+     * 分页查询作者
+     */
+    @RequestMapping(value="/findAuthorByPage",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody String FindAuthorByPage(HttpServletRequest request){
+    	logger.info("this is findAuthorByPage.....");
+    	String page=request.getParameter("page");    
+    	String rows=request.getParameter("rows");
+    	int currentPage=Integer.parseInt(page);     //当前的页数
+    	int end=Integer.parseInt(rows);           //每页的条数
+    	int start=0;
+    	start=(currentPage-1)*end;
+    	
+    	List<Author> lists=this.authorbiz.FindAuthor();
+    	List<Author> list=this.authorbiz.FindAuthorByPage(start, end);
+    	
+    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+    	ebp.setTotal(lists.size());
+    	ebp.setRows(list);
+    	Gson gson=new Gson();
+		return gson.toJson(ebp);
+    	
+    }
     /**
      * 删除作者
      */
@@ -189,6 +214,28 @@ public class ZLNovelController {
     } 
     
     /**
+     * 分页查询小说
+     */
+    @RequestMapping(value="/findNovelByPage",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody String FindNovelByPage(HttpServletRequest request){
+    	logger.info("this is use map findNovelByPage.....");
+    	String page=request.getParameter("page");    
+    	String rows=request.getParameter("rows");
+    	int currentPage=Integer.parseInt(page);     //当前的页数
+    	int end=Integer.parseInt(rows);           //每页的条数
+    	int start=0;
+    	start=(currentPage-1)*end;
+    	
+    	List<Novel> lists=this.novelbiz.FindAllNovel();
+    	List<Novel> list=this.novelbiz.FindNovelByPage(start, end);
+    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+    	ebp.setTotal(lists.size());
+    	ebp.setRows(list);
+    	Gson gson=new Gson();
+		return gson.toJson(ebp);
+    } 
+    
+    /**
      * 删除小说
      * @param nid
      */
@@ -197,6 +244,8 @@ public class ZLNovelController {
     	logger.info("this is delNovel.....");
     	this.novelbiz.delNovel(nid);
     }
+
+	
     
    
     

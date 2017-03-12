@@ -1,10 +1,12 @@
 ﻿function setCookie(c_name,value,expiredays){
+	alert(1);
     var exdate=new Date();
     exdate.setDate(exdate.getDate()+365);
     document.cookie=c_name+ "=" +escape(value)+";expires="+exdate.toGMTString()+";path=/";
 }
 
 function getCookie(c_name){
+	alert(2);
     if (document.cookie.length>0){
         c_start=document.cookie.indexOf(c_name + "=");
         if (c_start!=-1){ 
@@ -23,7 +25,9 @@ function delCookie(name){
     var cval=getCookie(name);
     document.cookie= name + "=;expires="+exp.toGMTString();
 }
+
 var bookUserName=getCookie("member_uname");
+alert(3+bookUserName);
 function login(){
 
 document.writeln("<div style=\"display:none\" >");

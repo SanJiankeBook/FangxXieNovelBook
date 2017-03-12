@@ -16,7 +16,7 @@
 	var flag;
 
 	datagridObj=$('#type_shownovel_info').datagrid({
-		url:'../findAllNovel',   
+		url:'../findNovelByPage',   
 		fitColumns:true,
 		loadMsg:'数据加载中...',
 		striped:true,		//斑马线效果
@@ -25,6 +25,8 @@
 		rownumber:true,		//显示行数
 		sortName:'nid',		//排序的咧
 		remoteSort:false,	//前段排序而非服务器的排序，自己的排序
+		pageSize:5,
+		 pageList:[5,10,15,20,25,30],
 		columns:[[
 			{field : 'nids',title : '全选',width : 100,align : 'center',checkbox : true},
 			{field : 'nid',title : '小说编号',width : 20,align : 'center',sortable : true},

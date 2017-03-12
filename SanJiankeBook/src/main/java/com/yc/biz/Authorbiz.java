@@ -13,4 +13,7 @@ public interface Authorbiz {
 	
 	//删除作家
 	void DelAuthor(int id);
+	
+	//分页查找作家
+	List<Author> FindAuthorByPage(Integer start,Integer end);
 }
