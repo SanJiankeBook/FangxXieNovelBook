@@ -34,7 +34,7 @@ public class Novel implements Serializable {
 	}
 	public void setNovelType(NovelType novelType) {
 		this.novelType = novelType;
-	
+	}
 	public List<String> getOriginalFilename() {
 		return originalFilename;
 	}
