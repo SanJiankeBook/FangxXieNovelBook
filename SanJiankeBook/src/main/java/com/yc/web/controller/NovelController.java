@@ -123,16 +123,24 @@ public class NovelController {
 
 
 	//跳转到前台
-    @RequestMapping(value="/toindex")
+    @RequestMapping(value="/toindex_zpd")
 	public String Index(){
-    	logger.info("toIndex.....");
+    	logger.info("toindex_zpd.....");
     	return "index";
     }
     
     //搜索
     @RequestMapping(value="/tosousuo")
-    public String sousuo(){
+    public String sousuo(Model model,Novel novel){
     	logger.info("tosousuo.....");
+    	model.addAttribute("novel",novel.getNname());
+    	return "findnovel";
+    }
+    //搜索页面
+    @RequestMapping(value="/quearyNovel")
+    public String quearyNovel(@RequestParam String text){
+    	logger.info("quearyNovel.....");
+    	logger.info(text+"值");
     	//这个功能并没有从数据库中拿数据
     	return "findnovel";
     }
@@ -159,7 +167,7 @@ public class NovelController {
     @RequestMapping(value="/test")
     public String test(){
     	logger.info("test....");
-    	return "writenovel";
+    	return "findnovel";
     }
     
     
@@ -169,6 +177,7 @@ public class NovelController {
     public String InsertNovel(@ModelAttribute Novel novel,@ModelAttribute NovelType noveltype,Model model,HttpServletRequest request) throws IOException{
     	logger.info("InsertNovel....");
     	String npicture="";
+    	
     	if(novel.getNname()!=null ){
 			Map<String,UploadFile> map= UploadFileUtil.uploadFile(request, novel.getPdfsUrl(), pdfRootName);
 			for(Entry<String,UploadFile> entry:map.entrySet()){

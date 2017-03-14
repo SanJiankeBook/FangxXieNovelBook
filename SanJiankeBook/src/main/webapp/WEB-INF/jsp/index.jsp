@@ -113,10 +113,9 @@
 							</div>
 						</div>
 					</form>-->
-
 				</div>
 			</div>
-		</div> -->
+		</div> 
 		
 		
 		
@@ -134,12 +133,12 @@
 						<div class="bdcs-main bdcs-clearfix" id="default-searchbox">
 							<div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">
 
-								<form action="tosousuo" method="get"
+								<form action="tosousuo" method="post"
 									target="_blank" class="bdcs-search-form" autocomplete="off"
 									id="bdcs-search-form">
 									<input name="s" value="3677118700255927857" type="hidden" /> 
 									<input name="entry" value="1" type="hidden" /> 
-									<input name="q"	class="bdcs-search-form-input" id="bdcs-search-form-input"
+									<input name="nname"	class="bdcs-search-form-input" id="bdcs-search-form-input"
 										placeholder="请输入书名或作者" autocomplete="off"
 										style="height: 36px; line-height: 36px;" type="text" /> 
 									<input class="bdcs-search-form-submit " id="bdcs-search-form-submit"
