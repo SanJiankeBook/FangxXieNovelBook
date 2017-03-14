@@ -16,6 +16,10 @@ public class Novel implements Serializable {
 	private String npicture ;//		--小说封面存放地址	
 	private String ndescription ;//	--小说描述
 	private String nstatus ;//	--小说状态
+	
+	private String tname;      //类型名
+	private String aname;      //作者名
+	private String pan_name;  //笔名
 
 	private Author author;
 	private NovelType novelType;
@@ -48,6 +52,41 @@ public class Novel implements Serializable {
 		this.pdfsUrl = pdfsUrl;
 
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Novel [nid=" + nid + ", tid=" + tid + ", aid=" + aid + ", nname=" + nname + ", npicture=" + npicture
+				+ ", ndescription=" + ndescription + ", nstatus=" + nstatus + ", tname=" + tname + ", aname=" + aname
+				+ ", pan_name=" + pan_name + "]";
+	}
+	
+	public String getPan_name() {
+		return pan_name;
+	}
+
+	public void setPan_name(String pan_name) {
+		this.pan_name = pan_name;
+	}
+
+	public String getTname() {
+		return tname;
+	}
+
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+
+	public String getAname() {
+		return aname;
+	}
+
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
+
+	
+	
 	public Integer getNid() {
 		return nid;
 	}
@@ -149,12 +188,7 @@ public class Novel implements Serializable {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Novel [nid=" + nid + ", tid=" + tid + ", aid=" + aid + ", nname=" + nname + ", npicture=" + npicture
-				+ ", ndescription=" + ndescription + ", nstatus=" + nstatus + ", author=" + author + ", novelType="
-				+ novelType + "]";
-	}
+
 	
 	
 }

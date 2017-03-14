@@ -1,13 +1,11 @@
 
-
 ﻿function setCookie(c_name,value,expiredays){
     var exdate=new Date();
     exdate.setDate(exdate.getDate()+365);
     document.cookie=c_name+ "=" +escape(value)+";expires="+exdate.toGMTString()+";path=/";
 }
 
-function getCookie(c_name)
-{
+function getCookie(c_name){
     if (document.cookie.length>0){
         c_start=document.cookie.indexOf(c_name + "=");
         if (c_start!=-1){ 
@@ -26,7 +24,9 @@ function delCookie(name){
     var cval=getCookie(name);
     document.cookie= name + "=;expires="+exp.toGMTString();
 }
+
 var bookUserName=getCookie("member_uname");
+alert(3+bookUserName);
 function login(){
 document.writeln("<div style=\"display:none\" >");
 document.writeln("<script src=\"http://s11.cnzz.com/stat.php?id=1261165914&web_id=1261165914\" language=\"JavaScript\"></script>");
@@ -44,6 +44,7 @@ else{
   document.write('<div class="cc"><div class="txt">账号：</div><div class="inp"><input type="text" name="uname" id="uname" /></div></div>');
   document.write('<div class="cc"><div class="txt">密码：</div><div class="inp"><input type="password" name="upassword" id="upassword" /></div></div>');
   document.write('<div class="frii"><input type="submit" class="int" value="登录" /></div><div class="ccc"><div class="txtt"></div><div class="txtt"><a href="jsp/register.jsp">用户注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="toauthor">作家注册</a></div></div></form>');
+
   }
  document.write('</div></div></div>');
 }

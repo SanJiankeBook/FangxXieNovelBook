@@ -8,7 +8,7 @@
 </head>
 <body>
 	<table id="type_showAuthor_info" data-options="fit:true"></table> 
-
+	
 	<script type="text/javascript"> 
 	var datagridObj;
 	var editRow = undefined;	//当前正在被编辑的行的索引
@@ -16,7 +16,7 @@
 	var flag;
 
 	datagridObj=$('#type_showAuthor_info').datagrid({
-		url:'../findAllAuthor',   
+		url:'../findAuthorByPage',   
 		fitColumns:true,
 		loadMsg:'数据加载中...',
 		pagination : true, //显示分页栏
@@ -25,6 +25,8 @@
 		rownumber:true,		//显示行数
 		sortName:'aid',		//排序的咧
 		remoteSort:false,	//前段排序而非服务器的排序，自己的排序
+		pageSize:5,
+		pageList:[5,10,15,20,25,30],
 		columns:[[
 			{field:'aids',title:'全选',width:100,align:'center',checkbox:true}, 
 			{field:'aid',title:'作家编号',width:100,align:'center',sortable:true},

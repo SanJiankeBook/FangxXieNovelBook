@@ -591,3 +591,19 @@
 2017-03-11 21:12:13  [ main:1542 ] - [ DEBUG ]  ==>  Preparing: select nname from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
 2017-03-11 21:12:13  [ main:1570 ] - [ DEBUG ]  ==> Parameters: 玄幻(String)
 2017-03-11 21:12:13  [ main:1586 ] - [ DEBUG ]  <==      Total: 1
+2017-03-12 14:46:32  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sun Mar 12 14:46:32 AWST 2017]; root of context hierarchy
+2017-03-12 14:46:32  [ main:90 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-12 14:46:32  [ main:821 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-12 14:46:33  [ main:1051 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-12 14:46:33  [ main:1579 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-12 14:46:34  [ main:2069 ] - [ DEBUG ]  ==>  Preparing: select * from novel_chapter where nid=? 
+2017-03-12 14:46:34  [ main:2110 ] - [ DEBUG ]  ==> Parameters: 1(Integer)
+2017-03-12 14:46:34  [ main:2135 ] - [ DEBUG ]  <==      Total: 3
+2017-03-12 14:51:27  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sun Mar 12 14:51:27 AWST 2017]; root of context hierarchy
+2017-03-12 14:51:27  [ main:61 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-12 14:51:28  [ main:589 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-12 14:51:28  [ main:767 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-12 14:51:28  [ main:1184 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-12 14:51:29  [ main:1522 ] - [ DEBUG ]  ==>  Preparing: select * from novel_chapter where nid=? 
+2017-03-12 14:51:29  [ main:1554 ] - [ DEBUG ]  ==> Parameters: 1(Integer)
+2017-03-12 14:51:29  [ main:1578 ] - [ DEBUG ]  <==      Total: 4

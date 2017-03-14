@@ -104,7 +104,9 @@ values(1,'第二章：45651','d:\ssss\sswq',1,1,1);
 select * from novel_chapter;insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
 values(1,'第三章：45651','d:\ssss\sswq',1,1,1);
 select * from novel_chapter;
-
+select * from novel_chapter;insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
+values(1,'第四章：45651','d:\\ssss\\sswq',1,1,1);
+select * from novel_chapter;
 
 --=======================================================================================
 create table author(					

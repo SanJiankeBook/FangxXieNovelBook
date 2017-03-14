@@ -1,14 +1,8 @@
 package com.yc.biz.impl;
 
 import java.util.List;
-
-
 import javax.annotation.Resource;
-
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
-
-import com.yc.bean.NovelType;
 import com.yc.biz.NovelTypebiz;
 import com.yc.dao.BaseDao;
 
@@ -26,8 +20,6 @@ public class NovelTypebizImpl implements NovelTypebiz {
 		return this.bd;
 	}
 	
-	
-
 	
 	@Override
 	public List showType( Object object) {

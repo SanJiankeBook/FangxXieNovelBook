@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/search.css" />
+
 <title>显示所有用户</title>
 </head>
 <body>
 	<table id="type_showuser_info" data-options="fit:true"></table> 
-
+	
 	<script type="text/javascript">
 	var datagridObj;
 	var editRow = undefined;	//当前正在被编辑的行的索引
@@ -16,10 +18,9 @@
 	var flag;
 
 	datagridObj=$('#type_showuser_info').datagrid({
-		url:'../findAllUser',   
+		url:'../findAllUserByPage',   
 		fitColumns:true,
 		loadMsg:'数据加载中...',
-		//queryParams:{op:'findGoodsInfoByPage'},
 		striped:true,		//斑马线效果
 		pagination : true, //显示分页栏
 		nowrap:true,		//超出宽度自动截取
@@ -43,7 +44,7 @@
 				//获取当前用户选中的行
 				var rows = datagridObj.datagrid("getChecked");
 				if(rows.length<=0){	//表示没有选中数据
-					$.messager.show({title:'温馨提示',msg:"请选择您要删除的作家...",timeout:2000,showType:'slide'});
+					$.messager.show({title:'温馨提示',msg:"请选择您要删除的用户...",timeout:2000,showType:'slide'});
 				}else{
 					$.messager.confirm('删除确认','您确定要删除这些数据吗?',function(result){
 						if( result ){
@@ -57,9 +58,9 @@
 													//json
 							$.post("../delUser",{uid:uids},function(data){
 								if( data == "0" ){
-									$.messager.alert('失败提示','作家删除失败!','error');
+									$.messager.alert('失败提示','用户删除失败!','error');
 								}else{
-									$.messager.show({title:'成功提示',msg:'作家删除成功...',timeout:2000,showType:'slide'});
+									$.messager.show({title:'成功提示',msg:'用户删除成功...',timeout:2000,showType:'slide'});
 									//重新加载数据
 									datagridObj.datagrid("reload");
 								}
@@ -86,7 +87,7 @@
 					$.post("../goodsTypeServlet",rows,function (data){
 						data = $.trim(data);
 						if( data == "1" ){
-							$.messager.show({title:flag+'提示',msg:flag+'作家成功...',timeout:2000,showType:'slide'});
+							$.messager.show({title:flag+'提示',msg:flag+'用户成功...',timeout:2000,showType:'slide'});
 							
 							datagridObj.datagrid("rejectChanges");
 							datagridObj.datagrid("unselectAll");   //取消所有的选中的行

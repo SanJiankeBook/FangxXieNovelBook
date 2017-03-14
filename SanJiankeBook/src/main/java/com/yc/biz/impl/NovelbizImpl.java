@@ -6,26 +6,33 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Service;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 import com.yc.bean.Novel;
 import com.yc.bean.NovelType;
 import com.yc.biz.Novelbiz;
 import com.yc.dao.BaseDao;
+
 @Service
 public class NovelbizImpl implements Novelbiz {
 private  BaseDao bd;
-	
+
 	@Resource(name="baseDaoMybatisImpl")
 	public void setBd(BaseDao bd) {
 		this.bd = bd;
 	}
+
 
 	@Override
 	public List<Novel> FindAllNovel() {
 		List<Novel> list=this.bd.findAll(new Novel(), "findAllNovel");
 		return list;
 	}
+
 
 	@Override
 	public void delNovel(int nid) {
@@ -38,7 +45,7 @@ private  BaseDao bd;
 		Map<String,Integer> map=new HashMap<String,Integer>();
 		map.put("start", start);
 		map.put("end", end);
-		List<Novel> list=this.bd.findAll(new Novel(), map, "");
+		List<Novel> list=this.bd.findAll(new Novel(), map, "findNovelByPage");
 		return list;
 	}
 	

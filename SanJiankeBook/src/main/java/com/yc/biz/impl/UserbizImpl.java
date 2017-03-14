@@ -1,16 +1,14 @@
 package com.yc.biz.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import java.util.List;
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
-
-
 import com.yc.biz.Userbiz;
 import com.yc.dao.BaseDao;
-
-
 import com.yc.bean.User;
 import com.yc.biz.Userbiz;
 import com.yc.dao.BaseDao;
@@ -66,8 +64,12 @@ private  BaseDao bd;
 	 * 分页查询用户
 	 */
 	@Override
-	public List<User> findUserByPage(int start,int end) {
-		List<User> list=this.bd.findAll(new User(), "findUserByPage");
+	public List<User> findUserByPage(Integer start,Integer end) {
+		
+		Map<String,Integer> map=new HashMap<String,Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		List<User> list=this.bd.findAll(new User(), map, "findUserByPage");
 		return list;
 	}
 	
@@ -75,9 +77,9 @@ private  BaseDao bd;
 	 * 删除用户
 	 */
 	@Override
-	public void DelUser(int id) {
+	public void DelUser(int uid) {
 		User use=new User();
-		use.setUid(id);
+		use.setUid(uid);
 		this.bd.delete(use, "delUser");
 	}
 

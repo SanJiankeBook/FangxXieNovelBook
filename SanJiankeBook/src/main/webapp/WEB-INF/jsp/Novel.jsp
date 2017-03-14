@@ -582,7 +582,7 @@ div.cse-default-channel-container .default-channel-list li:hover {
 		</div>
 		<div class="box_con">
 			<div class="con_top">
-				<a href="/">笔下文学</a> &gt; 儒道至圣最新章节列表
+				<a href="/">三剑客网文</a> &gt; ${novel_id[0].nname}最新章节列表
 			</div>
 			<div id="maininfo">
 			
@@ -602,8 +602,9 @@ div.cse-default-channel-container .default-channel-list li:hover {
 				<div id="intro">&nbsp${novel_id[0].ndescription }</div>
 			</div>
 			<div id="sidebar">
+				<!-- 小说封面 -->
 				<div id="fmimg">
-					<img alt="儒道至圣" src="/BookFiles/BookImages/rudaozhisheng.jpg"
+					<img alt="${novel_id[0].nname}" src="${novel_id[0].npicture}"
 						width="120" height="150"><span class="b"></span>
 				</div>
 			</div>
@@ -681,261 +682,12 @@ div.cse-default-channel-container .default-channel-list li:hover {
 
 
 					<dt>《${novel_id[0].nname}》</dt>
-					
-					<dd>
-						<a style="" href="/2_2476/2178016.html">第1138章 龙族大殿</a>
-					</dd>
 
-					<dd>
-						<a style="" href="/2_2476/2178017.html">第1139章 龙城废墟</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178018.html">第1140章 重回山谷!</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178019.html">第1141章 讲道义的人</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178020.html">第1142章 祠堂文台</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178021.html">第1143章 妖皇驾临</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178022.html">第1144章 亚圣世家的消息</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178023.html">第1145章 卑劣大学士</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178024.html">第1146章 白龙不入浊流</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178025.html">第1147章 孟家来人</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178026.html">第1148章 大殿现世</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178027.html">第1149章 五龙大殿!</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178028.html">第1150章 风起废墟</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178029.html">第1151章 有宝?</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178030.html">第1152章 碎了</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178031.html">第1153章 废墟外围</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178032.html">第1154章 巨虾战像</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178033.html">第1155章 奖励与惩罚</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178034.html">第1156章 妖王来袭</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178035.html">第1157章 龙狱</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178036.html">第1158章 第三次立功</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178037.html">第1159章 回援</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178038.html">第1160章 五个瓷瓶</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178039.html">第1161章 呼救</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178040.html">第1162章 高义之士</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178041.html">第1163章 镇罪殿!</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178042.html">第1164章 卫皇安</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178043.html">第1165章 纨绔大学士</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178044.html">第1166章 大殿布局</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178045.html">第1167章 血芒之主</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178046.html">第1168章 洗罪黑浪</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178047.html">第1169章 龙圣巡海图</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178048.html">第1170章 龙族碑文</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178049.html">第1171章 不谈情谊!</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178050.html">第1172章 龙威战体</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178051.html">第1173章 文星龙爵敕令</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178052.html">第1174章 刑具陈列室</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178053.html">第1175章 血痕刑具</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178054.html">第1176章 凤火锁链</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178055.html">第1177章 扒皮抠墙</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178056.html">第1178章 口语的重要性</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178057.html">第1179章 万界龙吟,才气清音</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178058.html">第1180章 噬龙藤</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178059.html">第1181章 雾封龙井</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2178060.html">诸位读书人元旦快乐!</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2801996.html">第1182章 攻乎异端,斯害也己</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2801997.html">第1183章 幻魔果</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2801998.html">第1184章 镇海紫竹</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2801999.html">第1185章 镇罪龙符</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2802000.html">第1186章 彻底暴露</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2802001.html">第1187章 噬龙藤现</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2802002.html">第1188章 格物之目</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2802003.html">第1189章 古妖搅局</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2802004.html">第1190章 进入地牢</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2802005.html">第1191章 大漠沙如雪</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2802006.html">第1192章 血芒异变</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2805574.html">第1193章 星光珍珠</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2810002.html">第1194章 祸水东引</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2811457.html">第1195章 初战妖王</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2814196.html">第1196章 沙场遣骑兵,雪中论战诗</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2814941.html">第1197章 硬撼妖王</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2817677.html">第1198章 月刃行天</a>
-					</dd>
-
-					<dd>
-						<a style="" href="/2_2476/2817872.html">第1199章 古地二变</a>
-					</dd>
-
-					
-					
+					<c:forEach items="${nchapter}" var="nchapter">
+						<dd>
+							<a style="" href="${nchapter.caddress}">${nchapter.cname}</a>
+						</dd>
+					</c:forEach>
 
 				</dl>
 			</div>
