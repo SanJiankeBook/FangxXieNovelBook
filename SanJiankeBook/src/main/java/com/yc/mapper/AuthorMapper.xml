@@ -25,6 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	
+	<!-- 分页查询作者 -->
+	<select id="findAuthorByPage" parameterType="Author" resultMap="AuthorResultMap">
+		select aid,uid,aname,pan_name,aage,agrade,acard,atel from author limit #{start},#{end}
+	</select>
 	
 	<resultMap type="Author" id="AuthorResultMap">
 		<id property="aid" column="aid" />

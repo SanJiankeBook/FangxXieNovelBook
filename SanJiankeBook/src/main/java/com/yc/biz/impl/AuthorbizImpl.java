@@ -1,6 +1,9 @@
 package com.yc.biz.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.yc.bean.Author;
@@ -51,6 +54,15 @@ private  BaseDao bd;
 		Author author=new Author();
 		author.setAid(aid);
 		this.bd.delete(author, "delAuthor");
+	}
+
+	@Override
+	public List<Author> FindAuthorByPage(Integer start,Integer end) {
+		Map<String,Integer> map=new HashMap<String,Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		List<Author> list=this.bd.findAll(new Author(), map, "findAuthorByPage");
+		return list;
 	}
 
 }

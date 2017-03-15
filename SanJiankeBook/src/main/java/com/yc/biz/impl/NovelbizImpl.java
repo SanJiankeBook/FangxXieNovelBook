@@ -1,5 +1,7 @@
 package com.yc.biz.impl;
 
+
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,7 @@ public class NovelbizImpl implements Novelbiz {
 		return list;
 	}
 
+
 	@Override
 	public void delNovel(int nid) {
 		Novel novel = new Novel();
@@ -39,7 +42,9 @@ public class NovelbizImpl implements Novelbiz {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("start", start);
 		map.put("end", end);
-		List<Novel> list = this.bd.findAll(new Novel(), map, "");
+
+		List<Novel> list=this.bd.findAll(new Novel(), map, "findNovelByPage");
+
 		return list;
 	}
 
@@ -84,6 +89,7 @@ public class NovelbizImpl implements Novelbiz {
 		List<Novel> list=bd.findAll(novel, "nnamegetAll");
 		return list;
 	}
+
 
 
 }

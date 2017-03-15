@@ -30,5 +30,4 @@ public interface Novelbiz {
 	//根据小说名查询所有小说信息
 	List<Novel> NameFindNovel(String nname);
 	
-
 }
