@@ -3,6 +3,8 @@ package com.yc.biz.impl;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import com.yc.bean.NovelType;
 import com.yc.biz.NovelTypebiz;
 import com.yc.dao.BaseDao;
 
@@ -22,8 +24,8 @@ public class NovelTypebizImpl implements NovelTypebiz {
 	
 	
 	@Override
-	public List showType( Object object) {
-		List list=bd.findAll(object, "getAllType");
+	public List<NovelType> showType( Object object) {
+		List<NovelType> list=bd.findAll(object, "getAllType");
 		return list;
 	}
 	

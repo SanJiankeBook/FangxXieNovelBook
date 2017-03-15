@@ -28,6 +28,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from novel where nid=#{nid}
 	</delete>
 
+	<!-- 根据小说名查询所有信息 -->
+	<select id="nnamegetAll" resultType="Novel" parameterType="Novel">
+		select *
+		from novel where nname=#{nname} 
+	</select>
 
 	<!-- 查询小说所有名字 -->
 	<select id="getAllnname" resultType="Novel">
@@ -50,14 +55,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 根据类型显示数据 -->
-	<select id="typegetAllnname" resultMap="NovelTypeMap"
-		parameterType="NovelType">
-		select nname
+	<select id="typegetAllnname" resultMap="NovelTypeMap" parameterType="NovelType">
+		select *
 		from novel n
 		inner join novel_type novelType
 		on n.tid=novelType.tid
-		where
-		novelType.tname=#{novelType.tname}
+		where novelType.tname=#{novelType.tname}
 	</select>
 
 
@@ -83,8 +86,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 根据类型查询小说信息 -->
 	<resultMap type="Novel" id="NovelTypeMap">
+		<id property="nid" column="nid" />
+		<result property="tid" column="tid" />
+		<result property="aid" column="aid" />
 		<result property="nname" column="nname" />
+		<result property="npicture" column="npicture" />
+		<result property="ndescription" column="ndescription" />
+		<result property="nstatus" column="nstatus" />
 		<association property="novelType" javaType="NovelType">
+			<id property="tid" column="tid" />
 			<result property="tname" column="tname" />
 		</association>
 	</resultMap>

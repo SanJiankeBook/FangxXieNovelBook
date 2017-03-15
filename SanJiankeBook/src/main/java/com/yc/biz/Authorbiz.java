@@ -13,6 +13,6 @@ public interface Authorbiz {
 	//删除作家
 	void DelAuthor(int id);
 	
-	//查询作者名
+	//根据小说id查询作者名
 	List Show_Author(int nid);
 }

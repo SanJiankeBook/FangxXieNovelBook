@@ -44,7 +44,7 @@ else{
   document.write('<form name="mylogin" id="mylogin" method="post" action="userLogin">');
   document.write('<div class="cc"><div class="txt">账号：</div><div class="inp"><input type="text" name="uname" id="uname" /></div></div>');
   document.write('<div class="cc"><div class="txt">密码：</div><div class="inp"><input type="password" name="upassword" id="upassword" /></div></div>');
-  document.write('<div class="frii"><input type="submit" class="int" value="登录" /></div><div class="ccc"><div class="txtt"></div><div class="txtt"><a href="jsp/register.jsp">用户注册</a></div></div></form>');
+  document.write('<div class="frii"><input type="submit" class="int" value="登录" /></div><div class="ccc"><div class="txtt"></div><div class="txtt"><a href="jsp/register.jsp">用户注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="toauthor">作家注册</a></div></div></form>');
 
   }
  document.write('</div></div></div>');

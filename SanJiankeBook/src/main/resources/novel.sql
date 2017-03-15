@@ -252,3 +252,19 @@ commit;
 		inner join novel_type novelType
 		on n.tid=novelType.tid
 		where n.nname='君王再临'
+		
+	select a.*
+		from novel n
+		inner join author a 
+		on n.aid=a.aid
+		 where nid=1	
+		
+	
+		 
+	select n.*
+		from novel n
+		inner join novel_type novelType
+		on n.tid=novelType.tid
+		where novelType.tname='修仙'	 
+		 
+		
