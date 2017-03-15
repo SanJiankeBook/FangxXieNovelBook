@@ -8,7 +8,6 @@ public interface BaseDao<T>  {
     
     public List<T> findAll ( T t,Map map,String sqlId);
     
-    public void add(T t,String sqlId);
     
     public Integer add1(T t,String sqlId);
     

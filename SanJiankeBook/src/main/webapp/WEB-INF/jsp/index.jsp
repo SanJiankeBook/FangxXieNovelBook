@@ -4,6 +4,13 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%
+	String path = request.getContextPath();
+	//					http				://		localhost			:	8081				/SpringMvc_Book/
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
 
@@ -16,10 +23,10 @@
 	content="format=xhtml; url=http://m.bixia.org" />
 <title>三剑客小说网</title>
 
-	<script type="text/javascript" src="js/xiaoshuo.js"></script>
-	<script type="text/javascript" async="" src="js/js.js"></script>
-	<script type="text/javascript" src="js/wap.js"></script>
-	<script type="text/javascript" src="js/logger.js"></script>
+<script type="text/javascript" src="js/xiaoshuo.js"></script>
+<script type="text/javascript" async="" src="js/js.js"></script>
+<script type="text/javascript" src="js/wap.js"></script>
+<script type="text/javascript" src="js/logger.js"></script>
 
 
 
@@ -34,7 +41,7 @@
 			style="position: absolute; display: none; z-index: 9999; top: 84px; left: 1044.08px; height: 314px; width: 212px;"
 			frameborder="0"></iframe>
 
-		  <div id="bdshare_l" style="display: none; left: 1044.08px; top: 84px;">
+		<div id="bdshare_l" style="display: none; left: 1044.08px; top: 84px;">
 			<div id="bdshare_l_c">
 				<h6>分享到</h6>
 				<ul>
@@ -62,14 +69,16 @@
 		</div>
 	</div>
 	<div id="wrapper">
-		<script>login();</script>
+		<script>
+			login();
+		</script>
 		<div style="display: none">
 
 			<script src="php/stat.php" language="JavaScript"></script>
 			<script src="php/core.php" charset="utf-8" language="JavaScript"></script>
 		</div>
-		
-		
+
+
 		<!-- <div class="ywtop">
 			<div class="ywtop_con">
 				<div class="ywtop_sethome">
@@ -113,6 +122,7 @@
 							</div>
 						</div>
 					</form>-->
+
 				</div>
 			</div>
 		</div> 
@@ -149,353 +159,382 @@
 								style="top: 85px; width: 319px;">
 								<ul class="bdcs-search-sug-list" id="bdcs-search-sug-list"></ul>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			    <div class="userpanel">
-				<script>banner();</script>
-				<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
-					<a class="bds_tsina" title="分享到新浪微博" href="#"></a> 
-					<a class="bds_renren" title="分享到人人网" href="#"></a> 
-					<span class="bds_more"></span> 
-					<a class="shareCount" href="#" title="累计分享57次">57</a>
-				</div>
-				<script type="text/javascript" id="bdshare_js"
-					data="type=tools&amp;uid=0" src="js/bds_s_v2.js"></script>
 
-				<script type="text/javascript">
-document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-</script>		
-			</div> 
+	</div>
+	</div>
+	</div>
 
+
+
+
+	<div class="header">
+		<div class="header_logo">
+			<a href="http://www.bixia.org/">三剑客文学</a>
 		</div>
-		<div class="clear"></div>
-		<div class="nav">
-			<ul>
-				<li><a href="index.jsp">首页</a></li>
-				<li><a rel="nofollow" href="jsp/bookcase.jsp">我的书架</a></li>
-				<li><a href="jsp/1-1.jsp">玄幻奇幻</a></li>
-				<li><a href="jsp/2-1.jsp">武侠仙侠</a></li>
-				<li><a href="jsp/3-1.jsp">都市言情</a></li>
-				<li><a href="jsp/4-1.jsp">历史军事</a></li>
-				<li><a href="jsp/5-1.jsp">科幻灵异</a></li>
-				<li><a href="jsp/6-1.jsp">网游竞技</a></li>
-				<li><a href="jsp/7-1.jsp">女频频道</a></li>
-				<li><a href="toindex_type">排行榜单</a></li>
+		<div class="header_search">
+			<script>
+				search();
+			</script>
+			<script type="text/javascript">
+				(function() {
+					document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
+					var bdcs = document.createElement('script');
+					bdcs.type = 'text/javascript';
+					bdcs.async = true;
+					bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=3677118700255927857'
+							+ '&plate_url='
+							+ encodeURIComponent(window.location.href)
+							+ '&t='
+							+ Math.ceil(new Date() / 3600000);
+					var s = document.getElementsByTagName('script')[0];
+					s.parentNode.insertBefore(bdcs, s);
+				})();
+			</script>
+			<div id="bdcs">
+				<div class="bdcs-container">
+					<meta http-equiv="x-ua-compatible" content="IE=9" />
+					<!-- 嵌入式 -->
+					<div class="bdcs-main bdcs-clearfix" id="default-searchbox">
+						<div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">
 
-
-				<li><a href="jsp/quanben.jsp/">全本小说</a></li>
-				<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
-			</ul>
-		</div>
-		<div id="main">
-			<div id="hotcontent">
-				<script type="text/javascript">list();</script>
-				<div class="l">
-
-					<div class="item">
-						<div class="image">
-							<!-- 图片链接 --><!-- 点击图片进入小说 -->作品简单推荐区域
+							<form action="tosousuo" method="get" target="_blank"
+								class="bdcs-search-form" autocomplete="off"
+								id="bdcs-search-form">
+								<input name="s" value="3677118700255927857" type="hidden" /> <input
+									name="entry" value="1" type="hidden" /> <input name="q"
+									class="bdcs-search-form-input" id="bdcs-search-form-input"
+									placeholder="请输入书名或作者" autocomplete="off"
+									style="height: 36px; line-height: 36px;" type="text" /> <input
+									class="bdcs-search-form-submit " id="bdcs-search-form-submit"
+									value="搜索" type="submit" />
+							</form>
 						</div>
-						<dl>
-							<dt>
-								<!-- 作者名 --><!-- 小说链接地址 -->
-							</dt>
-							<dd>
-								<!-- 简介 -->
-							</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-			
-					<!-- 同上 -->
-					<div class="item">
-						<div class="image">
-						
+						<div class="bdcs-search-sug" id="bdcs-search-sug"
+							style="top: 85px; width: 319px;">
+							<ul class="bdcs-search-sug-list" id="bdcs-search-sug-list"></ul>
+
 						</div>
-						<dl>
-							<dt>
-							
-							</dt>
-							<dd>
-							
-							</dd>
-						</dl>
-						<div class="clear"></div>
 					</div>
-					
-					<!-- 同上 -->
-					<div class="item">
-						<div class="image">
-						
-						</div>
-						<dl>
-							<dt>
-							
-							</dt>
-							<dd>
-							
-							</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-
 				</div>
-				<div class="r">
-					<h2>经典推荐</h2>
-					<ul>
-							
-							<li>推荐小说</li> 
-
-					</ul>
-				</div>
-				<div class="clear"></div>
-			</div>
-			<div class="dahengfu">
-				<script>list1();</script>
-			</div>
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<div id="novelslist1" class="novelslist">
-				<div class="content">
-					<h2>${list[0].tname}</h2>
-
-					<div class="top">
-						<div class="image">
-							<img src="images/rudaozhisheng.jpg" alt="儒道至圣" width="67"
-								height="82" />
-						</div>
-						<dl>
-							<dt>
-								<a href="toindex_id/${novel[0].nid}"> ${novel[0].nname}</a>
-							</dt>
-							<dd></dd>
-
-						</dl>
-						<div class="clear"></div>
-					</div>
-
-					<ul>
-
-						 <li>推荐小说</li> 
-
-					</ul>
-				</div>
-				<div class="content">
-
-					<h2>${list[1].tname}</h2>
-
-
-					<div class="top">
-						<div class="image">
-							<img src="images/jiuxiantu.jpg" alt="九仙图" width="67" height="82" />
-						</div>
-						<dl>
-							<dt>
-								<a href="http://www.bixia.org/3_3417/"> 九仙图 </a>
-							</dt>
-							<dd>
-
-								【2014星创奖第三季参赛作品】&nbsp;&nbsp;&nbsp;&nbsp;被天道所不容，降下无上封印的少年偶得一幅
-								画。&nbsp;&nbsp;&nbsp;&nbsp;画里住着九位...</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-
-					<ul>
-
-						<li><a href="http://www.bixia.org/22_22842/"> 重生西游之万界妖尊 </a>/会魔法的小猪</li>
-
-						<li><a href="http://www.bixia.org/8_8784/"> 洪荒之血道冥河 </a>/大道之前</li>
-
-						<li><a href="http://www.bixia.org/18_18943/"> 九阳绝神 </a>/傲苍穹</li>
-
-						<li><a href="http://www.bixia.org/25_25086/"> 一念永恒 </a>/耳根</li>
-
-						<li><a href="http://www.bixia.org/26_26157/"> 九世轮回诀 </a>/今夜子正</li>
-
-						<li><a href="http://www.bixia.org/2_2508/"> 造化之门 </a>/鹅是老五</li>
-
-						<li><a href="http://www.bixia.org/2_2572/"> 不朽剑神 </a>/雪满弓刀</li>
-
-						<li><a href="http://www.bixia.org/18_18594/"> 洪荒时辰 </a>/静默节奏</li>
-
-						<li><a href="http://www.bixia.org/6_6397/"> 掠天记 </a>/黑山老鬼</li>
-
-						<li><a href="http://www.bixia.org/1_1553/"> 灵鼎 </a>/心碎梦思迁</li>
-
-						<li><a href="http://www.bixia.org/2_2649/"> 偷香高手 </a>/六如和尚</li>
-
-						<li><a href="http://www.bixia.org/40_40766/"> 穿越宁采臣 </a>/西瓜有皮不好吃</li>
-
-					</ul>
-				</div>
-				<div class="content border">
-					<h2>${list[2].tname}</h2>
-
-
-					<div class="top">
-						<div class="image">
-						</div>
-						<dl>
-							<dt>
-							</dt>
-							<dd>
-							</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-
-					<ul>
-
-						<!-- 推荐小说 -->
-
-					</ul>
-				</div>
-				<div class="clear"></div>
-			</div>
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<div id="novelslist2" class="novelslist">
-				<div class="content">
-					<h2>${list[3].tname}</h2>
-
-
-					<div class="top">
-						<div class="image">
-						</div>
-						<dl>
-							<dt>
-							</dt>
-							<dd>
-								</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-
-					<ul>
-
-						
-
-					</ul>
-				</div>
-				<div class="content">
-
-					<h2>${list[4].tname}</h2>
-
-
-					<div class="top">
-						<div class="image">
-						</div>
-						<dl>
-							<dt>
-							</dt>
-							<dd>
-							</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-
-					<ul>
-
-						
-
-					</ul>
-				</div>
-				<div class="content border">
-					<h2>${list[5].tname}</h2>
-
-
-					<div class="top">
-						<div class="image">
-							
-						</div>
-						<dl>
-							<dt>
-								
-							</dt>
-							<dd>
-								
-							</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-
-					<ul>
-
-						
-
-					</ul>
-				</div>
-				<div class="clear"></div>
-			</div>
-			<div id="newscontent">
-				<div class="l">
-					<h2>最近更新小说列表</h2>
-					<ul>
-
-						<li><span class="s1">[武侠仙侠]</span><span class="s2"><a
-								href="http://www.bixia.org/40_40600/" target="_blank">一言通天</a></span><span
-							class="s3"><a
-								href="http://www.bixia.org/40_40600/2418830.html"
-								target="_blank">第725章 神木峡之行</a></span><span class="s4">黑弦</span><span
-							class="s5">03-03</span></li>
-
-						
-
-					</ul>
-				</div>
-				<div class="r">
-					<h2>最新入库小说</h2>
-					<ul>
-
-						<li><span class="s1">[都市言情]</span><span class="s2"><a
-								href="http://www.bixia.org/51_51392/">善良的小姨子</a></span><span class="s5">苦哈哈</span></li>
-
-						
-
-					</ul>
-				</div>
-				<div class="clear"></div>
 			</div>
 		</div>
 
-		<div id="firendlink">友情连接：</div>
-
-
-		<div class="footer">
-			<div class="footer_link"></div>
-			<div class="footer_cont">
-				<p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
-				<p>Copyright © 2016 三剑客文学</p>
-				<script>footer();</script>
+		<div class="userpanel">
+			<script>
+				banner();
+			</script>
+			<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+				<a class="bds_tsina" title="分享到新浪微博" href="#"></a> <a
+					class="bds_renren" title="分享到人人网" href="#"></a> <span
+					class="bds_more"></span> <a class="shareCount" href="#"
+					title="累计分享57次">57</a>
 			</div>
+			<script type="text/javascript" id="bdshare_js"
+				data="type=tools&amp;uid=0" src="js/bds_s_v2.js"></script>
+
+			<script type="text/javascript">
+				document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion="
+						+ Math.ceil(new Date() / 3600000)
+			</script>
 		</div>
+
+	</div>
+	<div class="clear"></div>
+	<div class="nav">
+		<ul>
+			<li><a href="index.jsp">首页</a></li>
+			<li><a rel="nofollow" href="jsp/bookcase.jsp">我的书架</a></li>
+			<li><a href="jsp/1-1.jsp">玄幻奇幻</a></li>
+			<li><a href="jsp/2-1.jsp">武侠仙侠</a></li>
+			<li><a href="jsp/3-1.jsp">都市言情</a></li>
+			<li><a href="jsp/4-1.jsp">历史军事</a></li>
+			<li><a href="jsp/5-1.jsp">科幻灵异</a></li>
+			<li><a href="jsp/6-1.jsp">网游竞技</a></li>
+			<li><a href="authorPrefectrue">作者专区</a></li>
+			<li><a href="toindex_type">排行榜单</a></li>
+
+
+			<li><a href="jsp/quanben.jsp/">全本小说</a></li>
+			<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
+		</ul>
+	</div>
+	<div id="main">
+		<div id="hotcontent">
+			<script type="text/javascript">
+				list();
+			</script>
+			<div class="l">
+
+				<div class="item">
+					<div class="image">
+						<!-- 图片链接 -->
+						<!-- 点击图片进入小说 -->
+						作品简单推荐区域
+					</div>
+					<dl>
+						<dt>
+							<!-- 作者名 -->
+							<!-- 小说链接地址 -->
+						</dt>
+						<dd>
+							<!-- 简介 -->
+						</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+
+				<!-- 同上 -->
+				<div class="item">
+					<div class="image"></div>
+					<dl>
+						<dt></dt>
+						<dd></dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+
+				<!-- 同上 -->
+				<div class="item">
+					<div class="image"></div>
+					<dl>
+						<dt></dt>
+						<dd></dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+			<div class="r">
+				<h2>经典推荐</h2>
+				<ul>
+
+					<li>推荐小说</li>
+
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="dahengfu">
+			<script>
+				list1();
+			</script>
+		</div>
+
+
+
+		<!-- 显示页面 -->
+		<div id="novelslist1" class="novelslist">
+
+			<!-- 玄幻   -->
+			<div class="content">
+				<h2>${list[0].tname}</h2>
+				<div class="top">
+					<div class="image">
+						<img src="${n[0].npicture}" alt="${n[0].nname}" width="67"
+							height="82" />
+					</div>
+					<dl>
+						<dt>
+							<a href="toindex_id/${n[0].nid}"> ${n[0].nname}</a>
+						</dt>
+						<dd>${n[0].ndescription}</dd>
+
+					</dl>
+					<div class="clear"></div>
+				</div>
+				<ul>
+					<c:forEach items="${Alllist}" var="Alllist">
+						<li><a href="toindex_id/${Alllist.nid}">${Alllist.nname}
+						</a>/${Alllist.aname }</li>
+					</c:forEach>
+				</ul>
+			</div>
+
+			<!-- 修仙 -->
+			<div class="content">
+				<h2>${list[1].tname}</h2>
+				<div class="top">
+					<div class="image">
+						<img src="${n1[0].npicture}" alt="${n1[0].nname}" width="67" height="82" />
+					</div>
+					<dl>
+						<dt>
+							<a href="toindex_id/${n1[0].nid}"> ${n1[0].nname}</a>
+						</dt>
+						<dd>
+							${n[0].ndescription}
+						</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+				<ul>
+					<c:forEach items="${Alllist1}" var="Alllist1">
+						<li><a href="toindex_id/${Alllist1.nid}">${Alllist1.nname}
+						</a>/${Alllist1.aname }</li>
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="content border">
+				<h2>${list[2].tname}</h2>
+
+
+				<div class="top">
+					<div class="image"></div>
+					<dl>
+						<dt>
+							<a href="toindex_id/${n2[0].nid}"> ${n2[0].nname}</a>
+						</dt>
+						<dd></dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+
+				<ul>
+
+					<c:forEach items="${Alllist2}" var="Alllist2">
+						<li><a href="toindex_id/${Alllist2.nid}">${Alllist2.nname}
+						</a>/${Alllist2.aname }</li>
+					</c:forEach>
+
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<div id="novelslist2" class="novelslist">
+			<div class="content">
+				<h2>${list[3].tname}</h2>
+
+
+				<div class="top">
+					<div class="image"></div>
+					<dl>
+						<dt>
+							<a href="toindex_id/${n3[0].nid}"> ${n3[0].nname}</a>
+						</dt>
+						<dd></dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+
+				<ul>
+
+					<c:forEach items="${Alllist3}" var="Alllist3">
+						<li><a href="toindex_id/${Alllist3.nid}">${Alllist3.nname}
+						</a>/${Alllist3.aname }</li>
+					</c:forEach>
+
+				</ul>
+			</div>
+			<div class="content">
+
+				<h2>${list[4].tname}</h2>
+
+
+				<div class="top">
+					<div class="image"></div>
+					<dl>
+						<dt>
+							<a href="toindex_id/${n4[0].nid}"> ${n4[0].nname}</a>
+						</dt>
+						<dd></dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+
+				<ul>
+
+					<c:forEach items="${Alllist4}" var="Alllist4">
+						<li><a href="toindex_id/${Alllist4.nid}">${Alllist4.nname}
+						</a>/${Alllist4.aname }</li>
+					</c:forEach>
+
+				</ul>
+			</div>
+			<div class="content border">
+				<h2>${list[5].tname}</h2>
+
+
+				<div class="top">
+					<div class="image"></div>
+					<dl>
+						<dt>
+							<a href="toindex_id/${n5[0].nid}"> ${n5[0].nname}</a>
+						</dt>
+						<dd></dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+
+				<ul>
+
+					<c:forEach items="${Alllist5}" var="Alllist5">
+						<li><a href="toindex_id/${Alllist5.nid}">${Alllist5.nname}
+						</a>/${Alllist5.aname }</li>
+					</c:forEach>
+
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div id="newscontent">
+			<div class="l">
+				<h2>最近更新小说列表</h2>
+				<ul>
+
+					<li><span class="s1">[武侠仙侠]</span><span class="s2"><a
+							href="http://www.bixia.org/40_40600/" target="_blank">一言通天</a></span><span
+						class="s3"><a
+							href="http://www.bixia.org/40_40600/2418830.html" target="_blank">第725章
+								神木峡之行</a></span><span class="s4">黑弦</span><span class="s5">03-03</span></li>
+
+
+
+				</ul>
+			</div>
+			<div class="r">
+				<h2>最新入库小说</h2>
+				<ul>
+
+					<li><span class="s1">[都市言情]</span><span class="s2"><a
+							href="http://www.bixia.org/51_51392/">善良的小姨子</a></span><span class="s5">苦哈哈</span></li>
+
+
+
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<div id="firendlink">友情连接：</div>
+
+
+	<div class="footer">
+		<div class="footer_link"></div>
+		<div class="footer_cont">
+			<p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
+			<p>Copyright © 2016 三剑客文学</p>
+			<script>
+				footer();
+			</script>
+		</div>
+	</div>
 	</div>
 
 

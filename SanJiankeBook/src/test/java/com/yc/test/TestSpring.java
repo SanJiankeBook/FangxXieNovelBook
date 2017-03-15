@@ -8,6 +8,7 @@ import java.util.Set;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.yc.bean.Author;
 import com.yc.bean.Novel;
 import com.yc.bean.NovelType;
 import com.yc.biz.Authorbiz;
@@ -77,7 +78,7 @@ public class TestSpring extends TestCase {
 	public void testCache6() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		Novelbiz sb =   (Novelbiz) ac.getBean("novelbizImpl");
-		List list=sb.TypeNovel("玄幻");
+		List list=sb.TypeNovel("修仙");
 		System.out.println(list);
 	}
 	
@@ -120,8 +121,15 @@ public class TestSpring extends TestCase {
 		System.out.println(list);
 	}
 	
-
-		
+	
+	public void testCache9() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		Novelbiz sb =   (Novelbiz) ac.getBean("novelbizImpl");
+		List list=sb.NameFindNovel("你的名字");
+		System.out.println(list);
+	}
+	
+	
 	
 	public void TestApp(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );

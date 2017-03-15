@@ -24,8 +24,10 @@ public class Novel implements Serializable {
 	private Author author;
 	private NovelType novelType;
 	
+	
 	private List<String> originalFilename;//小说图片的原名
 	private List<MultipartFile> pdfsUrl;//文件集合，对应前台上的<input type="file" name="pdfsUrl">
+	
 	
 	public Author getAuthor() {
 		return author;
