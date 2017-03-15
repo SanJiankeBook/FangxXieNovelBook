@@ -21,6 +21,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			on author.aid=novel.aid
 		</select>
 		
+	<!-- 根据名字查找所有小说 -->
+		<select id="findNovleByName" parameterType="Novel" resultMap="NovelResultMap">
+			select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+			where author.pan_name like #{pan_name} or nname like #{nname}
+		</select>
+		
 		<!-- 删除小说 -->
 		<delete id="delNovel" parameterType="Novel">
 			delete from novel where nid=#{nid}
@@ -36,35 +46,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			limit #{start},#{end}
 		</select>
 		
+		<!-- 根据搜索分页查询小说 -->
+		<select id="findNovelByPageName" parameterType="Novel" resultMap="NovelResultMap">
+			select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+			where author.pan_name like #{ssnname} or nname like #{ssnname}
+			limit #{start},#{end}
+		</select>
 		
-		<resultMap type="Novel" id="NovelResultMap">
-			<id property="nid" column="nid"/>
-			<result property="tid" column="tid"/>
-			<result property="aid" column="aid"/>
-			<result property="tname" column="tname"/>
-			<result property="aname" column="aname"/>
-			<result property="pan_name" column="pan_name"/>
-			<result property="nname" column="nname"/>
-			<result property="npicture" column="npicture"/>
-			<result property="ndescription" column="ndescription"/>
-			<result property="nstatus" column="nstatus"/>
-			
-		</resultMap>
+		
+		
 	
-	<select id="findAllNovel" parameterType="Novel" resultMap="NovelResultMap">
-		select
-		nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus
-		from novel_type
-		inner join novel
-		on novel_type.tid=novel.tid
-		inner join author
-		on author.aid=novel.aid
-	</select>
 
-	<!-- 删除小说 -->
-	<delete id="delNovel" parameterType="Novel">
-		delete from novel where nid=#{nid}
-	</delete>
 
 
 	<!-- 查询小说所有名字 -->
@@ -105,18 +101,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<resultMap type="Novel" id="NovelResultMap">
-		<id property="nid" column="nid" />
-		<result property="tid" column="tid" />
-		<result property="aid" column="aid" />
-		<result property="tname" column="tname" />
-		<result property="aname" column="aname" />
-		<result property="pan_name" column="pan_name" />
-		<result property="nname" column="nname" />
-		<result property="npicture" column="npicture" />
-		<result property="ndescription" column="ndescription" />
-		<result property="nstatus" column="nstatus" />
-	</resultMap>
 
 
 	<!-- 根据类型查询小说信息 -->
@@ -144,4 +128,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 	</resultMap>
 
+<resultMap type="Novel" id="NovelResultMap">
+			<id property="nid" column="nid"/>
+			<result property="tid" column="tid"/>
+			<result property="aid" column="aid"/>
+			<result property="tname" column="tname"/>
+			<result property="aname" column="aname"/>
+			<result property="pan_name" column="pan_name"/>
+			<result property="nname" column="nname"/>
+			<result property="npicture" column="npicture"/>
+			<result property="ndescription" column="ndescription"/>
+			<result property="nstatus" column="nstatus"/>
+			
+		</resultMap>
 </mapper>

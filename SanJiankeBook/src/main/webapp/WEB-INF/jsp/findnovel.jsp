@@ -54,7 +54,7 @@ function searchNovel() {
 		striped:true,		//斑马线效果
 		nowrap:true,		//超出宽度自动截取
 		rownumber:true,		//显示行数
-		sortName:'aid',		//排序的咧
+		sortName:'nid',		//排序的咧
 		remoteSort:false,	//前段排序而非服务器的排序，自己的排序
 		columns:[[
 					{field : 'nid',title : '小说编号',width : 20,align : 'center',sortable : true,hidden:true},
@@ -68,16 +68,16 @@ function searchNovel() {
 									} else {
 										var patt1 = new RegExp("../");
 										if (patt1.test(value[i])) {
-											picStr += "<img src='../../"+value[i]+"' width='100px' height='100px' />";
+											picStr += "<img src='"+value[i]+"' width='100px' height='100px' />";
 										} else {
-											picStr += "<img src='../images/"+value[i]+"' width='100px' height='100px' />";
+											picStr += "<img src='images/"+value[i]+"' width='100px' height='100px' />";
 										}
 									}
 								}
 							} else if (value != "") {
-								picStr += "<img src='../../"+value+"' width='100px' height='100px' />";
+								picStr += "<img src='"+value+"' width='100px' height='100px' />";
 							} else {
-								picStr += "<img src='../images/zanwu.jpg' width='100px' height='100px' />";
+								picStr += "<img src='images/zanwu.jpg' width='100px' height='100px' />";
 							} 
 								return picStr;
 							}

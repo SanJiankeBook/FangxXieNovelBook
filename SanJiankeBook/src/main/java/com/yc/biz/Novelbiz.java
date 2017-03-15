@@ -24,6 +24,10 @@ public interface Novelbiz {
 		
 		//根据类型查询小说名
 		public List TypeNovel(String tname);
+		//根据小说名查询小说
+		public List<Novel> findNovelByName(Novel novel);
+		//根据小说名查询小说并且分页
+		List<Novel> FindNovelByNameFenYe(String nname, int start, int end);
 
 
 }

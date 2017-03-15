@@ -252,3 +252,11 @@ commit;
 		inner join novel_type novelType
 		on n.tid=novelType.tid
 		where n.nname='君王再临'
+		
+	select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+			where author.pan_name like '赵%' or nname like '赵%'
+			limit 1,2

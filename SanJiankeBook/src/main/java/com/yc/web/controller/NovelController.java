@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,12 +24,15 @@ import com.yc.biz.impl.NovelChapterbizImpl;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.biz.impl.NovelbizImpl;
 import com.yc.bean.Author;
+import com.yc.bean.EasyuiFindByPage;
 import com.yc.bean.NovelChapter;
 import com.yc.bean.User;
+import com.yc.bean.UserBook;
 import com.yc.biz.Authorbiz;
 import com.yc.biz.NovelChapterbiz;
 import com.yc.biz.NovelTypebiz;
 import com.yc.biz.Novelbiz;
+import com.yc.biz.UserBookbiz;
 import com.yc.biz.Userbiz;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.dao.BaseDao;
@@ -52,9 +56,13 @@ public class NovelController {
     private NovelbizImpl novelbizImpl;
     private AuthorbizImpl authorbizImpl;
     private NovelChapterbizImpl novelChapterbizImpl;
+    private UserBookbiz userbookbiz;
     
-    
-    @Resource(name="novelChapterbizImpl")
+    @Resource(name="userBookbizImpl")
+    public void setUserbookbiz(UserBookbiz userbookbiz) {
+		this.userbookbiz = userbookbiz;
+	}
+	@Resource(name="novelChapterbizImpl")
     public void setNovelchapterbiz(NovelChapterbiz novelchapterbiz) {
 		this.novelchapterbiz = novelchapterbiz;
 	}
@@ -110,28 +118,66 @@ public class NovelController {
 
 
 
-	//跳转到前台
-    @RequestMapping(value="/toindex_zpd")
-	public String Index(){
-    	logger.info("toindex_zpd.....");
-    	return "index";
-    }
 
     
-    //搜索
+    //搜索页面
     @RequestMapping(value="/tosousuo")
     public String sousuo(Model model,Novel novel){
     	logger.info("tosousuo.....");
     	model.addAttribute("novel",novel.getNname());
     	return "findnovel";
     }
-    //搜索页面
-    @RequestMapping(value="/quearyNovel")
-    public String quearyNovel(@RequestParam String text){
+    //搜索
+    @RequestMapping(value="/quearyNovel",produces = {"application/text;charset=UTF-8"})
+    @ResponseBody
+    public String quearyNovel(@RequestParam String text,HttpServletRequest request){
     	logger.info("quearyNovel.....");
-    	logger.info(text+"值");
+    	Novel novel=new Novel();
+    	String nname=text.substring(0,1)+"%";
+    	novel.setNname(nname);
+    	novel.setPan_name(nname);
+    	String page=request.getParameter("page");    
+    	String rows=request.getParameter("rows");
+    	int currentPage=Integer.parseInt(page);     //当前的页数
+    	int end=Integer.parseInt(rows);           //每页的条数
+    	int start=0;
+    	start=(currentPage-1)*end;
+    	
+    	//List<Novel> lists=this.novelbiz.FindAllNovel();
+    	List<Novel> lists=this.novelbiz.findNovelByName(novel);
+    	//List<Novel> list=this.novelbiz.FindNovelByPage(start, end);
+    	List<Novel> list=this.novelbiz.FindNovelByNameFenYe(nname,start, end);
+    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+    	ebp.setTotal(lists.size());
+    	ebp.setRows(list);
+    	Gson gson=new Gson();
+		return gson.toJson(ebp);
     	//这个功能并没有从数据库中拿数据
-    	return "findnovel";
+    }
+    //用户书架
+    @RequestMapping(value="/userbooknovel",produces = {"application/text;charset=UTF-8"})
+    @ResponseBody
+    public String userbooknovel(@RequestParam String uid,HttpServletRequest request){
+    	logger.info("userbooknovel.....");
+    	UserBook ub=new UserBook();
+    	ub.setUid(Integer.parseInt(uid));
+    	String page=request.getParameter("page");    
+    	String rows=request.getParameter("rows");
+    	int currentPage=Integer.parseInt(page);     //当前的页数
+    	int end=Integer.parseInt(rows);           //每页的条数
+    	int start=0;
+    	start=(currentPage-1)*end;
+    	
+    	//List<Novel> lists=this.novelbiz.findNovelByName(novel);
+    	this.userbookbiz.finduserbook(ub);
+    	//List<Novel> list=this.novelbiz.FindNovelByPage(start, end);
+    	List<Novel> list=this.novelbiz.FindNovelByNameFenYe(nname,start, end);
+    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+    	ebp.setTotal(lists.size());
+    	ebp.setRows(list);
+    	Gson gson=new Gson();
+    	return gson.toJson(ebp);
+    	//这个功能并没有从数据库中拿数据
     }
     
     //前往作家注册页面
@@ -156,7 +202,7 @@ public class NovelController {
     @RequestMapping(value="/test")
     public String test(){
     	logger.info("test....");
-    	return "findnovel";
+    	return "userbook";
     }
     
     
