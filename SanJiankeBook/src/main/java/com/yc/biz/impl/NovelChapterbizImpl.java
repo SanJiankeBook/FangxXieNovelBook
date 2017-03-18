@@ -1,7 +1,10 @@
 package com.yc.biz.impl;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.yc.bean.Novel;
@@ -47,5 +50,14 @@ private  BaseDao bd;
 		this.bd.add(novelchapter, "insertNovel");
 
 
+	}
+
+	//根据小说id获取章节id
+	@Override
+	public Double getNovleChapterId(NovelChapter novelchapter) {
+		Map map=new HashMap<>();
+		map.put("nid", novelchapter.getNid());
+		Double nc =this.bd.fingFunc(novelchapter, map, "getNovelChapterId");
+		return nc;
 	}
 }

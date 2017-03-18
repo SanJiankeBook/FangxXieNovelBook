@@ -20,15 +20,30 @@ public class Novel implements Serializable {
 	private String tname;      //类型名
 	private String aname;      //作者名
 	private String pan_name;  //笔名
-
+	
+	private String standby_1 ;//审核状态  待审核 通过 未通过
 	private Author author;
 	private NovelType novelType;
+	
+	private String ubdate ;//		--小说记录时间
 	
 	
 	private List<String> originalFilename;//小说图片的原名
 	private List<MultipartFile> pdfsUrl;//文件集合，对应前台上的<input type="file" name="pdfsUrl">
 	
 	
+	public String getUbdate() {
+		return ubdate;
+	}
+	public void setUbdate(String ubdate) {
+		this.ubdate = ubdate;
+	}
+	public String getStandby_1() {
+		return standby_1;
+	}
+	public void setStandby_1(String standby_1) {
+		this.standby_1 = standby_1;
+	}
 	public Author getAuthor() {
 		return author;
 	}
@@ -60,7 +75,9 @@ public class Novel implements Serializable {
 	public String toString() {
 		return "Novel [nid=" + nid + ", tid=" + tid + ", aid=" + aid + ", nname=" + nname + ", npicture=" + npicture
 				+ ", ndescription=" + ndescription + ", nstatus=" + nstatus + ", tname=" + tname + ", aname=" + aname
-				+ ", pan_name=" + pan_name + "]";
+				+ ", pan_name=" + pan_name + ", standby_1=" + standby_1 + ", author=" + author + ", novelType="
+				+ novelType + ", ubdate=" + ubdate + ", originalFilename=" + originalFilename + ", pdfsUrl=" + pdfsUrl
+				+ "]";
 	}
 	
 	public String getPan_name() {
@@ -136,12 +153,20 @@ public class Novel implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((aid == null) ? 0 : aid.hashCode());
+		result = prime * result + ((aname == null) ? 0 : aname.hashCode());
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((ndescription == null) ? 0 : ndescription.hashCode());
 		result = prime * result + ((nid == null) ? 0 : nid.hashCode());
 		result = prime * result + ((nname == null) ? 0 : nname.hashCode());
+		result = prime * result + ((novelType == null) ? 0 : novelType.hashCode());
 		result = prime * result + ((npicture == null) ? 0 : npicture.hashCode());
 		result = prime * result + ((nstatus == null) ? 0 : nstatus.hashCode());
+		result = prime * result + ((originalFilename == null) ? 0 : originalFilename.hashCode());
+		result = prime * result + ((pan_name == null) ? 0 : pan_name.hashCode());
+		result = prime * result + ((pdfsUrl == null) ? 0 : pdfsUrl.hashCode());
+		result = prime * result + ((standby_1 == null) ? 0 : standby_1.hashCode());
 		result = prime * result + ((tid == null) ? 0 : tid.hashCode());
+		result = prime * result + ((tname == null) ? 0 : tname.hashCode());
 		return result;
 	}
 	@Override
@@ -158,6 +183,16 @@ public class Novel implements Serializable {
 				return false;
 		} else if (!aid.equals(other.aid))
 			return false;
+		if (aname == null) {
+			if (other.aname != null)
+				return false;
+		} else if (!aname.equals(other.aname))
+			return false;
+		if (author == null) {
+			if (other.author != null)
+				return false;
+		} else if (!author.equals(other.author))
+			return false;
 		if (ndescription == null) {
 			if (other.ndescription != null)
 				return false;
@@ -173,6 +208,11 @@ public class Novel implements Serializable {
 				return false;
 		} else if (!nname.equals(other.nname))
 			return false;
+		if (novelType == null) {
+			if (other.novelType != null)
+				return false;
+		} else if (!novelType.equals(other.novelType))
+			return false;
 		if (npicture == null) {
 			if (other.npicture != null)
 				return false;
@@ -183,10 +223,35 @@ public class Novel implements Serializable {
 				return false;
 		} else if (!nstatus.equals(other.nstatus))
 			return false;
+		if (originalFilename == null) {
+			if (other.originalFilename != null)
+				return false;
+		} else if (!originalFilename.equals(other.originalFilename))
+			return false;
+		if (pan_name == null) {
+			if (other.pan_name != null)
+				return false;
+		} else if (!pan_name.equals(other.pan_name))
+			return false;
+		if (pdfsUrl == null) {
+			if (other.pdfsUrl != null)
+				return false;
+		} else if (!pdfsUrl.equals(other.pdfsUrl))
+			return false;
+		if (standby_1 == null) {
+			if (other.standby_1 != null)
+				return false;
+		} else if (!standby_1.equals(other.standby_1))
+			return false;
 		if (tid == null) {
 			if (other.tid != null)
 				return false;
 		} else if (!tid.equals(other.tid))
+			return false;
+		if (tname == null) {
+			if (other.tname != null)
+				return false;
+		} else if (!tname.equals(other.tname))
 			return false;
 		return true;
 	}

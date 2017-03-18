@@ -31,8 +31,9 @@
 	
 	$(function(){
 		
-		alert("${novel}");
-		$("#searchNovel").val("${novel}");
+		//alert("${novel}");
+		//$("#searchNovel").val("${novel}");
+		$("#searchNovel").val("1");
 		searchNovel();
 	})
 function searchNovel() {
@@ -44,7 +45,7 @@ function searchNovel() {
 	datagridObj=$('#type_shownovel_info').datagrid({
 		url:'userbooknovel',   
 		fitColumns:true,
-		queryParams: {text:easyui},
+		queryParams: {uid:easyui},
 		loadMsg:'数据加载中...',
 		striped:true,		//斑马线效果
 		pagination : true, //显示分页栏
@@ -67,14 +68,14 @@ function searchNovel() {
 							} else {
 								var patt1 = new RegExp("../");
 								if (patt1.test(value[i])) {
-									picStr += "<img src='../../"+value[i]+"' width='100px' height='100px' />";
+									picStr += "<img src='"+value[i]+"' width='100px' height='100px' />";
 								} else {
 									picStr += "<img src='../images/"+value[i]+"' width='100px' height='100px' />";
 								}
 							}
 						}
 					} else if (value != "") {
-						picStr += "<img src='../../"+value+"' width='100px' height='100px' />";
+						picStr += "<img src='"+value+"' width='100px' height='100px' />";
 					} else {
 						picStr += "<img src='../images/zanwu.jpg' width='100px' height='100px' />";
 					} 
@@ -86,12 +87,12 @@ function searchNovel() {
 			{field : 'pan_name',title : '作者名字',width : 30,align : 'center'},
 			{field : 'nname',title : '小说名',width : 50,align : 'center',formatter: function(val,row,index){
 				 if(val){
-					 return "<a href='shownovelPT/"+row.nid +"' >"+val+"</a>";
+					 return "<a href='toindex_id/"+row.nid +"' >"+val+"</a>";
 				} 
 			}}, 
 			{field : 'ndescription',title : '小说简介',width : 100,align : 'center'},
 			{field : 'nstatus',title : '小说状态',width : 50,align : 'center'}, 
-			{field : 'nstatus',title : '添加日期',width : 50,align : 'center'}, 
+			{field : 'ubdate',title : '添加日期',width : 50,align : 'center'}, 
 		]],
 		toolbar:[{
 			text:'删除',
@@ -100,7 +101,7 @@ function searchNovel() {
 				//获取当前用户选中的行
 				var rows = datagridObj.datagrid("getChecked");
 				if(rows.length<=0){	//表示没有选中数据
-					$.messager.show({title:'温馨提示',msg:"请选择您要删除的作家...",timeout:2000,showType:'slide'});
+					$.messager.show({title:'温馨提示',msg:"请选择您要删除的书籍...",timeout:2000,showType:'slide'});
 				}else{
 					$.messager.confirm('删除确认','您确定要删除这些数据吗?',function(result){
 						if( result ){
@@ -112,11 +113,11 @@ function searchNovel() {
 							nids += rows[i].nid;
 							
 													//json
-							$.post("../delNovel",{nid:nids},function(data){
+							$.post("delUserbook",{nid:nids},function(data){
 								if( data == "0" ){
-									$.messager.alert('失败提示','作家删除失败!','error');
+									$.messager.alert('失败提示','小说删除失败!','error');
 								}else{
-									$.messager.show({title:'成功提示',msg:'作家删除成功...',timeout:2000,showType:'slide'});
+									$.messager.show({title:'成功提示',msg:'小说删除成功...',timeout:2000,showType:'slide'});
 									//重新加载数据
 									datagridObj.datagrid("reload");
 								}

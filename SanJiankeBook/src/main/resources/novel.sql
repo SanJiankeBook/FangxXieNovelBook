@@ -45,7 +45,7 @@ create table novel(
 	npicture varchar(100),						
 	ndescription varchar(500),				
 	nstatus varchar(15),					
-	standby_1 varchar(100),
+	standby_1 varchar(100), --待审核 通过 未通过
 	standby_2 varchar(100),
 	standby_3 varchar(100),
 	primary key (nid),
@@ -58,7 +58,7 @@ insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_
 values(2,1,'君王再临','rudaozhisheng.jpg','某一天...','连载',1,1,1);
 
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
-<<<<<<< HEAD
+
 values(2,2,'再临','c:\aii\aa','某一天...','未完结',1,1,1);
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
 values(1,1,'神仙道','c:\aii\aa','某一天...','未完结',1,1,1);
@@ -87,12 +87,12 @@ create table novel_chapter(
 	cname varchar(100),						
 	caddress varchar(300),					
 	standby_1 varchar(100),
-	standby_2 varchar(100),
+	standby_2 varchar(100),--章节编号
 	standby_3 varchar(100),
 	primary key (cid),
 	foreign key (nid) references novel(nid)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
+select max(standby_2) from novel_chapter where nid=2;
 
 insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
 values(1,'第一章：45651','d:\ssss\sswq',1,1,1);
@@ -203,7 +203,7 @@ create table user_book(
 	ubdate varchar(30),						
 	standby_1 varchar(100),
 	standby_2 varchar(100),
-	standby_3 varchar(100),
+	standby_3 varchar(100),']]'
 	foreign key (uid) references user(uid),
 	foreign key (nid) references novel(nid)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -211,8 +211,41 @@ create table user_book(
 
 insert into user_book(nid,uid,ubdate,standby_1,standby_2,standby_3)
 values(1,1,'2016-5-8',1,1,1);
+insert into user_book(nid,uid,ubdate,standby_1,standby_2,standby_3)
+values(3,1,'2016-5-8',1,1,1);
 
-select * from user_book;
+	select novel.nid,novel_type.tname,author.pan_name,npicture,ndescription,nstatus ,from
+	select *from
+			user_book 
+			inner join author
+			on user_book.uid=author.uid  where user_book.nid=3 and user_book.uid=1
+			left join novel
+			on author.aid=novel.aid 
+			inner join novel_type
+			on novel_type.tid=novel.tid
+			where user_book.nid=3 and user_book.uid=1
+select * from user_book where nid=3 and uid=1;
+commit
+delete from user_book where uid=1 and nid in(1,3)
+
+select ,e from
+
+select author.pan_name,user_book.ubdate from
+select * from
+user_book inner join author
+on user_book.uid=author.uid  where  user_book.uid=1
+
+select  novel.nid,novel.nname,novel_type.tname,novel.npicture,novel.ndescription,
+novel.nstatus from
+user_book inner join novel
+on novel.nid=user_book.nid 
+inner join novel_type
+on novel_type.tid=novel.tid
+where user_book.nid=3 and user_book.uid=1
+
+inner join novel on novel.aid=author.aid 
+inner join novel_type on novel_type.tid=novel.tid
+ where user_book.nid=3 and user_book.uid=1
 
 
 --=======================================================================================
@@ -253,7 +286,7 @@ commit;
 		on n.tid=novelType.tid
 		where n.nname='君王再临'
 		
-<<<<<<< HEAD
+
 	select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus from novel_type
 			inner join novel
 			on novel_type.tid=novel.tid
@@ -261,7 +294,7 @@ commit;
 			on author.aid=novel.aid
 			where author.pan_name like '赵%' or nname like '赵%'
 			limit 1,2
-=======
+
 	select a.*
 		from novel n
 		inner join author a 
@@ -277,4 +310,4 @@ commit;
 		where novelType.tname='修仙'	 
 		 
 		
->>>>>>> a7917f8052bcd2f740e03f238faf33fbaf247471
+

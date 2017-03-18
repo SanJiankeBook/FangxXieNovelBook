@@ -7,11 +7,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.yc.bean.NovelChapter;
+import com.yc.biz.NovelChapterbiz;
 
 public class ForFile {
     //生成文件路径
@@ -23,9 +27,11 @@ public class ForFile {
      * 创建文件
      * @param fileName  文件名称
      * @param filecontent   文件内容
+     * @param novelchapter 
+     * @param novelchapterbiz 
      * @return  是否创建成功，成功则返回true
      */
-    public static String createFile(HttpServletRequest request,String filecontent,String title){
+    public static String createFile(HttpServletRequest request,String filecontent,String title, NovelChapter novelchapter, NovelChapterbiz novelchapterbiz){
         
     	//E:\apache-tomcat-7.0.47\webapps
 		File webappsfile=new File( request.getSession().getServletContext().getRealPath(  "/"     )).getParentFile();
@@ -54,8 +60,17 @@ public class ForFile {
             //如果文件不存在，则创建新的文件
             if(!file.exists()){
                 file.createNewFile();
+                Double val=novelchapterbiz.getNovleChapterId(novelchapter);
+                if(val==null ){
+                	novelchapter.setStandby_2(1);
+                }else{
+                	val=val+1;
+                	String str=""+val;
+                	str=str.substring(0, 1);
+                	novelchapter.setStandby_2( Integer.parseInt(str));
+                }
                 System.out.println("success create file,the file is "+filenameTemp);
-                String startcontent="<!DOCTYPE html><html><head><meta charset='UTF-8'><title>"+title+"</title></head><body>";
+                String startcontent="<!DOCTYPE html><html><head><meta charset='UTF-8'><title>第"+novelchapter.getStandby_2()+"章              "+title+"</title></head><body><br/>+<h1>第"+novelchapter.getStandby_2()+"章              "+title+"</h1>";
                 String endconten="</body></html>";	
                 String content=startcontent+filecontent+endconten;
                 //创建文件成功后，写入内容到文件里

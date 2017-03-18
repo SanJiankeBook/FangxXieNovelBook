@@ -79,7 +79,7 @@ public class NovelbizImpl implements Novelbiz {
 	//插入书本信息
 		@Override
 		public Integer InsertNovel(Novel novel) {
-			this.bd.add1(novel, "addNovel");
+			this.bd.add(novel, "addNovel");
 			return null;
 		}
 

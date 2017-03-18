@@ -167,59 +167,6 @@
 
 
 
-
-	<div class="header">
-		<div class="header_logo">
-			<a href="http://www.bixia.org/">三剑客文学</a>
-		</div>
-		<div class="header_search">
-			<script>
-				search();
-			</script>
-			<script type="text/javascript">
-				(function() {
-					document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
-					var bdcs = document.createElement('script');
-					bdcs.type = 'text/javascript';
-					bdcs.async = true;
-					bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=3677118700255927857'
-							+ '&plate_url='
-							+ encodeURIComponent(window.location.href)
-							+ '&t='
-							+ Math.ceil(new Date() / 3600000);
-					var s = document.getElementsByTagName('script')[0];
-					s.parentNode.insertBefore(bdcs, s);
-				})();
-			</script>
-			<div id="bdcs">
-				<div class="bdcs-container">
-					<meta http-equiv="x-ua-compatible" content="IE=9" />
-					<!-- 嵌入式 -->
-					<div class="bdcs-main bdcs-clearfix" id="default-searchbox">
-						<div class="bdcs-search bdcs-clearfix" id="bdcs-search-inline">
-
-							<form action="tosousuo" method="get" target="_blank"
-								class="bdcs-search-form" autocomplete="off"
-								id="bdcs-search-form">
-								<input name="s" value="3677118700255927857" type="hidden" /> <input
-									name="entry" value="1" type="hidden" /> <input name="q"
-									class="bdcs-search-form-input" id="bdcs-search-form-input"
-									placeholder="请输入书名或作者" autocomplete="off"
-									style="height: 36px; line-height: 36px;" type="text" /> <input
-									class="bdcs-search-form-submit " id="bdcs-search-form-submit"
-									value="搜索" type="submit" />
-							</form>
-						</div>
-						<div class="bdcs-search-sug" id="bdcs-search-sug"
-							style="top: 85px; width: 319px;">
-							<ul class="bdcs-search-sug-list" id="bdcs-search-sug-list"></ul>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<div class="userpanel">
 			<script>
 				banner();

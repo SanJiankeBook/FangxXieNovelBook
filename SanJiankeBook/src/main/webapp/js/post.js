@@ -4,8 +4,7 @@
     ); 
 }
 function addBookCase(bookid){
-	$.post("/post.php",
-        { action: "addbookcase", bookid: bookid },
+	$.post("adduserbook/"+bookid,
         function(data){
             var msg="加入书架出错！";
             if(data==-1)

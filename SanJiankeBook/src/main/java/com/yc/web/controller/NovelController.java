@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -154,6 +155,64 @@ public class NovelController {
 		return gson.toJson(ebp);
     	//这个功能并没有从数据库中拿数据
     }
+    //添加到用户书架
+    @RequestMapping(value = "/adduserbook/{nid}")
+    @ResponseBody
+	public String adduserbook(@PathVariable int nid, Model model,HttpServletRequest request) {
+    	logger.info(nid);
+    	//判断是否登入
+    	UserBook userbook=new UserBook();
+    	userbook.setNid(nid);
+    	
+    	User user=new User();
+    	user.setUid(1);
+    	request.getSession().setAttribute("uuser", user);
+    	
+    	User users=(User) request.getSession().getAttribute("uuser");
+    	if(users.getUid()!=null){
+    		userbook.setUid(user.getUid());
+    		List list=this.userbookbiz.finduserbook(userbook);
+    		if(list.size()<2){
+    			//查询是否有这本书
+    				List listUserbook=this.userbookbiz.getUserbook(userbook);
+    				//如果是空
+    				if(listUserbook.isEmpty()){
+    					//添加这本书
+    					this.userbookbiz.addUserBook(userbook);
+    					return "2";
+    				}else{
+    					return "1";
+    				}
+    		}else{
+    			return "0";
+    		}
+    	}else{
+    		return "-1";
+    	}
+    	
+    }
+    //从用户书架删除书本
+    @RequestMapping(value ="/delUserbook")
+    @ResponseBody
+    public String delUserbook(@RequestParam String nid, Model model,HttpServletRequest request) {
+    	logger.info("delUserbook......");
+    	//判断是否登入
+    	UserBook userbook=new UserBook();
+    	String[] listNid=nid.split(",");
+    	userbook.setList1(listNid);
+    	User user=new User();
+    	user.setUid(1);
+    	request.getSession().setAttribute("uuser", user);
+    	
+    	User users=(User) request.getSession().getAttribute("uuser");
+    	if(users.getUid()!=null){
+    		userbook.setUid(user.getUid());
+    		this.userbookbiz.delUserbook(userbook);
+    		return "1";
+    	}else{
+    		return "0";
+    	}
+    }
     //用户书架
     @RequestMapping(value="/userbooknovel",produces = {"application/text;charset=UTF-8"})
     @ResponseBody
@@ -169,15 +228,17 @@ public class NovelController {
     	start=(currentPage-1)*end;
     	
     	//List<Novel> lists=this.novelbiz.findNovelByName(novel);
-    	this.userbookbiz.finduserbook(ub);
+    	List list=this.userbookbiz.finduserbook(ub);
     	//List<Novel> list=this.novelbiz.FindNovelByPage(start, end);
-    	List<Novel> list=this.novelbiz.FindNovelByNameFenYe(nname,start, end);
+    	//List<Novel> list=this.novelbiz.FindNovelByNameFenYe(nname,start, end);
+    	
+    	List list1=this.userbookbiz.finduserbookInfo(ub,start,end);
     	EasyuiFindByPage ebp=new EasyuiFindByPage();
-    	ebp.setTotal(lists.size());
-    	ebp.setRows(list);
+    	ebp.setTotal(list.size());
+    	ebp.setRows(list1);
     	Gson gson=new Gson();
     	return gson.toJson(ebp);
-    	//这个功能并没有从数据库中拿数据
+    	
     }
     
     //前往作家注册页面
@@ -202,6 +263,7 @@ public class NovelController {
     @RequestMapping(value="/test")
     public String test(){
     	logger.info("test....");
+    	//return "userbook";
     	return "userbook";
     }
     
@@ -223,6 +285,7 @@ public class NovelController {
 			novel.setAid(StaticContain.USERID);
 			//novel.setAid(1);
 			novel.setNstatus("更新");
+			novel.setStandby_1("待审核");
 			this.novelbiz.InsertNovel(novel);
 			model.addAttribute("novel",novel);
 			return "writenovel";
@@ -232,20 +295,21 @@ public class NovelController {
     	
     }
     
+    //插入书籍章节
     @RequestMapping(value="/insertNovlChapter")
     @ResponseBody
     public String insertNovlChapter(@ModelAttribute NovelChapter novelchapter,@RequestParam String des,HttpServletRequest request,Model model) throws IOException{
     	logger.info("insertNovlChapter....");
-    	String caddress=ForFile.createFile(request, des,novelchapter.getCname());
+    	String caddress=ForFile.createFile(request, des,novelchapter.getCname(),novelchapter,this.novelchapterbiz);
     	novelchapter.setCaddress(caddress);
     	novelchapter.setStandby_1("待审");
     	String value="";
     	try {
 			this.novelchapterbiz.insertNovelChapter(novelchapter);
-			value= "章节上传成功，正在等待审核";
+			value= "上传成功";
 		} catch (Exception e) {
 			e.printStackTrace();
-			value= "章节上传失败，请与管理员联系";
+			value= "上传失败";
 		}
     	return value;
     }

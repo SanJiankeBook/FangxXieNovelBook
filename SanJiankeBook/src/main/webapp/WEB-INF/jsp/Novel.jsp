@@ -3,6 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path=request.getContextPath();  //douban
+								//http					localhost				8080               douban
+	String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <style id="znBdcsStyle" type="text/css">
@@ -446,6 +451,7 @@ div.cse-default-channel-container .default-channel-list li:hover {
 	href="http://bdimg.share.baidu.com/static/css/bdsstyle.css?cdnversion=20131219"
 	rel="stylesheet" type="text/css">
 </head>
+<base href="<%=basePath %>">
 <body>
 	<iframe style="display: none;" frameborder="0"></iframe>
 	<div id="bdshare_s" style="display: block;">
@@ -591,7 +597,7 @@ div.cse-default-channel-container .default-channel-list li:hover {
 					<p>作&nbsp;&nbsp;者：${author[0].author.aname}</p>
 					<p>
 						动&nbsp;&nbsp;作：<a rel="nofollow" href="javascript:;"
-							onclick="addBookCase(2476);">加入书架</a>、<a rel="nofollow"
+							onclick="addBookCase('${novel_id[0].nid }');">加入书架</a>、<a rel="nofollow"
 							href="#footer">直达底部</a>、<a target="_blank"
 							href="/down/txt2476.html" style="color: red;" title="儒道至圣TXT下载">TXT下载</a>
 					</p>

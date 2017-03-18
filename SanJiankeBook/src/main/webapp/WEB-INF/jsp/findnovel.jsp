@@ -23,22 +23,31 @@
 <title>小说搜索</title>
 </head>
 <body style="text-align: center; margin: 0 auto">
+<div style="margin-bottom: 30px">
 	<input id="searchNovel" type="text" style="width: 300px; height: 30px">
 	&nbsp;&nbsp;&nbsp;
-	<input type="button" onclick="searchNovel()" value="搜索"
+	<input type="button" onclick="searchNovel()" value="搜本站"
 		style="width: 100px; height: 30px" />
-	<br />
 	
-	<table id="type_showAuthor_info" data-options="fit:false" style="height:400px"></table> 
+	<input type="button" onclick="baidusearch()" value="搜全网"
+		style="width: 100px; height: 30px" id="baidu"/>
+	<br />
+	</div>
+	<table id="type_showAuthor_info" data-options="fit:false" style="height:400px;margin-top: 50px"></table> 
 	
 <script type="text/javascript"> 
 
 $(function(){
-	
-	alert("${novel}");
 	$("#searchNovel").val("${novel}");
 	searchNovel();
 })
+
+//百度搜索
+function baidusearch(id){
+				var url = "http://www.baidu.com/s?ie=utf-8&cus_sid=3677118700255927857&tn=SE_pscse_053x7tyx&wd=" + 
+encodeURIComponent($("#searchNovel").val());
+				window.open(url,"_blank");
+}
 function searchNovel() {
 	var datagridObj;
 	var editRow = undefined;	//当前正在被编辑的行的索引
@@ -86,7 +95,7 @@ function searchNovel() {
 					{field : 'pan_name',title : '作者',width : 30,align : 'center'},
 					{field : 'nname',title : '名字',width : 50,align : 'center',formatter: function(val,row,index){
 						 if(val){
-							 return "<a href='shownovelPT/"+row.nid +"' >"+val+"</a>";
+							 return "<a href='toindex_id/"+row.nid +"' >"+val+"</a>";
 						} 
 					}
 }, 

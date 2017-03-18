@@ -8,8 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="addNovel" parameterType="Novel" useGeneratedKeys="true"
 		keyProperty="nid">
 		insert into
-		novel(tid,aid,nname,npicture,ndescription,nstatus)
-		values(#{tid},#{aid},#{nname},#{npicture},#{ndescription},#{nstatus});
+		novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1)
+		values(#{tid},#{aid},#{nname},#{npicture},#{ndescription},#{nstatus},#{standby_1});
 	</insert>
 
 	<!-- 查找所有小说 -->

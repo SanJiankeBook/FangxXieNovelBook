@@ -15,8 +15,10 @@ import com.yc.biz.Authorbiz;
 import com.yc.biz.NovelChapterbiz;
 import com.yc.biz.NovelTypebiz;
 import com.yc.biz.Novelbiz;
+import com.yc.biz.UserBookbiz;
 import com.yc.utils.RedisUtil;
 import com.yc.bean.User;
+import com.yc.bean.UserBook;
 import com.yc.biz.Userbiz;
 
 
@@ -77,9 +79,13 @@ public class TestSpring extends TestCase {
 	
 	public void testCache6() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
-		Novelbiz sb =   (Novelbiz) ac.getBean("novelbizImpl");
-		List list=sb.TypeNovel("修仙");
-		System.out.println(list);
+		UserBookbiz ubb=(UserBookbiz) ac.getBean("userBookbizImpl");
+		UserBook ub=new UserBook();
+		
+		ub.setList1(new String []{"1","3"});
+		ub.setUid(1);
+		//System.out.println(ub);
+		ubb.delUserbook(ub);
 	}
 	
 	//排行榜测试

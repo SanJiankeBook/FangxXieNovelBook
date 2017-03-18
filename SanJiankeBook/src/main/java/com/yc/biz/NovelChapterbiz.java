@@ -14,4 +14,7 @@ public interface NovelChapterbiz {
 	
 	//根据小说ID查询小说所有章节
 	public List<NovelChapter> ShowAllChapter(int nid);
+	
+	//根据小说id获取章节id
+	public Double getNovleChapterId(NovelChapter novelchapter);
 }

@@ -1,6 +1,9 @@
 package com.yc.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 @Repository
@@ -11,6 +14,22 @@ public class UserBook implements Serializable {
 	private Integer nid ;//		--小说id
 	private Integer uid ;//		--用户id
 	private String ubdate ;//		--记录时间
+	private String pan_name ;//	--作者笔名
+	private String [] list1; //小说id集合
+	
+	
+	public String[] getList1() {
+		return list1;
+	}
+	public void setList1(String[] list1) {
+		this.list1 = list1;
+	}
+	public String getPan_name() {
+		return pan_name;
+	}
+	public void setPan_name(String pan_name) {
+		this.pan_name = pan_name;
+	}
 	public Integer getUbid() {
 		return ubid;
 	}
@@ -78,8 +97,8 @@ public class UserBook implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "UserBook [ubid=" + ubid + ", nid=" + nid + ", uid=" + uid + ", ubdate=" + ubdate + "]";
+		return "UserBook [ubid=" + ubid + ", nid=" + nid + ", uid=" + uid + ", ubdate=" + ubdate + ", pan_name="
+				+ pan_name + ", list1=" + Arrays.toString(list1) + "]";
 	}
-	
 	
 }
