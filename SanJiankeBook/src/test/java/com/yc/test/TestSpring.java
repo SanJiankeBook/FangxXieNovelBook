@@ -135,6 +135,27 @@ public class TestSpring extends TestCase {
 		System.out.println(list);
 	}
 	
+	public void testCache10() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		Userbiz sb =   (Userbiz) ac.getBean("userbizImpl");
+		List list=sb.findUserName("469058237");
+		System.out.println(list);
+	}
+	
+	
+	public void testCache11() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		Authorbiz sb =   (Authorbiz) ac.getBean("authorbizImpl");
+		List list=sb.inforByunumber(1);
+		System.out.println(list);
+	}
+	
+	public void testCache12() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		Authorbiz sb =   (Authorbiz) ac.getBean("authorbizImpl");
+		List<Novel> list=sb.inforByaid(1);
+		System.out.println(list);
+	}
 	
 	
 	public void TestApp(){

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2017-03-17 13:00:51  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@b7f2d0: startup date [Fri Mar 17 13:00:51 CST 2017]; root of context hierarchy
 2017-03-17 13:00:51  [ main:305 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
 2017-03-17 13:00:56  [ main:4817 ] - [ INFO ]  Loading properties file from URL [file:/E:/workGit/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
@@ -58,3 +59,18 @@
 2017-03-17 13:28:25  [ main:10792 ] - [ DEBUG ]  ==>  Preparing: delete from user_book where uid=? and nid in ( ? , ? ) 
 2017-03-17 13:28:25  [ main:10952 ] - [ DEBUG ]  ==> Parameters: 1(Integer), 1(String), 3(String)
 2017-03-17 13:28:25  [ main:10957 ] - [ DEBUG ]  <==    Updates: 0
+=======
+2017-03-18 19:25:36  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sat Mar 18 19:25:36 AWST 2017]; root of context hierarchy
+2017-03-18 19:25:36  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-18 19:25:37  [ main:625 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-18 19:25:37  [ main:782 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-18 19:25:37  [ main:1232 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-18 19:25:38  [ main:1587 ] - [ DEBUG ]  ==>  Preparing: select author.* from user inner join author on user.uid=author.uid where user.uid=? 
+2017-03-18 19:25:38  [ main:1625 ] - [ DEBUG ]  ==> Parameters: 1(Integer)
+2017-03-18 19:25:38  [ main:1644 ] - [ DEBUG ]  <==      Total: 1
+2017-03-18 19:58:55  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sat Mar 18 19:58:55 AWST 2017]; root of context hierarchy
+2017-03-18 19:58:55  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-18 19:58:55  [ main:586 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-18 19:58:55  [ main:755 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-18 19:58:56  [ main:1164 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+>>>>>>> branch 'master' of git@github.com:SanJiankeBook/FangxXieNovelBook.git

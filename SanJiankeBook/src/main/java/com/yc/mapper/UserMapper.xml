@@ -38,6 +38,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	
+	<!-- 通过用户名查询用户信息 -->
+	<select id="findUserByName" parameterType="User" resultType="User">
+		select * from user where u_number=#{u_number}
+	</select>
+	
 	<resultMap type="User" id="UserResultMap">
 		<id property="uid" column="uid" />
 		<result property="uname" column="uname"/>

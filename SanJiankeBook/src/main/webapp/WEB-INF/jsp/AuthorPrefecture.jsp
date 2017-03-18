@@ -1,7 +1,8 @@
 <!-- 女生频道 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -54,91 +55,25 @@
 		<div id="main">
 			<div id="hotcontent">
 				<div class="ll">
-
+					
 					<div class="item">
-						<div class="image">
-							<a href="/10_10210/"> <img
-								src="/BookFiles/BookImages/qifeinixi：yaoniewangyezouzheqiao.jpg"
-								alt="弃妃逆袭：妖孽王爷走着瞧" width="120" height="150" /></a>
-						</div>
-						<dl>
-							<dt>
-								<span> 夏雪叶 </span><a href="/10_10210/"> 弃妃逆袭：妖孽王爷走着瞧 </a>
-							</dt>
-							<dd>
-								感谢阅文书评团提供书评支持！&nbsp;&nbsp;&nbsp;&nbsp;一觉醒来，她成了相府的大小姐，然而这个嫡出的大小姐并不受宠，被姨娘和妹妹在外面把...
-							</dd>
-						</dl>
-						<div class="clear"></div>
+						<h1>尊敬的${author[0].aname },你好!</h1>
+						<h1>你的信息</h1>
+						<h2>你的笔名：${author[0].pan_name }</h2>
+						<h2>你的称号：${author[0].agrade }</h2>
+						<h2>你的身份证号：${author[0].acard }</h2>
+						<h2>你的联系方式：${author[0].atel }</h2>
 					</div>
-
+					
 					<div class="item">
-						<div class="image">
-							<a href="/5_5693/"> <img
-								src="/BookFiles/BookImages/ningwangfei：shunvcefanhua.jpg"
-								alt="宁王妃：庶女策繁华" width="120" height="150" /></a>
-						</div>
-						<dl>
-							<dt>
-								<span> 卿落落 </span><a href="/5_5693/"> 宁王妃：庶女策繁华 </a>
-							</dt>
-							<dd>
-								【2014NextIdea原创文学大赏参赛作品】&nbsp;&nbsp;&nbsp;&nbsp;七年荆棘之路，她被瑞王弃如敝屐，家破人亡，打入冷宫，含恨而终。&nbsp;&nbsp;&n...
-							</dd>
-						</dl>
-						<div class="clear"></div>
+						<h1>你写的小说</h1>
+						<c:forEach items="${nchapter}" var="nchapter">
+						<dd>
+							<a style="" href="${nchapter.caddress}">${nchapter.cname}</a>
+						</dd>
+					</c:forEach>	
 					</div>
-
-					<div class="item">
-						<div class="image">
-							<a href="/3_3420/"> <img
-								src="/BookFiles/BookImages/feicainixi：bingshanwangyeqingchengfei.jpg"
-								alt="废材逆袭：冰山王爷倾城妃" width="120" height="150" /></a>
-						</div>
-						<dl>
-							<dt>
-								<span> 珊瑚蔓 </span><a href="/3_3420/"> 废材逆袭：冰山王爷倾城妃 </a>
-							</dt>
-							<dd>
-								穿越成废物兼丑八怪？！人人欺凌鄙视？！&nbsp;&nbsp;&nbsp;&nbsp;没关系，咱是带上古神器来的！&nbsp;&nbsp;&nbsp;&nbsp;胎记一除，瞬间甩什么天...
-							</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-
-					<div class="item">
-						<div class="image">
-							<a href="/3_3080/"> <img
-								src="/BookFiles/BookImages/haomennuanhunmiai.jpg" alt="豪门暖婚蜜爱"
-								width="120" height="150" /></a>
-						</div>
-						<dl>
-							<dt>
-								<span> 百里夜星 </span><a href="/3_3080/"> 豪门暖婚蜜爱 </a>
-							</dt>
-							<dd>
-								豪门暖婚蜜爱的简介：十三年前，她大雪中救他，十三年后，他害她家破人亡，走投无路时，他逼她做他的女人，她转身走向另外一个男人：“先生，我今年...
-							</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
-
-					<div class="item">
-						<div class="image">
-							<a href="/1_1569/"> <img
-								src="/BookFiles/BookImages/yiwanlaogongtaiweixian.jpg"
-								alt="亿万老公太危险" width="120" height="150" /></a>
-						</div>
-						<dl>
-							<dt>
-								<span> 芊霓裳 </span><a href="/1_1569/"> 亿万老公太危险 </a>
-							</dt>
-							<dd>
-								亿万老公太危险的简介：男友和妹妹滚在一起，宁卿伤心买醉，酒吧里撞到了权倾一方的陆少铭。陆少说，“我缺个妻子。”好，两人登记结婚。婚后，宁卿作...
-							</dd>
-						</dl>
-						<div class="clear"></div>
-					</div>
+		
 
 				</div>
 			</div>

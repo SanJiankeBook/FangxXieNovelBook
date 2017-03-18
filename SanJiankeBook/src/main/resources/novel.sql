@@ -196,6 +196,7 @@ select * from  user_talk;
 
 
 --=======================================================================================
+drop tabe user_book;
 create table user_book(					
 	ubid int primary key auto_increment,	
 	nid int not null,						
@@ -203,11 +204,12 @@ create table user_book(
 	ubdate varchar(30),						
 	standby_1 varchar(100),
 	standby_2 varchar(100),
-	standby_3 varchar(100),']]'
+	standby_3 varchar(100),
 	foreign key (uid) references user(uid),
 	foreign key (nid) references novel(nid)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+alter table user_book modify column standby_2 int; --修改字段
 
 insert into user_book(nid,uid,ubdate,standby_1,standby_2,standby_3)
 values(1,1,'2016-5-8',1,1,1);
@@ -309,5 +311,17 @@ commit;
 		on n.tid=novelType.tid
 		where novelType.tname='修仙'	 
 		 
+		
+
+	select * from user where u_number=469058237;
+		
+		
+	select a.* 
+		from user u
+		inner join author a
+		on u.uid=a.uid
+		where u.uid=1	
+		
+	select * from novel where aid=1	
 		
 
