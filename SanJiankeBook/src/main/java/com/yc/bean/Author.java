@@ -13,7 +13,16 @@ public class Author implements Serializable{
 	private Integer aage ;//				--作者年龄
 	private String agrade ;//		--作者等级
 	private String acard ;//		--作者身份证号
-	private String atel ;//		--作者联系方式
+	private String atel ;//--作者联系方式
+	
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Integer getAid() {
 		return aid;
 	}

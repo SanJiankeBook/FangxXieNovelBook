@@ -25,4 +25,9 @@ public interface Userbiz {
 	
 	//删除用户
 	void DelUser(int id);
+	
+	//根据用户名查找用户信息
+	List<User> findUserName(String u_number);
+	
+
 }

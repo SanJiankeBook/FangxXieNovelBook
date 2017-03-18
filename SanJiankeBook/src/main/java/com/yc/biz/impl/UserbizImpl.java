@@ -83,4 +83,15 @@ private  BaseDao bd;
 		this.bd.delete(use, "delUser");
 	}
 
+	/*
+	 * 根据用户名查询用户信息
+	 */
+	@Override
+	public List<User> findUserName(String u_number) {
+		User user=new User();
+		user.setU_number(u_number);
+		List<User> list=this.bd.findAll(user, "findUserByName");
+		return list;
+	}
+
 }

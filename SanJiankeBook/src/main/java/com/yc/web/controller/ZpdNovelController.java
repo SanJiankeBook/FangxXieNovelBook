@@ -1,9 +1,13 @@
 package com.yc.web.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.bean.Alllist;
 import com.yc.bean.Author;
@@ -18,6 +23,7 @@ import com.yc.bean.Novel;
 import com.yc.bean.NovelChapter;
 import com.yc.bean.NovelType;
 import com.yc.bean.Rank;
+import com.yc.bean.User;
 import com.yc.biz.Authorbiz;
 import com.yc.biz.NovelChapterbiz;
 import com.yc.biz.NovelTypebiz;
@@ -78,7 +84,7 @@ public class ZpdNovelController {
 
 	@Resource(name = "authorbizImpl")
 	public void setAuthorbiz(Authorbiz authorbiz) {
-		this.authorbizImpl = authorbizImpl;
+		this.authorbiz = authorbiz;
 	}
 
 	@Resource(name = "userbizImpl")
@@ -260,15 +266,37 @@ public class ZpdNovelController {
 		return "Novel";
 	}
 
-	//作家专区
-	@RequestMapping("/authorPrefectrue")
-	public String authorPrefectrue() {
+	//登录验证
+	@RequestMapping("/logger")
+	@ResponseBody
+	public String logger(HttpServletRequest request,Model model) {
 		logger.info("AuthorPrefecture.......");
-		
-		
-		
-		
-		return "AuthorPrefecture";
+		        
+		HttpSession session = request.getSession();
+		//Map<String,Object> map = new HashMap<String,Object>(); 
+		String uname=request.getParameter("uname");
+		String upassword=request.getParameter("upassword");
+		List<User> list=userbiz.findUserName(uname);
+//		System.out.println(uname);
+//		System.out.println(upassword);
+		if(uname!="" || uname!=null && upassword!="" || upassword!=null){
+			if(!list.isEmpty()){
+				if(uname.equals(list.get(0).getU_number()) && upassword.equals(list.get(0).getUpassword())){
+					Integer uuid=list.get(0).getUid();
+					session.setAttribute("uuser", uname);
+					session.setAttribute("uuid", uuid);
+					session.setAttribute("uupassword", upassword);
+					return "1";	
+				}
+				return "-1";
+			}else{
+				return "-1";
+			}		
+			//return "index";
+		}else{
+			return "0";
+		}
+			
 	}
 
 	// 排行榜，按类型显示数据
@@ -306,4 +334,32 @@ public class ZpdNovelController {
 
 		return "rank";
 	}
+	
+	//作家专区
+	@RequestMapping(value = "/authorPrefectrue")
+	public String authorPrefectrue(HttpServletRequest request,HttpServletResponse response,Model model) throws IOException{
+		List<Author> list=new ArrayList<Author>();
+		//List<Novel>
+		HttpSession session = request.getSession();
+		Object uuser=session.getAttribute("uuser");
+		Object uuid=session.getAttribute("uuid");
+		
+		if(uuser!=null && uuid!=null){			
+			Integer uid=Integer.parseInt(String.valueOf(uuid));
+			list=authorbiz.inforByunumber(uid);
+			//System.out.println("进来了");
+			if(list.get(0).getUid()!=null){
+				model.addAttribute("author",list);
+				
+			}else{
+				response.sendRedirect("toauthor");
+			}
+		}else{
+			//System.out.println("没进来");	
+				response.sendRedirect("jsp/bookcase.jsp");
+		}
+		
+		return "AuthorPrefecture";		
+	}
+	
 }

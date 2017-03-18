@@ -1,82 +1,13 @@
-2017-03-14 19:47:39  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 19:47:39 AWST 2017]; root of context hierarchy
-2017-03-14 19:47:39  [ main:72 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 19:47:39  [ main:656 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 19:47:40  [ main:828 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 19:47:40  [ main:1228 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 19:48:41  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 19:48:41 AWST 2017]; root of context hierarchy
-2017-03-14 19:48:41  [ main:65 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 19:48:42  [ main:580 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 19:48:42  [ main:744 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 19:48:42  [ main:1153 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 19:49:15  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 19:49:15 AWST 2017]; root of context hierarchy
-2017-03-14 19:49:15  [ main:55 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 19:49:15  [ main:566 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 19:49:16  [ main:732 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 19:49:16  [ main:1129 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 19:49:16  [ main:1464 ] - [ DEBUG ]  ==>  Preparing: select n.* from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 19:49:16  [ main:1491 ] - [ DEBUG ]  ==> Parameters: null
-2017-03-14 19:49:16  [ main:1503 ] - [ DEBUG ]  <==      Total: 0
-2017-03-14 19:50:42  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 19:50:42 AWST 2017]; root of context hierarchy
-2017-03-14 19:50:42  [ main:55 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 19:50:42  [ main:561 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 19:50:43  [ main:725 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 19:50:43  [ main:1136 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 19:50:43  [ main:1470 ] - [ DEBUG ]  ==>  Preparing: select n.* from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 19:50:43  [ main:1497 ] - [ DEBUG ]  ==> Parameters: null
-2017-03-14 19:50:43  [ main:1512 ] - [ DEBUG ]  <==      Total: 0
-2017-03-14 19:51:03  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 19:51:03 AWST 2017]; root of context hierarchy
-2017-03-14 19:51:03  [ main:52 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 19:51:03  [ main:570 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 19:51:04  [ main:733 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 19:51:04  [ main:1135 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 19:51:04  [ main:1466 ] - [ DEBUG ]  ==>  Preparing: select n.* from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 19:51:04  [ main:1493 ] - [ DEBUG ]  ==> Parameters: null
-2017-03-14 19:51:04  [ main:1506 ] - [ DEBUG ]  <==      Total: 0
-2017-03-14 19:52:31  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 19:52:31 AWST 2017]; root of context hierarchy
-2017-03-14 19:52:31  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 19:52:32  [ main:564 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 19:52:32  [ main:731 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 19:52:32  [ main:1129 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 19:52:33  [ main:1458 ] - [ DEBUG ]  ==>  Preparing: select n.* from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 19:52:33  [ main:1484 ] - [ DEBUG ]  ==> Parameters: null
-2017-03-14 19:52:33  [ main:1496 ] - [ DEBUG ]  <==      Total: 0
-2017-03-14 19:55:31  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 19:55:31 AWST 2017]; root of context hierarchy
-2017-03-14 19:55:31  [ main:55 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 19:55:32  [ main:564 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 19:55:32  [ main:727 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 19:55:32  [ main:1126 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 19:55:33  [ main:1453 ] - [ DEBUG ]  ==>  Preparing: select n.* from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 19:55:33  [ main:1480 ] - [ DEBUG ]  ==> Parameters: 修仙(String)
-2017-03-14 19:55:33  [ main:1496 ] - [ DEBUG ]  <==      Total: 3
-2017-03-14 20:10:38  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 20:10:38 AWST 2017]; root of context hierarchy
-2017-03-14 20:10:38  [ main:57 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 20:10:39  [ main:581 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 20:10:39  [ main:742 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 20:10:39  [ main:1149 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 20:10:40  [ main:1484 ] - [ DEBUG ]  ==>  Preparing: select * from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 20:10:40  [ main:1511 ] - [ DEBUG ]  ==> Parameters: 修仙(String)
-2017-03-14 20:10:40  [ main:1531 ] - [ DEBUG ]  <==      Total: 3
-2017-03-14 20:31:19  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 20:31:19 AWST 2017]; root of context hierarchy
-2017-03-14 20:31:19  [ main:55 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 20:31:20  [ main:585 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 20:31:20  [ main:811 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 20:31:21  [ main:1258 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 20:31:21  [ main:1599 ] - [ DEBUG ]  ==>  Preparing: select * from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 20:31:21  [ main:1626 ] - [ DEBUG ]  ==> Parameters: 修仙(String)
-2017-03-14 20:31:21  [ main:1648 ] - [ DEBUG ]  <==      Total: 3
-2017-03-14 20:35:52  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 20:35:52 AWST 2017]; root of context hierarchy
-2017-03-14 20:35:52  [ main:55 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 20:35:53  [ main:599 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 20:35:53  [ main:772 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 20:35:54  [ main:1278 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 20:35:54  [ main:1629 ] - [ DEBUG ]  ==>  Preparing: select * from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 20:35:54  [ main:1657 ] - [ DEBUG ]  ==> Parameters: 修仙(String)
-2017-03-14 20:35:54  [ main:1677 ] - [ DEBUG ]  <==      Total: 3
-2017-03-14 21:20:32  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Tue Mar 14 21:20:32 AWST 2017]; root of context hierarchy
-2017-03-14 21:20:32  [ main:61 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
-2017-03-14 21:20:32  [ main:588 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
-2017-03-14 21:20:33  [ main:764 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
-2017-03-14 21:20:33  [ main:1264 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-03-14 21:20:33  [ main:1601 ] - [ DEBUG ]  ==>  Preparing: select * from novel n inner join novel_type novelType on n.tid=novelType.tid where novelType.tname=? 
-2017-03-14 21:20:33  [ main:1627 ] - [ DEBUG ]  ==> Parameters: 修仙(String)
-2017-03-14 21:20:34  [ main:1649 ] - [ DEBUG ]  <==      Total: 3
+2017-03-18 19:25:36  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sat Mar 18 19:25:36 AWST 2017]; root of context hierarchy
+2017-03-18 19:25:36  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-18 19:25:37  [ main:625 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-18 19:25:37  [ main:782 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-18 19:25:37  [ main:1232 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-18 19:25:38  [ main:1587 ] - [ DEBUG ]  ==>  Preparing: select author.* from user inner join author on user.uid=author.uid where user.uid=? 
+2017-03-18 19:25:38  [ main:1625 ] - [ DEBUG ]  ==> Parameters: 1(Integer)
+2017-03-18 19:25:38  [ main:1644 ] - [ DEBUG ]  <==      Total: 1
+2017-03-18 19:58:55  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sat Mar 18 19:58:55 AWST 2017]; root of context hierarchy
+2017-03-18 19:58:55  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-18 19:58:55  [ main:586 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-18 19:58:55  [ main:755 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-18 19:58:56  [ main:1164 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'

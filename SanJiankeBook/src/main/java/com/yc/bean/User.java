@@ -12,7 +12,7 @@ public class User implements Serializable {
 	private String u_number ;//	--用户账号
 	private String upassword;//,	--用户密码
 	private String usex ;//		--用户性别;
-	
+
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", u_number=" + u_number + ", upassword=" + upassword

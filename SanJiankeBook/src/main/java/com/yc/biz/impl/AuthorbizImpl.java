@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.yc.bean.Author;
 import com.yc.bean.Novel;
+import com.yc.bean.User;
 import com.yc.biz.Authorbiz;
 import com.yc.dao.BaseDao;
 import com.yc.biz.Authorbiz;
@@ -62,6 +63,26 @@ private  BaseDao bd;
 		map.put("start", start);
 		map.put("end", end);
 		List<Author> list=this.bd.findAll(new Author(), map, "findAuthorByPage");
+		return list;
+	}
+
+	//根据用户id查询作者信息
+	@Override
+	public List<Author> inforByunumber(int uid) {
+		User user=new User();
+		user.setUid(uid);
+		Author author=new Author();
+		author.setUser(user);
+		List<Author> list=this.bd.findAll(author, "findAuthorByuid");
+		return list;
+	}
+
+	//根据作者id查询他自己写的小说
+	@Override
+	public List<Novel> inforByaid(int aid) {
+		Novel novel=new Novel();
+		novel.setAid(aid);
+		List<Novel> list=this.bd.findAll(novel, "findNovelByaid");
 		return list;
 	}
 

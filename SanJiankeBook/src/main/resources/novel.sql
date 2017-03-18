@@ -268,3 +268,14 @@ commit;
 		where novelType.tname='修仙'	 
 		 
 		
+		select * from user where u_number=469058237;
+		
+		
+	select a.* 
+		from user u
+		inner join author a
+		on u.uid=a.uid
+		where u.uid=1	
+		
+	select * from novel where aid=1	
+		

@@ -10,26 +10,18 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="mobile-agent"
-	content="format=html5; url=http://m.bixia.org" />
-<meta http-equiv="mobile-agent"
-	content="format=xhtml; url=http://m.bixia.org" />
+	
+	
 <title>三剑客小说网</title>
 
 <script type="text/javascript" src="js/xiaoshuo.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript" async="" src="js/js.js"></script>
 <script type="text/javascript" src="js/wap.js"></script>
 <script type="text/javascript" src="js/logger.js"></script>
-
-
-
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <link rel="stylesheet" type="text/css" href="css/bdsstyle.css" />
 <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -79,8 +71,8 @@
 		</div>
 
 
-		<!-- <div class="ywtop">
-			<div class="ywtop_con">
+		<div class="ywtop">
+			<div class="ywtop_con" id="top">
 				<div class="ywtop_sethome">
 					<a
 						onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.bixia.org');"
@@ -90,20 +82,21 @@
 					<a
 						href="javascript:window.external.addFavorite('http://www.bixia.org','%E7%AC%94%E4%B8%8B%E6%96%87%E5%AD%A6')">三剑客文学</a>
 				</div>
-				<div class="nri">
+				
+				<div class="nri" id="loger">
 
-				  	<form name="mylogin" id="mylogin" method="post"
+				  	<!-- <form name="mylogin" id="mylogin" method="post"
 						action="userLogin"
-						>
+						> -->
 						<div class="cc">
-							<div class="txt">账号：</div>
+							<div class="txt" >账号：</div>
 							<div class="inp">
 								<input name="uname" id="uname" type="text" />
 
 							</div>
 						</div>
 						<div class="cc">
-							<div class="txt">密码：</div>
+							<div class="txt" >密码：</div>
 							<div class="inp">
 
 								<input name="upassword" id="upassword" type="password" />
@@ -111,22 +104,55 @@
 							</div>
 						</div>
 						<div class="frii">
-							<input class="int" value="登录" type="submit" />
+							<!--  <button id="log">登录</button>-->
+							<input type="button" id="log" onClick="logger()" value="登录" />
 						</div>
 						
 						<div class="ccc">
 							<div class="txtt"></div>
 							<div class="txtt">
 
-								<a href="register.jsp">用户注册</a>
+								<a href="<%=request.getContextPath()%>/jsp/register.jsp">用户注册</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="toauthor">作家注册</a>
 							</div>
 						</div>
-					</form>-->
+					<!-- </form> -->
+	<script type="text/javascript">
+		function  logger() {
+			$.ajax({
+						url : "logger",
+						type : "POST",
+						dataType : "JSON",//客户端返回过来的数据类型
+						data : {
+							'uname' : $("#uname").val(),
+							'upassword' : $("#upassword").val(),
+						},
+						success : function(data) {
+							if (data == 0) {
+								//response.sendRedirect("500.jsp");
+								alert("请登录");
+							} else if(data == 1){
+								//alert("进来了");
+									 $("#loger").hide() //隐藏
+									 //var element=document.getElementById("ywtop_con");
+									 /* var node=document.createTextNode */
+									 $("#top").append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi,<a href="/userdetail.php" target="_top">'+ 
+									<%=request.getSession().getAttribute("uuser")%>
+									+ '</a>&nbsp;&nbsp;<a href="/modules/article/bookcase.php" target="_top">我的书架</a>'+
+									 ' | <a href="/userdetail.php" target="_top">查看资料</a> | <a href="" target="_top">退出登录</a>&nbsp;');		
+									//element.appendChild(node);
+							}else{
+								alert("用户名或密码错误");
+							}
+						}
 
+					});
+		}
+	</script>				
+					
 	</div>
 	</div>
 	</div>
-	-->
 
 
 
