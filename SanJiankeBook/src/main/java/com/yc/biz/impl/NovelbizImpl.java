@@ -28,6 +28,7 @@ public class NovelbizImpl implements Novelbiz {
 		List<Novel> list = this.bd.findAll(new Novel(), "findAllNovel");
 		return list;
 	}
+	
 
 
 	@Override
@@ -74,12 +75,32 @@ public class NovelbizImpl implements Novelbiz {
 		return list;
 	}
 
-	// 插入书本信息
-	@Override
-	public Integer InsertNovel(Novel novel) {
-		this.bd.add(novel, "addNovel");
-		return null;
-	}
+
+	//插入书本信息
+		@Override
+		public Integer InsertNovel(Novel novel) {
+			this.bd.add(novel, "addNovel");
+			return null;
+		}
+
+		//根据小说名查询小说
+		@Override
+		public List<Novel> findNovelByName(Novel novel) {
+			return this.bd.findAll(novel, "findNovleByName");
+			
+		}
+
+		////根据小说名查询小说并且分页
+		@Override
+		public List<Novel> FindNovelByNameFenYe(String nname, int start, int end) {
+			Map<String,Object> map=new HashMap<String,Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("ssnname", nname);
+			List<Novel> list=this.bd.findAll(new Novel(), map, "findNovelByPageName");
+			return list;
+		}
+
 
 	//根据小说名查询所有小说信息
 	@Override
@@ -89,6 +110,7 @@ public class NovelbizImpl implements Novelbiz {
 		List<Novel> list=bd.findAll(novel, "nnamegetAll");
 		return list;
 	}
+
 
 
 

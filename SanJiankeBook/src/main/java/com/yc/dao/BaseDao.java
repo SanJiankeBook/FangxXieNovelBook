@@ -8,9 +8,8 @@ public interface BaseDao<T>  {
     
     public List<T> findAll ( T t,Map map,String sqlId);
     
-    public void add(T t,String sqlId);
     
-    public Integer add1(T t,String sqlId);
+    public void add(T t,String sqlId);
     
     public void add(T t,Map map,String sqlId);
     
@@ -29,9 +28,9 @@ public interface BaseDao<T>  {
     public void updateMany(T t,List list,String sqlId);
     
     //聚合函数
-    public double fingFunc(T t,String sqlId);  //select count(*) from ***
+    public Double fingFunc(T t,String sqlId);  //select count(*) from ***
     
-    public double fingFunc(T t,Map map,String sqlId);
+    public Double fingFunc(T t,Map map,String sqlId);
 
 	
   

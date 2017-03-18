@@ -26,6 +26,7 @@ function delCookie(name){
 }
 
 var bookUserName=getCookie("member_uname");
+<<<<<<< HEAD
 //alert(3+bookUserName);
 //function login(){
 //document.writeln("<div style=\"display:none\" >");
@@ -52,22 +53,22 @@ function search()
 {
 document.writeln("<script type=\"text/javascript\">(function(){document.write(unescape(\'%3Cdiv id=\"bdcs\"%3E%3C/div%3E\'));var bdcs = document.createElement(\'script\');bdcs.type = \'text/javascript\';bdcs.async = true;bdcs.src = \'http://znsv.baidu.com/customer_search/api/js?sid=3677118700255927857\' + \'&plate_url=\' + encodeURIComponent(window.location.href) + \'&t=\' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName(\'script\')[0];s.parentNode.insertBefore(bdcs, s);})();</script>");
 }
-function banner()
-{
-document.writeln("<!-- Baidu Button BEGIN -->");
-document.writeln("<div id=\"bdshare\" class=\"bdshare_t bds_tools_32 get-codes-bdshare\">");
-document.writeln("<a class=\"bds_tsina\"><\/a>");
-document.writeln("<a class=\"bds_renren\"><\/a>");
-document.writeln("<span class=\"bds_more\"><\/span>");
-document.writeln("<a class=\"shareCount\"><\/a>");
-document.writeln("<\/div>");
-document.writeln("<script type=\"text\/javascript\" id=\"bdshare_js\" data=\"type=tools&amp;uid=0\" ><\/script>");
-document.writeln("<script type=\"text\/javascript\" id=\"bdshell_js\"><\/script>");
-document.writeln("<script type=\"text\/javascript\">");
-document.writeln("document.getElementById(\"bdshell_js\").src = \"http:\/\/bdimg.share.baidu.com\/static\/js\/shell_v2.js?cdnversion=\" + Math.ceil(new Date()\/3600000)");
-document.writeln("<\/script>");
-document.writeln("<!-- Baidu Button END -->")
-}
+//function banner()
+//{
+//document.writeln("<!-- Baidu Button BEGIN -->");
+//document.writeln("<div id=\"bdshare\" class=\"bdshare_t bds_tools_32 get-codes-bdshare\">");
+//document.writeln("<a class=\"bds_tsina\"><\/a>");
+//document.writeln("<a class=\"bds_renren\"><\/a>");
+//document.writeln("<span class=\"bds_more\"><\/span>");
+//document.writeln("<a class=\"shareCount\"><\/a>");
+//document.writeln("<\/div>");
+//document.writeln("<script type=\"text\/javascript\" id=\"bdshare_js\" data=\"type=tools&amp;uid=0\" ><\/script>");
+//document.writeln("<script type=\"text\/javascript\" id=\"bdshell_js\"><\/script>");
+//document.writeln("<script type=\"text\/javascript\">");
+//document.writeln("document.getElementById(\"bdshell_js\").src = \"http:\/\/bdimg.share.baidu.com\/static\/js\/shell_v2.js?cdnversion=\" + Math.ceil(new Date()\/3600000)");
+//document.writeln("<\/script>");
+//document.writeln("<!-- Baidu Button END -->")
+//}
 function list1(){
 }
 function read1(){

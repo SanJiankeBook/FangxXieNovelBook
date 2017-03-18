@@ -36,11 +36,6 @@ public class BaseDaoMybatisImpl<T> extends SqlSessionDaoSupport implements BaseD
 		
 	}
 	
-	@Override
-	public Integer add1(T t, String sqlId) {
-		
-		return super.getSqlSession().insert(getMapperId(t, sqlId), t);
-	}
 
 	@Override
 	public void add(T t, Map map, String sqlId) {
@@ -103,13 +98,13 @@ public class BaseDaoMybatisImpl<T> extends SqlSessionDaoSupport implements BaseD
 	}
 
 	@Override
-	public double fingFunc(T t, String sqlId) {
-		return super.getSqlSession().selectOne(this.getMapperId(t, sqlId));
+	public Double fingFunc(T t, String sqlId) {
+		return super.getSqlSession().selectOne(getMapperId(t, sqlId));
 	}
 
 	@Override
-	public double fingFunc(T t, Map map, String sqlId) {
-		return super.getSqlSession().selectOne(this.getMapperId(t, sqlId),map);
+	public Double fingFunc(T t, Map map, String sqlId) {
+		return super.getSqlSession().selectOne(getMapperId(t, sqlId),map);
 	}
 
 	

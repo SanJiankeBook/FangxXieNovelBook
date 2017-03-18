@@ -25,8 +25,8 @@ private  BaseDao bd;
 	//注册成为用户
 	@Override
 	public Integer InsertUser(Object obj) {
-		Integer uid=this.bd.add1(obj, "addUser");
-		return uid;
+		this.bd.add(obj, "addUser");
+		return null;
 	}
 	@Override
 	public void save(User use) {

@@ -20,12 +20,18 @@ public interface Novelbiz {
 
 	// 查找所有小说
 	List<Novel> FindAllNovel();
-
-	// 删除小说
+		
+		//删除小说
 	void delNovel(int nid);
-
-	// 分页查询
-	List<Novel> FindNovelByPage(Integer start, Integer end);
+	
+	//分页查询
+	List<Novel> FindNovelByPage(Integer start,Integer end);
+		
+		
+		//根据小说名查询小说
+		public List<Novel> findNovelByName(Novel novel);
+		//根据小说名查询小说并且分页
+		List<Novel> FindNovelByNameFenYe(String nname, int start, int end);
 	
 	//根据小说名查询所有小说信息
 	List<Novel> NameFindNovel(String nname);

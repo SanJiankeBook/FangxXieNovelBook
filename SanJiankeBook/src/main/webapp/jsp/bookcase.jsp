@@ -8,9 +8,9 @@
 	用户登录
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="css/style.css" />
 <!--  <script type="text/javascript" src="../js/xiaoshuo.js"></script> -->
-<script type="text/javascript" src="../js/xiaoshuo.js"></script>
+<script type="text/javascript" src="js/xiaoshuo.js"></script>
       <script type="text/javascript">
        function checkfrmLogin()
         {

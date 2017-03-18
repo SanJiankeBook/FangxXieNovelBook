@@ -6,12 +6,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.yc.mapper.NovelChapterMapper">
 	
 	<insert id="insertNovel" parameterType="NovelChapter" >
-		insert into novel_chapter(nid,cname,caddress,standby_1)
-		values(#{nid},#{cname},#{caddress},#{standby_1});
+		insert into novel_chapter(nid,cname,caddress,standby_1,standby_2)
+		values(#{nid},#{cname},#{caddress},#{standby_1},#{standby_2});
 	</insert>
 	
 	<select id="allChapter" resultType="NovelChapter" parameterType="Novel">
 		select * from novel_chapter where nid=#{nid}
 	</select>
+	
+	<!-- 得到章节编号 -->
+	<select id="getNovelChapterId" resultType="java.lang.Double" parameterType="NovelChapter">
+		select max(standby_2) from novel_chapter where nid=#{nid};
+	</select>
+	
+	
 	
 </mapper>
