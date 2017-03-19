@@ -300,6 +300,7 @@ public class ZpdNovelController {
 				user.setStatus("-2");
 				return gson.toJson(user);
 			}
+		}
 			//Map<String,Object> map = new HashMap<String,Object>(); 
 			String uname=request.getParameter("uname");
 			String upassword=request.getParameter("upassword");
@@ -328,10 +329,10 @@ public class ZpdNovelController {
 				user.setStatus("-1");
 				return  gson.toJson(user);
 			}
-		}else{
-			user.setStatus("-2");
-			return gson.toJson(user);
-		}
+//		}else{
+//			user.setStatus("-2");
+//			return gson.toJson(user);
+//		}
 			
 	}
 	

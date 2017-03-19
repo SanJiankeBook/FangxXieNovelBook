@@ -279,7 +279,7 @@ public class NovelController {
     public String test(){
     	logger.info("test....");
     	//return "userbook";
-    	return "userbook";
+    	return "findnovel1";
     }
     
     
