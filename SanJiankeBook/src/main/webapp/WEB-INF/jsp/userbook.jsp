@@ -23,7 +23,6 @@
 </head>
 <body style="text-align:center; margin:auto auto">
 <h1 style="font-size: 20px">用户书架</h1>
-<input id="searchNovel" type="text" style="display: none" >
 <table id="type_shownovel_info" data-options="fit:false" style="height: 500px"></table> 
 	
 
@@ -33,11 +32,11 @@
 		
 		//alert("${novel}");
 		//$("#searchNovel").val("${novel}");
-		$("#searchNovel").val("1");
+		//$("#searchNovel").val("1");
 		searchNovel();
-	})
+	});
 function searchNovel() {
-	var easyui=$("#searchNovel").val();
+	
 	var datagridObj;
 	var editRow = undefined;	//当前正在被编辑的行的索引
 	var op;
@@ -45,7 +44,7 @@ function searchNovel() {
 	datagridObj=$('#type_shownovel_info').datagrid({
 		url:'userbooknovel',   
 		fitColumns:true,
-		queryParams: {uid:easyui},
+		//queryParams: {uid:easyui},
 		loadMsg:'数据加载中...',
 		striped:true,		//斑马线效果
 		pagination : true, //显示分页栏

@@ -12,13 +12,24 @@ public class User implements Serializable {
 	private String u_number ;//	--用户账号
 	private String upassword;//,	--用户密码
 	private String usex ;//		--用户性别;
+	private String status;// 数据判断
 
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", u_number=" + u_number + ", upassword=" + upassword
-				+ ", usex=" + usex + "]";
+				+ ", usex=" + usex + ", status=" + status + "]";
 	}
 	
+	
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 
 	public Integer getUid() {
 		return uid;
@@ -54,6 +65,7 @@ public class User implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((u_number == null) ? 0 : u_number.hashCode());
 		result = prime * result + ((uid == null) ? 0 : uid.hashCode());
 		result = prime * result + ((uname == null) ? 0 : uname.hashCode());
@@ -70,6 +82,11 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		if (u_number == null) {
 			if (other.u_number != null)
 				return false;

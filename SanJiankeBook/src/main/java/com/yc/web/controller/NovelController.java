@@ -115,12 +115,24 @@ public class NovelController {
 	public void setNovelChapterbizImpl(NovelChapterbizImpl novelChapterbizImpl) {
 		this.novelChapterbizImpl = novelChapterbizImpl;
 	}
+	
+	//前往我的书架业务
+	@RequestMapping(value="/mybook")
+	public String mybook(HttpServletRequest request){
+		logger.info("mybook....");
+		if(request.getSession().getAttribute("users")!=null){
+			return "userbook";
+		}else{
+			return "userlogin";
+		}
+	}
 
-
-
-
-
-    
+	//页面登陆界面
+	@RequestMapping(value="/userlogininfo")
+	public String userlogininfo(){
+		logger.info("页面登陆界面...");
+		return "userlogin";
+	}
     //搜索页面
     @RequestMapping(value="/tosousuo")
     public String sousuo(Model model,Novel novel){
@@ -161,31 +173,30 @@ public class NovelController {
 	public String adduserbook(@PathVariable int nid, Model model,HttpServletRequest request) {
     	logger.info(nid);
     	//判断是否登入
-    	UserBook userbook=new UserBook();
-    	userbook.setNid(nid);
-    	
-    	User user=new User();
-    	user.setUid(1);
-    	request.getSession().setAttribute("uuser", user);
-    	
-    	User users=(User) request.getSession().getAttribute("uuser");
-    	if(users.getUid()!=null){
-    		userbook.setUid(user.getUid());
-    		List list=this.userbookbiz.finduserbook(userbook);
-    		if(list.size()<2){
-    			//查询是否有这本书
-    				List listUserbook=this.userbookbiz.getUserbook(userbook);
-    				//如果是空
-    				if(listUserbook.isEmpty()){
-    					//添加这本书
-    					this.userbookbiz.addUserBook(userbook);
-    					return "2";
-    				}else{
-    					return "1";
-    				}
-    		}else{
-    			return "0";
-    		}
+    	if(request.getSession().getAttribute("users")!=null){
+	    	UserBook userbook=new UserBook();
+	    	userbook.setNid(nid);
+	    	User users=(User) request.getSession().getAttribute("users");
+	    	if(users.getUid()!=null){
+	    		userbook.setUid(users.getUid());
+	    		List list=this.userbookbiz.finduserbook(userbook);
+	    		if(list.size()<2){
+	    			//查询是否有这本书
+	    				List listUserbook=this.userbookbiz.getUserbook(userbook);
+	    				//如果是空
+	    				if(listUserbook.isEmpty()){
+	    					//添加这本书
+	    					this.userbookbiz.addUserBook(userbook);
+	    					return "2";
+	    				}else{
+	    					return "1";
+	    				}
+	    		}else{
+	    			return "0";
+	    		}
+	    	}else{
+	    		return "-1";
+	    	}
     	}else{
     		return "-1";
     	}
@@ -197,18 +208,18 @@ public class NovelController {
     public String delUserbook(@RequestParam String nid, Model model,HttpServletRequest request) {
     	logger.info("delUserbook......");
     	//判断是否登入
-    	UserBook userbook=new UserBook();
-    	String[] listNid=nid.split(",");
-    	userbook.setList1(listNid);
-    	User user=new User();
-    	user.setUid(1);
-    	request.getSession().setAttribute("uuser", user);
-    	
-    	User users=(User) request.getSession().getAttribute("uuser");
-    	if(users.getUid()!=null){
-    		userbook.setUid(user.getUid());
-    		this.userbookbiz.delUserbook(userbook);
-    		return "1";
+    	if(request.getSession().getAttribute("users")!=null){
+    	User users=(User) request.getSession().getAttribute("users");
+	    	UserBook userbook=new UserBook();
+	    	String[] listNid=nid.split(",");
+	    	userbook.setList1(listNid);
+	    	if(users.getUid()!=null){
+	    		userbook.setUid(users.getUid());
+	    		this.userbookbiz.delUserbook(userbook);
+	    		return "1";
+	    	}else{
+	    		return "0";
+	    	}
     	}else{
     		return "0";
     	}
@@ -216,28 +227,32 @@ public class NovelController {
     //用户书架
     @RequestMapping(value="/userbooknovel",produces = {"application/text;charset=UTF-8"})
     @ResponseBody
-    public String userbooknovel(@RequestParam String uid,HttpServletRequest request){
+    public String userbooknovel(HttpServletRequest request){
     	logger.info("userbooknovel.....");
     	UserBook ub=new UserBook();
-    	ub.setUid(Integer.parseInt(uid));
-    	String page=request.getParameter("page");    
-    	String rows=request.getParameter("rows");
-    	int currentPage=Integer.parseInt(page);     //当前的页数
-    	int end=Integer.parseInt(rows);           //每页的条数
-    	int start=0;
-    	start=(currentPage-1)*end;
-    	
-    	//List<Novel> lists=this.novelbiz.findNovelByName(novel);
-    	List list=this.userbookbiz.finduserbook(ub);
-    	//List<Novel> list=this.novelbiz.FindNovelByPage(start, end);
-    	//List<Novel> list=this.novelbiz.FindNovelByNameFenYe(nname,start, end);
-    	
-    	List list1=this.userbookbiz.finduserbookInfo(ub,start,end);
-    	EasyuiFindByPage ebp=new EasyuiFindByPage();
-    	ebp.setTotal(list.size());
-    	ebp.setRows(list1);
-    	Gson gson=new Gson();
-    	return gson.toJson(ebp);
+    	if(request.getSession().getAttribute("users")!=null){
+    		User users=(User) request.getSession().getAttribute("users");
+    		ub.setUid(users.getUid());
+	    	String page=request.getParameter("page");    
+	    	String rows=request.getParameter("rows");
+	    	int currentPage=Integer.parseInt(page);     //当前的页数
+	    	int end=Integer.parseInt(rows);           //每页的条数
+	    	int start=0;
+	    	start=(currentPage-1)*end;
+	    	
+	    	//List<Novel> lists=this.novelbiz.findNovelByName(novel);
+	    	List list=this.userbookbiz.finduserbook(ub);
+	    	//List<Novel> list=this.novelbiz.FindNovelByPage(start, end);
+	    	//List<Novel> list=this.novelbiz.FindNovelByNameFenYe(nname,start, end);
+	    	List list1=this.userbookbiz.finduserbookInfo(ub,start,end);
+	    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+	    	ebp.setTotal(list.size());
+	    	ebp.setRows(list1);
+	    	Gson gson=new Gson();
+	    	return gson.toJson(ebp);
+    	}else{
+    		return "-1";
+    	}
     	
     }
     

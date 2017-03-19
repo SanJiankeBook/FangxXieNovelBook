@@ -10,6 +10,8 @@ function addBookCase(bookid){
             if(data==-1)
             {
                msg="您还没有登录，请登录后加入该书到书架中！";
+               alert(msg);
+               window.location="userlogininfo";
             }
             else if(data==0)
             {

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.yc.bean.Alllist;
 import com.yc.bean.Author;
 import com.yc.bean.Novel;
@@ -124,7 +125,7 @@ public class ZpdNovelController {
 
 	// 主页面显示数据
 	@RequestMapping(value = "/toindex_zpd")
-	public String Index(Model model) {
+	public String Index(Model model,HttpServletRequest request) {
 		logger.info("toIndex.....");
 		List<NovelType> list = novelTypebizImpl.showType(noveltype); // 小说类型
 		List<Novel> novel = novelbizImpl.ShowNovel(); // 小说信息
@@ -234,9 +235,10 @@ public class ZpdNovelController {
 				}
 			}
 		}
+		
 		return "index";
 	}
-
+	
 	// 显示小说的页面
 	@RequestMapping(value = "/toindex_id/{nid}")
 	public String Index_id(@PathVariable int nid, Model model) {
@@ -266,39 +268,82 @@ public class ZpdNovelController {
 		return "Novel";
 	}
 
+	//检查是否登陆
+	@RequestMapping(value="/checkloging",produces = {"application/text;charset=UTF-8"})
+	@ResponseBody
+	public String checkloging(HttpServletRequest request){
+		Gson gson=new Gson();
+		if(request.getSession().getAttribute("users")!=null){
+			User user=(User) request.getSession().getAttribute("users");
+			user.setStatus("1");
+			return gson.toJson(user);
+		}else{
+			User user=new User();
+			user.setStatus("-1");
+			return gson.toJson(user);
+		}
+	}
+		
 	//登录验证
-	@RequestMapping("/logger")
+	@RequestMapping(value="/logger",produces = {"application/text;charset=UTF-8"})
 	@ResponseBody
 	public String logger(HttpServletRequest request,Model model) {
 		logger.info("AuthorPrefecture.......");
-		        
+		User user=new User();
+		Gson gson=new Gson();
 		HttpSession session = request.getSession();
-		//Map<String,Object> map = new HashMap<String,Object>(); 
-		String uname=request.getParameter("uname");
-		String upassword=request.getParameter("upassword");
-		List<User> list=userbiz.findUserName(uname);
-//		System.out.println(uname);
-//		System.out.println(upassword);
-		if(uname!="" || uname!=null && upassword!="" || upassword!=null){
-			if(!list.isEmpty()){
-				if(uname.equals(list.get(0).getU_number()) && upassword.equals(list.get(0).getUpassword())){
-					Integer uuid=list.get(0).getUid();
-					session.setAttribute("uuser", uname);
-					session.setAttribute("uuid", uuid);
-					session.setAttribute("uupassword", upassword);
-					return "1";	
-				}
-				return "-1";
+		String validateCode=request.getParameter("validateCode");
+		if(validateCode!=null &&validateCode!=""){
+			String randCode=(String) session.getAttribute("rand");
+			if(!validateCode.equals(randCode)){
+				session.setAttribute("errmsg", "验证码错误");
+				user.setStatus("-2");
+				return gson.toJson(user);
+			}
+			//Map<String,Object> map = new HashMap<String,Object>(); 
+			String uname=request.getParameter("uname");
+			String upassword=request.getParameter("upassword");
+			List<User> list=userbiz.findUserName(uname);
+			
+			if(uname!="" || uname!=null && upassword!="" || upassword!=null){
+				if(!list.isEmpty()){
+					if(uname.equals(list.get(0).getU_number()) && upassword.equals(list.get(0).getUpassword())){
+						Integer uuid=list.get(0).getUid();
+						
+						user.setUname(list.get(0).getUname());
+						user.setUid(list.get(0).getUid());
+						user.setUpassword(upassword);
+						user.setStatus("1");
+						session.setAttribute("users",user);
+						return gson.toJson(user);	
+					}
+					user.setStatus("-1");
+					return gson.toJson(user);
+				}else{
+					user.setStatus("-1");
+					return  gson.toJson(user);
+				}		
+				//return "index";
 			}else{
-				return "-1";
-			}		
-			//return "index";
+				user.setStatus("-1");
+				return  gson.toJson(user);
+			}
 		}else{
-			return "0";
+			user.setStatus("-2");
+			return gson.toJson(user);
 		}
 			
 	}
-
+	
+	//注销登陆
+	@RequestMapping(value="/uploging")
+	@ResponseBody
+	public String uploging(HttpServletRequest request){
+		logger.info("注销登陆.....");
+			request.getSession().setAttribute("users", null);
+			request.getSession().removeAttribute("users");
+			return "1";
+	}
 	// 排行榜，按类型显示数据
 	@RequestMapping(value = "/toindex_type")
 	public String Index_type(Model model) {

@@ -1,6 +1,8 @@
 <!-- 书架 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,9 +10,10 @@
 	用户登录
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
 <!--  <script type="text/javascript" src="../js/xiaoshuo.js"></script> -->
-<script type="text/javascript" src="../js/xiaoshuo.js"></script>
+<script type="text/javascript" src="js/xiaoshuo.js"></script>
       <script type="text/javascript">
        function checkfrmLogin()
         {
@@ -41,7 +44,7 @@
 <div class="clear"></div>
 <div class="nav">
 			<ul>
-				<li><a href="../index.jsp">首页</a></li>
+				<li><a href="toindex_zpd">首页</a></li>
 				<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
 				<li><a href="1-1.jsp">玄幻奇幻</a></li>
 				<li><a href="2-1.jsp">武侠仙侠</a></li>
@@ -56,34 +59,63 @@
 			</ul>
 		</div>
        <br />
-<form name="frmLogin" id="frmLogin" action="/Login.php" method="post">
+<form name="frmLogin" id="frmLogin" action="logger" method="post">
 <table class="grid" width="580" align="center">
+<c:if test="${errmsg!='' }">
+		<font style="color:red" ><c:out value="${errmsg }"></c:out></font>
+	</c:if>
 <caption>用户登录</caption>
 <tr>
   <td class="odd" width="25%">用户名</td>
-  <td class="even"><input type="text" class="text" name="username" id="frmLogin_username" size="25" maxlength="30" value="" style="width:160px"/></td>
+  <td class="even"><input type="text" class="text" name="uname" id="uname" size="25" maxlength="30" value="" style="width:160px"/></td>
 </tr>
 <tr>
   <td class="odd" width="25%">密码</td>
-  <td class="even"><input type="password" class="text" name="password" id="frmLogin_password" size="25" maxlength="20" style="width:160px"/></td>
+  <td class="even"><input type="password" class="text" name="upassword" id="upassword" size="25" maxlength="20" style="width:160px"/></td>
 </tr>
 <tr>
-  <td class="odd" width="25%">有效期：</td>
-  <td class="even"><select name="usecookie" class="select">
-              <option value="0">浏览器进程</option>
-              <option value="1440">保存一天</option>
-			  <option value="43200">保存一月</option>
-			  <option value="525600">保存一年</option>
-            </select>
-</td>
+	<td class="odd" width="25%">验证码</td>
+	<td><input type="text" id="validateCode" name="validateCode"/>
+			<img id="randImg" border=0 src="imageCode.jsp">
+			<a href="javascript:loadImage();" style="margin-top: 20px">换一张</a>
+	</td>
 </tr>
 <tr>
   <td class="odd" width="25%">&nbsp;<input type="hidden" name="action" id="action" value="login" /></td>
-  <td class="even"><input type="submit" class="button" name="submit" onclick="return checkfrmLogin()"  id="submit" value="提 交" /></td>
+  <td class="even"><input type="button" class="button" name="submit" onclick="logger()"  id="submit" value="登陆" /></td>
 </tr>
 </table>
 </form>
-
+<script type="text/javascript">
+//刷新验证码
+function loadImage(){
+	var img=document.getElementById("randImg");
+	img.src="imageCode.jsp?rb="+Math.random();
+	//加了个随机数后，不会再从缓存拿数据了
+}
+function logger() {
+						$.ajax({
+										url : "logger",
+										type : "POST",
+										dataType : "JSON",//客户端返回过来的数据类型
+										data : {
+											'uname' : $("#uname").val(),
+											'upassword' : $("#upassword").val(),
+											'validateCode' : $("#validateCode").val()
+										},
+										success : function(data) {
+											if (data.status == -2) {
+												//response.sendRedirect("500.jsp");
+												alert("验证码错误");
+											} else if (data.status == 1) {
+												window.location="http://localhost:8080/SanJianKeBook/";
+											} else {
+												alert("用户名或密码错误");
+											}
+										}
+									});
+						}
+</script>
         
 <div class="footer">
     <div class="footer_link">

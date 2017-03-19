@@ -117,45 +117,12 @@
 						</div>
 					</div>
 					<!-- </form> -->
-					<script type="text/javascript">
-						function logger() {
-							$
-									.ajax({
-										url : "logger",
-										type : "POST",
-										dataType : "JSON",//客户端返回过来的数据类型
-										data : {
-											'uname' : $("#uname").val(),
-											'upassword' : $("#upassword").val(),
-										},
-										success : function(data) {
-											if (data == 0) {
-												//response.sendRedirect("500.jsp");
-												alert("请登录");
-											} else if (data == 1) {
-												//alert("进来了");
-												$("#loger").hide() //隐藏
-												//var element=document.getElementById("ywtop_con");
-												/* var node=document.createTextNode */
-												$("#top")
-														.append(
-																'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi,<a href="/userdetail.php" target="_top">'
-																		+
-					<%=request.getSession().getAttribute("uuser")%>
-						+ '</a>&nbsp;&nbsp;<a href="/modules/article/bookcase.php" target="_top">我的书架</a>'
-																		+ ' | <a href="/userdetail.php" target="_top">查看资料</a> | <a href="" target="_top">退出登录</a>&nbsp;');
-												//element.appendChild(node);
-											} else {
-												alert("用户名或密码错误");
-											}
-										}
-
-									});
-						}
-					</script>
 
 
 
+				</div>
+				<div id="nimabi" style="display: none">
+					
 				</div>
 			</div>
 		</div>
@@ -240,7 +207,7 @@
 			<div class="nav">
 				<ul>
 					<li><a href="index.jsp">首页</a></li>
-					<li><a rel="nofollow" href="jsp/bookcase.jsp">我的书架</a></li>
+					<li><a  href="mybook">我的书架</a></li>
 					<li><a href="jsp/1-1.jsp">玄幻奇幻</a></li>
 					<li><a href="jsp/2-1.jsp">武侠仙侠</a></li>
 					<li><a href="jsp/3-1.jsp">都市言情</a></li>
@@ -534,4 +501,48 @@
 			</div>
 		</div>
 </body>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url : "checkloging",
+			type : "POST",
+			dataType : "JSON",//客户端返回过来的数据类型
+			data : {},
+			success : function(data) {
+				if(data.status=="1"){
+					$("#loger").hide(); //隐藏
+					$("#nimabi").show();
+					$("#nimabi").html('<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi,&nbsp;'+data.uname +'</a> | <a href="/userdetail.php" target="_top">查看资料</a> | <a href="#" onClick="uploging()">退出登录</a>&nbsp;');
+				}
+			}
+
+		});
+		
+	})
+						function logger() {
+							$.ajax({
+										url : "logger",
+										type : "POST",
+										dataType : "JSON",//客户端返回过来的数据类型
+										data : {
+											'uname' : $("#uname").val(),
+											'upassword' : $("#upassword").val(),
+										},
+										success : function(data) {
+											if (data.status == -2) {
+												//response.sendRedirect("500.jsp");
+												alert("请登录");
+											} else if (data.status == 1) {
+												$("#nimabi").show();
+												$("#loger").hide() //隐藏
+												$("#nimabi").html('<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi,&nbsp;'+data.uname +'</a> | <a href="/userdetail.php" target="_top">查看资料</a> | <a href="#" onClick="uploging()">退出登录</a>&nbsp;');
+											} else {
+												alert("用户名或密码错误");
+											}
+										}
+
+									});
+						}
+					</script>
+			
 </html>

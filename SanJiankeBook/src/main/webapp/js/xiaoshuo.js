@@ -4,7 +4,12 @@
     exdate.setDate(exdate.getDate()+365);
     document.cookie=c_name+ "=" +escape(value)+";expires="+exdate.toGMTString()+";path=/";
 }
-
+function uploging(){
+	$.post("uploging",{},function(data){
+		$("#loger").show(); //隐藏
+		$("#nimabi").hide();
+	});
+}
 function getCookie(c_name){
     if (document.cookie.length>0){
         c_start=document.cookie.indexOf(c_name + "=");
@@ -26,7 +31,7 @@ function delCookie(name){
 }
 
 var bookUserName=getCookie("member_uname");
-<<<<<<< HEAD
+
 //alert(3+bookUserName);
 //function login(){
 //document.writeln("<div style=\"display:none\" >");
