@@ -17,10 +17,8 @@ import com.yc.dao.BaseDao;
 
 @Service
 public class AuthorbizImpl implements Authorbiz {
-private  BaseDao bd;
+	private  BaseDao bd;
 
-
-	
 	@Resource(name="baseDaoMybatisImpl")
 	public void setBd(BaseDao bd) {
 		this.bd = bd;
@@ -84,6 +82,18 @@ private  BaseDao bd;
 		novel.setAid(aid);
 		List<Novel> list=this.bd.findAll(novel, "findNovelByaid");
 		return list;
+	}
+
+
+	@Override
+	public void updataAuthor(String pan_name, int aage, String acard, String atel, int aid) {
+		Author author=new Author();
+		author.setPan_name(pan_name);
+		author.setAage(aage);
+		author.setAcard(acard);
+		author.setAtel(atel);
+		author.setAid(aid);
+		this.bd.add(author, "updataAuthor");
 	}
 
 }

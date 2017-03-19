@@ -1,6 +1,8 @@
 package com.yc.web.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +36,9 @@ import com.yc.biz.impl.AuthorbizImpl;
 import com.yc.biz.impl.NovelChapterbizImpl;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.biz.impl.NovelbizImpl;
+import com.yc.utils.RandomUtils;
 import com.yc.utils.RankUtils;
-import com.yc.utils.RedisUtil;
+import com.yc.utils.RedisUtils;
 import com.yc.utils.TNovelUtils;
 
 @Controller
@@ -56,11 +59,17 @@ public class ZpdNovelController {
 	private NovelChapterbizImpl novelChapterbizImpl;
 	private RankUtils rutils;
 	private TNovelUtils tNovelUtils;
+	private RandomUtils randomUtils;
 
+	
 	@Resource(name = "tNovelUtils")
 	public void settNovelUtils(TNovelUtils tNovelUtils) {
-		System.out.println("注入了tNovelUtils");
+		//System.out.println("注入了tNovelUtils");
 		this.tNovelUtils = tNovelUtils;
+	}
+	@Resource(name = "randomUtils")
+	public void setRandomUtils(RandomUtils randomUtils) {
+		this.randomUtils = randomUtils;
 	}
 
 	@Resource(name = "rankUtils")
@@ -262,7 +271,7 @@ public class ZpdNovelController {
 		 */
 		Novel nname = (Novel) list.get(0);
 		String name = nname.getNname();
-		RedisUtil redis = new RedisUtil();
+		RedisUtils redis = new RedisUtils();
 		redis.Ranking(name);
 
 		return "Novel";
@@ -352,7 +361,7 @@ public class ZpdNovelController {
 		List<Object> listAll = new ArrayList<Object>();
 		List<String> dlist = new ArrayList<String>();// 点击量
 		List<String> Ranklist = new ArrayList<String>();// 排名
-		RedisUtil redis = new RedisUtil();
+		RedisUtils redis = new RedisUtils();
 		List<NovelType> typelist = novelTypebizImpl.showType(noveltype);
 		// System.out.println(typelist.get(1)+"=======你还不是修仙");
 
@@ -383,8 +392,7 @@ public class ZpdNovelController {
 	//作家专区
 	@RequestMapping(value = "/authorPrefectrue")
 	public String authorPrefectrue(HttpServletRequest request,HttpServletResponse response,Model model) throws IOException{
-		List<Author> list=new ArrayList<Author>();
-		//List<Novel>
+		List<Author> list=new ArrayList<Author>();	
 		HttpSession session = request.getSession();
 		Object uuser=session.getAttribute("uuser");
 		Object uuid=session.getAttribute("uuid");
@@ -392,10 +400,12 @@ public class ZpdNovelController {
 		if(uuser!=null && uuid!=null){			
 			Integer uid=Integer.parseInt(String.valueOf(uuid));
 			list=authorbiz.inforByunumber(uid);
+			Integer aid=list.get(0).getAid();
+			List<Novel> novel=authorbiz.inforByaid(aid);
 			//System.out.println("进来了");
 			if(list.get(0).getUid()!=null){
 				model.addAttribute("author",list);
-				
+				model.addAttribute("novel",novel);
 			}else{
 				response.sendRedirect("toauthor");
 			}
@@ -407,4 +417,50 @@ public class ZpdNovelController {
 		return "AuthorPrefecture";		
 	}
 	
+	//作家信息编辑
+	@RequestMapping(value = "/editor")
+	public String editor(HttpServletRequest request,Model model){
+		HttpSession session = request.getSession();
+		Object uuid=session.getAttribute("uuid");
+		Integer uid=Integer.parseInt(String.valueOf(uuid));
+		List<Author> list=authorbiz.inforByunumber(uid);
+//		Integer aid=list.get(0).getAid();
+//		List<Novel> novel=authorbiz.inforByaid(aid);
+		
+		model.addAttribute("author",list);
+	return "EditorAuthor";		
+	}
+	
+	
+	//保存作家信息
+	@RequestMapping(value = "/saveAuthor")
+	public String save(HttpServletRequest request,Model model){
+		String Said=request.getParameter("aid");
+		int aid=Integer.parseInt(Said);
+		String pan_name=request.getParameter("pan_name");
+		String Saage=request.getParameter("aage");
+		int aage=Integer.parseInt(Saage);
+		String acard=request.getParameter("acard");
+		String atel=request.getParameter("atel");
+		authorbiz.updataAuthor(pan_name, aage, acard, atel, aid);
+		
+		List<Author> list=authorbiz.FindAuthor();	
+		model.addAttribute("author",list);
+	return "AuthorPrefecture";		
+	}
+	
+	
+	//首页标题的类型分类显示
+	@RequestMapping(value = "/toindex_Type/{tname}")
+	public String Index_Type(@PathVariable String tname, Model model) throws SQLException, UnsupportedEncodingException {
+		byte[] t_byte = tname.getBytes("ISO-8859-1");//把Windows默认的编码集解码
+		String str = new String(t_byte, "utf-8"); //组装成utf-8
+		List<NovelType> list = novelTypebizImpl.showType(noveltype); // 小说类型
+		List<Alllist> list1=randomUtils.Type_infor(str);
+		model.addAttribute("list",list);
+		model.addAttribute("tname",str);
+		model.addAttribute("list1",list1);
+		return "TypeAll";
+	}
+
 }

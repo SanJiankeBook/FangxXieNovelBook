@@ -21,6 +21,7 @@ insert into novel_type(tname,standby_1,standby_2,standby_3) values('恐怖',1,1,
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('穿越',1,1,1);
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('科幻',1,1,1);
 
+update novel_type set tname='穿越1' where tid=4
 drop table novel_type;
 select * from novel_type;
 select tname from novel_type;
@@ -133,6 +134,8 @@ values(2,'赵亮_1','天魁_1',10,'大成','45203696661233','123589666',1,1,1);
 
 insert into author(uid,aname,pan_name,aage,agrade,acard,atel) 
 values(3,'a','a',4,'a','1111111111','222222222');
+
+update author set pan_name='进去欧',aage=50,acard='5556999',atel='999999' where aid=1
 
 drop table author;
 select * from author;

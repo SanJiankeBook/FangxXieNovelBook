@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-	String path=request.getContextPath();  //douban
-								//http					localhost				8080               douban
-	String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath(); //douban
+	//http					localhost				8080               douban
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -451,7 +452,7 @@ div.cse-default-channel-container .default-channel-list li:hover {
 	href="http://bdimg.share.baidu.com/static/css/bdsstyle.css?cdnversion=20131219"
 	rel="stylesheet" type="text/css">
 </head>
-<base href="<%=basePath %>">
+<base href="<%=basePath%>">
 <body>
 	<iframe style="display: none;" frameborder="0"></iframe>
 	<div id="bdshare_s" style="display: block;">
@@ -498,7 +499,7 @@ div.cse-default-channel-container .default-channel-list li:hover {
 			<a href="http://www.cnzz.com/stat/website.php?web_id=1261165914"
 				target="_blank" title="站长统计">站长统计</a>
 		</div>
-		
+
 		<div class="header">
 			<div class="header_logo">
 				<a href="http://www.bixia.org">笔下文学</a>
@@ -568,16 +569,15 @@ div.cse-default-channel-container .default-channel-list li:hover {
 		<div class="nav">
 			<ul>
 				<li><a href="/">首页</a></li>
-				<li><a rel="nofollow" href="/modules/article/bookcase.php">我的书架</a></li>
-				<li><a href="/mulu/1-1.html">玄幻奇幻</a></li>
-				<li><a href="/mulu/2-1.html">武侠仙侠</a></li>
-				<li><a href="/mulu/3-1.html">都市言情</a></li>
-				<li><a href="/mulu/4-1.html">历史军事</a></li>
-				<li><a href="/mulu/5-1.html">科幻灵异</a></li>
-				<li><a href="/mulu/6-1.html">网游竞技</a></li>
-				<li><a href="/mulu/7-1.html">女频频道</a></li>
-				<li><a href="/top/toptime.html">排行榜单</a></li>
-				<li><a href="/quanben/">全本小说</a></li>
+				<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
+				<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
+				<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
+				<li><a href="toindex_Type/${list[3].tname}">${list[3].tname}</a></li>
+				<li><a href="toindex_Type/${list[4].tname}">${list[4].tname}</a></li>
+				<li><a href="toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
+				<li><a href="authorPrefectrue">作者专区</a></li>
+				<li><a href="toindex_type">排行榜单</a></li>
+				<li><a href="jsp/quanben.jsp/">全本小说</a></li>
 				<li><a rel="nofollow" href="/bookcase.php">阅读记录</a></li>
 			</ul>
 		</div>
@@ -591,14 +591,14 @@ div.cse-default-channel-container .default-channel-list li:hover {
 				<a href="/">三剑客网文</a> &gt; ${novel_id[0].nname}最新章节列表
 			</div>
 			<div id="maininfo">
-			
+
 				<div id="info">
 					<h1>${novel_id[0].nname}</h1>
 					<p>作&nbsp;&nbsp;者：${author[0].author.aname}</p>
 					<p>
 						动&nbsp;&nbsp;作：<a rel="nofollow" href="javascript:;"
-							onclick="addBookCase('${novel_id[0].nid }');">加入书架</a>、<a rel="nofollow"
-							href="#footer">直达底部</a>、<a target="_blank"
+							onclick="addBookCase('${novel_id[0].nid }');">加入书架</a>、<a
+							rel="nofollow" href="#footer">直达底部</a>、<a target="_blank"
 							href="/down/txt2476.html" style="color: red;" title="儒道至圣TXT下载">TXT下载</a>
 					</p>
 					<p>

@@ -4,7 +4,22 @@ public class Alllist {
 	private String nid;
 	private String nname;
 	private String aname;
-	
+	private String ndescription; //描述
+	private String npicture; //图片地址
+
+	public String getNdescription() {
+		return ndescription;
+	}
+	public void setNdescription(String ndescription) {
+		this.ndescription = ndescription;
+	}
+
+	public String getNpicture() {
+		return npicture;
+	}
+	public void setNpicture(String npicture) {
+		this.npicture = npicture;
+	}
 	public String getNid() {
 		return nid;
 	}
