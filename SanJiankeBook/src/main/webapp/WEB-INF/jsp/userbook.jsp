@@ -1,31 +1,58 @@
+<!-- 书架 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	我的书架
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" />
+<!--  <script type="text/javascript" src="../js/xiaoshuo.js"></script> -->
+<script type="text/javascript" src="js/xiaoshuo.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="http://localhost:8080/SanJiankeBook/easyui/css/easyui.css">
+	href="easyui/css/easyui.css">
 <link rel="stylesheet" type="text/css"
-	href="http://localhost:8080/SanJiankeBook/easyui/css/icon.css">
+	href="easyui/css/icon.css">
 <link rel="stylesheet" type="text/css"
-	href="http://localhost:8080/SanJiankeBook/easyui/css/demo.css">
+	href="easyui/css/demo.css">
 <script type="text/javascript"
-	src="http://localhost:8080/SanJiankeBook/js/jquery-1.12.4.js"></script>
+	src="js/jquery-1.12.4.js"></script>
 <script type="text/javascript"
-	src="http://localhost:8080/SanJiankeBook/easyui/js/jquery.easyui.min.js"></script>
+	src="easyui/js/jquery.easyui.min.js"></script>
 <script type="text/javascript"
-	src="http://localhost:8080/SanJiankeBook/easyui/js/index.js"></script>
+	src="easyui/js/index.js"></script>
 <script type="text/javascript"
-	src="http://localhost:8080/SanJiankeBook/easyui/js/easyui-lang-zh_CN.js"></script>
-<title>用户书架</title>
+	src="easyui/js/easyui-lang-zh_CN.js"></script>
 </head>
 <body style="text-align:center; margin:auto auto">
-<h1 style="font-size: 20px">用户书架</h1>
-<table id="type_shownovel_info" data-options="fit:false" style="height: 500px"></table> 
-	
+    <h1 style="font-size: 20px">用户书架</h1>
+    <div id="wrapper">
+<div class="header">
+    <div class="header_logo"><a href="toindex_zpd">三剑客文学</a></div>
+    <div class="header_search"><script>search();</script></div>
+</div>
+<div class="clear"></div>
+<div class="nav">
+			<ul>
+				<li><a href="toindex_zpd">首页</a></li>
+				<li><a rel="nofollow" href="mybook">我的书架</a></li>
+				<li><a href="1-1.jsp">玄幻奇幻</a></li>
+				<li><a href="2-1.jsp">武侠仙侠</a></li>
+				<li><a href="3-1.jsp">都市言情</a></li>
+				<li><a href="4-1.jsp">历史军事</a></li>
+				<li><a href="5-1.jsp">科幻灵异</a></li>
+				<li><a href="6-1.jsp">网游竞技</a></li>
+				<li><a href="7-1.jsp">女频频道</a></li>
+				<li><a href="rank.jsp">排行榜单</a></li>
+				<li><a href="quanben.jsp">全本小说</a></li>
+				<li><a rel="nofollow" href="readRecord.jsp">阅读记录</a></li>
+			</ul>
+		</div>
+       <br />
 
+<table id="type_shownovel_info" data-options="fit:false" style="height: 500px"></table> 
 	<script type="text/javascript">
 	
 	$(function(){
@@ -131,5 +158,19 @@ function searchNovel() {
 	}
 		
 	</script>
+        
+<div class="footer">
+    <div class="footer_link">
+    </div>
+    <div class="footer_cont">
+        <p>
+            本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
+        <p>
+            Copyright © 2016
+            笔下文学</p>
+       <script>footer();</script>
+    </div>
+</div>
+    </div>
 </body>
 </html>

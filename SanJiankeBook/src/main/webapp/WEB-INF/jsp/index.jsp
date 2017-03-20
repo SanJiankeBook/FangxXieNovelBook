@@ -206,8 +206,8 @@
 			<div class="clear"></div>
 			<div class="nav">
 				<ul>
-					<li><a href="index.jsp">首页</a></li>
-					<li><a rel="nofollow" href="jsp/bookcase.jsp">我的书架</a></li>
+					<li><a href="toindex_zpd">首页</a></li>
+					<li><a rel="nofollow" href="mybook">我的书架</a></li>
 					<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
 					<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
 					<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>

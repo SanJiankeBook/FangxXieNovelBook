@@ -63,7 +63,7 @@
 							</div>
 							<dl>
 								<dt>
-									<span> ${list1.aname}</span> <a href="toindex_id/${list1.nid}">${list1.nname}</a>
+									<span> ${list1.aname}</span> <a href="../toindex_id/${list1.nid}">${list1.nname}</a>
 								</dt>
 								<dd>${list1.ndescription}</dd>
 							</dl>

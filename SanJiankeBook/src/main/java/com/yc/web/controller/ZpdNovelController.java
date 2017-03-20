@@ -309,6 +309,7 @@ public class ZpdNovelController {
 				user.setStatus("-2");
 				return gson.toJson(user);
 			}
+		}
 			//Map<String,Object> map = new HashMap<String,Object>(); 
 			String uname=request.getParameter("uname");
 			String upassword=request.getParameter("upassword");
@@ -337,10 +338,10 @@ public class ZpdNovelController {
 				user.setStatus("-1");
 				return  gson.toJson(user);
 			}
-		}else{
-			user.setStatus("-2");
-			return gson.toJson(user);
-		}
+//		}else{
+//			user.setStatus("-2");
+//			return gson.toJson(user);
+//		}
 			
 	}
 	
@@ -394,11 +395,11 @@ public class ZpdNovelController {
 	public String authorPrefectrue(HttpServletRequest request,HttpServletResponse response,Model model) throws IOException{
 		List<Author> list=new ArrayList<Author>();	
 		HttpSession session = request.getSession();
-		Object uuser=session.getAttribute("uuser");
-		Object uuid=session.getAttribute("uuid");
+		User uuser=(User)(session.getAttribute("users"));
+		//Object uuid=session.getAttribute("uuid");
 		
-		if(uuser!=null && uuid!=null){			
-			Integer uid=Integer.parseInt(String.valueOf(uuid));
+		if(uuser.getUname()!=null && uuser.getUpassword()!=null){			
+			Integer uid=Integer.parseInt(String.valueOf(uuser.getUid()));
 			list=authorbiz.inforByunumber(uid);
 			Integer aid=list.get(0).getAid();
 			List<Novel> novel=authorbiz.inforByaid(aid);
@@ -421,8 +422,8 @@ public class ZpdNovelController {
 	@RequestMapping(value = "/editor")
 	public String editor(HttpServletRequest request,Model model){
 		HttpSession session = request.getSession();
-		Object uuid=session.getAttribute("uuid");
-		Integer uid=Integer.parseInt(String.valueOf(uuid));
+		User uuser=(User)(session.getAttribute("users"));
+		Integer uid=Integer.parseInt(String.valueOf(uuser.getUid()));
 		List<Author> list=authorbiz.inforByunumber(uid);
 //		Integer aid=list.get(0).getAid();
 //		List<Novel> novel=authorbiz.inforByaid(aid);
