@@ -206,18 +206,16 @@
 			<div class="clear"></div>
 			<div class="nav">
 				<ul>
-					<li><a href="index.jsp">首页</a></li>
-					<li><a  href="mybook">我的书架</a></li>
-					<li><a href="jsp/1-1.jsp">玄幻奇幻</a></li>
-					<li><a href="jsp/2-1.jsp">武侠仙侠</a></li>
-					<li><a href="jsp/3-1.jsp">都市言情</a></li>
-					<li><a href="jsp/4-1.jsp">历史军事</a></li>
-					<li><a href="jsp/5-1.jsp">科幻灵异</a></li>
-					<li><a href="jsp/6-1.jsp">网游竞技</a></li>
+					<li><a href="toindex_zpd">首页</a></li>
+					<li><a rel="nofollow" href="mybook">我的书架</a></li>
+					<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
+					<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
+					<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
+					<li><a href="toindex_Type/${list[3].tname}">${list[3].tname}</a></li>
+					<li><a href="toindex_Type/${list[4].tname}">${list[4].tname}</a></li>
+					<li><a href="toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
 					<li><a href="authorPrefectrue">作者专区</a></li>
 					<li><a href="toindex_type">排行榜单</a></li>
-
-
 					<li><a href="jsp/quanben.jsp/">全本小说</a></li>
 					<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
 				</ul>

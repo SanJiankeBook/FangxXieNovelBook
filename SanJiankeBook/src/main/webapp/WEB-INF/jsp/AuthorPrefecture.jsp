@@ -40,40 +40,44 @@
 			<ul>
 				<li><a href="../index.jsp">首页</a></li>
 				<li><a href="bookcase.jsp">我的书架</a></li>
-				<li><a href="1-1.jsp">玄幻奇幻</a></li>
-				<li><a href="2-1.jsp">武侠仙侠</a></li>
-				<li><a href="3-1.jsp">都市言情</a></li>
-				<li><a href="4-1.jsp">历史军事</a></li>
-				<li><a href="5-1.jsp">科幻灵异</a></li>
-				<li><a href="6-1.jsp">网游竞技</a></li>
-				<li><a href="authorPrefectrue">作家专区</a></li>
-				<li><a href="rank.jsp">排行榜单</a></li>
-				<li><a href="quanben.jsp">全本小说</a></li>
+				<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
+				<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
+				<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
+				<li><a href="toindex_Type/${list[3].tname}">${list[3].tname}</a></li>
+				<li><a href="toindex_Type/${list[4].tname}">${list[4].tname}</a></li>
+				<li><a href="toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
+				<li><a href="authorPrefectrue">作者专区</a></li>
+				<li><a href="toindex_type">排行榜单</a></li>
+				<li><a href="jsp/quanben.jsp/">全本小说</a></li>
 				<li><a rel="nofollow" href="readRecord.jsp">阅读记录</a></li>
 			</ul>
 		</div>
 		<div id="main">
 			<div id="hotcontent">
 				<div class="ll">
-					
+
 					<div class="item">
-						<h1>尊敬的${author[0].aname },你好!</h1>
-						<h1>你的信息</h1>
-						<h2>你的笔名：${author[0].pan_name }</h2>
-						<h2>你的称号：${author[0].agrade }</h2>
-						<h2>你的身份证号：${author[0].acard }</h2>
-						<h2>你的联系方式：${author[0].atel }</h2>
+						<form action="editor" method="post">
+							<h1>尊敬的${author[0].aname },你好!</h1>
+							<h1>你的信息</h1>
+							<h2 id="pan_name">你的笔名：${author[0].pan_name }</h2>
+							<h2 id="agrade">你的称号：${author[0].agrade }</h2>
+							<h2 id="acard">你的身份证号：${author[0].acard }</h2>
+							<h2 id="atel">你的联系方式：${author[0].atel }</h2>
+							<input type="submit" name="editor" value="信息编辑" />
+						</form>
 					</div>
-					
+
 					<div class="item">
 						<h1>你写的小说</h1>
-						<c:forEach items="${nchapter}" var="nchapter">
-						<dd>
-							<a style="" href="${nchapter.caddress}">${nchapter.cname}</a>
-						</dd>
-					</c:forEach>	
+						<c:forEach items="${novel}" var="novel" begin="0" end="5">
+							<dd>
+								<img src="${novel.npicture}">
+							</dd>
+							<a style="" href="toindex_id/${novel.nid}">${novel.nname}</a>
+						</c:forEach>
 					</div>
-		
+
 
 				</div>
 			</div>

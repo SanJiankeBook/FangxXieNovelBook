@@ -45,7 +45,7 @@ public class RankUtils {
 	  	List<Rank> listNovel=new ArrayList<Rank>();
 		List<String> dlist=new ArrayList<String>();//点击量
 		List<String> Ranklist=new ArrayList<String>();//排名
-		RedisUtil redis=new RedisUtil();
+		RedisUtils redis=new RedisUtils();
 		
 		//第一个类型的
 		List<Novel> list1=novelbiz.TypeNovel(list.get(id).getTname());

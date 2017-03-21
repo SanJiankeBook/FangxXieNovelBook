@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 2017-03-17 13:00:51  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@b7f2d0: startup date [Fri Mar 17 13:00:51 CST 2017]; root of context hierarchy
 2017-03-17 13:00:51  [ main:305 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
@@ -74,3 +75,18 @@
 2017-03-18 19:58:55  [ main:755 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
 2017-03-18 19:58:56  [ main:1164 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
 >>>>>>> branch 'master' of git@github.com:SanJiankeBook/FangxXieNovelBook.git
+=======
+2017-03-19 10:15:39  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sun Mar 19 10:15:39 AWST 2017]; root of context hierarchy
+2017-03-19 10:15:39  [ main:101 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-19 10:15:40  [ main:1066 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-19 10:15:40  [ main:1371 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-19 10:15:41  [ main:1743 ] - [ WARN ]  Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'adminbizImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'baseDaoMybatisImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [beans.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [C:\gitwork02\FangxXieNovelBook\SanJiankeBook\target\classes\com\yc\mapper\AuthorMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 46; columnNumber: 4; 元素类型 "mapper" 必须由匹配的结束标记 "</mapper>" 终止。
+2017-03-19 10:16:43  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@160847b: startup date [Sun Mar 19 10:16:43 AWST 2017]; root of context hierarchy
+2017-03-19 10:16:43  [ main:58 ] - [ INFO ]  Loading XML bean definitions from class path resource [beans.xml]
+2017-03-19 10:16:43  [ main:620 ] - [ INFO ]  Loading properties file from URL [file:/C:/gitwork02/FangxXieNovelBook/SanJiankeBook/target/classes/jdbc.properties]
+2017-03-19 10:16:44  [ main:857 ] - [ INFO ]  Loaded JDBC driver: com.mysql.jdbc.Driver
+2017-03-19 10:16:44  [ main:1431 ] - [ INFO ]  Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-03-19 10:16:44  [ main:1792 ] - [ DEBUG ]  ==>  Preparing: update author set pan_name=?,aage=?,acard=?,atel=? where aid=? 
+2017-03-19 10:16:45  [ main:1821 ] - [ DEBUG ]  ==> Parameters: 123向前进(String), 100(Integer), 8523697411111(String), 2222(String), 1(Integer)
+2017-03-19 10:16:45  [ main:1827 ] - [ DEBUG ]  <==    Updates: 1
+>>>>>>> Stashed changes

@@ -16,7 +16,7 @@ import com.yc.biz.NovelChapterbiz;
 import com.yc.biz.NovelTypebiz;
 import com.yc.biz.Novelbiz;
 import com.yc.biz.UserBookbiz;
-import com.yc.utils.RedisUtil;
+import com.yc.utils.RedisUtils;
 import com.yc.bean.User;
 import com.yc.bean.UserBook;
 import com.yc.biz.Userbiz;
@@ -91,7 +91,7 @@ public class TestSpring extends TestCase {
 	//排行榜测试
 	public void testCache7(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
-		RedisUtil redis=(RedisUtil) ac.getBean("redisUtil");
+		RedisUtils redis=(RedisUtils) ac.getBean("redisUtil");
 		for(int i=0;i<10;i++){
 			redis.Ranking("nihao");
 		}
@@ -157,6 +157,12 @@ public class TestSpring extends TestCase {
 		System.out.println(list);
 	}
 	
+	public void testCache13() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		Authorbiz sb =   (Authorbiz) ac.getBean("authorbizImpl");
+		sb.updataAuthor("123向前进", 100, "8523697411111", "2222", 1);
+		//System.out.println(list);
+	}
 	
 	public void TestApp(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );

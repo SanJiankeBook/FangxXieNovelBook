@@ -108,6 +108,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="newChapter" resultType="NovelChapter" parameterType="Novel">
 		select cname from novel_chapter where nid=#{nid} having max(cid);
 	</select>
+	
+	<!-- 根据作者id查找他写的小说 -->
+	<select id="findNovelByaid" parameterType="Novel" resultType="Novel">
+		select * from novel where aid=#{aid} 
+	</select>
 
 
 	<!-- 根据类型查询小说信息 -->

@@ -108,7 +108,7 @@ function logger() {
 												//response.sendRedirect("500.jsp");
 												alert("验证码错误");
 											} else if (data.status == 1) {
-												window.location="http://localhost:8080/SanJianKeBook/";
+												window.location="toindex_zpd";
 											} else {
 												alert("用户名或密码错误");
 											}

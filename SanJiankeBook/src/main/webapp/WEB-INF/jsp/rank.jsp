@@ -6,7 +6,7 @@
 <%@ page import="java.util.Set"%>
 <%@ page import="java.util.Iterator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,12 +14,15 @@
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>小说人气月榜_小说排行榜_笔下文学</title>
-<link href="<%=request.getContextPath()%>/css/style.css" type="text/css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/css/imageStyle.css" type="text/css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/css/style.css" type="text/css"
+	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/css/imageStyle.css"
+	type="text/css" rel="stylesheet" />
 <script type="text/javascript"
 	src="http://libs.baidu.com/jquery/1.4.2/jquery.min.js"></script>
 <!--   <script type="text/javascript" src="/js/xiaoshuo.js"></script> -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/xiaoshuo.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/xiaoshuo.js"></script>
 </head>
 <body>
 
@@ -46,15 +49,15 @@
 		<ul>
 			<li><a href="../index.jsp">首页</a></li>
 			<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
-			<li><a href="1-1.jsp">玄幻奇幻</a></li>
-			<li><a href="2-1.jsp">武侠仙侠</a></li>
-			<li><a href="3-1.jsp">都市言情</a></li>
-			<li><a href="4-1.jsp">历史军事</a></li>
-			<li><a href="5-1.jsp">科幻灵异</a></li>
-			<li><a href="6-1.jsp">网游竞技</a></li>
-			<li><a href="7-1.jsp">女频频道</a></li>
-			<li><a href="rank.jsp">排行榜单</a></li>
-			<li><a href="quanben.jsp">全本小说</a></li>
+			<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
+			<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
+			<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
+			<li><a href="toindex_Type/${list[3].tname}">${list[3].tname}</a></li>
+			<li><a href="toindex_Type/${list[4].tname}">${list[4].tname}</a></li>
+			<li><a href="toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
+			<li><a href="authorPrefectrue">作者专区</a></li>
+			<li><a href="toindex_type">排行榜单</a></li>
+			<li><a href="jsp/quanben.jsp/">全本小说</a></li>
 			<li><a rel="nofollow" href="readRecord.jsp">阅读记录</a></li>
 		</ul>
 	</div>
@@ -74,19 +77,16 @@
 				<div class="topbooks" id="con_o1g_1" style="display: block;">
 					<ul>
 
-				
+
 
 						<c:forEach items="${listAll }" var="listAll1">
-							<li><span class="hits">${listAll1.ranknum}
-							</span>
-							<span class="num">${ listAll1.doll}</span>
-							<a href="/2_2476/" title="儒道至圣"
-							target="_blank">${listAll1.novelname}</a>
-							</li>		
+							<li><span class="hits">${listAll1.ranknum} </span> <span
+								class="num">${ listAll1.doll}</span> <a href="/2_2476/"
+								title="儒道至圣" target="_blank">${listAll1.novelname}</a></li>
 						</c:forEach>
-						
-						
-				
+
+
+
 					</ul>
 				</div>
 
@@ -193,9 +193,9 @@
 				</div>
 
 			</div>
-			
-			
-			
+
+
+
 			<div class="clearfix"></div>
 		</div>
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 
 @Component
-public class RedisUtil {
+public class RedisUtils {
 	private YcConstant YcConstant;
 	private Double numl=null;
 	

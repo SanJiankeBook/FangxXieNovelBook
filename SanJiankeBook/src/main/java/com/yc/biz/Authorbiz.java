@@ -17,7 +17,7 @@ public interface Authorbiz {
 	//分页查找作家
 	List<Author> FindAuthorByPage(Integer start,Integer end);
 	
-	//查询作者名
+	//根据小说id查询作者名
 	List Show_Author(int nid);
 	
 	//根据用户id查询作者信息
@@ -25,4 +25,7 @@ public interface Authorbiz {
 	
 	//根据作者id查询他写的小说
 	List<Novel> inforByaid(int aid);
+	
+	//更新作者信息
+	void updataAuthor(String pan_name,int aage,String acard,String atel,int aid);
 }
