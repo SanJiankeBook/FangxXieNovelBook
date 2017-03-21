@@ -354,6 +354,7 @@ public class ZpdNovelController {
 			request.getSession().removeAttribute("users");
 			return "1";
 	}
+	
 	// 排行榜，按类型显示数据
 	@RequestMapping(value = "/toindex_type")
 	public String Index_type(Model model) {
@@ -389,6 +390,7 @@ public class ZpdNovelController {
 
 		return "rank";
 	}
+	
 	
 	//作家专区
 	@RequestMapping(value = "/authorPrefectrue")

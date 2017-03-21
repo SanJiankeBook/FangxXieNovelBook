@@ -26,6 +26,7 @@
 <link rel="stylesheet" type="text/css" href="css/bdsstyle.css" />
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
+<base href="<%=basePath%>"></base>
 <body>
 	<iframe style="display: none;" frameborder="0"></iframe>
 	<div id="bdshare_s" style="display: block;">
