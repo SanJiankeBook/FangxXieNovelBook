@@ -335,6 +335,50 @@ public class ZpdNovelController {
 //		}
 			
 	}
+	//用户注册
+		@RequestMapping(value="/register",produces = {"application/text;charset=UTF-8"})
+		@ResponseBody
+		public String register(HttpServletRequest request,Model model) {
+			logger.info("register.......");
+			User user=new User();
+			Gson gson=new Gson();
+			HttpSession session = request.getSession();
+			String validateCode=request.getParameter("validateCode");
+			if(validateCode!=null &&validateCode!=""){
+				String randCode=(String) session.getAttribute("rand");
+				if(!validateCode.equals(randCode)){
+					session.setAttribute("errmsg", "验证码错误");
+					user.setStatus("-2");
+					return gson.toJson(user);
+				}
+			}
+				//Map<String,Object> map = new HashMap<String,Object>(); 
+				String uname=request.getParameter("uname");
+				String upassword=request.getParameter("upassword");
+				String u_number=request.getParameter("u_number");
+				User userlist=new User();
+				userlist.setU_number(u_number);
+				
+				List<User> list_uname=this.userbiz.findUserInfo(userlist);
+				if(!list_uname.isEmpty()){
+					user.setStatus("0");
+					return gson.toJson(user);
+				}
+				userlist.setUname(uname);
+				userlist.setU_number(null);
+				list_uname=this.userbiz.findUserInfo(userlist);
+				if(!list_uname.isEmpty()){
+					user.setStatus("-1");
+					return gson.toJson(user);
+				}
+				userlist.setUname(uname);
+				userlist.setU_number(u_number);
+				userlist.setUpassword(upassword);
+				this.userbiz.addUser(userlist);
+				user.setStatus("1");
+				return gson.toJson(user);
+				
+		}
 	
 	//注销登陆
 	@RequestMapping(value="/uploging")

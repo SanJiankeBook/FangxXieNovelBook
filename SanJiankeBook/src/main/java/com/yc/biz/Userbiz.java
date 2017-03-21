@@ -28,6 +28,10 @@ public interface Userbiz {
 	
 	//根据用户名查找用户信息
 	List<User> findUserName(String u_number);
+	//账号注册前的验证
+	public List<User> findUserInfo(User userlist);
+	//账号注册
+	public void addUser(User userlist);
 	
 
 }

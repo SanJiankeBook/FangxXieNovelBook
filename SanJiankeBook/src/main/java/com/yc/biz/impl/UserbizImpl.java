@@ -94,4 +94,15 @@ private  BaseDao bd;
 		return list;
 	}
 
+	//账号注册前的验证
+	@Override
+	public List<User> findUserInfo(User userlist) {
+		return this.bd.findAll(userlist, "finduserinfo");
+	}
+
+	@Override
+	public void addUser(User userlist) {
+		this.bd.add(userlist, "addUserInfo");
+	}
+
 }
