@@ -37,9 +37,7 @@
 	var ue=UE.getEditor('editor');
 	function addGoods(){
 		var nid=$("#nid").val();
-		alert(nid);
 		var cname=$("#cname").val();
-		alert(cname);
 		var des=ue.getContent();
 		alert(des);
 			$.ajax({//插入章节

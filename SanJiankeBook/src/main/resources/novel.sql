@@ -192,9 +192,11 @@ create table user_talk(
 
 insert into user_talk(nid,uid,utdate,utcontent,standby_1,standby_2,standby_3)
 values(1,1,'2016-5-6','很好看',1,1,1);
+insert into user_talk(nid,uid,utdate,utcontent,standby_1,standby_2,standby_3)
+values(4,4,'2016-5-6','很好看',1,1,1);
+commit;
 
-
-select * from  user_talk;
+select ut.utdate,ut.utcontent,u.uname from  user_talk ut,user u where ut.uid=u.uid and ut.uid=4 ORDER BY utdate DESC limit 0,5;
 
 
 

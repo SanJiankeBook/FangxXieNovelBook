@@ -251,7 +251,7 @@ public class ZpdNovelController {
 	// 显示小说的页面
 	@RequestMapping(value = "/toindex_id/{nid}")
 	public String Index_id(@PathVariable int nid, Model model) {
-
+		List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
 		List list = new ArrayList();
 		logger.info("toIndex.....");
 		list = novelbizImpl.ShowNovel_id(nid);
@@ -264,6 +264,7 @@ public class ZpdNovelController {
 		model.addAttribute("novel_id", list);
 		model.addAttribute("author", author);
 		model.addAttribute("chapter", chapter);
+		model.addAttribute("list1",list1);
 		// System.out.println(list);
 
 		/*
@@ -274,7 +275,7 @@ public class ZpdNovelController {
 		RedisUtils redis = new RedisUtils();
 		redis.Ranking(name);
 
-		return "Novel";
+		return "Novel2";
 	}
 
 	//检查是否登陆

@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -24,16 +26,19 @@ import com.yc.biz.impl.AuthorbizImpl;
 import com.yc.biz.impl.NovelChapterbizImpl;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.biz.impl.NovelbizImpl;
+import com.yc.biz.impl.UserTalkbizImpl;
 import com.yc.bean.Author;
 import com.yc.bean.EasyuiFindByPage;
 import com.yc.bean.NovelChapter;
 import com.yc.bean.User;
 import com.yc.bean.UserBook;
+import com.yc.bean.UserTalk;
 import com.yc.biz.Authorbiz;
 import com.yc.biz.NovelChapterbiz;
 import com.yc.biz.NovelTypebiz;
 import com.yc.biz.Novelbiz;
 import com.yc.biz.UserBookbiz;
+import com.yc.biz.UserTalkbiz;
 import com.yc.biz.Userbiz;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.dao.BaseDao;
@@ -58,8 +63,14 @@ public class NovelController {
     private AuthorbizImpl authorbizImpl;
     private NovelChapterbizImpl novelChapterbizImpl;
     private UserBookbiz userbookbiz;
+    private UserTalkbiz usertalbiz;
     
-    @Resource(name="userBookbizImpl")
+    
+    @Resource(name="userTalkbizImpl")
+    public void setUsertalbiz(UserTalkbiz usertalbiz) {
+		this.usertalbiz = usertalbiz;
+	}
+	@Resource(name="userBookbizImpl")
     public void setUserbookbiz(UserBookbiz userbookbiz) {
 		this.userbookbiz = userbookbiz;
 	}
@@ -118,9 +129,11 @@ public class NovelController {
 	
 	//前往我的书架业务
 	@RequestMapping(value="/mybook")
-	public String mybook(HttpServletRequest request){
+	public String mybook(HttpServletRequest request,Model model){
 		logger.info("mybook....");
 		if(request.getSession().getAttribute("users")!=null){
+			List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+			model.addAttribute("list1",list1);
 			return "userbook";
 		}else{
 			return "userlogin";
@@ -129,8 +142,10 @@ public class NovelController {
 
 	//页面登陆界面
 	@RequestMapping(value="/userlogininfo")
-	public String userlogininfo(){
+	public String userlogininfo(Model model){
 		logger.info("页面登陆界面...");
+		List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+		model.addAttribute("list1",list1);
 		return "userlogin";
 	}
     //搜索页面
@@ -138,6 +153,8 @@ public class NovelController {
     public String sousuo(Model model,Novel novel){
     	logger.info("tosousuo.....");
     	model.addAttribute("novel",novel.getNname());
+    	List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+		model.addAttribute("list1",list1);
     	return "findnovel";
     }
     //搜索
@@ -255,7 +272,55 @@ public class NovelController {
     	}
     	
     }
-    
+    //显示评论
+    @RequestMapping(value="/showusertalk",produces = {"application/text;charset=UTF-8"})
+    @ResponseBody
+    public String showusertalk(HttpServletRequest request){
+    	logger.info("showusertalk....");
+    	String nid=request.getParameter("text");
+    	UserTalk usertalk=new UserTalk();
+    	usertalk.setNid(Integer.parseInt(nid));
+    	String page=request.getParameter("page");    
+    	String rows=request.getParameter("rows");
+    	int currentPage=Integer.parseInt(page);     //当前的页数
+    	int end=Integer.parseInt(rows);           //每页的条数
+    	int start=0;
+    	start=(currentPage-1)*end;
+    	List<UserTalk> list=this.usertalbiz.findAllTalk(usertalk);
+    	List<UserTalk> list2=this.usertalbiz.findLimitTalk(usertalk,start,end);
+    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+    	ebp.setTotal(list.size());
+    	ebp.setRows(list2);
+    	Gson gson=new Gson();
+    	return gson.toJson(ebp);
+    }
+    //评论发表
+    @RequestMapping(value="/publishTalk")
+    @ResponseBody
+    public String publishTalk(HttpServletRequest request){
+    	HttpSession session=null;
+    	User user=null;
+		try {
+			session = request.getSession();
+			 user=(User) session.getAttribute("users");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	UserTalk usertalk=new UserTalk();
+    	if(user!=null){
+    		String nid=request.getParameter("nid");
+    		String utcontent=request.getParameter("des");
+    		Integer uid=user.getUid();
+    		usertalk.setUid(uid);
+    		usertalk.setNid(Integer.parseInt(nid));
+    		usertalk.setUtcontent(utcontent);
+    		this.usertalbiz.addtalk(usertalk);
+    		return "1";
+    		
+    	}else{
+    		return "-1";
+    	}
+    }
     //前往作家注册页面
     @RequestMapping(value="/toauthor")
     public String author(){
@@ -310,6 +375,7 @@ public class NovelController {
     	
     }
     
+   
     //插入书籍章节
     @RequestMapping(value="/insertNovlChapter")
     @ResponseBody

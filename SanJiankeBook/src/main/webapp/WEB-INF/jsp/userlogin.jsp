@@ -45,17 +45,17 @@
 <div class="nav">
 			<ul>
 				<li><a href="toindex_zpd">首页</a></li>
-				<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
-				<li><a href="1-1.jsp">玄幻奇幻</a></li>
-				<li><a href="2-1.jsp">武侠仙侠</a></li>
-				<li><a href="3-1.jsp">都市言情</a></li>
-				<li><a href="4-1.jsp">历史军事</a></li>
-				<li><a href="5-1.jsp">科幻灵异</a></li>
-				<li><a href="6-1.jsp">网游竞技</a></li>
-				<li><a href="7-1.jsp">女频频道</a></li>
-				<li><a href="rank.jsp">排行榜单</a></li>
-				<li><a href="quanben.jsp">全本小说</a></li>
-				<li><a rel="nofollow" href="readRecord.jsp">阅读记录</a></li>
+					<li><a rel="nofollow" href="mybook">我的书架</a></li>
+					<li><a href="toindex_Type/${list1[0].tname}">${list1[0].tname}</a></li>
+					<li><a href="toindex_Type/${list1[1].tname}">${list1[1].tname}</a></li>
+					<li><a href="toindex_Type/${list1[2].tname}">${list1[2].tname}</a></li>
+					<li><a href="toindex_Type/${list1[3].tname}">${list1[3].tname}</a></li>
+					<li><a href="toindex_Type/${list1[4].tname}">${list1[4].tname}</a></li>
+					<li><a href="toindex_Type/${list1[5].tname}">${list1[5].tname}</a></li>
+					<li><a href="authorPrefectrue">作者专区</a></li>
+					<li><a href="toindex_type">排行榜单</a></li>
+					<li><a href="jsp/quanben.jsp/">全本小说</a></li>
+					<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
 			</ul>
 		</div>
        <br />
@@ -82,7 +82,7 @@
 </tr>
 <tr>
   <td class="odd" width="25%">&nbsp;<input type="hidden" name="action" id="action" value="login" /></td>
-  <td class="even"><input type="button" class="button" name="submit" onclick="logger()"  id="submit" value="登陆" /></td>
+  <td class="even"><input type="button" class="button" name="submit" onclick="logger()"  id="submit" value="登录" /></td>
 </tr>
 </table>
 </form>
