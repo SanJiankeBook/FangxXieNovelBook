@@ -113,11 +113,7 @@
 						<div class="txtt"></div>
 						<div class="txtt">
 
-<<<<<<< HEAD
 							<a href="toregister">用户注册</a>
-=======
-							<a href="showregister">用户注册</a>
->>>>>>> branch 'master' of git@github.com:SanJiankeBook/FangxXieNovelBook.git
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="toauthor">作家注册</a>
 						</div>
 					</div>

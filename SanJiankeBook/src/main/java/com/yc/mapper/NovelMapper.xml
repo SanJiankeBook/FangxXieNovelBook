@@ -41,6 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			limit #{start},#{end}
 		</select>
 		
+		
 
 	<!-- 删除小说 -->
 	<delete id="delNovel" parameterType="Novel">
@@ -48,17 +49,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 
-	<!-- 分页查询小说 -->
-	<select id="findNovelByPage" parameterType="Novel" resultMap="NovelResultMap">
-		select
-		nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus
-		from novel_type
-		inner join novel
-		on novel_type.tid=novel.tid
-		inner join author
-		on author.aid=novel.aid
-		limit #{start},#{end}
-	</select>
 	
 	<!-- 作者专区分页查询小说 -->
 	<select id="NovelByaid" parameterType="Novel" resultMap="NovelResultMap">

@@ -20,6 +20,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -812,72 +816,21 @@ public class ZpdNovelController {
 	
 	//TXT下载
 	@RequestMapping(value = "/txt_id/{nid}")
-	@ResponseBody
-	public byte[] Download_txt(@PathVariable int nid, Model model,HttpServletResponse response) throws IOException {
-		List<Novel> list=novelbiz.ShowNovel_id(nid);
-		String nname="e:\\"+list.get(0).getNname()+".txt";
-		byte[] content=jsoupUtils.Chapter(nid);
-		//File file=new File(nname);
-		OutputStream os = response.getOutputStream();
-		//FileOutputStream fs=new FileOutputStream(file);
-		
-		
-		  try{
-			
-			response.reset();
-	            
-	        response.setContentType("text/plain; charset=utf-8"); //普通文本解析	
-	            
-	        response.setHeader("Content-Disposition", "attachment; filename=" +nname);  
-			  
-		    File file=new File(nname);
-		    FileInputStream fis = new FileInputStream(file);
-		    ByteArrayOutputStream bos = new ByteArrayOutputStream();  
-            byte[] b = new byte[1024];  
-            int n;  
-            while ((n = fis.read(b)) != -1)  
-            {  
-                bos.write(b, 0, n);  
-            }  
-
-
-            fis.close();  
-            bos.close();  
-            content = bos.toByteArray();
-		  	}  
-	        catch (FileNotFoundException e)  
-	        {  
-	            e.printStackTrace();  
-	        }  
-	        catch (IOException e)  
-	        {  
-	            e.printStackTrace();  
-	        }  
-	        return content;  
-		   //System.out.print("BBB");
-		
-		
-       /* try {
-
-            response.reset();
-            
-            response.setContentType("text/plain; charset=utf-8"); //普通文本解析	
-            
-            response.setHeader("Content-Disposition", "attachment; filename=" +nname);
-     
-
-            os.write(content);
-
-            os.flush();
 	
-        }finally {
-            if (os != null) {
-                os.close();
-            }
-        }
-*/
-   
-		//return "Novel2";
+	public ResponseEntity<byte[]> Download_txt(@PathVariable int nid, Model model,HttpServletResponse response) throws IOException {
+		List<Novel> list=novelbiz.ShowNovel_id(nid);
+		String nname=list.get(0).getNname()+".txt";
+       byte[] content=jsoupUtils.Chapter(nid);
+        HttpHeaders headers = new HttpHeaders();    
+        String fileName=new String(nname.getBytes("UTF-8"),"iso-8859-1");//为了解决中文名称乱码问题  
+        headers.setContentDispositionFormData("attachment", fileName);   
+        headers.setContentType(MediaType.TEXT_PLAIN);
+        return new ResponseEntity<byte[]>(content,headers, HttpStatus.CREATED);    
+        
+		
+		
+
+
 	}
 
 }
