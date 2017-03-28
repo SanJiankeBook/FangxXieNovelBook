@@ -16,7 +16,7 @@
 </head>
 <body>
 	
-	
+	<h1>作家信息编辑</h1>
 	<form action="saveAuthor" method="post">
 	<input name="aid" value="${author[0].aid }" type="hidden" />
 	作家笔名:<input type="text" name="pan_name" value="${author[0].pan_name }"><br/>

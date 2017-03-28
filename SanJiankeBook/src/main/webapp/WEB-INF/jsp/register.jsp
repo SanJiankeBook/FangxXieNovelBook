@@ -1,8 +1,6 @@
 <!-- 书架 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,7 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-<!--  <script type="text/javascript" src="../js/xiaoshuo.js"></script> -->
 <script type="text/javascript" src="js/xiaoshuo.js"></script>
       <script type="text/javascript">
        function checkfrmLogin()
@@ -45,29 +42,30 @@
 <div class="nav">
 			<ul>
 				<li><a href="toindex_zpd">首页</a></li>
-					<li><a rel="nofollow" href="mybook">我的书架</a></li>
-					<li><a href="toindex_Type/${list1[0].tname}">${list1[0].tname}</a></li>
-					<li><a href="toindex_Type/${list1[1].tname}">${list1[1].tname}</a></li>
-					<li><a href="toindex_Type/${list1[2].tname}">${list1[2].tname}</a></li>
-					<li><a href="toindex_Type/${list1[3].tname}">${list1[3].tname}</a></li>
-					<li><a href="toindex_Type/${list1[4].tname}">${list1[4].tname}</a></li>
-					<li><a href="toindex_Type/${list1[5].tname}">${list1[5].tname}</a></li>
-					<li><a href="authorPrefectrue">作者专区</a></li>
-					<li><a href="toindex_type">排行榜单</a></li>
-					<li><a href="jsp/quanben.jsp/">全本小说</a></li>
-					<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
+				<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
+				<li><a href="1-1.jsp">玄幻奇幻</a></li>
+				<li><a href="2-1.jsp">武侠仙侠</a></li>
+				<li><a href="3-1.jsp">都市言情</a></li>
+				<li><a href="4-1.jsp">历史军事</a></li>
+				<li><a href="5-1.jsp">科幻灵异</a></li>
+				<li><a href="6-1.jsp">网游竞技</a></li>
+				<li><a href="7-1.jsp">女频频道</a></li>
+				<li><a href="rank.jsp">排行榜单</a></li>
+				<li><a href="quanben.jsp">全本小说</a></li>
+				<li><a rel="nofollow" href="readRecord.jsp">阅读记录</a></li>
 			</ul>
 		</div>
        <br />
-<form name="frmLogin" id="frmLogin" action="logger" method="post">
+<form name="frmLogin" id="frmLogin" action="/Login.php" method="post">
 <table class="grid" width="580" align="center">
-<c:if test="${errmsg!='' }">
-		<font style="color:red" ><c:out value="${errmsg }"></c:out></font>
-	</c:if>
 <caption>用户登录</caption>
 <tr>
-  <td class="odd" width="25%">用户账号</td>
+  <td class="odd" width="25%">用户名</td>
   <td class="even"><input type="text" class="text" name="uname" id="uname" size="25" maxlength="30" value="" style="width:160px"/></td>
+</tr>
+<tr>
+  <td class="odd" width="25%">账号</td>
+  <td class="even"><input type="text" class="text" name="u_number" id="u_number" size="25" maxlength="30" value="" style="width:160px"/></td>
 </tr>
 <tr>
   <td class="odd" width="25%">密码</td>
@@ -80,9 +78,8 @@
 			<a href="javascript:loadImage();" style="margin-top: 20px">换一张</a>
 	</td>
 </tr>
-<tr>
-  <td class="odd" width="25%">&nbsp;<input type="hidden" name="action" id="action" value="login" /></td>
-  <td class="even"><input type="button" class="button" name="submit" onclick="logger()"  id="submit" value="登录" /></td>
+
+  <td class="odd" width="25%">&nbsp;</td><td><input type="button" onclick="logger()" name="action" id="action" value="注册" /></td>
 </tr>
 </table>
 </form>
@@ -95,11 +92,12 @@ function loadImage(){
 }
 function logger() {
 						$.ajax({
-										url : "logger",
+										url : "register",
 										type : "POST",
 										dataType : "JSON",//客户端返回过来的数据类型
 										data : {
 											'uname' : $("#uname").val(),
+											'u_number' : $("#u_number").val(),
 											'upassword' : $("#upassword").val(),
 											'validateCode' : $("#validateCode").val()
 										},
@@ -108,9 +106,12 @@ function logger() {
 												//response.sendRedirect("500.jsp");
 												alert("验证码错误");
 											} else if (data.status == 1) {
-												window.location="toindex_zpd";
-											} else {
-												alert("用户名或密码错误");
+												alert("注册成功，请登录");
+												window.location="userlogininfo";
+											} else if(data.status == -1){
+												alert("用户名已存在，请取别的名字");
+											}else if(data.status == 0){
+												alert("账号已存在，请换别的账号");
 											}
 										}
 									});

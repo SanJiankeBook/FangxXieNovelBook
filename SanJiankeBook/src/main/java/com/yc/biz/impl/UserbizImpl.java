@@ -77,7 +77,7 @@ private  BaseDao bd;
 	 * 删除用户
 	 */
 	@Override
-	public void DelUser(int uid) {
+	public void DelUser(Integer uid) {
 		User use=new User();
 		use.setUid(uid);
 		this.bd.delete(use, "delUser");
@@ -93,5 +93,17 @@ private  BaseDao bd;
 		List<User> list=this.bd.findAll(user, "findUserByName");
 		return list;
 	}
+
+	//账号注册前的验证
+	@Override
+	public List<User> findUserInfo(User userlist) {
+		return this.bd.findAll(userlist, "finduserinfo");
+	}
+
+	@Override
+	public void addUser(User userlist) {
+		this.bd.add(userlist, "addUserInfo");
+	}
+
 
 }

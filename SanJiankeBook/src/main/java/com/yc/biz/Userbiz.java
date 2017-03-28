@@ -24,10 +24,14 @@ public interface Userbiz {
 	List<User> findUserByPage(Integer start,Integer end);
 	
 	//删除用户
-	void DelUser(int id);
+	void DelUser(Integer id);
 	
 	//根据用户名查找用户信息
 	List<User> findUserName(String u_number);
+	//账号注册前的验证
+	public List<User> findUserInfo(User userlist);
+	//账号注册
+	public void addUser(User userlist);
 	
 
 }

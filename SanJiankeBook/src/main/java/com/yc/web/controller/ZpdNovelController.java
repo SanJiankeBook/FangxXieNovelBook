@@ -1,11 +1,17 @@
 package com.yc.web.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +23,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.yc.bean.Alllist;
 import com.yc.bean.Author;
+import com.yc.bean.EasyuiFindByPage;
 import com.yc.bean.Novel;
 import com.yc.bean.NovelChapter;
 import com.yc.bean.NovelType;
@@ -36,8 +44,10 @@ import com.yc.biz.impl.AuthorbizImpl;
 import com.yc.biz.impl.NovelChapterbizImpl;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.biz.impl.NovelbizImpl;
+import com.yc.utils.JsoupUtils;
 import com.yc.utils.RandomUtils;
 import com.yc.utils.RankUtils;
+import com.yc.utils.TopUtils;
 import com.yc.utils.RedisUtils;
 import com.yc.utils.TNovelUtils;
 
@@ -57,11 +67,20 @@ public class ZpdNovelController {
 	private NovelbizImpl novelbizImpl;
 	private AuthorbizImpl authorbizImpl;
 	private NovelChapterbizImpl novelChapterbizImpl;
-	private RankUtils rutils;
+	private TopUtils rutils;
 	private TNovelUtils tNovelUtils;
 	private RandomUtils randomUtils;
+	private RankUtils rankUtils;
+	private JsoupUtils jsoupUtils;
 
-	
+	@Resource(name = "jsoupUtils")
+	public void setJsoupUtils(JsoupUtils jsoupUtils) {
+		this.jsoupUtils = jsoupUtils;
+	}
+	@Resource(name = "rankUtils")
+	public void setRankUtils(RankUtils rankUtils) {
+		this.rankUtils = rankUtils;
+	}
 	@Resource(name = "tNovelUtils")
 	public void settNovelUtils(TNovelUtils tNovelUtils) {
 		//System.out.println("注入了tNovelUtils");
@@ -72,8 +91,8 @@ public class ZpdNovelController {
 		this.randomUtils = randomUtils;
 	}
 
-	@Resource(name = "rankUtils")
-	public void setRk(RankUtils rutils) {
+	@Resource(name = "topUtils")
+	public void setRk(TopUtils rutils) {
 		this.rutils = rutils;
 	}
 
@@ -130,6 +149,11 @@ public class ZpdNovelController {
 	@Resource(name = "novelChapterbizImpl")
 	public void setNovelChapterbizImpl(NovelChapterbizImpl novelChapterbizImpl) {
 		this.novelChapterbizImpl = novelChapterbizImpl;
+	}
+	//跳转到注册页面
+	@RequestMapping(value="/showregister")
+	public String showregister(){
+		return "register";
 	}
 
 	// 主页面显示数据
@@ -248,10 +272,10 @@ public class ZpdNovelController {
 		return "index";
 	}
 	
-	// 显示小说的页面
+	// 点击，显示小说的页面
 	@RequestMapping(value = "/toindex_id/{nid}")
 	public String Index_id(@PathVariable int nid, Model model) {
-
+		List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
 		List list = new ArrayList();
 		logger.info("toIndex.....");
 		list = novelbizImpl.ShowNovel_id(nid);
@@ -264,17 +288,18 @@ public class ZpdNovelController {
 		model.addAttribute("novel_id", list);
 		model.addAttribute("author", author);
 		model.addAttribute("chapter", chapter);
+		model.addAttribute("list1",list1);
 		// System.out.println(list);
 
 		/*
-		 * 排行榜
+		 * 记录数据
 		 */
 		Novel nname = (Novel) list.get(0);
 		String name = nname.getNname();
 		RedisUtils redis = new RedisUtils();
 		redis.Ranking(name);
 
-		return "Novel";
+		return "Novel2";
 	}
 
 	//检查是否登陆
@@ -344,6 +369,50 @@ public class ZpdNovelController {
 //		}
 			
 	}
+	//用户注册
+		@RequestMapping(value="/register",produces = {"application/text;charset=UTF-8"})
+		@ResponseBody
+		public String register(HttpServletRequest request,Model model) {
+			logger.info("register.......");
+			User user=new User();
+			Gson gson=new Gson();
+			HttpSession session = request.getSession();
+			String validateCode=request.getParameter("validateCode");
+			if(validateCode!=null &&validateCode!=""){
+				String randCode=(String) session.getAttribute("rand");
+				if(!validateCode.equals(randCode)){
+					session.setAttribute("errmsg", "验证码错误");
+					user.setStatus("-2");
+					return gson.toJson(user);
+				}
+			}
+				//Map<String,Object> map = new HashMap<String,Object>(); 
+				String uname=request.getParameter("uname");
+				String upassword=request.getParameter("upassword");
+				String u_number=request.getParameter("u_number");
+				User userlist=new User();
+				userlist.setU_number(u_number);
+				
+				List<User> list_uname=this.userbiz.findUserInfo(userlist);
+				if(!list_uname.isEmpty()){
+					user.setStatus("0");
+					return gson.toJson(user);
+				}
+				userlist.setUname(uname);
+				userlist.setU_number(null);
+				list_uname=this.userbiz.findUserInfo(userlist);
+				if(!list_uname.isEmpty()){
+					user.setStatus("-1");
+					return gson.toJson(user);
+				}
+				userlist.setUname(uname);
+				userlist.setU_number(u_number);
+				userlist.setUpassword(upassword);
+				this.userbiz.addUser(userlist);
+				user.setStatus("1");
+				return gson.toJson(user);
+				
+		}
 	
 	//注销登陆
 	@RequestMapping(value="/uploging")
@@ -358,36 +427,59 @@ public class ZpdNovelController {
 	// 排行榜，按类型显示数据
 	@RequestMapping(value = "/toindex_type")
 	public String Index_type(Model model) {
-
+		List<NovelType> Tlist = novelTypebizImpl.showType(noveltype); // 小说类型
+		
 		logger.info("toIndex.....");
-		List<Object> listAll = new ArrayList<Object>();
-		List<String> dlist = new ArrayList<String>();// 点击量
-		List<String> Ranklist = new ArrayList<String>();// 排名
-		RedisUtils redis = new RedisUtils();
-		List<NovelType> typelist = novelTypebizImpl.showType(noveltype);
-		// System.out.println(typelist.get(1)+"=======你还不是修仙");
-
-		// System.out.println("进来没？");
-		List<Novel> list = novelbizImpl.TypeNovel(typelist.get(0).getTname());
-		for (int i = 0; i < list.size(); i++) {
-			String rname = list.get(i).getNname();
-			Double num = redis.ShowRank(rname);
-			String Stnum = String.valueOf(num);
-			String inum = String.valueOf(i + 1);
-			// System.out.println("num===== "+num);
-			dlist.add(Stnum);
-			Ranklist.add(inum);
+		//根据类型来排行榜
+		for (int r = 0; r < Tlist.size(); r++) {
+			String tname=Tlist.get(r).getTname();
+			List<Object> listAll = new ArrayList<Object>();
+			List<Object> listAll1 = new ArrayList<Object>();
+			List<Object> listAll2 = new ArrayList<Object>();
+			List<Object> listAll3 = new ArrayList<Object>();
+			List<Object> listAll4 = new ArrayList<Object>();
+			List<Object> listAll5 = new ArrayList<Object>();
+			switch (r) {
+			case 0:
+				listAll = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll", listAll);
+					break;
+				}
+			case 1:
+				listAll1 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll1", listAll1);
+					break;
+				}
+			case 2:
+				listAll2 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll2", listAll2);
+					break;
+				}
+			case 3:
+				listAll3 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll3", listAll3);
+					break;
+				}
+			case 4:
+				listAll4 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll4", listAll4);
+					break;
+				}
+			case 5:
+				listAll5 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll5", listAll5);
+					break;
+				}
+			}
 		}
-
-		for (int j = 0; j < list.size(); j++) {
-			Rank rank = new Rank();
-			rank.setNovelname(list.get(j).getNname());
-			rank.setRanknum(dlist.get(j));
-			rank.setDoll(Ranklist.get(j));
-			listAll.add(rank);
-		}
-		model.addAttribute("listAll", listAll);
-
+		
+		model.addAttribute("list",Tlist);
 		return "rank";
 	}
 	
@@ -395,34 +487,40 @@ public class ZpdNovelController {
 	//作家专区
 	@RequestMapping(value = "/authorPrefectrue")
 	public String authorPrefectrue(HttpServletRequest request,HttpServletResponse response,Model model) throws IOException{
+		List<NovelType> Tlist= novelTypebizImpl.showType(noveltype); // 小说类型
 		List<Author> list=new ArrayList<Author>();	
-		HttpSession session = request.getSession();
+		
+		
+		HttpSession session = request.getSession(); //session==null的话会报错，所以判断的时候要信判断session能不能为空
 		User uuser=(User)(session.getAttribute("users"));
 		//Object uuid=session.getAttribute("uuid");
+		if(uuser!=null){
 		
-		if(uuser.getUname()!=null && uuser.getUpassword()!=null){			
-			Integer uid=Integer.parseInt(String.valueOf(uuser.getUid()));
-			list=authorbiz.inforByunumber(uid);
-			Integer aid=list.get(0).getAid();
-			List<Novel> novel=authorbiz.inforByaid(aid);
-			//System.out.println("进来了");
-			if(list.get(0).getUid()!=null){
-				model.addAttribute("author",list);
-				model.addAttribute("novel",novel);
-			}else{
-				response.sendRedirect("toauthor");
+			if(uuser.getUname()!=null && uuser.getUpassword()!=null){			
+				Integer uid=Integer.parseInt(String.valueOf(uuser.getUid()));
+				list=authorbiz.inforByunumber(uid);
+				Integer aid=list.get(0).getAid();
+				List<Novel> novel=authorbiz.inforByaid(aid);
+				//System.out.println("进来了");
+				if(list.get(0).getUid()!=null){
+					model.addAttribute("author",list);
+					//model.addAttribute("novel",novel);
+				}else{
+					response.sendRedirect("toauthor");
+				}
 			}
 		}else{
-			//System.out.println("没进来");	
-				response.sendRedirect("jsp/bookcase.jsp");
-		}
+			return "register";
+		}	
 		
+		model.addAttribute("list",Tlist);
 		return "AuthorPrefecture";		
 	}
 	
 	//作家信息编辑
 	@RequestMapping(value = "/editor")
 	public String editor(HttpServletRequest request,Model model){
+		
 		HttpSession session = request.getSession();
 		User uuser=(User)(session.getAttribute("users"));
 		Integer uid=Integer.parseInt(String.valueOf(uuser.getUid()));
@@ -453,6 +551,87 @@ public class ZpdNovelController {
 	}
 	
 	
+	//作者信息显示小说的信息
+	@RequestMapping(value="/AuthorNovel",produces = {"application/text;charset=UTF-8"})
+    @ResponseBody
+    public String quearyNovel(@RequestParam int aid,HttpServletRequest request){
+    	logger.info("quearyNovel.....");
+    	//Novel novel=new Novel();
+    	//String nname=text.substring(0,1)+"%";
+//    	novel.setNname(nname);
+//    	novel.setPan_name(nname);
+    	String page=request.getParameter("page");    
+    	String rows=request.getParameter("rows");
+    	int currentPage=Integer.parseInt(page);     //当前的页数
+    	int end=Integer.parseInt(rows);           //每页的条数
+    	int start=0;
+    	start=(currentPage-1)*end;
+    	
+    	//List<Novel> lists=this.novelbiz.FindAllNovel();
+    	List<Novel> lists=this.novelbiz.findNovelByName(novel);
+    	//List<Novel> list=this.novelbiz.FindNovelByPage(start, end);
+    	List<Novel> list=this.novelbiz.FindNovelByaid(aid, start, end);
+    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+    	ebp.setTotal(lists.size());
+    	ebp.setRows(list);
+    	Gson gson=new Gson();
+		return gson.toJson(ebp);
+    	//这个功能并没有从数据库中拿数据
+    }
+	
+	//作家专区小说信息编辑
+	@RequestMapping(value="/editNovel")
+    public String editNovel(@RequestParam int nid,Model model){
+    	logger.info("editNovel.....");
+    		
+    	List<Novel> list=novelbiz.ShowTNovel(nid);
+    	
+    	/*String nname=list.get(0).getNname();
+    	String npicture=list.get(0).getNpicture();
+    	String nstatus=list.get(0).getNstatus();
+    	int tid=list.get(0).getTid();*/
+    	//novelbiz.UpdateNovel(nname, npicture, nstatus, nid, tid);
+    	model.addAttribute("novel",list);
+    	
+		return "ENovel";
+    }
+	
+	@RequestMapping(value="/test1")
+    public String test1(){
+    	logger.info("他说他.....");
+		return "EditNovel";
+    }
+	
+	//作家专区部分显示小说类型
+	@RequestMapping(value="/ShowType",produces = {"application/text;charset=UTF-8"})
+	@ResponseBody
+    public String ShowType(Model model){
+    	logger.info("ShowType.....");
+    	List list=this.noveltypebiz.AllNovelType(new NovelType());
+    	Gson gson=new Gson();
+		return gson.toJson(list);
+    }
+	
+	//作家专区部分显示小说状态
+	@RequestMapping(value="/Shownstatus",produces = {"application/text;charset=UTF-8"})
+	@ResponseBody
+    public String ShowNstatus(HttpServletRequest request,Model model){
+    	logger.info("Shownstatus.....");
+    	/*Map<String,String> map=new HashMap<String,String>();
+    	map.put("s1", "未完结");
+    	map.put("s2", "完结");
+    	map.put("s3", "更新中");*/
+    	String Snid=request.getParameter("nid");
+    	int nid=Integer.parseInt(Snid);
+    	List<Novel> list=novelbiz.ShowNovel_id(nid);
+    	
+    	String status=list.get(0).getNstatus();
+    	
+    	Gson gson=new Gson();
+		return gson.toJson(status);
+    }
+	
+	
 	//首页标题的类型分类显示
 	@RequestMapping(value = "/toindex_Type/{tname}")
 	public String Index_Type(@PathVariable String tname, Model model) throws SQLException, UnsupportedEncodingException {
@@ -464,6 +643,77 @@ public class ZpdNovelController {
 		model.addAttribute("tname",str);
 		model.addAttribute("list1",list1);
 		return "TypeAll";
+	}
+	
+	
+	//TXT下载
+	@RequestMapping(value = "/txt_id/{nid}")
+	@ResponseBody
+	public byte[] Download_txt(@PathVariable int nid, Model model,HttpServletResponse response) throws IOException {
+		List<Novel> list=novelbiz.ShowNovel_id(nid);
+		String nname="e:\\"+list.get(0).getNname()+".txt";
+		byte[] content=jsoupUtils.Chapter(nid);
+		//File file=new File(nname);
+		OutputStream os = response.getOutputStream();
+		//FileOutputStream fs=new FileOutputStream(file);
+		
+		
+		  try{
+			
+			response.reset();
+	            
+	        response.setContentType("text/plain; charset=utf-8"); //普通文本解析	
+	            
+	        response.setHeader("Content-Disposition", "attachment; filename=" +nname);  
+			  
+		    File file=new File(nname);
+		    FileInputStream fis = new FileInputStream(file);
+		    ByteArrayOutputStream bos = new ByteArrayOutputStream();  
+            byte[] b = new byte[1024];  
+            int n;  
+            while ((n = fis.read(b)) != -1)  
+            {  
+                bos.write(b, 0, n);  
+            }  
+
+
+            fis.close();  
+            bos.close();  
+            content = bos.toByteArray();
+		  	}  
+	        catch (FileNotFoundException e)  
+	        {  
+	            e.printStackTrace();  
+	        }  
+	        catch (IOException e)  
+	        {  
+	            e.printStackTrace();  
+	        }  
+	        return content;  
+		   //System.out.print("BBB");
+		
+		
+       /* try {
+
+            response.reset();
+            
+            response.setContentType("text/plain; charset=utf-8"); //普通文本解析	
+            
+            response.setHeader("Content-Disposition", "attachment; filename=" +nname);
+     
+
+            os.write(content);
+
+            os.flush();
+	
+        }finally {
+            if (os != null) {
+                os.close();
+            }
+        }
+*/
+   
+		//return "Novel2";
 	}
 
 }

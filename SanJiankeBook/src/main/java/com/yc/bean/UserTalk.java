@@ -12,6 +12,15 @@ public class UserTalk implements Serializable {
 	private Integer uid ;//		--用户id
 	private String utdate ;//		--评论时间
 	private String utcontent ;//	--评论内容
+	private String uname;//用户名字
+	
+	
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 	public Integer getUtid() {
 		return utid;
 	}
@@ -48,6 +57,7 @@ public class UserTalk implements Serializable {
 		int result = 1;
 		result = prime * result + ((nid == null) ? 0 : nid.hashCode());
 		result = prime * result + ((uid == null) ? 0 : uid.hashCode());
+		result = prime * result + ((uname == null) ? 0 : uname.hashCode());
 		result = prime * result + ((utcontent == null) ? 0 : utcontent.hashCode());
 		result = prime * result + ((utdate == null) ? 0 : utdate.hashCode());
 		result = prime * result + ((utid == null) ? 0 : utid.hashCode());
@@ -72,6 +82,11 @@ public class UserTalk implements Serializable {
 				return false;
 		} else if (!uid.equals(other.uid))
 			return false;
+		if (uname == null) {
+			if (other.uname != null)
+				return false;
+		} else if (!uname.equals(other.uname))
+			return false;
 		if (utcontent == null) {
 			if (other.utcontent != null)
 				return false;
@@ -92,7 +107,7 @@ public class UserTalk implements Serializable {
 	@Override
 	public String toString() {
 		return "UserTalk [utid=" + utid + ", nid=" + nid + ", uid=" + uid + ", utdate=" + utdate + ", utcontent="
-				+ utcontent + "]";
+				+ utcontent + ", uname=" + uname + "]";
 	}
 	
 	

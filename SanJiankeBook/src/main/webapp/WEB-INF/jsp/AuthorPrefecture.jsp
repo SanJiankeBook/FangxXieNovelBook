@@ -3,17 +3,127 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%
+	String path = request.getContextPath();
+	//					http				://		localhost			:	8081				/SpringMvc_Book/
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base href="<%=basePath%>"></base>	
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>女生频道_笔下文学</title>
+<title>作者专区_三剑客文学</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css" />
-<!-- <script type="text/javascript" src="<%=request.getContextPath()%>/js/xiaoshuo.js"></script> -->
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/xiaoshuo.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="easyui/css/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="easyui/css/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="easyui/css/demo.css">
+<script type="text/javascript"
+	src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript"
+	src="easyui/js/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="easyui/js/index.js"></script>
+<script type="text/javascript"
+	src="easyui/js/easyui-lang-zh_CN.js"></script>	
 </head>
+	<!-- 显示作者写的小说 -->
+	<script  type="text/javascript">
+	$(function(){
+		var datagridObj;
+		/* var editRow = undefined;	//当前正在被编辑的行的索引
+		var op;
+		var flag; */
+		var aid=${author[0].aid};
+		datagridObj=$('#type_showAuthor_info').datagrid({
+			url:'AuthorNovel',   
+			queryParams: {aid:aid},
+			fit:true,
+			fitColumns:true,
+			loadMsg:'数据加载中...',
+			pageSize:5,
+			pageList:[5,10,15,20,25,30],
+			pagination : true, //显示分页栏
+			striped:true,		//斑马线效果
+			nowrap:true,		//超出宽度自动截取
+			rownumber:true,		//显示行数
+			sortName:'nid',		//排序的咧
+			remoteSort:false,	//前段排序而非服务器的排序，自己的排序
+			columns:[[	
+						{field : 'nnid',checkbox: true },
+						{field : 'nid',title : '小说编号',width : 20,align : 'center',sortable : true,hidden:true},
+						{field : 'npicture',title : '小说封面',width : 20,align : 'center',formatter : function(value, row, index) {
+							var picStr = "";
+							if (value.indexOf(",")) {
+								value = value.split(",");
+								for (var i = 0; i < value.length; i++) {
+									if (value[i] == null || value[i] == "") {
+										picStr += "<img src='../images/zanwu.jpg' width='100px' height='100px' />";
+									} else {
+										var patt1 = new RegExp("../");
+										if (patt1.test(value[i])) {
+											picStr += "<img src='"+value[i]+"' width='100px' height='100px' />";
+										} else {
+											picStr += "<img src='images/"+value[i]+"' width='100px' height='100px' />";
+										}
+									}
+								}
+							} else if (value != "") {
+								picStr += "<img src='"+value+"' width='100px' height='100px' />";
+							} else {
+								picStr += "<img src='images/zanwu.jpg' width='100px' height='100px' />";
+							} 
+								return picStr;
+							}
+						},
+						{field : 'tname',title : '类型',width : 20,align : 'center'},
+						/* {field : 'pan_name',title : '作者',width : 30,align : 'center'}, */
+						{field : 'nname',title : '名字',width : 20,align : 'center',formatter: function(val,row,index){
+							 if(val){
+								 return "<a href='toindex_id/"+row.nid +"' >"+val+"</a>";
+							} 
+						}
+						}, 
+						{field : 'nstatus',title : '小说状态',width : 20,align : 'center'}, 
+					]]	
+		});
+		
+		$('#edit').linkbutton({
+			plain:true,
+			text:"小说信息编辑",
+		});  
+		
+		$("#edit").click(function(){
+		    var row = $('#type_showAuthor_info').datagrid('getSelected');
+		    /* var rows = $('#type_showAuthor_info').datagrid('getSelections'); */
+		    if (row){
+		    	if(row.nid!=null){
+		    		$.ajax({
+						url : "editNovel",
+						type : "POST",
+						dataType : "JSON",//客户端返回过来的数据类型
+						data : {
+							'nid' : row.nid,
+						}
+					});
+				}else{
+					alert("请选择其中一天信息");
+				}
+		    }
+		});
+		
+	});
+	</script>
+
 <body>
 	<div id="wrapper">
 
@@ -52,9 +162,7 @@
 				<li><a rel="nofollow" href="readRecord.jsp">阅读记录</a></li>
 			</ul>
 		</div>
-		<div id="main">
-			<div id="hotcontent">
-				<div class="ll">
+		
 
 					<div class="item">
 						<form action="editor" method="post">
@@ -64,27 +172,16 @@
 							<h2 id="agrade">你的称号：${author[0].agrade }</h2>
 							<h2 id="acard">你的身份证号：${author[0].acard }</h2>
 							<h2 id="atel">你的联系方式：${author[0].atel }</h2>
-							<input type="submit" name="editor" value="信息编辑" />
+							<input type="submit" name="editor" value="作者信息编辑" />
 						</form>
 					</div>
+					
 
-					<div class="item">
-						<h1>你写的小说</h1>
-						<c:forEach items="${novel}" var="novel" begin="0" end="5">
-							<dd>
-								<img src="${novel.npicture}">
-							</dd>
-							<a style="" href="toindex_id/${novel.nid}">${novel.nname}</a>
-						</c:forEach>
-					</div>
-
-
-				</div>
-			</div>
-		</div>
-
+		<table id="type_showAuthor_info"  style="width: 100%; height: 200px; $(this).width() * 0.2"></table>
+		<button id="edit" >编辑小说信息</button>
+		
 		<div class="footer">
-			<div class="footer_link"></div>
+			
 			<div class="footer_cont">
 				<p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
 				<p>Copyright © 2016 笔下文学</p>

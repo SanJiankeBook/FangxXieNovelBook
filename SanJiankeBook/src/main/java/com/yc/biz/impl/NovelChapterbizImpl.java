@@ -49,8 +49,55 @@ private  BaseDao bd;
 	public void insertNovelChapter(NovelChapter novelchapter) {
 		this.bd.add(novelchapter, "insertNovel");
 
-
 	}
+
+	//查询待审核小说章节
+	@Override
+	public List<NovelChapter> UncheckNovelChapter(Integer start,Integer end) {
+		Map<String,Integer> map=new HashMap<String,Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		List<NovelChapter> list=this.bd.findAll(new NovelChapter(),map, "checkNovelChapter");
+		return list;
+		
+	}
+	
+	//显示所有的审核小说
+	@Override
+	public List<NovelChapter> UncheckNovelChapter() {
+		List<NovelChapter> list=this.bd.findAll(new NovelChapter(), "findAllcheckNovelChapter");
+		return list;
+	}
+
+	//显示待审查小说章节的详情
+	@Override
+	public NovelChapter ShowDetails(Integer id) {
+		NovelChapter chapter=new NovelChapter();
+		chapter.setCid(id);
+		List<NovelChapter> list=this.bd.findAll(chapter, "showDetails");
+		return list != null && list.size() >0 ? list.get(0) : null ;
+	}
+
+	/**
+	 * 通过待审核的章节
+	 */
+	@Override
+	public void PassChapter(Integer cid) {
+		NovelChapter chapter=new NovelChapter();
+		chapter.setCid(cid);
+		this.bd.update(chapter, "passChapter");
+	}
+
+	/**
+	 * 不通过待审核的章节
+	 */
+	@Override
+	public void UnpassChapter(Integer cid) {
+		NovelChapter chapter=new NovelChapter();
+		chapter.setCid(cid);
+		this.bd.update(chapter, "unpassChapter");
+	}
+
 
 	//根据小说id获取章节id
 	@Override
@@ -60,4 +107,15 @@ private  BaseDao bd;
 		Double nc =this.bd.fingFunc(novelchapter, map, "getNovelChapterId");
 		return nc;
 	}
+
+
+	@Override
+	public List<NovelChapter> ShowContent(Integer nid, Integer cid) {
+		NovelChapter chapter=new NovelChapter();
+		chapter.setCid(cid);
+		chapter.setNid(nid);
+		List<NovelChapter> list=this.bd.findAll(chapter, "showContent");
+		return list;
+	}
+
 }

@@ -4,9 +4,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class Rank {
-	public String ranknum;
-	public String novelname;
-	public String doll;
+	public String ranknum; //排名
+	public String novelname; //小说名
+	public String doll; //点击量
 	
 	public String getRanknum() {
 		return ranknum;
