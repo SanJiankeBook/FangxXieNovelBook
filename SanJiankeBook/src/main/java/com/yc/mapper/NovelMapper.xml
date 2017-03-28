@@ -9,11 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		keyProperty="nid">
 		insert into
 		novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1)
-		values(#{tid},#{aid},#{nname},#{npicture},#{ndescription},#{nstatus},#{standby_1});
+		values(#{tid},#{aid},#{nname},#{npicture},#{ndescription},#{nstatus},#{standby_1})
 	</insert>
 
 	<!-- 查找所有小说 -->
-
 	<select id="findAllNovel" parameterType="Novel" resultMap="NovelResultMap">
 		select
 		nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus
@@ -31,23 +30,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		join author on author.aid=novel.aid where author.pan_name like
 		#{pan_name} or nname like #{nname}
 	</select>
+		
+		<!-- 分页查询小说 -->
+		<select id="findNovelByPage" parameterType="Novel" resultMap="NovelResultMap">
+			select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus,novel.standby_1 from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+			limit #{start},#{end}
+		</select>
+		
 
 	<!-- 删除小说 -->
 	<delete id="delNovel" parameterType="Novel">
 		delete from novel where nid=#{nid}
 	</delete>
 
-	<!-- 分页查询小说 -->
-	<select id="findNovelByPage" parameterType="Novel" resultMap="NovelResultMap">
-		select
-		nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus
-		from novel_type
-		inner join novel
-		on novel_type.tid=novel.tid
-		inner join author
-		on author.aid=novel.aid
-		limit #{start},#{end}
-	</select>
 		
 		<!-- 根据搜索分页查询小说 -->
 	<select id="findNovelByPageName" parameterType="Novel"
@@ -125,10 +124,54 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="ndescription" column="ndescription" />
 		<result property="nstatus" column="nstatus" />
 		<association property="novelType" javaType="NovelType">
-			<id property="tid" column="tid" />
 			<result property="tname" column="tname" />
 		</association>
-	</resultMap>
+		</resultMap>	
+			<!-- 根据类型查询小说信息 
+	<resultMap type="Novel" id="NovelTypeMap">
+		<result property="nname" column="nname" />
+		<association property="novelType" javaType="NovelType">
+			<result property="tname" column="tname" />
+		</association>
+	</resultMap>-->
+			
+	<!-- 查询所有待审核的小说 -->
+	<select id="findAllUncheckNovel" parameterType="Novel" resultMap="NovelResultMap">
+		select * from novel where novel.standby_1='待审核'
+	</select>
+	<!-- 查询待审核的小说 -->
+	<select id="uncheckNovel" parameterType="Novel" resultMap="NovelResultMap">
+		select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus,novel.standby_1
+			from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+			where novel.standby_1='待审核' 
+			limit #{start},#{end}
+	</select>
+	
+	<!-- 通过待审查的小说 -->
+	<update id="passNovel" parameterType="Novel">
+		update novel set standby_1='通过' where nid in (#{nid});
+	</update>
+	
+	<!-- 不通过待审查的小说 -->
+	<update id="unpassNovel" parameterType="Novel">
+		update novel set standby_1='未通过' where nid in (#{nid});
+	</update>
+	
+	
+	<!-- 显示作品推荐区的数据 -->
+	<select id="novelrecommand"  parameterType="Novel" resultMap="NovelResultMap">
+		select nid,novel_type.tid,novel_type.tname,author.pan_name,nname
+			from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+	</select>
+	
 
 
 	<!-- 根据小说id查询作者信息 -->
@@ -146,7 +189,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result property="atel" column="atel" />
 		</association>
 	</resultMap>
-
+	
+	<!-- 分页查询小说 -->
 	<resultMap type="Novel" id="NovelResultMap">
 		<id property="nid" column="nid" />
 		<result property="tid" column="tid" />
@@ -158,6 +202,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="npicture" column="npicture" />
 		<result property="ndescription" column="ndescription" />
 		<result property="nstatus" column="nstatus" />
-
+		<result property="standby_1" column="standby_1" />
 	</resultMap>
+
 </mapper>

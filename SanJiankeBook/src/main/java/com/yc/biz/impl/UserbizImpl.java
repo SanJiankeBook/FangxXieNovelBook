@@ -77,7 +77,7 @@ private  BaseDao bd;
 	 * 删除用户
 	 */
 	@Override
-	public void DelUser(int uid) {
+	public void DelUser(Integer uid) {
 		User use=new User();
 		use.setUid(uid);
 		this.bd.delete(use, "delUser");
@@ -104,5 +104,6 @@ private  BaseDao bd;
 	public void addUser(User userlist) {
 		this.bd.add(userlist, "addUserInfo");
 	}
+
 
 }

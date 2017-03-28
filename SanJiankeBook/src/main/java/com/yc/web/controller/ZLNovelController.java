@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,11 +20,15 @@ import com.yc.bean.Admin;
 import com.yc.bean.Author;
 import com.yc.bean.EasyuiFindByPage;
 import com.yc.bean.Novel;
+import com.yc.bean.NovelChapter;
 import com.yc.bean.User;
+import com.yc.bean.help;
 import com.yc.biz.Adminbiz;
 import com.yc.biz.Authorbiz;
+import com.yc.biz.NovelChapterbiz;
 import com.yc.biz.Novelbiz;
 import com.yc.biz.Userbiz;
+import com.yc.biz.impl.NovelChapterbizImpl;
 
 @Controller
 public class ZLNovelController {
@@ -33,8 +38,22 @@ public class ZLNovelController {
     private Adminbiz adminbiz;
     private Authorbiz authorbiz;
     private Novelbiz novelbiz;
+    private NovelChapterbiz chapter;
+    private NovelChapter novelchapter;
     
-    @Resource(name="novelbizImpl")
+    
+    
+    @Resource(name="novelChapter")
+    public void setNovelchapter(NovelChapter novelchapter) {
+		this.novelchapter = novelchapter;
+	}
+
+	@Resource(name="novelChapterbizImpl")
+    public void setChapter(NovelChapterbiz chapter) {
+		this.chapter = chapter;
+	}
+
+	@Resource(name="novelbizImpl")
     public void setNovelbiz(Novelbiz novelbiz) {
 		this.novelbiz = novelbiz;
 	}
@@ -55,7 +74,6 @@ public class ZLNovelController {
 	}
     
 
-
 	//用户注册
     @RequestMapping(value="/toSave")
     public String addUser(User use){
@@ -66,22 +84,35 @@ public class ZLNovelController {
    
     
     //用户登录
-    @RequestMapping(value="/userLogin")
-    public String userLogin(@RequestParam(value="uname") String uname,@RequestParam(value="upassword") String upassword,HttpServletRequest req,HttpServletResponse resp){
-    	logger.info("this is the userLogin.....");
+//    @RequestMapping(value="/userLogin")
+//    public String userLogin(@RequestParam(value="uname") String uname,@RequestParam(value="upassword") String upassword,HttpServletRequest req,HttpServletResponse resp){
+//    	logger.info("this is the userLogin.....");
+//    	
+//    	List<User> list= this.userbiz.userLogin(uname, upassword);
+//    	
+//    	// TODO:将404页面显示成弹出提示框"用户名或密码错误",再完善一下,
+//    	if(!list.isEmpty()){
+//    		//若用户存在,存到session中
+//    		req.getSession().setAttribute("uname",uname);
+//    		return "index";
+//    	}else if(list.isEmpty()){
+//    		return "404";
+//    	}else{
+//    		return "";
+//    	}
+//    	
+//    }
+    
+    
+    //主页作品推荐专区显示数据
+    @RequestMapping(value="toindex")
+    public String ToIndex(Model model,HttpServletRequest request){
+    	//取到nid,tid,tname,nname,pan_name,可以用novel
+    	List<Novel> novel=this.novelbiz.NovelRecommend();
+    	//存之前随机选中9条数据
     	
-    	List<User> list= this.userbiz.userLogin(uname, upassword);
-    	
-    	// TODO:将404页面显示成弹出提示框"用户名或密码错误",再完善一下,
-    	if(!list.isEmpty()){
-    		//若用户存在,存到session中
-    		req.getSession().setAttribute("uname",uname);
-    		return "index";
-    	}else if(list.isEmpty()){
-    		return "404";
-    	}else{
-    		return "";
-    	}
+    	model.addAttribute("novel",novel);
+		return "index";
     	
     }
     
@@ -153,9 +184,14 @@ public class ZLNovelController {
      * @return
      */
     @RequestMapping(value="/delUser")
-    public @ResponseBody void DelUser(int uid ){
+    public @ResponseBody void DelUser(String uid ){
     	logger.info("this is easyUI delUser.....");
-    	this.userbiz.DelUser(uid);
+    	String[] uids=uid.split(",");
+    	for(String u:uids){
+    		Integer a=Integer.parseInt(u);
+    		this.userbiz.DelUser(a);
+    	}
+    	
     } 
     
     /**
@@ -197,9 +233,14 @@ public class ZLNovelController {
      * 删除作者
      */
     @RequestMapping(value="/delAuthor")
-    public @ResponseBody void DelAuthor(int aid){
+    public @ResponseBody void DelAuthor(String aid){
     	logger.info("this is DelAuthor.....");
-    	this.authorbiz.DelAuthor(aid);
+    	String[] aids=aid.split(",");
+    	for(String a:aids){
+    		Integer n=Integer.parseInt(a);
+    		this.authorbiz.DelAuthor(n);
+    	}
+    	
     }
     
     /**
@@ -240,14 +281,132 @@ public class ZLNovelController {
      * @param nid
      */
     @RequestMapping(value="/delNovel")
-    public @ResponseBody void DelNovel(int nid){
+    public @ResponseBody void DelNovel(String nid){
     	logger.info("this is delNovel.....");
-    	this.novelbiz.delNovel(nid);
+    	String[] nids=nid.split(",");
+    	for(String n:nids){
+    		System.out.println(n);
+    		Integer a=Integer.parseInt(n);
+    		this.novelbiz.delNovel(a);
+    	}
+    	
     }
 
-	
+    /**
+     * 显示所有待审查的小说
+     * @param request
+     * @return
+     */
+    @RequestMapping(value="/uncheckNovel",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody String FindUncheckNovel(HttpServletRequest request){
+    	logger.info("this is use map FindUncheckNovel.....");
+    	String page=request.getParameter("page");    
+    	String rows=request.getParameter("rows");
+    	int currentPage=Integer.parseInt(page);     //当前的页数
+    	int end=Integer.parseInt(rows);           //每页的条数
+    	int start=0;
+    	start=(currentPage-1)*end;
+    	
+    	List<Novel> lists=this.novelbiz.count();
+    	List<Novel> list=this.novelbiz.UncheckNovel(start, end);
+    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+    	ebp.setTotal(lists.size());
+    	ebp.setRows(list);
+    	Gson gson=new Gson();
+		return gson.toJson(ebp);
+    }
     
-   
+    /**
+     * 通过待审查的小说
+     */
+    @RequestMapping(value="/passNovel",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody void PassNovel(@RequestParam(value="nid") Integer nid){
+    	logger.info("this is passNovel.....");
+    	this.novelbiz.passNovel(nid);
+    }
     
+    /**
+     * 不通过待审查的小说
+     */
+    @RequestMapping(value="/unpassNovel",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody void UnpassNovel(@RequestParam(value="nid") Integer nid){
+    	logger.info("this is unpassNovel.....");
+    	this.novelbiz.UnpassNovel(nid);
+    }
+    
+    /**
+     *  显示所有待审查的小说章节
+     */
+    @RequestMapping(value="/uncheckNovelChapter",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody String FindUncheckNovelChapter(HttpServletRequest request){
+    	logger.info("this is use map FindUncheckNovelChapter.....");
+    	String page=request.getParameter("page");    
+    	String rows=request.getParameter("rows");
+    	int currentPage=Integer.parseInt(page);     //当前的页数
+    	int end=Integer.parseInt(rows);           //每页的条数
+    	int start=0;
+    	start=(currentPage-1)*end;
+    	
+    	List<NovelChapter> lists=this.chapter.UncheckNovelChapter();
+    	List<NovelChapter> list=this.chapter.UncheckNovelChapter(start, end);
+    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+    	ebp.setTotal(lists.size());
+    	ebp.setRows(list);
+    	Gson gson=new Gson();
+		return gson.toJson(ebp);
+    }
+    
+    /**
+     * 通过待审查章节
+     */
+    @RequestMapping(value="/passChapter",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody String PassNovelChapter(@RequestParam(value="id") Integer cid){
+    	logger.info("this is PassNovelChapter...");
+    	this.chapter.PassChapter(cid);
+    	return "1";
+    }
+    
+    /**
+     * 不通过待审核的小说章节
+     */
+    @RequestMapping(value="/unpassChapter",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody String UnpassNovelChapter(@RequestParam(value="id") Integer cid){
+    	logger.info("this is UnpassNovelChapter...");
+    	this.chapter.UnpassChapter(cid);
+    	return "1";
+    	
+    }
+    /**
+     * 显示小说详情
+     */
+    @RequestMapping(value="/showDetails",produces = {"application/text;charset=UTF-8"})
+    public @ResponseBody String ShowDetails(@RequestParam(value="id") Integer cid){
+    	logger.info("this is ShowDetails...");
+    	NovelChapter list=this.chapter.ShowDetails(cid);
+    	if(list!=null){
+    		return "1";
+    	}else{
+    		return "0";
+    	}
+    }
+    
+    //
+    @RequestMapping(value="/tocaddress")
+    public @ResponseBody String ToCaddress(@RequestParam(value="nid") Integer nid,@RequestParam(value="cid") Integer cid, Model model,HttpServletRequest request){
+    	logger.info("this is chapterContent");
+    	String a="/back/UncheckNovelChapter";
+    	List<NovelChapter> nchapter=this.chapter.ShowContent(nid, cid);
+    	NovelChapter novelChapter=new NovelChapter();
+    	novelChapter.setCaddress(nchapter.get(0).getCaddress());
+    	System.out.println(novelChapter);
+    	model.addAttribute("novelChapter", novelChapter);
+    	Gson gson=new Gson();
+    	//request.setAttribute("caddress", nc);
+    	if(model!=null && !"".equals(model) ){
+    		return gson.toJson(model);
+    	}else{
+    		return "0";
+    	}
+    } 
     
 }

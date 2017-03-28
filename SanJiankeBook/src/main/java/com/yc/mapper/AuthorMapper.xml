@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 删除作者 -->
 	<delete id="delAuthor" parameterType="Author">
-		delete from author where aid=#{aid}
+		delete from author where aid in (#{aid})
 	</delete>
 	
 	
