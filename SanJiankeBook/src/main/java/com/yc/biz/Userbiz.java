@@ -24,7 +24,7 @@ public interface Userbiz {
 	List<User> findUserByPage(Integer start,Integer end);
 	
 	//删除用户
-	void DelUser(int id);
+	void DelUser(Integer id);
 	
 	//根据用户名查找用户信息
 	List<User> findUserName(String u_number);

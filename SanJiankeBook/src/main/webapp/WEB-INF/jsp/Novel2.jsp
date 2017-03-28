@@ -215,15 +215,17 @@
 					<p>作&nbsp;&nbsp;者：${author[0].author.aname}</p>
 					<p>
 						动&nbsp;&nbsp;作：<a rel="nofollow" href="javascript:;"
-							onclick="addBookCase('${novel_id[0].nid }');">加入书架</a>、<a
-							rel="nofollow" href="#footer">直达底部</a>、<a target="_blank"
-							href="/down/txt2476.html" style="color: red;" title="儒道至圣TXT下载">TXT下载</a>
+							onclick="addBookCase('${novel_id[0].nid }');">加入书架</a>、
+							<a rel="nofollow" href="#footer">直达底部</a>、
+							<a target="_blank" href="txt_id/${novel_id[0].nid }" style="color: red;" title="儒道至圣TXT下载">TXT下载</a>
 					</p>
 					<p>
 						最新更新：<a href="3433725.html">${chapter[0].cname }</a>
 					</p>
 				</div>
-				<div id="intro">&nbsp${novel_id[0].ndescription }</div>
+
+				<div id="intro">&nbsp${novel_id[0].ndescription}</div>
+
 			</div>
 			<div id="sidebar">
 				<!-- 小说封面 -->
@@ -240,7 +242,9 @@
 
 
 
-					<dt>《${novel_id[0].nname}》</dt>
+
+					<dt>《${novel_id[0].nname}》相关的章节</dt>
+
 
 					<c:forEach items="${nchapter}" var="nchapter">
 						<dd>

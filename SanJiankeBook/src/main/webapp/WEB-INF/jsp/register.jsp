@@ -41,7 +41,7 @@
 <div class="clear"></div>
 <div class="nav">
 			<ul>
-				<li><a href="../index.jsp">首页</a></li>
+				<li><a href="toindex_zpd">首页</a></li>
 				<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
 				<li><a href="1-1.jsp">玄幻奇幻</a></li>
 				<li><a href="2-1.jsp">武侠仙侠</a></li>

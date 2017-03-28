@@ -2,9 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ page import="com.yc.utils.RedisUtil"%>
-<%@ page import="java.util.Set"%>
-<%@ page import="java.util.Iterator"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -47,7 +44,7 @@
 	<div class="clear"></div>
 	<div class="nav">
 		<ul>
-			<li><a href="../index.jsp">首页</a></li>
+			<li><a href="toindex_zpd">首页</a></li>
 			<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
 			<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
 			<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
@@ -66,8 +63,8 @@
 
 		<div class="index_toplist mright mbottom">
 			<div class="toptab" id="top_all_1">
-				<span>玄幻奇幻排行</span> <span class="tabRight"> <span
-					onmouseover="setTab('o1g',1,3,'cur','')" class="cur" id="o1g1">总</span>
+				<span>${list[0].tname}</span> <span class="tabRight"> 
+				<span onmouseover="setTab('o1g',1,3,'cur','')" class="cur" id="o1g1">总</span>
 					<span onmouseover="setTab('o1g',2,3,'cur','')" id="o1g2" class="">月</span>
 					<span onmouseover="setTab('o1g',3,3,'cur','')" id="o1g3" class="">周</span>
 				</span>
@@ -79,10 +76,10 @@
 
 
 
-						<c:forEach items="${listAll }" var="listAll1">
-							<li><span class="hits">${listAll1.ranknum} </span> <span
-								class="num">${ listAll1.doll}</span> <a href="/2_2476/"
-								title="儒道至圣" target="_blank">${listAll1.novelname}</a></li>
+						<c:forEach items="${listAll }" var="listAll">
+							<li><span class="hits">${ listAll.doll}</span> <span
+								class="num">${listAll.ranknum} </span> <a href="/2_2476/"
+								title="儒道至圣" target="_blank">${listAll.novelname}</a></li>
 						</c:forEach>
 
 
@@ -201,7 +198,7 @@
 
 		<div class="index_toplist mright mbottom">
 			<div class="toptab" id="top_all_2">
-				<span>武侠仙侠排行</span> <span class="tabRight"> <span
+				<span>${list[1].tname}</span> <span class="tabRight"> <span
 					onmouseover="setTab('o2g',1,3,'cur','')" class="cur" id="o2g1">总</span>
 					<span onmouseover="setTab('o2g',2,3,'cur','')" id="o2g2" class="">月</span>
 					<span onmouseover="setTab('o2g',3,3,'cur','')" id="o2g3" class="">周</span>
@@ -211,52 +208,13 @@
 
 				<div class="topbooks" id="con_o2g_1" style="display: block;">
 					<ul>
-
-						<li><span class="hits">12-15</span><span class="num">1.</span><a
-							href="/8_8784/" title="洪荒之血道冥河" target="_blank">洪荒之血道冥河</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">2.</span><a
-							href="/3_3417/" title="九仙图" target="_blank">九仙图</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">3.</span><a
-							href="/22_22842/" title="重生西游之万界妖尊" target="_blank">重生西游之万界妖尊</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">4.</span><a
-							href="/0_608/" title="大圣道" target="_blank">大圣道</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">5.</span><a
-							href="/18_18943/" title="九阳绝神" target="_blank">九阳绝神</a></li>
-
-						<li><span class="hits">02-11</span><span class="num">6.</span><a
-							href="/4_4758/" title="申公豹传承" target="_blank">申公豹传承</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">7.</span><a
-							href="/26_26157/" title="九世轮回诀" target="_blank">九世轮回诀</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">8.</span><a
-							href="/25_25086/" title="一念永恒" target="_blank">一念永恒</a></li>
-
-						<li><span class="hits">05-17</span><span class="num">9.</span><a
-							href="/1_1553/" title="灵鼎" target="_blank">灵鼎</a></li>
-
-						<li><span class="hits">06-21</span><span class="num">10.</span><a
-							href="/2_2508/" title="造化之门" target="_blank">造化之门</a></li>
-
-						<li><span class="hits">11-09</span><span class="num">11.</span><a
-							href="/2_2572/" title="不朽剑神" target="_blank">不朽剑神</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">12.</span><a
-							href="/3_3300/" title="盖世仙尊" target="_blank">盖世仙尊</a></li>
-
-						<li><span class="hits">11-30</span><span class="num">13.</span><a
-							href="/6_6444/" title="我欲封天" target="_blank">我欲封天</a></li>
-
-						<li><span class="hits">02-09</span><span class="num">14.</span><a
-							href="/3_3357/" title="飞天" target="_blank">飞天</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">15.</span><a
-							href="/2_2186/" title="极品修仙高手" target="_blank">极品修仙高手</a></li>
-
+						<c:forEach items="${listAll1 }" var="listAll1">
+							<li>
+							<span class="hits">${ listAll1.doll}</span>
+							<span class="num">${listAll1.ranknum}</span>
+							<a href="/2_2476/" title="儒道至圣" target="_blank">${listAll1.novelname}</a>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 
@@ -368,7 +326,7 @@
 
 		<div class="index_toplist mright mbottom">
 			<div class="toptab" id="top_all_3">
-				<span>都市言情排行</span> <span class="tabRight"> <span
+				<span>${list[2].tname }</span> <span class="tabRight"> <span
 					onmouseover="setTab('o3g',1,3,'cur','')" class="cur" id="o3g1">总</span>
 					<span onmouseover="setTab('o3g',2,3,'cur','')" id="o3g2" class="">月</span>
 					<span onmouseover="setTab('o3g',3,3,'cur','')" id="o3g3" class="">周</span>
@@ -379,51 +337,11 @@
 				<div class="topbooks" id="con_o3g_1" style="display: block;">
 					<ul>
 
-						<li><span class="hits">03-03</span><span class="num">1.</span><a
-							href="/20_20067/" title="极品透视保镖" target="_blank">极品透视保镖</a></li>
-
-						<li><span class="hits">12-09</span><span class="num">2.</span><a
-							href="/16_16150/" title="贴身狂医" target="_blank">贴身狂医</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">3.</span><a
-							href="/0_218/" title="超品透视" target="_blank">超品透视</a></li>
-
-						<li><span class="hits">12-31</span><span class="num">4.</span><a
-							href="/4_4177/" title="官榜" target="_blank">官榜</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">5.</span><a
-							href="/3_3701/" title="极品全能学生" target="_blank">极品全能学生</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">6.</span><a
-							href="/8_8033/" title="校花的贴身高手" target="_blank">校花的贴身高手</a></li>
-
-						<li><span class="hits">06-28</span><span class="num">7.</span><a
-							href="/5_5220/" title="超级医道高手" target="_blank">超级医道高手</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">8.</span><a
-							href="/1_1175/" title="极品桃花运" target="_blank">极品桃花运</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">9.</span><a
-							href="/0_897/" title="校园护花高手" target="_blank">校园护花高手</a></li>
-
-						<li><span class="hits">08-01</span><span class="num">10.</span><a
-							href="/20_20172/" title="美女的透视神医" target="_blank">美女的透视神医</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">11.</span><a
-							href="/3_3354/" title="超品相师" target="_blank">超品相师</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">12.</span><a
-							href="/3_3915/" title="我真是大明星" target="_blank">我真是大明星</a></li>
-
-						<li><span class="hits">05-30</span><span class="num">13.</span><a
-							href="/9_9463/" title="都市霸主" target="_blank">都市霸主</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">14.</span><a
-							href="/3_3566/" title="超时空垃圾站" target="_blank">超时空垃圾站</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">15.</span><a
-							href="/5_5788/" title="透视邪医" target="_blank">透视邪医</a></li>
-
+						<c:forEach items="${listAll2 }" var="listAll2">
+							<li><span class="hits">${ listAll2.doll}</span> <span
+								class="num">${listAll2.ranknum} </span> <a href="/2_2476/"
+								title="儒道至圣" target="_blank">${listAll2.novelname}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 
@@ -535,7 +453,7 @@
 
 		<div class="index_toplist  mbottom">
 			<div class="toptab" id="top_all_4">
-				<span>历史军事排行</span> <span class="tabRight"> <span
+				<span>${list[3].tname}</span> <span class="tabRight"> <span
 					onmouseover="setTab('o4g',1,3,'cur','')" class="cur" id="o4g1">总</span>
 					<span onmouseover="setTab('o4g',2,3,'cur','')" id="o4g2" class="">月</span>
 					<span onmouseover="setTab('o4g',3,3,'cur','')" id="o4g3" class="">周</span>
@@ -546,51 +464,11 @@
 				<div class="topbooks" id="con_o4g_1" style="display: block;">
 					<ul>
 
-						<li><span class="hits">03-03</span><span class="num">1.</span><a
-							href="/23_23027/" title="庶子风流" target="_blank">庶子风流</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">2.</span><a
-							href="/2_2716/" title="三国之召唤猛将" target="_blank">三国之召唤猛将</a></li>
-
-						<li><span class="hits">01-01</span><span class="num">3.</span><a
-							href="/3_3479/" title="铁血强国" target="_blank">铁血强国</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">4.</span><a
-							href="/2_2273/" title="我要做皇帝" target="_blank">我要做皇帝</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">5.</span><a
-							href="/24_24848/" title="一品唐侯" target="_blank">一品唐侯</a></li>
-
-						<li><span class="hits">01-04</span><span class="num">6.</span><a
-							href="/5_5856/" title="国士" target="_blank">国士</a></li>
-
-						<li><span class="hits">12-31</span><span class="num">7.</span><a
-							href="/4_4862/" title="最强兵王" target="_blank">最强兵王</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">8.</span><a
-							href="/22_22841/" title="逆明1644" target="_blank">逆明1644</a></li>
-
-						<li><span class="hits">01-24</span><span class="num">9.</span><a
-							href="/17_17595/" title="抗日之超级壮丁" target="_blank">抗日之超级壮丁</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">10.</span><a
-							href="/5_5444/" title="抗日之将胆传奇" target="_blank">抗日之将胆传奇</a></li>
-
-						<li><span class="hits">09-14</span><span class="num">11.</span><a
-							href="/11_11760/" title="崇祯：重征天下" target="_blank">崇祯：重征天下</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">12.</span><a
-							href="/23_23321/" title="极品帝王" target="_blank">极品帝王</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">13.</span><a
-							href="/6_6326/" title="大魏宫廷" target="_blank">大魏宫廷</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">14.</span><a
-							href="/2_2746/" title="明士" target="_blank">明士</a></li>
-
-						<li><span class="hits">04-24</span><span class="num">15.</span><a
-							href="/21_21681/" title="回到古代玩机械" target="_blank">回到古代玩机械</a></li>
-
+						<c:forEach items="${listAll3 }" var="listAll3">
+							<li><span class="hits">${ listAll3.doll}</span> <span
+								class="num">${listAll3.ranknum} </span> <a href="/2_2476/"
+								title="儒道至圣" target="_blank">${listAll3.novelname}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 
@@ -702,7 +580,7 @@
 
 		<div class="index_toplist mright mbottom">
 			<div class="toptab" id="top_all_5">
-				<span>科幻灵异排行</span> <span class="tabRight"> <span
+				<span>${list[4].tname }</span> <span class="tabRight"> <span
 					onmouseover="setTab('o5g',1,3,'cur','')" class="cur" id="o5g1">总</span>
 					<span onmouseover="setTab('o5g',2,3,'cur','')" id="o5g2" class="">月</span>
 					<span onmouseover="setTab('o5g',3,3,'cur','')" id="o5g3" class="">周</span>
@@ -713,51 +591,11 @@
 				<div class="topbooks" id="con_o5g_1" style="display: block;">
 					<ul>
 
-						<li><span class="hits">03-01</span><span class="num">1.</span><a
-							href="/3_3064/" title="无限进化" target="_blank">无限进化</a></li>
-
-						<li><span class="hits">12-20</span><span class="num">2.</span><a
-							href="/3_3144/" title="网游之三国无双" target="_blank">网游之三国无双</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">3.</span><a
-							href="/24_24153/" title="穿越电影之无限崛起" target="_blank">穿越电影之无限崛起</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">4.</span><a
-							href="/7_7482/" title="末世大回炉" target="_blank">末世大回炉</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">5.</span><a
-							href="/5_5175/" title="修真四万年" target="_blank">修真四万年</a></li>
-
-						<li><span class="hits">10-01</span><span class="num">6.</span><a
-							href="/4_4830/" title="全方位幻想" target="_blank">全方位幻想</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">7.</span><a
-							href="/7_7025/" title="网游之逆天戒指" target="_blank">网游之逆天戒指</a></li>
-
-						<li><span class="hits">06-30</span><span class="num">8.</span><a
-							href="/4_4155/" title="龙骸战神" target="_blank">龙骸战神</a></li>
-
-						<li><span class="hits">01-15</span><span class="num">9.</span><a
-							href="/3_3023/" title="电影世界冒险王" target="_blank">电影世界冒险王</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">10.</span><a
-							href="/5_5216/" title="无限潜能" target="_blank">无限潜能</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">11.</span><a
-							href="/1_1135/" title="英雄联盟之绝世无双" target="_blank">英雄联盟之绝世无双</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">12.</span><a
-							href="/5_5930/" title="我在末世有套房" target="_blank">我在末世有套房</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">13.</span><a
-							href="/6_6385/" title="武侠世界大穿越" target="_blank">武侠世界大穿越</a></li>
-
-						<li><span class="hits">02-22</span><span class="num">14.</span><a
-							href="/26_26112/" title="电影世界大盗" target="_blank">电影世界大盗</a></li>
-
-						<li><span class="hits">05-29</span><span class="num">15.</span><a
-							href="/12_12704/" title="大尸潮" target="_blank">大尸潮</a></li>
-
+						<c:forEach items="${listAll4}" var="listAll4">
+							<li><span class="hits">${ listAll4.doll}</span> <span
+								class="num">${listAll4.ranknum} </span> <a href="/2_2476/"
+								title="儒道至圣" target="_blank">${listAll4.novelname}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 
@@ -869,7 +707,7 @@
 
 		<div class="index_toplist mright mbottom">
 			<div class="toptab" id="top_all_6">
-				<span>网游竞技排行</span> <span class="tabRight"> <span
+				<span>${list[5].tname }</span> <span class="tabRight"> <span
 					onmouseover="setTab('o6g',1,3,'cur','')" class="cur" id="o6g1">总</span>
 					<span onmouseover="setTab('o6g',2,3,'cur','')" id="o6g2" class="">月</span>
 					<span onmouseover="setTab('o6g',3,3,'cur','')" id="o6g3" class="">周</span>
@@ -880,51 +718,11 @@
 				<div class="topbooks" id="con_o6g_1" style="display: block;">
 					<ul>
 
-						<li><span class="hits">03-03</span><span class="num">1.</span><a
-							href="/3_3104/" title="重生之最强剑神" target="_blank">重生之最强剑神</a></li>
-
-						<li><span class="hits">01-19</span><span class="num">2.</span><a
-							href="/2_2847/" title="超级包裹" target="_blank">超级包裹</a></li>
-
-						<li><span class="hits">12-10</span><span class="num">3.</span><a
-							href="/2_2026/" title="网游之大盗贼" target="_blank">网游之大盗贼</a></li>
-
-						<li><span class="hits">04-18</span><span class="num">4.</span><a
-							href="/21_21346/" title="网游之混沌强化" target="_blank">网游之混沌强化</a></li>
-
-						<li><span class="hits">06-23</span><span class="num">5.</span><a
-							href="/2_2381/" title="带着历史名将闯三国" target="_blank">带着历史名将闯三国</a></li>
-
-						<li><span class="hits">05-28</span><span class="num">6.</span><a
-							href="/10_10619/" title="暗夜游侠" target="_blank">暗夜游侠</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">7.</span><a
-							href="/0_945/" title="天才后卫" target="_blank">天才后卫</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">8.</span><a
-							href="/2_2241/" title="网游之三国超级领主" target="_blank">网游之三国超级领主</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">9.</span><a
-							href="/29_29890/" title="大盗贼" target="_blank">大盗贼</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">10.</span><a
-							href="/7_7738/" title="网游之荒古时代" target="_blank">网游之荒古时代</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">11.</span><a
-							href="/24_24582/" title="网游之神级机械猎人" target="_blank">网游之神级机械猎人</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">12.</span><a
-							href="/6_6383/" title="网游之倒行逆施" target="_blank">网游之倒行逆施</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">13.</span><a
-							href="/7_7043/" title="无限之配角的逆袭" target="_blank">无限之配角的逆袭</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">14.</span><a
-							href="/2_2773/" title="神级英雄" target="_blank">神级英雄</a></li>
-
-						<li><span class="hits">01-15</span><span class="num">15.</span><a
-							href="/0_21/" title="位面穿越之帝王之路" target="_blank">位面穿越之帝王之路</a></li>
-
+						<c:forEach items="${listAll5}" var="listAll5">
+							<li><span class="hits">${ listAll5.doll}</span> <span
+								class="num">${listAll5.ranknum} </span> <a href="/2_2476/"
+								title="儒道至圣" target="_blank">${listAll5.novelname}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 
@@ -1034,345 +832,7 @@
 			<div class="clearfix"></div>
 		</div>
 
-		<div class="index_toplist mright mbottom">
-			<div class="toptab" id="top_all_7">
-				<span>女生频道排行</span> <span class="tabRight"> <span
-					onmouseover="setTab('o7g',1,3,'cur','')" class="cur" id="o7g1">总</span>
-					<span onmouseover="setTab('o7g',2,3,'cur','')" id="o7g2" class="">月</span>
-					<span onmouseover="setTab('o7g',3,3,'cur','')" id="o7g3" class="">周</span>
-				</span>
-			</div>
-			<div id="tabData_7">
 
-				<div class="topbooks" id="con_o7g_1" style="display: block;">
-					<ul>
-
-						<li><span class="hits">03-04</span><span class="num">1.</span><a
-							href="/3_3454/" title="完美恋人，首席已过期" target="_blank">完美恋人，首席已过期</a></li>
-
-						<li><span class="hits">02-02</span><span class="num">2.</span><a
-							href="/9_9138/" title="女配逆袭之末世生存系统" target="_blank">女配逆袭之末世生存系统</a></li>
-
-						<li><span class="hits">01-26</span><span class="num">3.</span><a
-							href="/9_9030/" title="Hello，继承者" target="_blank">Hello，继承者</a></li>
-
-						<li><span class="hits">07-22</span><span class="num">4.</span><a
-							href="/5_5368/" title="霸道枭少狂宠妻" target="_blank">霸道枭少狂宠妻</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">5.</span><a
-							href="/8_8728/" title="都市奇门医圣" target="_blank">都市奇门医圣</a></li>
-
-						<li><span class="hits">05-17</span><span class="num">6.</span><a
-							href="/5_5283/" title="一夜悍妃：王妃爆笑驯夫记" target="_blank">一夜悍妃：王妃爆笑驯夫记</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">7.</span><a
-							href="/3_3532/" title="拒嫁豪门：少夫人99次出逃" target="_blank">拒嫁豪门：少夫人99次出逃</a></li>
-
-						<li><span class="hits">11-08</span><span class="num">8.</span><a
-							href="/22_22863/" title="长嫡" target="_blank">长嫡</a></li>
-
-						<li><span class="hits">06-20</span><span class="num">9.</span><a
-							href="/10_10476/" title="独家宠婚：高冷老公呆萌妻" target="_blank">独家宠婚：高冷老公呆萌妻</a></li>
-
-						<li><span class="hits">11-16</span><span class="num">10.</span><a
-							href="/1_1930/" title="绝世神医：腹黑大小姐" target="_blank">绝世神医：腹黑大小姐</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">11.</span><a
-							href="/4_4381/" title="邪王追妻：废材逆天小姐" target="_blank">邪王追妻：废材逆天小姐</a></li>
-
-						<li><span class="hits">01-01</span><span class="num">12.</span><a
-							href="/30_30276/" title="盛世宠婚：帝少的小辣妻" target="_blank">盛世宠婚：帝少的小辣妻</a></li>
-
-						<li><span class="hits">01-22</span><span class="num">13.</span><a
-							href="/10_10926/" title="盛世谋臣" target="_blank">盛世谋臣</a></li>
-
-						<li><span class="hits">01-01</span><span class="num">14.</span><a
-							href="/30_30111/" title="首席长官，求别撩！" target="_blank">首席长官，求别撩！</a></li>
-
-						<li><span class="hits">01-14</span><span class="num">15.</span><a
-							href="/1_1653/" title="女总裁的贴身兵王" target="_blank">女总裁的贴身兵王</a></li>
-
-					</ul>
-				</div>
-
-				<div class="topbooks" id="con_o7g_2" style="display: none;">
-					<ul>
-
-						<li><span class="hits">01-26</span><span class="num">1.</span><a
-							href="/9_9030/" title="Hello，继承者" target="_blank">Hello，继承者</a></li>
-
-						<li><span class="hits">02-02</span><span class="num">2.</span><a
-							href="/9_9138/" title="女配逆袭之末世生存系统" target="_blank">女配逆袭之末世生存系统</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">3.</span><a
-							href="/4_4100/" title="神医弃女：鬼帝的驭兽狂妃" target="_blank">神医弃女：鬼帝的驭兽狂妃</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">4.</span><a
-							href="/3_3454/" title="完美恋人，首席已过期" target="_blank">完美恋人，首席已过期</a></li>
-
-						<li><span class="hits">07-22</span><span class="num">5.</span><a
-							href="/5_5368/" title="霸道枭少狂宠妻" target="_blank">霸道枭少狂宠妻</a></li>
-
-						<li><span class="hits">02-23</span><span class="num">6.</span><a
-							href="/27_27414/" title="倾世暖婚：首席亿万追妻" target="_blank">倾世暖婚：首席亿万追妻</a></li>
-
-						<li><span class="hits">03-02</span><span class="num">7.</span><a
-							href="/26_26600/" title="丑女种田：山里汉宠妻无度" target="_blank">丑女种田：山里汉宠妻无度</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">8.</span><a
-							href="/30_30437/" title="绝宠妖妃：邪王，太闷骚！" target="_blank">绝宠妖妃：邪王，太闷骚！</a></li>
-
-						<li><span class="hits">03-02</span><span class="num">9.</span><a
-							href="/26_26659/" title="甜心V5：总裁宠之过急" target="_blank">甜心V5：总裁宠之过急</a></li>
-
-						<li><span class="hits">06-07</span><span class="num">10.</span><a
-							href="/1_1715/" title="秘密新婚，总裁爱妻极致" target="_blank">秘密新婚，总裁爱妻极致</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">11.</span><a
-							href="/26_26992/" title="素女寻仙" target="_blank">素女寻仙</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">12.</span><a
-							href="/30_30382/" title="总裁大人，体力好！" target="_blank">总裁大人，体力好！</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">13.</span><a
-							href="/30_30240/" title="拒嫁魔帝：诱宠呆萌妃" target="_blank">拒嫁魔帝：诱宠呆萌妃</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">14.</span><a
-							href="/11_11289/" title="误惹妖孽王爷：废材逆天四小姐" target="_blank">误惹妖孽王爷：废材逆天四小姐</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">15.</span><a
-							href="/31_31385/" title="豪宠小萌妻：买个老婆回家爱" target="_blank">豪宠小萌妻：买个老婆回家爱</a></li>
-
-					</ul>
-				</div>
-
-				<div class="topbooks" id="con_o7g_3" style="display: none;">
-					<ul>
-
-						<li><span class="hits">01-26</span><span class="num">1.</span><a
-							href="/9_9030/" title="Hello，继承者" target="_blank">Hello，继承者</a></li>
-
-						<li><span class="hits">02-02</span><span class="num">2.</span><a
-							href="/9_9138/" title="女配逆袭之末世生存系统" target="_blank">女配逆袭之末世生存系统</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">3.</span><a
-							href="/3_3454/" title="完美恋人，首席已过期" target="_blank">完美恋人，首席已过期</a></li>
-
-						<li><span class="hits">07-22</span><span class="num">4.</span><a
-							href="/5_5368/" title="霸道枭少狂宠妻" target="_blank">霸道枭少狂宠妻</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">5.</span><a
-							href="/3_3532/" title="拒嫁豪门：少夫人99次出逃" target="_blank">拒嫁豪门：少夫人99次出逃</a></li>
-
-						<li><span class="hits">01-01</span><span class="num">6.</span><a
-							href="/30_30111/" title="首席长官，求别撩！" target="_blank">首席长官，求别撩！</a></li>
-
-						<li><span class="hits">12-10</span><span class="num">7.</span><a
-							href="/25_25954/" title="黑帝1001夜盛宠：鲜妻，有孕" target="_blank">黑帝1001夜盛宠：鲜妻，有孕</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">8.</span><a
-							href="/11_11289/" title="误惹妖孽王爷：废材逆天四小姐" target="_blank">误惹妖孽王爷：废材逆天四小姐</a></li>
-
-						<li><span class="hits">03-04</span><span class="num">9.</span><a
-							href="/30_30382/" title="总裁大人，体力好！" target="_blank">总裁大人，体力好！</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">10.</span><a
-							href="/8_8728/" title="都市奇门医圣" target="_blank">都市奇门医圣</a></li>
-
-						<li><span class="hits">12-16</span><span class="num">11.</span><a
-							href="/13_13026/" title="绝色丹药师：狂女遮天" target="_blank">绝色丹药师：狂女遮天</a></li>
-
-						<li><span class="hits">01-14</span><span class="num">12.</span><a
-							href="/1_1653/" title="女总裁的贴身兵王" target="_blank">女总裁的贴身兵王</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">13.</span><a
-							href="/29_29278/" title="天价小逃妻：总裁，请止步" target="_blank">天价小逃妻：总裁，请止步</a></li>
-
-						<li><span class="hits">03-03</span><span class="num">14.</span><a
-							href="/4_4381/" title="邪王追妻：废材逆天小姐" target="_blank">邪王追妻：废材逆天小姐</a></li>
-
-						<li><span class="hits">01-23</span><span class="num">15.</span><a
-							href="/0_621/" title="重生娘子在种田" target="_blank">重生娘子在种田</a></li>
-
-					</ul>
-				</div>
-
-			</div>
-			<div class="clearfix"></div>
-		</div>
-
-
-		<div class="index_toplist mbottom">
-			<div class="toptab" id="top_all_8">
-				<span>完本小说排行</span> <span class="tabRight"> <span
-					onmouseover="setTab('hng',1,3,'cur','')" class="cur" id="hng1">总</span>
-					<span onmouseover="setTab('hng',2,3,'cur','')" id="hng2" class="">月</span>
-					<span onmouseover="setTab('hng',3,3,'cur','')" id="hng3" class="">周</span>
-				</span>
-			</div>
-			<div id="tabData_8">
-
-
-
-				<div class="topbooks" id="con_hng_1" style="display: block;">
-					<ul>
-
-						<li><span class="hits">05-18</span><span class="num">1.</span><a
-							href="/4_4120/" title="至尊战神" target="_blank">至尊战神</a></li>
-
-						<li><span class="hits">03-01</span><span class="num">2.</span><a
-							href="/3_3546/" title="龙血王者" target="_blank">龙血王者</a></li>
-
-						<li><span class="hits">12-20</span><span class="num">3.</span><a
-							href="/3_3144/" title="网游之三国无双" target="_blank">网游之三国无双</a></li>
-
-						<li><span class="hits">12-15</span><span class="num">4.</span><a
-							href="/8_8784/" title="洪荒之血道冥河" target="_blank">洪荒之血道冥河</a></li>
-
-						<li><span class="hits">02-02</span><span class="num">5.</span><a
-							href="/9_9138/" title="女配逆袭之末世生存系统" target="_blank">女配逆袭之末世生存系统</a></li>
-
-						<li><span class="hits">02-17</span><span class="num">6.</span><a
-							href="/23_23026/" title="星河帝国" target="_blank">星河帝国</a></li>
-
-						<li><span class="hits">01-26</span><span class="num">7.</span><a
-							href="/9_9030/" title="Hello，继承者" target="_blank">Hello，继承者</a></li>
-
-						<li><span class="hits">12-09</span><span class="num">8.</span><a
-							href="/16_16150/" title="贴身狂医" target="_blank">贴身狂医</a></li>
-
-						<li><span class="hits">07-22</span><span class="num">9.</span><a
-							href="/5_5368/" title="霸道枭少狂宠妻" target="_blank">霸道枭少狂宠妻</a></li>
-
-						<li><span class="hits">04-21</span><span class="num">10.</span><a
-							href="/7_7087/" title="武灵天下" target="_blank">武灵天下</a></li>
-
-						<li><span class="hits">11-24</span><span class="num">11.</span><a
-							href="/3_3087/" title="完美世界" target="_blank">完美世界</a></li>
-
-						<li><span class="hits">06-28</span><span class="num">12.</span><a
-							href="/5_5220/" title="超级医道高手" target="_blank">超级医道高手</a></li>
-
-						<li><span class="hits">12-04</span><span class="num">13.</span><a
-							href="/19_19514/" title="逆天武神" target="_blank">逆天武神</a></li>
-
-						<li><span class="hits">08-01</span><span class="num">14.</span><a
-							href="/20_20172/" title="美女的透视神医" target="_blank">美女的透视神医</a></li>
-
-						<li><span class="hits">01-01</span><span class="num">15.</span><a
-							href="/3_3479/" title="铁血强国" target="_blank">铁血强国</a></li>
-
-					</ul>
-				</div>
-
-
-
-				<div class="topbooks" id="con_hng_2" style="display: none;">
-					<ul>
-
-						<li><span class="hits">05-18</span><span class="num">1.</span><a
-							href="/4_4120/" title="至尊战神" target="_blank">至尊战神</a></li>
-
-						<li><span class="hits">03-01</span><span class="num">2.</span><a
-							href="/3_3546/" title="龙血王者" target="_blank">龙血王者</a></li>
-
-						<li><span class="hits">12-20</span><span class="num">3.</span><a
-							href="/3_3144/" title="网游之三国无双" target="_blank">网游之三国无双</a></li>
-
-						<li><span class="hits">01-26</span><span class="num">4.</span><a
-							href="/9_9030/" title="Hello，继承者" target="_blank">Hello，继承者</a></li>
-
-						<li><span class="hits">02-02</span><span class="num">5.</span><a
-							href="/9_9138/" title="女配逆袭之末世生存系统" target="_blank">女配逆袭之末世生存系统</a></li>
-
-						<li><span class="hits">02-17</span><span class="num">6.</span><a
-							href="/23_23026/" title="星河帝国" target="_blank">星河帝国</a></li>
-
-						<li><span class="hits">05-17</span><span class="num">7.</span><a
-							href="/4_4827/" title="至尊箭神" target="_blank">至尊箭神</a></li>
-
-						<li><span class="hits">12-09</span><span class="num">8.</span><a
-							href="/16_16150/" title="贴身狂医" target="_blank">贴身狂医</a></li>
-
-						<li><span class="hits">05-30</span><span class="num">9.</span><a
-							href="/9_9463/" title="都市霸主" target="_blank">都市霸主</a></li>
-
-						<li><span class="hits">12-15</span><span class="num">10.</span><a
-							href="/8_8784/" title="洪荒之血道冥河" target="_blank">洪荒之血道冥河</a></li>
-
-						<li><span class="hits">12-29</span><span class="num">11.</span><a
-							href="/19_19502/" title="老子是癞蛤蟆" target="_blank">老子是癞蛤蟆</a></li>
-
-						<li><span class="hits">12-04</span><span class="num">12.</span><a
-							href="/19_19514/" title="逆天武神" target="_blank">逆天武神</a></li>
-
-						<li><span class="hits">06-21</span><span class="num">13.</span><a
-							href="/2_2508/" title="造化之门" target="_blank">造化之门</a></li>
-
-						<li><span class="hits">03-01</span><span class="num">14.</span><a
-							href="/3_3317/" title="天价萌妻" target="_blank">天价萌妻</a></li>
-
-						<li><span class="hits">07-22</span><span class="num">15.</span><a
-							href="/5_5368/" title="霸道枭少狂宠妻" target="_blank">霸道枭少狂宠妻</a></li>
-
-					</ul>
-				</div>
-
-
-
-				<div class="topbooks" id="con_hng_3" style="display: none;">
-					<ul>
-
-						<li><span class="hits">05-18</span><span class="num">1.</span><a
-							href="/4_4120/" title="至尊战神" target="_blank">至尊战神</a></li>
-
-						<li><span class="hits">03-01</span><span class="num">2.</span><a
-							href="/3_3546/" title="龙血王者" target="_blank">龙血王者</a></li>
-
-						<li><span class="hits">12-20</span><span class="num">3.</span><a
-							href="/3_3144/" title="网游之三国无双" target="_blank">网游之三国无双</a></li>
-
-						<li><span class="hits">01-26</span><span class="num">4.</span><a
-							href="/9_9030/" title="Hello，继承者" target="_blank">Hello，继承者</a></li>
-
-						<li><span class="hits">02-02</span><span class="num">5.</span><a
-							href="/9_9138/" title="女配逆袭之末世生存系统" target="_blank">女配逆袭之末世生存系统</a></li>
-
-						<li><span class="hits">02-17</span><span class="num">6.</span><a
-							href="/23_23026/" title="星河帝国" target="_blank">星河帝国</a></li>
-
-						<li><span class="hits">12-09</span><span class="num">7.</span><a
-							href="/16_16150/" title="贴身狂医" target="_blank">贴身狂医</a></li>
-
-						<li><span class="hits">12-15</span><span class="num">8.</span><a
-							href="/8_8784/" title="洪荒之血道冥河" target="_blank">洪荒之血道冥河</a></li>
-
-						<li><span class="hits">12-04</span><span class="num">9.</span><a
-							href="/19_19514/" title="逆天武神" target="_blank">逆天武神</a></li>
-
-						<li><span class="hits">06-21</span><span class="num">10.</span><a
-							href="/2_2508/" title="造化之门" target="_blank">造化之门</a></li>
-
-						<li><span class="hits">06-28</span><span class="num">11.</span><a
-							href="/5_5220/" title="超级医道高手" target="_blank">超级医道高手</a></li>
-
-						<li><span class="hits">05-30</span><span class="num">12.</span><a
-							href="/9_9463/" title="都市霸主" target="_blank">都市霸主</a></li>
-
-						<li><span class="hits">07-22</span><span class="num">13.</span><a
-							href="/5_5368/" title="霸道枭少狂宠妻" target="_blank">霸道枭少狂宠妻</a></li>
-
-						<li><span class="hits">08-01</span><span class="num">14.</span><a
-							href="/20_20172/" title="美女的透视神医" target="_blank">美女的透视神医</a></li>
-
-						<li><span class="hits">12-31</span><span class="num">15.</span><a
-							href="/4_4862/" title="最强兵王" target="_blank">最强兵王</a></li>
-
-					</ul>
-				</div>
-
-
-			</div>
 			<div class="clearfix"></div>
 		</div>
 

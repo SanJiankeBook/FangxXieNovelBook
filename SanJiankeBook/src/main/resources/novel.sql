@@ -15,13 +15,19 @@ create table novel_type(
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('玄幻',1,1,1);
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('修仙',1,1,1);
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('都市',1,1,1);
-insert into novel_type(tname,standby_1,standby_2,standby_3) values('言情',1,1,1);
+insert into novel_type(tname,standby_1,standby_2,standby_3) values('穿越1',1,1,1);
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('轻小说',1,1,1);
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('恐怖',1,1,1);
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('穿越',1,1,1);
 insert into novel_type(tname,standby_1,standby_2,standby_3) values('科幻',1,1,1);
 
+
+update novel_type
+		set tname='科幻'
+		where tid=8
+
 update novel_type set tname='穿越1' where tid=4
+delete from novel_type;
 drop table novel_type;
 select * from novel_type;
 select tname from novel_type;
@@ -328,5 +334,17 @@ commit;
 		where u.uid=1	
 		
 	select * from novel where aid=1	
-		
+	
+	
+	select
+		nid,novel_type.tname,nname,npicture,ndescription,nstatus
+		from novel_type
+		inner join novel
+		on novel_type.tid=novel.tid
+		where nid=1
 
+	update novel
+		set nname='我是谁',npicture='c:5555555',nstatus='完结',
+		tid='轻小说'
+		where novel.nid=1
+		

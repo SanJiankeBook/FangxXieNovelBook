@@ -21,6 +21,9 @@ public class ForFile {
     //生成文件路径
     private static String picRootName = "Novel";
     
+    //文件压缩路径
+    private static String picRootNameZip="NovelText";
+    
     //文件路径+名称
     private static String filenameTemp;
     /**

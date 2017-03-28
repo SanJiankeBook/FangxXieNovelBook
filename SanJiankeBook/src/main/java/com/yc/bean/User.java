@@ -46,6 +46,8 @@ public class User implements Serializable {
 	}
 
 
+	
+	
 	public Integer getUid() {
 		return uid;
 	}

@@ -15,12 +15,36 @@ public class NovelChapter implements Serializable {
 	private String standby_1 ;//章节状态 --通过，未通过，待审
 	private Integer standby_2; //章节编号
 	
+	private String tname;      //类型名
+	private String nname ;//		--小说名字
 	
 	public Integer getStandby_2() {
 		return standby_2;
 	}
 	public void setStandby_2(Integer standby_2) {
 		this.standby_2 = standby_2;
+	}
+	private String npicture ;//		--小说封面存放地址
+	
+	
+	
+	public String getNpicture() {
+		return npicture;
+	}
+	public void setNpicture(String npicture) {
+		this.npicture = npicture;
+	}
+	public String getTname() {
+		return tname;
+	}
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+	public String getNname() {
+		return nname;
+	}
+	public void setNname(String nname) {
+		this.nname = nname;
 	}
 	public String getStandby_1() {
 		return standby_1;
@@ -110,6 +134,7 @@ public class NovelChapter implements Serializable {
 		return "NovelChapter [cid=" + cid + ", nid=" + nid + ", cname=" + cname + ", caddress=" + caddress
 				+ ", standby_1=" + standby_1 + ", standby_2=" + standby_2 + "]";
 	}
+	
 	
 	
 }

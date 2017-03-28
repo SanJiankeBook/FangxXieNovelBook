@@ -184,6 +184,7 @@ public class NovelController {
 		return gson.toJson(ebp);
     	//这个功能并没有从数据库中拿数据
     }
+    
     //添加到用户书架
     @RequestMapping(value = "/adduserbook/{nid}")
     @ResponseBody

@@ -71,6 +71,7 @@ public class Novel implements Serializable {
 	}
 	
 
+	
 	@Override
 	public String toString() {
 		return "Novel [nid=" + nid + ", tid=" + tid + ", aid=" + aid + ", nname=" + nname + ", npicture=" + npicture
@@ -78,8 +79,8 @@ public class Novel implements Serializable {
 				+ ", pan_name=" + pan_name + ", standby_1=" + standby_1 + ", author=" + author + ", novelType="
 				+ novelType + ", ubdate=" + ubdate + ", originalFilename=" + originalFilename + ", pdfsUrl=" + pdfsUrl
 				+ "]";
+			
 	}
-	
 	public String getPan_name() {
 		return pan_name;
 	}

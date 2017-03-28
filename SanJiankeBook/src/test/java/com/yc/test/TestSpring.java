@@ -164,6 +164,27 @@ public class TestSpring extends TestCase {
 		//System.out.println(list);
 	}
 	
+	public void testCache14() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		Novelbiz sb =   (Novelbiz) ac.getBean("novelbizImpl");
+		List<Novel> list=sb.FindNovelByaid(1, 0, 2);
+		System.out.println(list);
+	}
+	
+	public void testCache15() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		Novelbiz sb =   (Novelbiz) ac.getBean("novelbizImpl");
+		List<Novel> list=sb.ShowTNovel(1);
+		System.out.println(list);
+	}
+	
+	public void testCache16() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		Novelbiz sb =   (Novelbiz) ac.getBean("novelbizImpl");
+		sb.UpdateNovel("高达", "d:ssssswq", "更新", 1, 8);
+	}
+	
+	
 	public void TestApp(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );
 		Userbiz ub=ac.getBean("userbizImpl",Userbiz.class);

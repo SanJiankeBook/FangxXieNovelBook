@@ -32,8 +32,8 @@ public class NovelbizImpl implements Novelbiz {
 
 
 	@Override
-	public void delNovel(int nid) {
-		Novel novel = new Novel();
+	public void delNovel(Integer nid) {
+		Novel novel=new Novel();
 		novel.setNid(nid);
 		this.bd.delete(novel, "delNovel");
 	}
@@ -112,6 +112,81 @@ public class NovelbizImpl implements Novelbiz {
 	}
 
 
+		/**
+		 * 查询待审核的小说
+		 */
+		@Override
+		public List<Novel> UncheckNovel(Integer start,Integer end) {
+			Map<String,Integer> map=new HashMap<String,Integer>();
+			map.put("start", start);
+			map.put("end", end);
+			List<Novel> list=this.bd.findAll(new Novel(),map, "uncheckNovel");
+			return list;
+		}
+
+	@Override
+	public List<Novel> FindNovelByaid(int aid, int start, int end) {
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("aaid", aid);
+		List<Novel> list=bd.findAll(new Novel(),map,"NovelByaid");
+		return list;
+	}
+
+	
+	@Override
+	public List<Novel> ShowTNovel(int nid) {
+		Novel novel=new Novel();
+		novel.setNid(nid);
+		List<Novel> list=this.bd.findAll(novel, "TNovelBynid");
+		return list;
+	}
+
+	@Override
+	public void UpdateNovel(String name, String npicture, String nstatus, int nid, int tid) {
+		Novel novel=new Novel();
+		novel.setNname(name);
+		novel.setNpicture(npicture);
+		novel.setNstatus(nstatus);
+		novel.setNid(nid);
+		novel.setTid(tid);
+		this.bd.update(novel, "updateNovel");
+	}
 
 
+
+		/**
+		 * 通过待审查的小说
+		 */
+		@Override
+		public void passNovel(Integer nid) {
+			Novel novel=new Novel();
+			novel.setNid(nid);
+			this.bd.update(novel, "passNovel");
+		}
+
+		/**
+		 * 不通过待审核的小说
+		 */
+		@Override
+		public void UnpassNovel(Integer nid) {
+			Novel novel=new Novel();
+			novel.setNid(nid);
+			this.bd.update(novel, "unpassNovel");
+		}
+
+
+		//查询所有待审核的小说
+		@Override
+		public List<Novel> count() {
+			List<Novel> list=this.bd.findAll(new Novel(), "findAllUncheckNovel");
+			return list;
+		}
+
+		@Override
+		public List<Novel> NovelRecommend() {
+			List<Novel> list=this.bd.findAll(new Novel(), "novelrecommand");
+			return list;
+		}
 }
