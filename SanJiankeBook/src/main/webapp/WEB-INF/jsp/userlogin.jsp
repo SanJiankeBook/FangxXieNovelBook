@@ -17,16 +17,16 @@
       <script type="text/javascript">
        function checkfrmLogin()
         {
-            if(document.getElementById("frmLogin_username").value=="")
+            if(document.getElementById("uname").value=="")
             {
-                alert("请输入用户名!");
-                document.getElementById("frmLogin_password").focus();
+                alert("请输入账号!");
+                document.getElementById("upassword").focus();
                 return false;
             }
-            if(document.getElementById("frmLogin_password").value=="")
+            if(document.getElementById("upassword").value=="")
             {
                 alert("请输入用户密码!");
-                document.getElementById("frmLogin_password").focus();
+                document.getElementById("upassword").focus();
                 return false;
             }
         }
@@ -71,7 +71,7 @@
 </tr>
 <tr>
   <td class="odd" width="25%">密码</td>
-  <td class="even"><input type="password" class="text" name="upassword" id="upassword" size="25" maxlength="20" style="width:160px"/></td>
+  <td class="even"><input type="password" class="text" name="upassword" id="upassword" size="25" maxlength="20" style="width:160px"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="button" name="submit" onclick="forgivepassword()"  id="submit" value="忘记密码?" /></td>
 </tr>
 <tr>
 	<td class="odd" width="25%">验证码</td>
@@ -92,6 +92,21 @@ function loadImage(){
 	var img=document.getElementById("randImg");
 	img.src="imageCode.jsp?rb="+Math.random();
 	//加了个随机数后，不会再从缓存拿数据了
+}
+//忘记密码
+function forgivepassword(){
+	 if(document.getElementById("uname").value=="")
+     {
+         alert("请输入账号!1");
+         return false;
+     }else{
+     $.post("forgivepasswordUname",
+    	       { uname: $("#uname").val()},function(data){
+    	    		   window.location="forgivepassword";
+    	    	  
+    	       }
+    	    ); 
+     }
 }
 function logger() {
 						$.ajax({

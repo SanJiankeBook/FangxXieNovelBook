@@ -32,6 +32,10 @@ public interface Userbiz {
 	public List<User> findUserInfo(User userlist);
 	//账号注册
 	public void addUser(User userlist);
+	//密码修改
+	public void updateUser(User user);
+	//用户信息修改
+	public void updateUserInfo(User user);
 	
 
 }

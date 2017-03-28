@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<insert id="addUserInfo" parameterType="User">
-		insert into user(uname,u_number,upassword)
-		values(#{uname},#{u_number},#{upassword})
+		insert into user(uname,u_number,upassword,standby_1)
+		values(#{uname},#{u_number},#{upassword},#{standby_1})
 	</insert>
 	
 
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					 u_number =#{u_number}
 				</if>
 				<if test="uname != null ">
-					 uname=#{uname} 
+					and  uname=#{uname} 
 				</if>
 			</where>
 	</select>
@@ -53,7 +53,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delUser" parameterType="User">
 		delete from user where uid in (#{uid})
 	</delete>
+	<!-- 修改密码 -->
+	<update id="updatepassword" parameterType="User">
+	 update user set upassword=#{upassword} where u_number=#{u_number}
+	</update>
 	
+	<update id="updateUserInfo" parameterType="User">
+	 update user set uname=#{uname},usex=#{usex},standby_1=#{standby_1} where u_number=#{u_number}
+	</update>
 	
 	<!-- 通过用户名查询用户信息 -->
 	<select id="findUserByName" parameterType="User" resultType="User">

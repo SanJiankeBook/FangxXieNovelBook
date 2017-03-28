@@ -149,7 +149,7 @@ create table user(
 	u_number varchar(30),				
 	upassword varchar(30),				
 	usex varchar(10),					
-	standby_1 varchar(100),
+	standby_1 varchar(100),--用户的手机号码
 	standby_2 varchar(100),
 	standby_3 varchar(100),
 	primary key (uid)
@@ -160,7 +160,7 @@ values('巨无霸','469058237','123456','男',1,1,1);
 insert into user(uname,u_number,upassword,usex,standby_1,standby_2,standby_3)
 values('巨无霸2','469058','123','女',1,1,1);
 
- 
+ update user set upassword='aa' where u_number='469058237'
 insert into user(uname,u_number,upassword,usex) values('a','469058237','a','男');
 insert into user(uname,u_number,upassword,usex) values('b','469058237','b','男');
 insert into user(uname,u_number,upassword,usex) values('c','469058237','c','女');

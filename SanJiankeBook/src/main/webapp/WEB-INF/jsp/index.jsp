@@ -112,7 +112,7 @@
 						<div class="txtt"></div>
 						<div class="txtt">
 
-							<a href="<%=request.getContextPath()%>/jsp/register.jsp">用户注册</a>
+							<a href="toregister">用户注册</a>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="toauthor">作家注册</a>
 						</div>
 					</div>
@@ -131,7 +131,7 @@
 
 		<div class="header">
 			<div class="header_logo">
-				<a href="http://www.bixia.org/">三剑客文学</a>
+				<a href="toindex_zpd">三剑客文学</a>
 			</div>
 			<div class="header_search">
 				<script>
@@ -510,7 +510,7 @@
 				if(data.status=="1"){
 					$("#loger").hide(); //隐藏
 					$("#nimabi").show();
-					$("#nimabi").html('<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi,&nbsp;'+data.uname +'</a> | <a href="/userdetail.php" target="_top">查看资料</a> | <a href="#" onClick="uploging()">退出登录</a>&nbsp;');
+					$("#nimabi").html('<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi,&nbsp;'+data.uname +'</a> | <a href="showUser" target="_top">查看资料</a> | <a href="#" onClick="uploging()">退出登录</a>&nbsp;');
 				}
 			}
 
@@ -533,7 +533,7 @@
 											} else if (data.status == 1) {
 												$("#nimabi").show();
 												$("#loger").hide() //隐藏
-												$("#nimabi").html('<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi,&nbsp;'+data.uname +'</a> | <a href="/userdetail.php" target="_top">查看资料</a> | <a href="#" onClick="uploging()">退出登录</a>&nbsp;');
+												$("#nimabi").html('<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hi,&nbsp;'+data.uname +'</a> | <a href="showUser" target="_top">查看资料</a> | <a href="#" onClick="uploging()">退出登录</a>&nbsp;');
 											} else {
 												alert("用户名或密码错误");
 											}

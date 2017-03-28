@@ -344,9 +344,15 @@ public class NovelController {
     public String test(){
     	logger.info("test....");
     	//return "userbook";
-    	return "register";
+    	return "forgivepassword";
     }
-    
+    //前往手机验证码页面
+    @RequestMapping(value="/forgivepassword")
+    public String forgivepassword(Model model){
+    	List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+		model.addAttribute("list1",list1);
+    	return "forgivepassword";
+    }
     
     private String pdfRootName="uploadPdfs";
     //插入书籍信息

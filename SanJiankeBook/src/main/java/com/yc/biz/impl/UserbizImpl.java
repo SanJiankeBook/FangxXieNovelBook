@@ -104,5 +104,16 @@ private  BaseDao bd;
 	public void addUser(User userlist) {
 		this.bd.add(userlist, "addUserInfo");
 	}
+	//密码修改
+	@Override
+	public void updateUser(User user) {
+		this.bd.update(user, "updatepassword");
+	}
+	
+	//用户信息修改
+	@Override
+	public void updateUserInfo(User user) {
+		this.bd.update(user, "updateUserInfo");
+	}
 
 }

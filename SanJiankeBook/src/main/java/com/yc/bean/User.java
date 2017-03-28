@@ -13,14 +13,29 @@ public class User implements Serializable {
 	private String upassword;//,	--用户密码
 	private String usex ;//		--用户性别;
 	private String status;// 数据判断
+	private String standby_1;//用户的手机号码
 
+	
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", u_number=" + u_number + ", upassword=" + upassword
-				+ ", usex=" + usex + ", status=" + status + "]";
+				+ ", usex=" + usex + ", status=" + status + ", standby_1=" + standby_1 + "]";
 	}
 	
 	
+	
+	public String getStandby_1() {
+		return standby_1;
+	}
+
+
+
+	public void setStandby_1(String standby_1) {
+		this.standby_1 = standby_1;
+	}
+
+
+
 	public String getStatus() {
 		return status;
 	}
@@ -65,6 +80,7 @@ public class User implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((standby_1 == null) ? 0 : standby_1.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((u_number == null) ? 0 : u_number.hashCode());
 		result = prime * result + ((uid == null) ? 0 : uid.hashCode());
@@ -82,6 +98,11 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (standby_1 == null) {
+			if (other.standby_1 != null)
+				return false;
+		} else if (!standby_1.equals(other.standby_1))
+			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;

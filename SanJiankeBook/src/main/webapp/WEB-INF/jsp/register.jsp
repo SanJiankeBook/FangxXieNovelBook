@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><title>
-	用户登录
+	用户注册
 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" />
@@ -56,9 +56,9 @@
 			</ul>
 		</div>
        <br />
-<form name="frmLogin" id="frmLogin" action="/Login.php" method="post">
+<form >
 <table class="grid" width="580" align="center">
-<caption>用户登录</caption>
+<caption>用户注册</caption>
 <tr>
   <td class="odd" width="25%">用户名</td>
   <td class="even"><input type="text" class="text" name="uname" id="uname" size="25" maxlength="30" value="" style="width:160px"/></td>
@@ -70,6 +70,10 @@
 <tr>
   <td class="odd" width="25%">密码</td>
   <td class="even"><input type="password" class="text" name="upassword" id="upassword" size="25" maxlength="20" style="width:160px"/></td>
+</tr>
+<tr>
+  <td class="odd" width="25%">手机号码</td>
+  <td class="even"><input type="text" class="text" name="standby_1" id="standby_1" size="25" maxlength="20" style="width:160px"/></td>
 </tr>
 <tr>
 	<td class="odd" width="25%">验证码</td>
@@ -91,6 +95,13 @@ function loadImage(){
 	//加了个随机数后，不会再从缓存拿数据了
 }
 function logger() {
+	 var Exp = /^[1-9]\d{10}$/;
+     if (document.getElementById("standby_1").value != '') {
+         if (!Exp.test(document.getElementById("standby_1").value)) {
+             alert("请输入有效的手机号码");
+             return false;
+         } 
+     }
 						$.ajax({
 										url : "register",
 										type : "POST",
@@ -99,6 +110,7 @@ function logger() {
 											'uname' : $("#uname").val(),
 											'u_number' : $("#u_number").val(),
 											'upassword' : $("#upassword").val(),
+											'standby_1' : $("#standby_1").val(),
 											'validateCode' : $("#validateCode").val()
 										},
 										success : function(data) {
@@ -127,7 +139,6 @@ function logger() {
         <p>
             Copyright © 2016
             笔下文学</p>
-       <script>footer();</script>
     </div>
 </div>
     </div>

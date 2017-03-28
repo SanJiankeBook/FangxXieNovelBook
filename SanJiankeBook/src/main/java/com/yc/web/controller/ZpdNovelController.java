@@ -36,6 +36,7 @@ import com.yc.biz.impl.AuthorbizImpl;
 import com.yc.biz.impl.NovelChapterbizImpl;
 import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.biz.impl.NovelbizImpl;
+import com.yc.duanxin.DuanxinJudge;
 import com.yc.utils.RandomUtils;
 import com.yc.utils.RankUtils;
 import com.yc.utils.RedisUtils;
@@ -323,6 +324,7 @@ public class ZpdNovelController {
 						
 						user.setUname(list.get(0).getUname());
 						user.setUid(list.get(0).getUid());
+						user.setU_number(list.get(0).getU_number());
 						user.setUpassword(upassword);
 						user.setStatus("1");
 						session.setAttribute("users",user);
@@ -343,7 +345,155 @@ public class ZpdNovelController {
 //			user.setStatus("-2");
 //			return gson.toJson(user);
 //		}
+	
 			
+	}
+	
+	//前往用户信息页面
+	@RequestMapping(value="/showUser")
+	public String showUser(Model model,HttpServletRequest request){
+		List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+		model.addAttribute("list1",list1);
+		if(request.getSession().getAttribute("users")!=null){
+			User user=(User) request.getSession().getAttribute("users");
+			List<User> listuser=this.userbiz.findUserInfo(user);
+			model.addAttribute("listuser",listuser);
+		}else{
+			return "userlogin";
+		}
+		return "showuserinfo";
+	}
+	
+	
+	//用户忘记密码
+	@RequestMapping(value="/forgivepasswordUname")
+	@ResponseBody
+	public String forgivepassword(HttpServletRequest request){
+		String uname=request.getParameter("uname");
+		request.getSession().setAttribute("forgiveUser", uname);
+		System.out.println(uname);
+		return "1";
+		
+	}
+	//发送验证码
+	@RequestMapping(value="sendcode")
+	@ResponseBody
+	public String sendcode(HttpServletRequest request){
+		logger.info("sendcode.....");
+		String standby_1=request.getParameter("standby_1");
+		if(request.getSession().getAttribute("forgiveUser")==null){
+			return "toindex_zpd";
+		}else{
+			String val=(String) request.getSession().getAttribute("forgiveUser");
+			List<User> list=userbiz.findUserName(val);
+			if(list.get(0).getStandby_1().equals(standby_1)){
+				Integer value=null;
+				try {
+					value = DuanxinJudge.sendJudgeCode(standby_1);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				request.getSession().setAttribute("code", value+"");
+				return "1";
+			}else{
+				return "-2";
+			}
+			
+		
+	}
+}
+	//判断用户忘记密码的验证码是否正确
+	@RequestMapping(value="/judgecode")
+	@ResponseBody
+	public String judgecode(HttpServletRequest request){
+		logger.info("judgecode....");
+		String number=request.getParameter("number");
+		if(request.getSession().getAttribute("code")==null){
+			return "-1";
+		}else{
+			if(number.equals(request.getSession().getAttribute("code"))){
+				return "1";
+			}else{
+				return "0";
+			}
+		}
+		
+		
+	}
+	//用户信息修改
+	@RequestMapping(value="/updateUserInfo")
+	@ResponseBody
+	public String updateUserInfo(HttpServletRequest request){
+		logger.info("updateUserInfo....");
+		String uname=request.getParameter("uname");
+		String usex_2=request.getParameter("usex_2");
+		String standby_1=request.getParameter("standby_1");
+		if(request.getSession().getAttribute("users")!=null){
+			User user=(User) request.getSession().getAttribute("users");
+			user.setUname(uname);
+			List<User> list_uname=this.userbiz.findUserInfo(user);
+			if(!list_uname.isEmpty()){
+				int num1=list_uname.get(0).getUid();
+				int num2=user.getUid();
+				if(num1!=num2){
+					return "0";
+				}
+			}
+			user.setStandby_1(standby_1);
+			user.setUsex(usex_2);
+			this.userbiz.updateUserInfo(user);
+			return "1";
+		}else{
+			return "-1";
+		}
+		
+	}
+	//修改用户密码已经有原密码
+	@RequestMapping(value="/updatePasswordInfo")
+	@ResponseBody
+	public String updatePasswordInfo(HttpServletRequest request){
+		logger.info("updatePasswordInfo....");
+		String xinupassword=request.getParameter("xinupassword");
+		String upassword=request.getParameter("upassword");
+		
+		if(request.getSession().getAttribute("users")!=null){
+			User user=(User) request.getSession().getAttribute("users");
+			if(user.getUpassword().equals(upassword)){//如果输入的原密码和数据库的密码一样
+				user.setUpassword(xinupassword);
+				this.userbiz.updateUser(user);
+				return "1";
+			}else{
+				return "0";
+			}
+			
+		}else{
+			return "-1";
+		}
+		
+	}
+	//修改用户密码
+	@RequestMapping(value="/updatepassword")
+	@ResponseBody
+	public String updatepassword(HttpServletRequest request){
+		logger.info("updatepassword....");
+		try {
+			String xinpassword=request.getParameter("xinpassword");
+			String val=(String) request.getSession().getAttribute("forgiveUser");
+			request.getSession().removeAttribute("forgiveUser");
+			request.getSession().removeAttribute("code");
+			User user=new User();
+			user.setUpassword(xinpassword);
+			user.setU_number(val);
+			this.userbiz.updateUser(user);
+			return "1";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "0";
+		}
+		
+		
+		
 	}
 	//用户注册
 		@RequestMapping(value="/register",produces = {"application/text;charset=UTF-8"})
@@ -366,6 +516,7 @@ public class ZpdNovelController {
 				String uname=request.getParameter("uname");
 				String upassword=request.getParameter("upassword");
 				String u_number=request.getParameter("u_number");
+				String standby_1=request.getParameter("standby_1");
 				User userlist=new User();
 				userlist.setU_number(u_number);
 				
@@ -384,11 +535,13 @@ public class ZpdNovelController {
 				userlist.setUname(uname);
 				userlist.setU_number(u_number);
 				userlist.setUpassword(upassword);
+				userlist.setStandby_1(standby_1);
 				this.userbiz.addUser(userlist);
 				user.setStatus("1");
 				return gson.toJson(user);
 				
 		}
+	//
 	
 	//注销登陆
 	@RequestMapping(value="/uploging")
@@ -507,6 +660,13 @@ public class ZpdNovelController {
 		model.addAttribute("tname",str);
 		model.addAttribute("list1",list1);
 		return "TypeAll";
+	}
+	//前往注册页面
+	@RequestMapping(value="/toregister")
+	public String register(Model model){
+		List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+		model.addAttribute("list1",list1);
+		return "register";
 	}
 
 }
