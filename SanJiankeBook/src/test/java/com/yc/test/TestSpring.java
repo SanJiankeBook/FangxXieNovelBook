@@ -184,6 +184,13 @@ public class TestSpring extends TestCase {
 		sb.UpdateNovel("高达", "d:ssssswq", "更新", 1, 8);
 	}
 	
+	public void testCache17() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		NovelTypebiz sb =   (NovelTypebiz) ac.getBean("novelTypebizImpl");
+		List<NovelType> list=sb.TnameByType("修仙");
+		System.out.println(list);
+	}
+	
 	
 	public void TestApp(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );

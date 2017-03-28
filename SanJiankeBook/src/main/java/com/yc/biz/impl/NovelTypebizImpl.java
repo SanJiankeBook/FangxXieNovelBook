@@ -36,4 +36,12 @@ public class NovelTypebizImpl implements NovelTypebiz {
 		return list;
 	}
 
+	@Override
+	public List<NovelType> TnameByType(String tname) {
+		NovelType type=new NovelType();
+		type.setTname(tname);
+		List<NovelType> list=this.bd.findAll(type, "getTid");
+		return list;
+	}
+
 }

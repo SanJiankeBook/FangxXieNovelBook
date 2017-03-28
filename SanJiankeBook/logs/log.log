@@ -26,4 +26,7 @@
 2017-03-22 21:23:23  [ main:0 ] - [ DEBUG ]  ==>  Preparing: update novel set nname=?,npicture=?,nstatus=?,tid=? where nid=? 
 2017-03-22 21:23:23  [ main:34 ] - [ DEBUG ]  ==> Parameters: 高达(String), d:ssssswq(String), 更新(String), 8(Integer), 1(Integer)
 2017-03-22 21:23:23  [ main:48 ] - [ DEBUG ]  <==    Updates: 1
->>>>>>> branch 'master' of git@github.com:SanJiankeBook/FangxXieNovelBook.git
+2017-03-28 21:48:39  [ main:0 ] - [ DEBUG ]  ==>  Preparing: select * from novel_type where tname=? 
+2017-03-28 21:48:39  [ main:34 ] - [ DEBUG ]  ==> Parameters: 修仙(String)
+2017-03-28 21:48:39  [ main:56 ] - [ DEBUG ]  <==      Total: 1
+

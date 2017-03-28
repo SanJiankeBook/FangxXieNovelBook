@@ -18,5 +18,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select tname from
 		novel_type
 	</select>
+	
+	<!-- 根据类型名查询tid -->
+	<select id="getTid" resultType="NovelType">
+		select * from
+		novel_type where tname=#{tname} 
+	</select>
 
 </mapper>

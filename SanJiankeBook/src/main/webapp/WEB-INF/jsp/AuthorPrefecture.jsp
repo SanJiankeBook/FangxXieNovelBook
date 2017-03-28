@@ -101,29 +101,23 @@
 			plain:true,
 			text:"小说信息编辑",
 		});  
-		
-		$("#edit").click(function(){
-		    var row = $('#type_showAuthor_info').datagrid('getSelected');
+	
+	});
+	</script>
+	<script  type="text/javascript">
+	function editauthorjsp(){
+			var row = $('#type_showAuthor_info').datagrid('getSelected');
+			
 		    /* var rows = $('#type_showAuthor_info').datagrid('getSelections'); */
 		    if (row){
 		    	if(row.nid!=null){
-		    		$.ajax({
-						url : "editNovel",
-						type : "POST",
-						dataType : "JSON",//客户端返回过来的数据类型
-						data : {
-							'nid' : row.nid,
-						}
-					});
+		    		window.location="editNovel/"+row.nid;
 				}else{
 					alert("请选择其中一天信息");
 				}
 		    }
-		});
-		
-	});
+		}
 	</script>
-
 <body>
 	<div id="wrapper">
 
@@ -178,7 +172,7 @@
 					
 
 		<table id="type_showAuthor_info"  style="width: 100%; height: 200px; $(this).width() * 0.2"></table>
-		<button id="edit" >编辑小说信息</button>
+		<input type="button" onclick="editauthorjsp()" value="编辑小说信息"/>
 		
 		<div class="footer">
 			

@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -740,11 +741,13 @@ public class ZpdNovelController {
     }
 	
 	//作家专区小说信息编辑
-	@RequestMapping(value="/editNovel")
-    public String editNovel(@RequestParam int nid,Model model){
+	@RequestMapping(value="/editNovel/{nid}")
+    public String editNovel(@PathVariable String nid,Model model){
     	logger.info("editNovel.....");
-    		
-    	List<Novel> list=novelbiz.ShowTNovel(nid);
+    	
+    	int num=Integer.parseInt(nid);
+    	
+    	List<Novel> list=novelbiz.ShowTNovel(num);
     	
     	/*String nname=list.get(0).getNname();
     	String npicture=list.get(0).getNpicture();
@@ -752,15 +755,9 @@ public class ZpdNovelController {
     	int tid=list.get(0).getTid();*/
     	//novelbiz.UpdateNovel(nname, npicture, nstatus, nid, tid);
     	model.addAttribute("novel",list);
-    	
 		return "ENovel";
     }
 	
-	@RequestMapping(value="/test1")
-    public String test1(){
-    	logger.info("他说他.....");
-		return "EditNovel";
-    }
 	
 	//作家专区部分显示小说类型
 	@RequestMapping(value="/ShowType",produces = {"application/text;charset=UTF-8"})
@@ -775,22 +772,32 @@ public class ZpdNovelController {
 	//作家专区部分显示小说状态
 	@RequestMapping(value="/Shownstatus",produces = {"application/text;charset=UTF-8"})
 	@ResponseBody
-    public String ShowNstatus(HttpServletRequest request,Model model){
+    public String ShowNstatus(@RequestParam int nid,HttpServletRequest request,Model model){
     	logger.info("Shownstatus.....");
-    	/*Map<String,String> map=new HashMap<String,String>();
-    	map.put("s1", "未完结");
-    	map.put("s2", "完结");
-    	map.put("s3", "更新中");*/
-    	String Snid=request.getParameter("nid");
-    	int nid=Integer.parseInt(Snid);
     	List<Novel> list=novelbiz.ShowNovel_id(nid);
-    	
     	String status=list.get(0).getNstatus();
-    	
     	Gson gson=new Gson();
 		return gson.toJson(status);
     }
 	
+	
+	//作家专区小说信息编辑页面保存
+		@RequestMapping(value="/saveedit")
+	    public String Saveedit(HttpServletRequest request,Model model){
+	    	logger.info("editNovel.....");
+	    	
+	    	Integer nid=Integer.parseInt(request.getParameter("nid"));
+	    	String nname=request.getParameter("nname");
+	    	String tname=request.getParameter("tname");
+	    	List<NovelType> list=noveltypebiz.TnameByType(tname);
+	    	int tid=list.get(0).getTid();
+	    	String npicture=request.getParameter("npicture");
+	    	String nstatus=request.getParameter("nstatus");
+	    	novelbiz.UpdateNovel(nname, npicture, nstatus, nid, tid);
+	    	//model.addAttribute("novel",list);
+			return "ENovel";
+	    }
+		
 	
 	//首页标题的类型分类显示
 	@RequestMapping(value = "/toindex_Type/{tname}")
