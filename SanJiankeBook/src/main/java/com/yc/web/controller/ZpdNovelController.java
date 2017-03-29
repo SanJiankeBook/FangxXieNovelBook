@@ -833,11 +833,6 @@ public class ZpdNovelController {
         headers.setContentDispositionFormData("attachment", fileName);   
         headers.setContentType(MediaType.TEXT_PLAIN);
         return new ResponseEntity<byte[]>(content,headers, HttpStatus.CREATED);    
-        
-		
-		
-
-
 	}
 
 }
