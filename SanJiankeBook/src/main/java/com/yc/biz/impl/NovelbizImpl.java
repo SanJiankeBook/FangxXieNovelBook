@@ -184,9 +184,15 @@ public class NovelbizImpl implements Novelbiz {
 			return list;
 		}
 
+		//作品推荐
 		@Override
 		public List<Novel> NovelRecommend() {
 			List<Novel> list=this.bd.findAll(new Novel(), "novelrecommand");
+			return list;
+		}
+		
+		public List<Novel> Recommand(){
+			List<Novel> list=this.bd.findAll(new Novel(), "recommand");
 			return list;
 		}
 }

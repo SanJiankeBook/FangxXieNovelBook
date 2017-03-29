@@ -202,6 +202,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			on novel_type.tid=novel.tid
 			inner join author
 			on author.aid=novel.aid
+			ORDER BY RAND() LIMIT 9
+	</select>
+	
+	<select id="recommand"  parameterType="Novel" resultMap="NovelResultMap">
+		select nid,novel_type.tid,novel_type.tname,author.pan_name,nname,npicture,ndescription
+			from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+			ORDER BY RAND() LIMIT 4
 	</select>
 	
 

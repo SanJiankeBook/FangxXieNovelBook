@@ -104,16 +104,16 @@ public class ZLNovelController {
     
     
     //主页作品推荐专区显示数据
-    @RequestMapping(value="toindex")
-    public String ToIndex(Model model,HttpServletRequest request){
-    	//取到nid,tid,tname,nname,pan_name,可以用novel
-    	List<Novel> novel=this.novelbiz.NovelRecommend();
-    	//存之前随机选中9条数据
-    	
-    	model.addAttribute("novel",novel);
-		return "index";
-    	
-    }
+//    @RequestMapping(value="toindex")
+//    public String ToIndex(Model model,HttpServletRequest request){
+//    	//取到nid,tid,tname,nname,pan_name,可以用novel
+//    	List<Novel> novel2=this.novelbiz.NovelRecommend();
+//    	List<Novel> novel1=this.novelbiz.Recommand();
+//    	model.addAttribute("novel2",novel2);
+//    	model.addAttribute("novel1",novel1);
+//		return "index";
+//    	
+//    }
     
     
 //后台管理员模块------------------------------------------------------------------------------

@@ -227,52 +227,33 @@
 						list();
 					</script>
 					<div class="l">
-
+					<c:forEach items="${novel1 }" var="novel1">
 						<div class="item">
-							<div class="image">
-								<!-- 图片链接 -->
-								<!-- 点击图片进入小说 -->
-								作品简单推荐区域
-							</div>
-							<dl>
-								<dt>
-									<!-- 作者名 -->
-									<!-- 小说链接地址 -->
-								</dt>
-								<dd>
-									<!-- 简介 -->
-								</dd>
-							</dl>
-							<div class="clear"></div>
-						</div>
-
-						<!-- 同上 -->
-						<div class="item">
-							<div class="image"></div>
-							<dl>
-								<dt></dt>
-								<dd></dd>
-							</dl>
-							<div class="clear"></div>
-						</div>
-
-						<!-- 同上 -->
-						<div class="item">
-							<div class="image"></div>
-							<dl>
-								<dt></dt>
-								<dd></dd>
-							</dl>
-							<div class="clear"></div>
-						</div>
+                                <div class="image">
+                                    <a href="toindex_id/${novel1.nid}">
+                                        <img src="${novel1.npicture}" alt="${novel1.nname }" width="120" height="150"></a></div>
+                                <dl>
+                                    <dt><span>
+                                      ${novel1.pan_name }
+                                    </span><a href="http://www.bixia.org/27_27047/">
+                                       ${novel1.nname }
+                                    </a></dt>
+                                    <dd>
+                                    ${novel1.ndescription }
+                                    </dd>
+                                </dl>
+                                <div class="clear">
+                                </div>
+                            </div>
+					</c:forEach>
 
 					</div>
 					<div class="r">
 						<h2>经典推荐</h2>
 						<ul>
-
-							<li>推荐小说</li>
-
+						<c:forEach items="${novel2 }" var="novel2">
+								<li><span class="s1">${novel2.tname }</span><span class="s2"><a href="toindex_id/${novel2.nid}">${novel2.nname }</a></span><span class="s5">${novel2.pan_name }</span></li>
+						</c:forEach>
 						</ul>
 					</div>
 					<div class="clear"></div>

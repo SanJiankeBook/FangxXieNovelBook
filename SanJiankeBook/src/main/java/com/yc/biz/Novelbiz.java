@@ -54,7 +54,7 @@ public interface Novelbiz {
 	//显示作品推荐区的数据
 	List<Novel> NovelRecommend();
 
-
+	List<Novel> Recommand();
 	//根据小说id查询小说信息包括类型
 	List<Novel> ShowTNovel(int nid);
 	

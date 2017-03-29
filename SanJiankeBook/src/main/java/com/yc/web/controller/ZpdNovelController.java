@@ -278,6 +278,12 @@ public class ZpdNovelController {
 			}
 		}
 		
+		//作品推荐
+		List<Novel> novel2=this.novelbiz.NovelRecommend();
+    	List<Novel> novel1=this.novelbiz.Recommand();
+    	model.addAttribute("novel2",novel2);
+    	model.addAttribute("novel1",novel1);
+		
 		return "index";
 	}
 	
