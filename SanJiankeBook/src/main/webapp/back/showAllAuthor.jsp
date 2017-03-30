@@ -16,7 +16,7 @@
 	var flag;
 
 	datagridObj=$('#type_showAuthor_info').datagrid({
-		url:'../findAuthorByPage',   
+		url:'findAuthorByPage',   
 		fitColumns:true,
 		loadMsg:'数据加载中...',
 		pagination : true, //显示分页栏
@@ -56,7 +56,7 @@
 							//在for循环中少加了一次
 							aids += rows[i].aid;
 							
-							$.post("../delAuthor",{aid:aids},function(data){
+							$.post("delAuthor",{aid:aids},function(data){
 								if( data == "0" ){
 									$.messager.alert('失败提示','作家删除失败!','error');
 								}else{

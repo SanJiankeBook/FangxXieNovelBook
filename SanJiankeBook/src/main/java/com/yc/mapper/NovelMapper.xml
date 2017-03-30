@@ -111,10 +111,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="typegetAllnname" resultMap="NovelTypeMap"
 		parameterType="NovelType">
 		select *
-		from novel n
-		inner join novel_type novelType
-		on
-		n.tid=novelType.tid
+		from novel_type novelType
+		inner join novel n
+		on novelType.tid=n.tid
+		inner join author a
+		on a.aid=n.aid
 		where novelType.tname=#{novelType.tname}
 	</select>
 
@@ -155,6 +156,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="npicture" column="npicture" />
 		<result property="ndescription" column="ndescription" />
 		<result property="nstatus" column="nstatus" />
+		<result property="pan_name" column="pan_name" />
 		<association property="novelType" javaType="NovelType">
 			<result property="tname" column="tname" />
 		</association>

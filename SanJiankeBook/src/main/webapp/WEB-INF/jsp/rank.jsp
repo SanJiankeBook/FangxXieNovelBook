@@ -54,7 +54,7 @@
 			<li><a href="toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
 			<li><a href="authorPrefectrue">作者专区</a></li>
 			<li><a href="toindex_type">排行榜单</a></li>
-			<li><a href="jsp/quanben.jsp/">全本小说</a></li>
+			<li><a href="quanben">全本小说</a></li>
 			<li><a rel="nofollow" href="readRecord.jsp">阅读记录</a></li>
 		</ul>
 	</div>

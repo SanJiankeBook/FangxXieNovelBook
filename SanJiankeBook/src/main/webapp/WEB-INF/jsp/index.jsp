@@ -217,7 +217,7 @@
 					<li><a href="toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
 					<li><a href="authorPrefectrue">作者专区</a></li>
 					<li><a href="toindex_type">排行榜单</a></li>
-					<li><a href="jsp/quanben.jsp/">全本小说</a></li>
+					<li><a href="quanben">全本小说</a></li>
 					<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
 				</ul>
 			</div>
@@ -235,7 +235,7 @@
                                 <dl>
                                     <dt><span>
                                       ${novel1.pan_name }
-                                    </span><a href="http://www.bixia.org/27_27047/">
+                                    </span><a href="toindex_id/${novel1.nid}">
                                        ${novel1.nname }
                                     </a></dt>
                                     <dd>

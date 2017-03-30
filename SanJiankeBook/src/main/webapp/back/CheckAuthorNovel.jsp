@@ -18,7 +18,7 @@
 	var flag;
 
 	datagridObj=$('#type_shownovels_info').datagrid({
-		url:'../findNovelByPage',   
+		url:'findNovelByPage',   
 		fitColumns:true,
 		loadMsg:'数据加载中...',
 		striped:true,		//斑马线效果
@@ -37,20 +37,20 @@
 						value = value.split(",");
 						for (var i = 0; i < value.length; i++) {
 							if (value[i] == null || value[i] == "") {
-								picStr += "<img src='../images/zanwu.jpg' width='100px' height='100px' />";
+								picStr += "<img src='images/zanwu.jpg' width='100px' height='100px' />";
 							} else {
 								var patt1 = new RegExp("../");
 								if (patt1.test(value[i])) {
-									picStr += "<img src='../../"+value[i]+"' width='100px' height='100px' />";
+									picStr += "<img src='../"+value[i]+"' width='100px' height='100px' />";
 								} else {
-									picStr += "<img src='../images/"+value[i]+"' width='100px' height='100px' />";
+									picStr += "<img src='images/"+value[i]+"' width='100px' height='100px' />";
 								}
 							}
 						}
 					} else if (value != "") {
-						picStr += "<img src='../../"+value+"' width='100px' height='100px' />";
+						picStr += "<img src='../"+value+"' width='100px' height='100px' />";
 					} else {
-						picStr += "<img src='../images/zanwu.jpg' width='100px' height='100px' />";
+						picStr += "<img src='images/zanwu.jpg' width='100px' height='100px' />";
 					} 
 						return picStr;
 					}

@@ -6,23 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>后台主页</title>
 
-	<link rel="stylesheet" type="text/css" href="../easyui/css/easyui.css">
-	<link rel="stylesheet" type="text/css" href="../easyui/css/icon.css">
-	<link rel="stylesheet" type="text/css" href="../easyui/css/demo.css">
+	<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
+	<link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
+	<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
 	
-	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
-	<script type="text/javascript" src="../easyui/js/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="../easyui/js/index.js"></script>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="easyui/js/index.js"></script>
 	
-	<script type="text/javascript" src="../js/ajaxfileupload.js"></script>
-	<script type="text/javascript" src="../js/showpic.js"></script>
+	<script type="text/javascript" src="js/ajaxfileupload.js"></script>
+	<script type="text/javascript" src="js/showpic.js"></script>
 	
-	<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
-	<script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
+	<script type="text/javascript" charset="utf-8" src="ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="ueditor/ueditor.all.min.js"> </script>
 	
-	 <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script> 
+	 <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script> 
 
-	<script type="text/javascript" src="../easyui/js/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px;font-size:25px;text-align:center;">三剑客文学网</div>

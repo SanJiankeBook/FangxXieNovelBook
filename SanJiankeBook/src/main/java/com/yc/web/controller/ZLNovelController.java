@@ -1,6 +1,7 @@
 package com.yc.web.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -21,13 +22,16 @@ import com.yc.bean.Author;
 import com.yc.bean.EasyuiFindByPage;
 import com.yc.bean.Novel;
 import com.yc.bean.NovelChapter;
+import com.yc.bean.NovelType;
 import com.yc.bean.User;
 import com.yc.biz.Adminbiz;
 import com.yc.biz.Authorbiz;
 import com.yc.biz.NovelChapterbiz;
+import com.yc.biz.NovelTypebiz;
 import com.yc.biz.Novelbiz;
 import com.yc.biz.Userbiz;
 import com.yc.biz.impl.NovelChapterbizImpl;
+import com.yc.utils.RankUtils;
 
 @Controller
 public class ZLNovelController {
@@ -39,10 +43,25 @@ public class ZLNovelController {
     private Novelbiz novelbiz;
     private NovelChapterbiz chapter;
     private NovelChapter novelchapter;
+    private NovelTypebiz novelTypebiz;
+    private RankUtils rankUtils;
+    private NovelType noveltype;
     
     
-    
-    @Resource(name="novelChapter")
+    @Resource(name = "novelType")
+	public void setNoveltype(NovelType noveltype) {
+		this.noveltype = noveltype;
+	}
+    @Resource(name = "rankUtils")
+	public void setRankUtils(RankUtils rankUtils) {
+		this.rankUtils = rankUtils;
+	}
+    @Resource(name="novelTypebizImpl")
+    public void setNovelTypebiz(NovelTypebiz novelTypebiz) {
+		this.novelTypebiz = novelTypebiz;
+	}
+
+	@Resource(name="novelChapter")
     public void setNovelchapter(NovelChapter novelchapter) {
 		this.novelchapter = novelchapter;
 	}
@@ -114,6 +133,74 @@ public class ZLNovelController {
 //		return "index";
 //    	
 //    }
+    
+    //全本小说
+    @RequestMapping(value="quanben")
+    public String ToQuanBen(Model model){
+    List<NovelType> Tlist = this.novelTypebiz.showType(noveltype); // 小说类型
+		
+		logger.info("toIndex.....");
+		//根据类型来排行榜
+		for (int r = 0; r < Tlist.size(); r++) {
+			String tname=Tlist.get(r).getTname();
+			List<Object> listAll = new ArrayList<Object>();
+			List<Object> listAll1 = new ArrayList<Object>();
+			List<Object> listAll2 = new ArrayList<Object>();
+			List<Object> listAll3 = new ArrayList<Object>();
+			List<Object> listAll4 = new ArrayList<Object>();
+			List<Object> listAll5 = new ArrayList<Object>();
+			List<Object> listAll6 = new ArrayList<Object>();
+			switch (r) {
+			case 0:
+				listAll = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll", listAll);
+					break;
+				}
+			case 1:
+				listAll1 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll1", listAll1);
+					break;
+				}
+			case 2:
+				listAll2 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll2", listAll2);
+					break;
+				}
+			case 3:
+				listAll3 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll3", listAll3);
+					break;
+				}
+			case 4:
+				listAll4 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll4", listAll4);
+					break;
+				}
+			case 5:
+				listAll5 = rankUtils.RankType(tname);
+				if (rankUtils.RankType(tname) != null) {
+					model.addAttribute("listAll5", listAll5);
+					break;
+				}
+			case 6:
+				listAll6 = rankUtils.RankAll();
+				if(rankUtils.RankAll() != null){
+					model.addAttribute("listAll6",listAll6);
+					break;
+				}
+			}
+		}
+		
+		model.addAttribute("list",Tlist);
+    	//List<NovelType> list = .showType(noveltype); 
+    	//model.addAttribute("list",list);
+    	return "quanben";
+    }
     
     
 //后台管理员模块------------------------------------------------------------------------------

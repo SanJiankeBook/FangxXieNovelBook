@@ -9,11 +9,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<base href="<%=basePath %>">
 <title>管理员登录</title>
 </head>
 <body>
 	
-	<form action="<%=basePath %>adminLogin" method="post">
+	<form action="adminLogin" method="post">
 		<fieldset>
 			<legend>管理后台登录</legend>
 			<p>管理员ID：<input type="text" name="adnumber"></p>

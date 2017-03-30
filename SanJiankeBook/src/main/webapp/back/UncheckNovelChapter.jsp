@@ -83,7 +83,7 @@
 	var flag;
 
 	datagridObj=$('#show_novelChapter_info').datagrid({
-		url:'../uncheckNovelChapter',   
+		url:'uncheckNovelChapter',   
 		fitColumns:true,
 		loadMsg:'数据加载中...',
 		striped:true,		//斑马线效果
@@ -127,7 +127,7 @@
 			}
 			cid=rows[i].cid;
 			$.ajax({
-				url:'../showDetails',
+				url:'showDetails',
 				type:"post",
 				data:{"id":cid},
 				dataType:"json",
@@ -177,7 +177,7 @@
 			}
 			cid=rows[i].cid;
 			$.ajax({
-				url:'../passChapter',
+				url:'passChapter',
 				type:"post",
 				data:{"id":cid},
 				dataType:"json",
@@ -208,7 +208,7 @@
 			}
 			cid=rows[i].cid;
 			$.ajax({
-				url:'../unpassChapter',
+				url:'unpassChapter',
 				type:"post",
 				data:{"id":cid},
 				dataType:"json",
@@ -230,7 +230,7 @@
 		var rows=$('#show_novelChapter_info').datagrid("getChecked");
 		rows=rows[0];
 		$.ajax({
-			url:'../tocaddress',
+			url:'tocaddress',
 			type:'post',
 			data:{nid:nid,cid:cid},
 			dataType:'json',

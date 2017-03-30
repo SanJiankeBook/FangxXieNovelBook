@@ -1,16 +1,11 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String path=request.getContextPath();
-	String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<base href="<%=basePath %>">
 <title>待审查小说</title>
 </head>
 <body>
@@ -23,7 +18,7 @@
 	var flag;
 
 	datagridObj=$('#show_novel_info').datagrid({
-		url:'../uncheckNovel',   
+		url:'uncheckNovel',   
 		fitColumns:true,
 		loadMsg:'数据加载中...',
 		striped:true,		//斑马线效果
@@ -43,20 +38,20 @@
 						value = value.split(",");
 						for (var i = 0; i < value.length; i++) {
 							if (value[i] == null || value[i] == "") {
-								picStr += "<img src='../images/zanwu.jpg' width='100px' height='100px' />";
+								picStr += "<img src='images/zanwu.jpg' width='100px' height='100px' />";
 							} else {
 								var patt1 = new RegExp("../");
 								if (patt1.test(value[i])) {
-									picStr += "<img src='../../"+value[i]+"' width='100px' height='100px' />";
+									picStr += "<img src='../"+value[i]+"' width='100px' height='100px' />";
 								} else {
-									picStr += "<img src='../images/"+value[i]+"' width='100px' height='100px' />";
+									picStr += "<img src='images/"+value[i]+"' width='100px' height='100px' />";
 								}
 							}
 						}
 					} else if (value != "") {
-						picStr += "<img src='../../"+value+"' width='100px' height='100px' />";
+						picStr += "<img src='../"+value+"' width='100px' height='100px' />";
 					} else {
-						picStr += "<img src='../images/zanwu.jpg' width='100px' height='100px' />";
+						picStr += "<img src='images/zanwu.jpg' width='100px' height='100px' />";
 					} 
 						return picStr;
 					}
@@ -87,7 +82,7 @@
 							//在for循环中少加了一次
 							nids += rows[i].nid;
 							
-							$.post("../passNovel",{nid:nids},function(data){
+							$.post("passNovel",{nid:nids},function(data){
 								if( data == "0" ){
 									$.messager.alert('失败提示','小说通过失败!','error');
 								}else{
@@ -118,7 +113,7 @@
 							//在for循环中少加了一次
 							nids += rows[i].nid;
 							
-							$.post("../unpassNovel",{nid:nids},function(data){
+							$.post("unpassNovel",{nid:nids},function(data){
 								if( data == "0" ){
 									$.messager.alert('失败提示','小说不通过失败!','error');
 								}else{

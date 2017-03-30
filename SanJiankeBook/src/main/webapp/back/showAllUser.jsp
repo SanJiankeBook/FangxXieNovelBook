@@ -18,7 +18,7 @@
 	var flag;
 
 	datagridObj=$('#type_showuser_info').datagrid({
-		url:'../findAllUserByPage',   
+		url:'findAllUserByPage',   
 		fitColumns:true,
 		loadMsg:'数据加载中...',
 		striped:true,		//斑马线效果
@@ -56,7 +56,7 @@
 							uids += rows[i].uid;
 							
 													//json
-							$.post("../delUser",{uid:uids},function(data){
+							$.post("delUser",{uid:uids},function(data){
 								if( data == "0" ){
 									$.messager.alert('失败提示','用户删除失败!','error');
 								}else{
