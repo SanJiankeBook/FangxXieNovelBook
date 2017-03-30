@@ -169,18 +169,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="userpanel">
-				<!-- Baidu Button BEGIN -->
-				<script type="text/javascript" id="bdshare_js"
-					data="type=tools&amp;uid=0"
-					src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=413530"></script>
-
-				<script type="text/javascript">
-					document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion="
-							+ Math.ceil(new Date() / 3600000)
-				</script>
-				<!-- Baidu Button END -->
-			</div>
 		</div>
 		<div class="clear"></div>
 		<div class="nav">
@@ -248,7 +236,7 @@
 
 					<c:forEach items="${nchapter}" var="nchapter">
 						<dd>
-							<a style="" href="${nchapter.caddress}">${nchapter.cname}</a>
+							<a style="" href="${nchapter.caddress}">第${nchapter.standby_2}章&nbsp;&nbsp;&nbsp;${nchapter.cname}</a>
 						</dd>
 					</c:forEach>
 
@@ -276,6 +264,11 @@ $(function(){
 function publishTalk(){
 				var des=$("#ndescription").val();
 				var nid=$("#searchNovel").val();
+				alert(nid);
+				if(document.getElementById("ndescription").value=="" | des==null){
+			        alert("评论的类容不能为空!");
+			        return false;
+			    }
 					$.ajax({
 						url:"publishTalk",
 						type:"post",
@@ -283,6 +276,7 @@ function publishTalk(){
 						dataType:"JSON",
 						success:function( data ){
 							if(data=="1"){
+								$("#ndescription").val("");
 								searchNovel();
 								$.messager.show({title:'成功提示',msg:'评论发表成功...',timeout:2000,showType:'slide'});
 							}else{

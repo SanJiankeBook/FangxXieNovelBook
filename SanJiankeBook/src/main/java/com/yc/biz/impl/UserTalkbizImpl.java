@@ -30,6 +30,7 @@ public class UserTalkbizImpl implements UserTalkbiz {
 	public List<UserTalk> findAllTalk(UserTalk usertalk) {
 		return this.bd.findAll(usertalk, "findAllTalk");
 	}
+	
 //	根据书本id获取这本书所有的评论分页
 	@Override
 	public List<UserTalk> findLimitTalk(UserTalk usertalk, int start, int end) {

@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 分页查询 -->
 	<select id="findUserByPage" parameterType="UserTalk" resultType="UserTalk">
 		select ut.utdate,ut.utcontent,u.uname from  user_talk ut,user u 
-		where ut.uid=u.uid and ut.uid=4 and
+		where ut.uid=u.uid and
  		ut.nid=#{nid} ORDER BY ut.utdate DESC limit #{start},#{end} 
 	</select>
 	
