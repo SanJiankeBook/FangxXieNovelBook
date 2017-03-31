@@ -329,16 +329,33 @@ public class NovelController {
     }
     //注册成为作家
     @RequestMapping(value="/registauthor")
+    @ResponseBody
     public String registauthor(Author author,User user){
+    	
     	logger.info("registauthor.....");
     	author.setPan_name(user.getUname());
     	//需要先注册成为一个用户
+    	//注册之前需要验证一拨
+    	User userlist=new User();
+    	userlist.setU_number(user.getU_number());
+		
+		List<User> list_uname=this.userbiz.findUserInfo(userlist);
+		if(!list_uname.isEmpty()){
+			return "-1";//该账号已被注册
+		}
+		userlist.setUname(user.getUname());
+		userlist.setU_number(null);
+		list_uname=this.userbiz.findUserInfo(userlist);
+		if(!list_uname.isEmpty()){
+			return "0" ;//该用户已被注册
+		}
     	this.userbiz.InsertUser(user);
     	author.setUid(user.getUid());
     	//在注册成为一个作家
     	this.authorbiz.insertAuthor(author);
+    	
     	StaticContain.USERID=author.getAid();
-    	return "creatnovel";
+    	return "1";
     }
     @RequestMapping(value="/test")
     public String test(){

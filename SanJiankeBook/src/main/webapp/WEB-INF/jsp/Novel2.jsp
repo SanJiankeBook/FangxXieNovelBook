@@ -264,7 +264,6 @@ $(function(){
 function publishTalk(){
 				var des=$("#ndescription").val();
 				var nid=$("#searchNovel").val();
-				alert(nid);
 				if(document.getElementById("ndescription").value=="" | des==null){
 			        alert("评论的类容不能为空!");
 			        return false;

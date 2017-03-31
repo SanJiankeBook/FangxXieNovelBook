@@ -190,9 +190,21 @@ public class NovelbizImpl implements Novelbiz {
 			List<Novel> list=this.bd.findAll(new Novel(), "novelrecommand");
 			return list;
 		}
+
 		
 		public List<Novel> Recommand(){
 			List<Novel> list=this.bd.findAll(new Novel(), "recommand");
+			return list;
+		}
+
+		@Override
+		public List<Novel> FindNovelBytid(int tid, int start, int end) {
+			Map<String,Object> map=new HashMap<String,Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("tid", tid);
+			List<Novel> list=bd.findAll(new Novel(),map,"TNovelBytname");
+
 			return list;
 		}
 }
