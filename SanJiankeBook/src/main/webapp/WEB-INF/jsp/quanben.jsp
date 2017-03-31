@@ -52,8 +52,8 @@
                 <div class="topbooks" id="con_o1g_1" style="display: block;">
                     <ul>
 						<c:forEach items="${listAll }" var="listAll" begin="0" end="14" step="1">
-							<li><span class="hits">${ listAll.panname}</span> <span
-								class="num">${listAll.ranknum}. </span> <a href="toindex_id/${listAll.nid}"
+							<li><span class="hits">${ listAll.panname}</span> 
+							<span class="num">${listAll.ranknum}. </span> <a href="toindex_id/${listAll.nid}"
 								title="儒道至圣" target="_blank">${listAll.novelname}</a></li>
 						</c:forEach>                        
                     </ul>
@@ -74,7 +74,7 @@
                     <ul>
                         
 						<c:forEach items="${listAll1 }" var="listAll1" begin="0" end="14" step="1">
-							<li><span class="hits">${ listAll1.panname}</span> <span
+							<li><span class="hits">${listAll1.panname}</span> <span
 								class="num">${listAll1.ranknum}. </span> <a href="toindex_id/${listAll1.nid}"
 								title="儒道至圣" target="_blank">${listAll1.novelname}</a></li>
 						</c:forEach>                          
@@ -118,8 +118,8 @@
                 <div class="topbooks" id="con_o4g_1" style="display: block;">
                     <ul>
                          <c:forEach items="${listAll3 }" var="listAll3" begin="0" end="14" step="1">
-							<li><span class="hits">${ listAll3.panname}</span> <span
-								class="num">${listAll3.ranknum}. </span> <a href="toindex_id/${listAll3.nid}"
+							<li><span class="hits">${ listAll3.panname}</span>
+							<span class="num">${listAll3.ranknum}. </span> <a href="toindex_id/${listAll3.nid}"
 								title="儒道至圣" target="_blank">${listAll3.novelname}</a></li>
 						</c:forEach>
                         

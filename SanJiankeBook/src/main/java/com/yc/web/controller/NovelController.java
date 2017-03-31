@@ -130,12 +130,14 @@ public class NovelController {
 	//前往我的书架业务
 	@RequestMapping(value="/mybook")
 	public String mybook(HttpServletRequest request,Model model){
+		List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
 		logger.info("mybook....");
 		if(request.getSession().getAttribute("users")!=null){
-			List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+			//List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
 			model.addAttribute("list1",list1);
 			return "userbook";
 		}else{
+			model.addAttribute("list1",list1);
 			return "userlogin";
 		}
 	}

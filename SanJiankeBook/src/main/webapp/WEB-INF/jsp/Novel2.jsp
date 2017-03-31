@@ -13,8 +13,6 @@
 <head>
 <base href="<%=basePath %>">
 <style id="znBdcsStyle" type="text/css">
-
-}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -23,7 +21,7 @@
 	content="format=html5; url=http://m.bixia.org/2_2476/">
 <meta http-equiv="mobile-agent"
 	content="format=xhtml; url=http://m.bixia.org/2_2476/">
-<title>笔下文学</title>
+<title>三剑客文学</title>
 <meta name="keywords" content="儒道至圣,儒道至圣最新章节">
 <meta name="description"
 	content="儒道至圣最新章节由网友提供，《儒道至圣》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的玄幻奇幻小说，笔下文学免费提供儒道至圣最新清爽干净的文字章节在线阅读。">
@@ -205,10 +203,10 @@
 						动&nbsp;&nbsp;作：<a rel="nofollow" href="javascript:;"
 							onclick="addBookCase('${novel_id[0].nid }');">加入书架</a>、
 							<a rel="nofollow" href="#footer">直达底部</a>、
-							<a target="_blank" href="txt_id/${novel_id[0].nid }" style="color: red;" title="儒道至圣TXT下载">TXT下载</a>
+							<a target="_blank" href="txt_id/${novel_id[0].nid }" style="color: red;">TXT下载</a>
 					</p>
 					<p>
-						最新更新：<a href="3433725.html">${chapter[0].cname }</a>
+						最新更新：<a href="3433725.html">${chapter[0].cname}</a>
 					</p>
 				</div>
 
@@ -264,7 +262,6 @@ $(function(){
 function publishTalk(){
 				var des=$("#ndescription").val();
 				var nid=$("#searchNovel").val();
-				alert(nid);
 				if(document.getElementById("ndescription").value=="" | des==null){
 			        alert("评论的类容不能为空!");
 			        return false;
@@ -282,9 +279,7 @@ function publishTalk(){
 							}else{
 								window.location="userlogininfo";
 								$.messager.alert('失败提示','评论发表失败!请先登录','error');
-							}
-							
-							
+							}		
 						}
 					});
 }
@@ -317,6 +312,11 @@ function searchNovel() {
 				]]
 	});
 }
+
+
+
+
+
 </script>
 		
 		
@@ -327,7 +327,7 @@ function searchNovel() {
 			<div class="footer_cont">
 				<p>《儒道至圣》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的玄幻奇幻小说，笔下文学转载收集儒道至圣最新章节。</p>
 				<p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
-				<p>Copyright ? 2016 笔下文学 All Rights Reserved.</p>
+				<p>Copyright ? 2017三剑客文学</p>
 			</div>
 		</div>
 		<script>

@@ -439,7 +439,7 @@ public class ZpdNovelController {
 	public String forgivepassword(HttpServletRequest request){
 		String uname=request.getParameter("uname");
 		request.getSession().setAttribute("forgiveUser", uname);
-		System.out.println(uname);
+		//System.out.println(uname);
 		return "1";
 		
 	}
@@ -915,14 +915,21 @@ public class ZpdNovelController {
 	//TXT下载
 	@RequestMapping(value = "/txt_id/{nid}")
 	public ResponseEntity<byte[]> Download_txt(@PathVariable int nid, Model model,HttpServletResponse response) throws IOException {
-		List<Novel> list=novelbiz.ShowNovel_id(nid);
-		String nname=list.get(0).getNname()+".txt";
-       byte[] content=jsoupUtils.Chapter(nid);
-        HttpHeaders headers = new HttpHeaders();    
-        String fileName=new String(nname.getBytes("UTF-8"),"iso-8859-1");//为了解决中文名称乱码问题  
-        headers.setContentDispositionFormData("attachment", fileName);   
-        headers.setContentType(MediaType.TEXT_PLAIN);
-        return new ResponseEntity<byte[]>(content,headers, HttpStatus.CREATED);    
+		ResponseEntity ResponseEntity=new ResponseEntity<byte[]>(null);
+		try {
+			List<Novel> list=novelbiz.ShowNovel_id(nid);
+			String nname=list.get(0).getNname()+".txt";
+			byte[] content=jsoupUtils.Chapter(nid);
+			HttpHeaders headers = new HttpHeaders();    
+			String fileName=new String(nname.getBytes("UTF-8"),"iso-8859-1");//为了解决中文名称乱码问题  
+			headers.setContentDispositionFormData("attachment", fileName);   
+			headers.setContentType(MediaType.TEXT_PLAIN);
+			return new ResponseEntity<byte[]>(content,headers, HttpStatus.CREATED);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;   
 	}
 
 }
