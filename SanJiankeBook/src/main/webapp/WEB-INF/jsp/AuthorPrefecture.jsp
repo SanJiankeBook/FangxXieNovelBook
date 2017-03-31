@@ -13,7 +13,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>"></base>	
+<base href="<%=basePath%>">	
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>作者专区_三剑客文学</title>
 <link rel="stylesheet"
@@ -142,8 +142,8 @@
 		<div class="clear"></div>
 		<div class="nav">
 			<ul>
-				<li><a href="../index.jsp">首页</a></li>
-				<li><a href="bookcase.jsp">我的书架</a></li>
+				<li><a href="toindex_zpd">首页</a></li>
+					<li><a rel="nofollow" href="mybook">我的书架</a></li>
 				<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
 				<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
 				<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>

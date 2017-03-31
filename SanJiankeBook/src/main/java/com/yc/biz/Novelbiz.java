@@ -34,6 +34,8 @@ public interface Novelbiz {
 		List<Novel> FindNovelByNameFenYe(String nname, int start, int end);
 		//根据作者ID显示小说信息
 		List<Novel> FindNovelByaid(int aid, int start, int end);
+		//根据小说类型显示小说信息
+		List<Novel> FindNovelBytid(int tid, int start, int end);
 	
 	//根据小说名查询所有小说信息
 	List<Novel> NameFindNovel(String nname);

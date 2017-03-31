@@ -23,14 +23,17 @@
 			url:"ShowType",
 			type:"post",
 			dataType:"JSON",
+			data:{'nid' :$("#nid").val()},
 			success:function( data ){
 				//var art=document.getElementById("usex");
+				$("#t").html("");
 				$("#tname").html("");
 				var value="";
 				 $.each(data, function(index, element) {
 					 value+="<option value='"+element.tid+"'>"+element.tname+"</option>";
 		            });
-				 $("#tname").html(value); 
+				 $("#t").html(value);
+				 $("#tid").html(value);
 			}
 		});
 		
@@ -40,7 +43,7 @@
 			dataType:"JSON",
 			data: {'nid' :$("#nid").val()},
 			success:function( data ){
-				$("#nstatus").html("<option value='data' selected = 'selected'>"+data+"</option>");
+				$("#nstatus").append("<option value="+data+" selected = 'selected'>"+data+"</option>");
 			}
 		});
 	});	
@@ -48,15 +51,17 @@
 
 <body>
 	<h1>小说信息编辑</h1>
-	<form action="saveedit" method="post">
+	<form action="saveedit" method="post" enctype="multipart/form-data">
 	<input id="nid" name="nid" value="${novel[0].nid}" type="hidden"/>
 	小说名：<input type="text" name="nname" value="${novel[0].nname}"><br />
+	小说类型：<select id="t"  name="t" disabled="disabled">
+	</select>
 	<div id="div" style="display: none" >
-	小说类型：<select id="tname"  name="tname">
+	<select id="tid"  name="tid" >
 	</select></div>
 	<br />
 	<hr />
-	 小说封面: <img id="xmTanImg" name="npicture" height="200" width="200" style="margin-left:300px" src="${list[0].npicture}"/>
+	 小说封面: <img id="xmTanImg" name="npicture" height="200" width="200" style="margin-left:300px" src="${novel[0].npicture}"/>
 	 小说封面图片选取：<input type="file" name="pdfsUrl" id="xdaTanFileImg" onchange="xmTanUploadImg(this)" />
                 <input type="file" name="pdfsUrl" id="xdaTanFileImg" onchange="xmTanUploadImg(this)"  style="display:none"/>
                 <input type="button" value="隐藏图片" onclick="document.getElementById('xmTanImg').style.display = 'none';"/>
@@ -109,7 +114,7 @@
 			<option value="完结">完结</option>
 			<option value="未完结">未完结</option>
 			<option value="更新中">更新中</option>
-		</select>
+		</select><br/>
 		<input type="submit" value="保存" />
 		<input type="reset" value="重置 " /> 
 		</form>

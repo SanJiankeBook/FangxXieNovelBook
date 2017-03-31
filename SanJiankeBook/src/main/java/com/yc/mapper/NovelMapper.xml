@@ -135,6 +135,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where nid=#{nid}	
 	</select>
 	
+	<!-- 分页根据小说类型查询小说的信息包括小说类型 -->
+	<select id="TNovelBytname" resultMap="NovelTypeBytname" parameterType="Novel">
+		select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus,novel.standby_1
+			from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+			where novel.tid=#{tid}
+			limit #{start},#{end}	
+	</select>
+	
+	
 	<!-- 根据作者id查找他写的小说 -->
 	<select id="findNovelByaid" parameterType="Novel" resultType="Novel" >
 		select * from novel where aid=#{aid} 
@@ -256,6 +269,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="tid" column="tid" />
 		<result property="aid" column="aid" />
 		<result property="tname" column="tname" />
+		<result property="nname" column="nname" />
+		<result property="npicture" column="npicture" />
+		<result property="ndescription" column="ndescription" />
+		<result property="nstatus" column="nstatus" />
+	</resultMap>
+	
+	<resultMap type="Novel" id="NovelTypeBytname">
+		<id property="nid" column="nid" />
+		<result property="tid" column="tid" />
+		<result property="aid" column="aid" />
+		<result property="tname" column="tname" />
+		<result property="aname" column="aname" />
 		<result property="nname" column="nname" />
 		<result property="npicture" column="npicture" />
 		<result property="ndescription" column="ndescription" />

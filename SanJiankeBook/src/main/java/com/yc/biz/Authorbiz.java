@@ -28,4 +28,7 @@ public interface Authorbiz {
 	
 	//更新作者信息
 	void updataAuthor(String pan_name,int aage,String acard,String atel,int aid);
+	
+	//作家登录,根据用户名查询
+	List<Author> inforByu_number(String u_number);
 }

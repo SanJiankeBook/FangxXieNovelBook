@@ -311,13 +311,12 @@ public class NovelController {
     	if(user!=null){
     		String nid=request.getParameter("nid");
     		String utcontent=request.getParameter("des");
-    		Integer uid=user.getUid();
-    		usertalk.setUid(uid);
-    		usertalk.setNid(Integer.parseInt(nid));
-    		usertalk.setUtcontent(utcontent);
-    		this.usertalbiz.addtalk(usertalk);
-    		return "1";
-    		
+	    		Integer uid=user.getUid();
+	    		usertalk.setUid(uid);
+	    		usertalk.setNid(Integer.parseInt(nid));
+	    		usertalk.setUtcontent(utcontent);
+	    		this.usertalbiz.addtalk(usertalk);
+	    		return "1";
     	}else{
     		return "-1";
     	}
