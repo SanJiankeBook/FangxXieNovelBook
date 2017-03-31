@@ -78,6 +78,10 @@ values(2,2,'再临','jiuxiantu.jpg','某一天...','未完结',1,1,1);
 
 delete from novel where nid=9;
 
+update novel
+		set nname='再临123',npicture='c:5555555',nstatus='未完结',
+		tid=4
+		where novel.nid=5
 
 select * from novel;
 select nname from novel;
@@ -347,4 +351,13 @@ commit;
 		set nname='我是谁',npicture='c:5555555',nstatus='完结',
 		tid='轻小说'
 		where novel.nid=1
+		
+	select nid,novel_type.tname,author.aname,author.pan_name,nname,npicture,ndescription,nstatus,novel.standby_1
+			from novel_type
+			inner join novel
+			on novel_type.tid=novel.tid
+			inner join author
+			on author.aid=novel.aid
+			where novel.tid=3
+			limit 0,5		
 		

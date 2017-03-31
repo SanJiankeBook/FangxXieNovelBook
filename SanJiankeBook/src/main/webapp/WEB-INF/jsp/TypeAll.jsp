@@ -2,16 +2,82 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<%
+	String path = request.getContextPath();
+	//					http				://		localhost			:	8081				/SpringMvc_Book/
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<base href="<%=basePath%>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>${tname}</title>
-<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <!--   <script type="text/javascript" src="../js/xiaoshuo.js"></script> -->
-<script type="text/javascript" src="../js/xiaoshuo.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/xiaoshuo.js"></script>
+
+<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="easyui/css/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="easyui/css/demo.css">
+<script type="text/javascript"
+	src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript"
+	src="easyui/js/jquery.easyui.min.js"></script>
+<script type="text/javascript"	
+	src="easyui/js/index.js"></script>
+<script type="text/javascript"
+	src="easyui/js/easyui-lang-zh_CN.js"></script>	
 </head>
+<!-- 根据类型显示全部小说信息 -->
+<script  type="text/javascript">
+	$(function(){
+		var datagridObj;
+		/* var editRow = undefined;	//当前正在被编辑的行的索引
+		var op;
+		var flag; */
+		var tid=${Tlist[0].tid};
+		alert(tid);
+		datagridObj=$('#type_showAuthor_info').datagrid({
+			url:'TypeNovel',   
+			queryParams: {tid:tid},
+			fit:true,
+			fitColumns:true,
+			loadMsg:'数据加载中...',
+			pageSize:5,
+			pageList:[5,10,15,20,25,30],
+			pagination : true, //显示分页栏
+			striped:true,		//斑马线效果
+			nowrap:true,		//超出宽度自动截取
+			rownumber:true,		//显示行数
+			sortName:'nid',		//排序的咧
+			remoteSort:false,	//前段排序而非服务器的排序，自己的排序
+			columns:[[	
+						{field : 'nid',title : '小说编号',width : 20,align : 'center',sortable : true,hidden:true},
+						{field : 'tname',title : '类型',width : 20,align : 'center'},
+						/* {field : 'pan_name',title : '作者',width : 30,align : 'center'}, */
+						{field : 'nname',title : '名字',width : 20,align : 'center',formatter: function(val,row,index){
+							 if(val){
+								 return "<a href='toindex_id/"+row.nid +"' >"+val+"</a>";
+							} 
+						}
+						}, 
+						{field : 'aname',title : '作者',width : 20,align : 'center'},
+						{field : 'nstatus',title : '小说状态',width : 20,align : 'center'}, 
+					]]	
+		});	
+	});
+	</script>
+
+
+
+
 <body>
 	<div id="wrapper">
 
@@ -36,14 +102,14 @@
 		<div class="clear"></div>
 		<div class="nav">
 			<ul>
-				<li><a href="../index.jsp">首页</a></li>
+				<li><a href="toindex_zpd">首页</a></li>
 				<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
-				<li><a href="../toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
-				<li><a href="../toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
-				<li><a href="../toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
-				<li><a href="../toindex_Type/${list[3].tname}">${list[3].tname}</a></li>
-				<li><a href="../toindex_Type/${list[4].tname}">${list[4].tname}</a></li>
-				<li><a href="../toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
+				<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
+				<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
+				<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
+				<li><a href="toindex_Type/${list[3].tname}">${list[3].tname}</a></li>
+				<li><a href="toindex_Type/${list[4].tname}">${list[4].tname}</a></li>
+				<li><a href="toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
 				<li><a href="authorPrefectrue">作者专区</a></li>
 				<li><a href="toindex_type">排行榜单</a></li>
 				<li><a href="jsp/quanben.jsp/">全本小说</a></li>
@@ -76,35 +142,9 @@
 
 				</div>
 			</div>
+			<table id="type_showAuthor_info"  style="width: 100%; height: 200px; $(this).width() * 0.2"></table>
 			<div id="newscontent">
-				<div class="l">
-					<h2>玄幻奇幻最近更新列表</h2>
-					<ul>
-
-						<li><span class="s1">[玄幻奇幻]</span><span class="s2"><a
-								href="/24_24748/" target="_blank">柯南之所谓记者不好当</a></span><span class="s3"><a
-								href="/24_24748/2211325.html" target="_blank">第一百五十章
-									每个人背后都有...</a></span><span class="s4">蔬菜馒头</span><span class="s5">03-04</span></li>
-
-
-
-					</ul>
-				</div>
-
-
-				<div class="r">
-					<h2>玄幻奇幻点击榜</h2>
-					<ul>
-
-						<li><span class="s1">[玄幻奇幻]</span><span class="s2"><a
-								href="/2_2476/">儒道至圣</a></span><span class="s5">永恒之火</span></li>
-
-
-
-					</ul>
-				</div>
-
-				<div class="clear"></div>
+				
 			</div>
 		</div>
 

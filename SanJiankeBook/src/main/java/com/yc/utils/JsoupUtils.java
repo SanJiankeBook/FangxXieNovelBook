@@ -60,6 +60,7 @@ public class JsoupUtils{
 //	            String regEx = "<[^>]*>";    //去除所有的标签
 //	            Pattern p = Pattern.compile(regEx);
 //	            Matcher m = p.matcher(uc.decodeUnicode(content));
+
 		     	content=content.replace("<body>","");
 		     	content=content.replace("</body>","");
 		     	String title=content.replace("<h1>", "");
