@@ -12,6 +12,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -197,8 +198,6 @@ public class ZLNovelController {
 		}
 		
 		model.addAttribute("list",Tlist);
-    	//List<NovelType> list = .showType(noveltype); 
-    	//model.addAttribute("list",list);
     	return "quanben";
     }
     
@@ -371,7 +370,6 @@ public class ZLNovelController {
     	logger.info("this is delNovel.....");
     	String[] nids=nid.split(",");
     	for(String n:nids){
-    		System.out.println(n);
     		Integer a=Integer.parseInt(n);
     		this.novelbiz.delNovel(a);
     	}
@@ -406,18 +404,28 @@ public class ZLNovelController {
      * 通过待审查的小说
      */
     @RequestMapping(value="/passNovel",produces = {"application/text;charset=UTF-8"})
-    public @ResponseBody void PassNovel(@RequestParam(value="nid") Integer nid){
+    public @ResponseBody void PassNovel(@RequestParam(value="nid") String nid){
     	logger.info("this is passNovel.....");
-    	this.novelbiz.passNovel(nid);
+    	String[] nids=nid.split(",");
+    	for(String n:nids){
+    		Integer a=Integer.parseInt(n);
+    		this.novelbiz.passNovel(a);
+    	}
+    	
     }
     
     /**
      * 不通过待审查的小说
      */
     @RequestMapping(value="/unpassNovel",produces = {"application/text;charset=UTF-8"})
-    public @ResponseBody void UnpassNovel(@RequestParam(value="nid") Integer nid){
+    public @ResponseBody void UnpassNovel(@RequestParam(value="nid") String nid){
     	logger.info("this is unpassNovel.....");
-    	this.novelbiz.UnpassNovel(nid);
+    	String[] nids=nid.split(",");
+    	for(String n:nids){
+    		Integer a=Integer.parseInt(n);
+    		this.novelbiz.UnpassNovel(a);
+    	}
+    	
     }
     
     /**
@@ -446,9 +454,14 @@ public class ZLNovelController {
      * 通过待审查章节
      */
     @RequestMapping(value="/passChapter",produces = {"application/text;charset=UTF-8"})
-    public @ResponseBody String PassNovelChapter(@RequestParam(value="id") Integer cid){
+    public @ResponseBody String PassNovelChapter(@RequestParam(value="id") String cid){
     	logger.info("this is PassNovelChapter...");
-    	this.chapter.PassChapter(cid);
+    	String[] cids=cid.split(",");
+    	for(String c:cids){
+    		Integer a=Integer.parseInt(c);
+    		this.chapter.PassChapter(a);
+    	}
+    	//this.chapter.PassChapter(cid);
     	return "1";
     }
     
@@ -456,9 +469,13 @@ public class ZLNovelController {
      * 不通过待审核的小说章节
      */
     @RequestMapping(value="/unpassChapter",produces = {"application/text;charset=UTF-8"})
-    public @ResponseBody String UnpassNovelChapter(@RequestParam(value="id") Integer cid){
+    public @ResponseBody String UnpassNovelChapter(@RequestParam(value="id") String cid){
     	logger.info("this is UnpassNovelChapter...");
-    	this.chapter.UnpassChapter(cid);
+    	String[] cids=cid.split(",");
+    	for(String c:cids){
+    		Integer a=Integer.parseInt(c);
+    		this.chapter.UnpassChapter(a);
+    	}
     	return "1";
     	
     }
@@ -477,22 +494,13 @@ public class ZLNovelController {
     }
     
     //
-    @RequestMapping(value="/tocaddress")
-    public @ResponseBody String ToCaddress(@RequestParam(value="nid") Integer nid,@RequestParam(value="cid") Integer cid, Model model,HttpServletRequest request){
+    @RequestMapping(value="/tocaddress_id/{cid}")
+    public String ToCaddress(@PathVariable Integer cid, Model model,HttpServletRequest request){
     	logger.info("this is chapterContent");
-    	String a="/back/UncheckNovelChapter";
-    	List<NovelChapter> nchapter=this.chapter.ShowContent(nid, cid);
-    	NovelChapter novelChapter=new NovelChapter();
-    	novelChapter.setCaddress(nchapter.get(0).getCaddress());
+    	List<NovelChapter> novelChapter=this.chapter.ShowContent(cid);
     	System.out.println(novelChapter);
     	model.addAttribute("novelChapter", novelChapter);
-    	Gson gson=new Gson();
-    	//request.setAttribute("caddress", nc);
-    	if(model!=null && !"".equals(model) ){
-    		return gson.toJson(model);
-    	}else{
-    		return "0";
-    	}
+    	return "FindChapter";
     } 
     
 }

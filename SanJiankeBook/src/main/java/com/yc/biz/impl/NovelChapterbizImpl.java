@@ -110,10 +110,9 @@ private  BaseDao bd;
 
 
 	@Override
-	public List<NovelChapter> ShowContent(Integer nid, Integer cid) {
+	public List<NovelChapter> ShowContent(Integer cid) {
 		NovelChapter chapter=new NovelChapter();
 		chapter.setCid(cid);
-		chapter.setNid(nid);
 		List<NovelChapter> list=this.bd.findAll(chapter, "showContent");
 		return list;
 	}
