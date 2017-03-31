@@ -13,6 +13,9 @@ import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +30,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,6 +61,8 @@ import com.yc.utils.JsoupUtils;
 import com.yc.utils.RandomUtils;
 import com.yc.utils.RankUtils;
 import com.yc.utils.TopUtils;
+import com.yc.web.upload.UploadFileUtil;
+import com.yc.web.upload.UploadFileUtil.UploadFile;
 import com.yc.utils.RedisUtils;
 import com.yc.utils.TNovelUtils;
 
@@ -316,6 +322,30 @@ public class ZpdNovelController {
 
 		return "Novel2";
 	}
+	
+	
+	//在Novel2显示某个类型的全部小说信息
+		@RequestMapping(value="/TypeNovel",produces = {"application/text;charset=UTF-8"})
+	    @ResponseBody
+	    public String quearyNovel1(@RequestParam int tid,HttpServletRequest request){
+	    	logger.info("quearyNovel.....");
+	    	
+	    	String page=request.getParameter("page");    
+	    	String rows=request.getParameter("rows");
+	    	int currentPage=Integer.parseInt(page);     //当前的页数
+	    	int end=Integer.parseInt(rows);           //每页的条数
+	    	int start=0;
+	    	start=(currentPage-1)*end;
+
+	    	List<Novel> list=this.novelbiz.FindNovelBytid(tid, start, end);
+	    	EasyuiFindByPage ebp=new EasyuiFindByPage();
+	    	ebp.setTotal(list.size());
+	    	ebp.setRows(list);
+	    	Gson gson=new Gson();
+			return gson.toJson(ebp);
+	    	//这个功能并没有从数据库中拿数据
+	    }
+	
 
 	//检查是否登陆
 	@RequestMapping(value="/checkloging",produces = {"application/text;charset=UTF-8"})
@@ -579,7 +609,52 @@ public class ZpdNovelController {
 				return gson.toJson(user);
 				
 		}
-	//
+
+			
+		
+		
+				//作家登录
+				@RequestMapping(value="/Alogger",produces = {"application/text;charset=UTF-8"})
+				@ResponseBody
+				public String Alogger(HttpServletRequest request,Model model) {
+					logger.info("register.......");
+					User user=new User();
+					Gson gson=new Gson();
+					HttpSession session = request.getSession();
+					String validateCode=request.getParameter("validateCode");
+					if(validateCode!=null &&validateCode!=""){
+						String randCode=(String) session.getAttribute("rand");
+						if(!validateCode.equals(randCode)){
+							session.setAttribute("errmsg", "验证码错误");
+							user.setStatus("-2");
+							return gson.toJson(user);
+						}
+					}
+					String u_number=request.getParameter("u_number");
+					String upassword=request.getParameter("upassword");
+					List<Author> list=authorbiz.inforByu_number(u_number);
+					
+					if(u_number!="" || u_number!=null && upassword!="" || upassword!=null){
+						if(!list.isEmpty()){
+								Integer uuid=list.get(0).getUid();
+								List<User> ulist=userbiz.findUserById(uuid);
+								user.setUname(ulist.get(0).getUname());
+								user.setUid(ulist.get(0).getUid());
+								user.setU_number(ulist.get(0).getU_number());
+								user.setUpassword(upassword);
+								user.setStatus("1");
+								session.setAttribute("users",user);
+								return gson.toJson(user);	
+						}else{
+							user.setStatus("-2");
+							return gson.toJson(user);
+						}		
+					}else{
+						user.setStatus("-1");
+						return  gson.toJson(user);
+					}	
+				}	
+		
 	
 	//注销登陆
 	@RequestMapping(value="/uploging")
@@ -677,7 +752,7 @@ public class ZpdNovelController {
 				}
 			}
 		}else{
-			return "register";
+			return "userlogin";
 		}	
 		
 		model.addAttribute("list",Tlist);
@@ -768,9 +843,9 @@ public class ZpdNovelController {
 	//作家专区部分显示小说类型
 	@RequestMapping(value="/ShowType",produces = {"application/text;charset=UTF-8"})
 	@ResponseBody
-    public String ShowType(Model model){
+    public String ShowType(@RequestParam int nid,Model model){
     	logger.info("ShowType.....");
-    	List list=this.noveltypebiz.AllNovelType(new NovelType());
+    	List<Novel> list=novelbiz.ShowTNovel(nid);
     	Gson gson=new Gson();
 		return gson.toJson(list);
     }
@@ -786,22 +861,30 @@ public class ZpdNovelController {
 		return gson.toJson(status);
     }
 	
-	
+	private String pdfRootName="uploadPdfs";
 	//作家专区小说信息编辑页面保存
 		@RequestMapping(value="/saveedit")
-	    public String Saveedit(HttpServletRequest request,Model model){
+	    public String Saveedit(@ModelAttribute Novel novel,HttpServletRequest request,Model model) throws IOException{
 	    	logger.info("editNovel.....");
-	    	
-	    	Integer nid=Integer.parseInt(request.getParameter("nid"));
-	    	String nname=request.getParameter("nname");
-	    	String tname=request.getParameter("tname");
-	    	List<NovelType> list=noveltypebiz.TnameByType(tname);
-	    	int tid=list.get(0).getTid();
-	    	String npicture=request.getParameter("npicture");
-	    	String nstatus=request.getParameter("nstatus");
-	    	novelbiz.UpdateNovel(nname, npicture, nstatus, nid, tid);
+	    	//String npicture="";
+	    	String npicture1=" ";
+
+	    	int nid=novel.getNid();
+	    	String nname=novel.getNname();
+	    	int tid=novel.getTid();
+	    	String nstatus=novel.getNstatus();
+	   	
+	    	if(nname!=null ){
+				Map<String,UploadFile> map= UploadFileUtil.uploadFile(request, novel.getPdfsUrl(), pdfRootName);
+				for(Entry<String,UploadFile> entry:map.entrySet()){
+					UploadFile uploadFile=entry.getValue();
+					npicture1+=uploadFile.getNewFileUrl();
+				}
+	    	}
+	    	    	
+	    	novelbiz.UpdateNovel(nname, npicture1,nstatus,nid,tid);
 	    	//model.addAttribute("novel",list);
-			return "ENovel";
+			return "redirect:authorPrefectrue";
 	    }
 		
 	
@@ -812,9 +895,11 @@ public class ZpdNovelController {
 		String str = new String(t_byte, "utf-8"); //组装成utf-8
 		List<NovelType> list = novelTypebizImpl.showType(noveltype); // 小说类型
 		List<Alllist> list1=randomUtils.Type_infor(str);
+		List<NovelType> Tlist=novelTypebizImpl.TnameByType(str);
 		model.addAttribute("list",list);
 		model.addAttribute("tname",str);
 		model.addAttribute("list1",list1);
+		model.addAttribute("Tlist",Tlist);
 		return "TypeAll";
 	}
 
@@ -829,7 +914,6 @@ public class ZpdNovelController {
 	
 	//TXT下载
 	@RequestMapping(value = "/txt_id/{nid}")
-	
 	public ResponseEntity<byte[]> Download_txt(@PathVariable int nid, Model model,HttpServletResponse response) throws IOException {
 		List<Novel> list=novelbiz.ShowNovel_id(nid);
 		String nname=list.get(0).getNname()+".txt";

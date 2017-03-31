@@ -24,6 +24,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from author where aid in (#{aid})
 	</delete>
 	
+	<!--作家登录 -->
+	<select id="AuthorLogger" parameterType="User" resultMap="AUMap">
+		select *
+		from user
+		inner join author
+		on user.uid=author.uid
+		where user.u_number=#{user.u_number}
+	</select>
+	
 	
 	<!-- 分页查询作者 -->
 	<select id="findAuthorByPage" parameterType="Author" resultMap="AuthorResultMap">
