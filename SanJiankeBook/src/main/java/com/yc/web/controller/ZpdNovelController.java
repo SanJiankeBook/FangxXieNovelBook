@@ -485,8 +485,7 @@ public class ZpdNovelController {
 				return "0";
 			}
 		}
-		
-		
+			
 	}
 	//用户信息修改
 	@RequestMapping(value="/updateUserInfo")
