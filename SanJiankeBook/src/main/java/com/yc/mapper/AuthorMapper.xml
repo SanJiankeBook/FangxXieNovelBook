@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<!--作家登录 -->
-	<select id="AuthorLogger" parameterType="User" resultMap="AUMap">
+	<select id="AuthorLogger" parameterType="User" resultType="User">
 		select *
 		from user
 		inner join author

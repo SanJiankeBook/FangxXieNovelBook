@@ -96,14 +96,14 @@ public class AuthorbizImpl implements Authorbiz {
 		this.bd.add(author, "updataAuthor");
 	}
 
-
+	//作家登入验证
 	@Override
-	public List<Author> inforByu_number(String u_number) {
+	public List<User> inforByu_number(String u_number) {
 		User user=new User();
 		user.setU_number(u_number);
 		Author author=new Author();
 		author.setUser(user);
-		List<Author> list=this.bd.findAll(author, "AuthorLogger");
+		List<User> list=this.bd.findAll(author, "AuthorLogger");
 		return list;
 	}
 

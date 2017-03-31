@@ -3,6 +3,7 @@ package com.yc.biz;
 import java.util.List;
 import com.yc.bean.Author;
 import com.yc.bean.Novel;
+import com.yc.bean.User;
 
 public interface Authorbiz {
 	//注册成为作家
@@ -30,5 +31,5 @@ public interface Authorbiz {
 	void updataAuthor(String pan_name,int aage,String acard,String atel,int aid);
 	
 	//作家登录,根据用户名查询
-	List<Author> inforByu_number(String u_number);
+	List<User> inforByu_number(String u_number);
 }

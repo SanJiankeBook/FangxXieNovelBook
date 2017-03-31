@@ -96,7 +96,7 @@
 			success:function( data ){
 				if(data=="1"){
 					alert('注册成功...');
-					window.location="Alogger";
+					window.location="toAuthorlogger";
 				}else if(data=="0"){
 					alert('失败提示，注册失败，用户名已存在');
 				}else if(data=="-1"){
