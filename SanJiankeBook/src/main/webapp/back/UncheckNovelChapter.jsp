@@ -18,8 +18,6 @@
 	<table id="show_novelChapter_info" data-options="fit:true"></table>
 	
 	<div id="novelChapter_manager_search" style="height: 28px">
-		<a href="javascript:checkNovelInfo()" class="easyui-linkbutton"
-			data-options="iconCls:'icon-add',plain:true" style="float: left">查看详情</a>
 		<div class="datagrid-btn-separator"></div>
 		
 		<a href="javascript:passChapter()" class="easyui-linkbutton"
@@ -52,28 +50,14 @@
 			<div id="info"><label>审核状态：</label><input type="text" id="info7" name="standby_1" style="border:0;background:transparent;" readOnly="true"/> </div>
 		</p>
 		<!-- 小说章节地址 -->
+		小说章节地址：
 		<p>
-			<p id="info8" name="caddress"></p>
+			<div id="info"><a href="${novelChapter.caddress } "><input type="text" id="info8" name="caddress" style="border:0;background:transparent;" readOnly="true"/></a></div>
 		</p>
 		章节内容：
 		<div>
-			<script type="text/javascript" id="editor" style="width:98%;height:283px;"></script>
+			<script type="text/javascript" id="editor" style="width:90%;height:200px;"></script>
 		</div>
-	</div>
-	
-	
-	<div id="showContent">
-		<p></p>
-	</div>
-	
-	<div id="showContents">
-		<input type="text" id="info9" name="addre"><br />
-		<input type="text" id="info10" name="addre" value="${novelChapter.caddress }"><br />
-		<input type="text" id="info11" name="addre" value="${novelChapter[0].caddress }"><br />
-			<a style="" href="${novelChapter.caddress}">查看章节内容</a>
-		
-			
-		<!-- <a href="${novelChapter.caddress }">查看章节内容</a> -->
 	</div>
 	
 	<script type="text/javascript">
@@ -103,9 +87,9 @@
 			{field : 'cname',title : '小说章节名',width : 50,align : 'center'}, 
 			{field : 'caddress',title : '章节地址',width : 100,align : 'center',formatter: function(val,row,index){
 				 	if(val){
-						 return "<a href='javascript:showContent("+row.nid+","+row.cid+")'>"+val+"</a>";  
-					} 						//model赋值
-					//小说的章节地址是唯一的，查询出小说的id，小说ID可以确定小说，地址可以确定唯一的章节，传nid即可
+						 return "<a href='tocaddress_id/"+row.cid+"'>"+val+"</a>";  
+					} 
+				 	
 				}
 			}, 
 			{field : 'standby_1',title : '审核状态',width : 50,align : 'center'}, 
@@ -171,15 +155,16 @@
 		if(rows.length<=0){
 			$.messager.alert("温馨提示", "请选中一行数据进行查看", "error");
 		}else{
-			var cid="";
+			var cids="";
+			
 			for(var i=0;i<rows.length-1;i++){
-				 cid=rows[i].cid;
+				 cids+=rows[i].cid+",";
 			}
-			cid=rows[i].cid;
+			cids+=rows[i].cid;
 			$.ajax({
 				url:'passChapter',
 				type:"post",
-				data:{"id":cid},
+				data:{"id":cids},
 				dataType:"json",
 				success:function(data){
 					data=$.trim(data);
@@ -201,16 +186,16 @@
 		if(rows.length<=0){
 			$.messager.alert("温馨提示", "请选中一行数据进行查看", "error");
 		}else{
-			var cid="";
+			var cids="";
 			
 			for(var i=0;i<rows.length-1;i++){
-				 cid=rows[i].cid;
+				 cids+=rows[i].cid+",";
 			}
-			cid=rows[i].cid;
+			cids+=rows[i].cid;
 			$.ajax({
 				url:'unpassChapter',
 				type:"post",
-				data:{"id":cid},
+				data:{"id":cids},
 				dataType:"json",
 				success:function(data){
 					data=$.trim(data);
@@ -224,33 +209,6 @@
 				}
 			})
 		}
-	}
-	
-	function showContent(nid,cid){
-		var rows=$('#show_novelChapter_info').datagrid("getChecked");
-		rows=rows[0];
-		$.ajax({
-			url:'tocaddress',
-			type:'post',
-			data:{nid:nid,cid:cid},
-			dataType:'json',
-			success:function(data){
-				//data=$.trim(data);
-				if(data=="0"){
-					alert("查看失败");
-				}else{
-					$("#info9").val(rows.caddress);
-					alert("${novelChapter.caddress }");
-				}
-				
-			}
-		});
-		
-		$("#showContents").dialog({
-			title : '查看小说章节详细信息',
-			closed : false,
-		iconCls : 'icon-remove'
-		});
 	}
 	
 	</script>

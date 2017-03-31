@@ -40,7 +40,13 @@ on novel_type.tid=novel.tid
 inner join author
 on author.aid=novel.aid
 
-
+select *
+		from novel_type novelType
+		inner join novel n
+		on novelType.tid=n.tid
+		inner join author a
+		on a.aid=n.aid
+		where novelType.tname='修仙'
 
 
 --=======================================================================================
@@ -65,14 +71,13 @@ insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_
 values(2,1,'君王再临','rudaozhisheng.jpg','某一天...','连载',1,1,1);
 
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
-
-values(2,2,'再临','c:\aii\aa','某一天...','未完结',1,1,1);
+values(1,1,'再临','c:\aii\aa','某一天...','未完结','待审核',1,1);
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
-values(1,1,'神仙道','c:\aii\aa','某一天...','未完结',1,1,1);
+values(2,1,'神仙道','c:\aii\aa','某一天...','未完结','待审核',1,1);
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
-values(3,2,'Chaos Child','c:\aii\aa','某一天...','未完结',1,1,1);
+values(4,3,'Chaos Child','c:\aii\aa','某一天...','未完结','待审核',1,1);
 insert into novel(tid,aid,nname,npicture,ndescription,nstatus,standby_1,standby_2,standby_3) 
-values(4,2,'再临123','c:\aii\aa','某一天...','未完结',1,1,1);
+values(3,3,'再临123','c:\aii\aa','某一天...','未完结','待审核',1,1);
 
 values(2,2,'再临','jiuxiantu.jpg','某一天...','未完结',1,1,1);
 
@@ -85,6 +90,7 @@ update novel
 
 select * from novel;
 select nname from novel;
+
 commit;
 
 
@@ -106,17 +112,15 @@ create table novel_chapter(
 select max(standby_2) from novel_chapter where nid=2;
 
 insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
-values(1,'第一章：45651','d:\ssss\sswq',1,1,1);
+values(23,'第一章：45651','d:\ssss\sswq','待审核',1,1);
 insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
-values(2,'第一章：45651','d:\ssss\sswq',1,1,1);
-select * from novel_chapter;
+values(23,'第一章：45651','d:\ssss\sswq','待审核',1,1);
 insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
-values(1,'第二章：45651','d:\ssss\sswq',1,1,1);
-select * from novel_chapter;insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
-values(1,'第三章：45651','d:\ssss\sswq',1,1,1);
-select * from novel_chapter;
-select * from novel_chapter;insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
-values(1,'第四章：45651','d:\\ssss\\sswq',1,1,1);
+values(24,'第二章：45651','d:\ssss\sswq','待审核',1,1);
+insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
+values(24,'第三章：45651','d:\ssss\sswq','待审核',1,1);
+insert into novel_chapter(nid,cname,caddress,standby_1,standby_2,standby_3)
+values(25,'第四章：45651','d:\\ssss\\sswq','待审核',1,1);
 select * from novel_chapter;
 
 --=======================================================================================
@@ -137,10 +141,10 @@ create table author(
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into author(uid,aname,pan_name,aage,agrade,acard,atel,standby_1,standby_2,standby_3) 
-values(1,'赵亮','天魁',12,'至尊','45203696661233','123589666',1,1,1);
+values(1,'赵亮3333','天魁',12,'至尊','45203696661233','123589666',1,1,1);
 
 insert into author(uid,aname,pan_name,aage,agrade,acard,atel,standby_1,standby_2,standby_3) 
-values(2,'赵亮_1','天魁_1',10,'大成','45203696661233','123589666',1,1,1);
+values(2,'赵亮22222','天魁_1',10,'大成','45203696661233','123589666',1,1,1);
 
 insert into author(uid,aname,pan_name,aage,agrade,acard,atel) 
 values(3,'a','a',4,'a','1111111111','222222222');

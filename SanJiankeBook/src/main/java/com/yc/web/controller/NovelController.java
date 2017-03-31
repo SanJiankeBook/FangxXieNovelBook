@@ -144,8 +144,9 @@ public class NovelController {
 
 	//页面登陆界面
 	@RequestMapping(value="/userlogininfo")
+	
 	public String userlogininfo(Model model){
-		logger.info("页面登陆界面...");
+		logger.info("页面登陆界面........");
 		List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
 		model.addAttribute("list1",list1);
 		return "userlogin";

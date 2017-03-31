@@ -1,7 +1,7 @@
 $(function(){
 	$('#index_content').tabs('add',{
 		title:'三剑客文学',
-		href:'sanJianKe.html',
+		href:'back/sanJianKe.html',
 		fit:true,
 	});
 
@@ -9,9 +9,8 @@ $(function(){
 		onClick:function(node){
 			var id = node.id; //获取点击的节点
 			var title= "三剑客文学";
-			var href = "sanJianKe.html";
+			var href = "back/sanJianKe.html";
 			var tabObj = $('#index_content' );
-			console.info(id);
 
 			if( id == "authorManage"){	//信息管理
 				if( tabObj.tabs("exists","作家管理")){
@@ -27,7 +26,7 @@ $(function(){
 					return ;
 				}else{
 					title="所有作家";
-					href="showAllAuthor.jsp";
+					href="back/showAllAuthor.jsp";
 				}
 			}
 
@@ -43,7 +42,7 @@ $(function(){
 		onClick:function(node){
 			var id = node.id; //获取点击的节点
 			var title= "三剑客文学";
-			var href = "sanJianKe.html";
+			var href = "back/sanJianKe.html";
 			var tabObj = $('#index_content' );
 			console.info(id);
 
@@ -54,7 +53,7 @@ $(function(){
 					return ;
 				}else{
 					title="所有小说";
-					href="showAllNovel.jsp";
+					href="back/showAllNovel.jsp";
 				}
 			}
 
@@ -72,7 +71,7 @@ $(function(){
 		onClick:function(node){
 			var id = node.id; //获取点击的节点
 			var title= "三剑客文学";
-			var href = "sanJianKe.html";
+			var href = "back/sanJianKe.html";
 			var tabObj = $('#index_content' );
 			console.info(id);
 
@@ -83,7 +82,7 @@ $(function(){
 					return ;
 				}else{
 					title="所有用户";
-					href="showAllUser.jsp";
+					href="back/showAllUser.jsp";
 				}
 			}
 
@@ -101,7 +100,7 @@ $(function(){
 		onClick:function(node){
 			var id = node.id; //获取点击的节点
 			var title= "三剑客文学";
-			var href = "sanJianKe.html";
+			var href = "back/sanJianKe.html";
 			var tabObj = $('#index_content' );
 			console.info(id);
 
@@ -112,7 +111,7 @@ $(function(){
 					return ;
 				}else{
 					title="审查上传小说信息";
-					href="CheckAuthorNovel.jsp";
+					href="back/CheckAuthorNovel.jsp";
 				}
 			}else if( id=="uncheckNovel_manage" ){	
 				if( tabObj.tabs("exists","待审查小说")){
@@ -121,7 +120,7 @@ $(function(){
 					return ;
 				}else{
 					title="待审查小说";
-					href="UncheckNovel.jsp";
+					href="back/UncheckNovel.jsp";
 				}
 			}else if( id=="uncheckNovelChapter_manage" ){	
 				if( tabObj.tabs("exists","待审查小说章节")){
@@ -130,7 +129,7 @@ $(function(){
 					return ;
 				}else{
 					title="待审查小说章节";
-					href="UncheckNovelChapter.jsp";
+					href="back/UncheckNovelChapter.jsp";
 				}
 			}
 

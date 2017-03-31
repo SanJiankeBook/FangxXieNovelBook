@@ -68,7 +68,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 查看小说章节内容 -->
 	<select id="showContent" parameterType="NovelChapter" resultMap="UncheckNovelChapter">
-		select cid,nid,cname,caddress,standby_1,standby_2 from novel_chapter where cid=#{cid} and nid=#{nid}
+		select cid,novel_chapter.nid,cname,caddress,novel_chapter.standby_1,novel_chapter.standby_2,novel_type.tname,novel.nname
+		from novel_type
+		inner join novel
+		on novel.tid=novel_type.tid
+		inner join novel_chapter
+		on novel_chapter.nid=novel.nid
+		where cid=#{cid} 
 	</select>
 	
 	
