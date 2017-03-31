@@ -55,7 +55,7 @@ function searchNovel() {
 		pageSize:5,
 		 pageList:[5,10,15,20,25,30],
 		columns:[[
-			{field : 'nids',title : '全选',width : 100,align : 'center',checkbox : true},
+			//{field : 'nids',title : '全选',width : 100,align : 'center',checkbox : true},
 			{field : 'nid',title : '小说编号',width : 20,align : 'center',sortable : true,hidden:true},
 			{field : 'npicture',title : '小说封面',width : 50,align : 'center',formatter : function(value, row, index) {
 					var picStr = "";

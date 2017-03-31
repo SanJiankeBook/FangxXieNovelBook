@@ -35,17 +35,12 @@
 				search();
 			</script>
 		</div>
-		<div class="userpanel">
-			<script>
-				banner();
-			</script>
-		</div>
 	</div>
 	<div class="clear"></div>
 	<div class="nav">
 		<ul>
 			<li><a href="toindex_zpd">首页</a></li>
-			<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
+			<li><a rel="nofollow" href="mybook">我的书架</a></li>
 			<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
 			<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
 			<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
@@ -65,8 +60,8 @@
 			<div class="toptab" id="top_all_1">
 				<span>${list[0].tname}</span> <span class="tabRight"> 
 				<span onmouseover="setTab('o1g',1,3,'cur','')" class="cur" id="o1g1">总</span>
-					<span onmouseover="setTab('o1g',2,3,'cur','')" id="o1g2" class="">月</span>
-					<span onmouseover="setTab('o1g',3,3,'cur','')" id="o1g3" class="">周</span>
+					<!-- <span onmouseover="setTab('o1g',2,3,'cur','')" id="o1g2" class="">月</span>
+					<span onmouseover="setTab('o1g',3,3,'cur','')" id="o1g3" class="">周</span> -->
 				</span>
 			</div>
 			<div id="tabData_1">
@@ -200,8 +195,8 @@
 			<div class="toptab" id="top_all_2">
 				<span>${list[1].tname}</span> <span class="tabRight"> <span
 					onmouseover="setTab('o2g',1,3,'cur','')" class="cur" id="o2g1">总</span>
-					<span onmouseover="setTab('o2g',2,3,'cur','')" id="o2g2" class="">月</span>
-					<span onmouseover="setTab('o2g',3,3,'cur','')" id="o2g3" class="">周</span>
+					<!-- <span onmouseover="setTab('o2g',2,3,'cur','')" id="o2g2" class="">月</span>
+					<span onmouseover="setTab('o2g',3,3,'cur','')" id="o2g3" class="">周</span> -->
 				</span>
 			</div>
 			<div id="tabData_2">
@@ -328,8 +323,8 @@
 			<div class="toptab" id="top_all_3">
 				<span>${list[2].tname }</span> <span class="tabRight"> <span
 					onmouseover="setTab('o3g',1,3,'cur','')" class="cur" id="o3g1">总</span>
-					<span onmouseover="setTab('o3g',2,3,'cur','')" id="o3g2" class="">月</span>
-					<span onmouseover="setTab('o3g',3,3,'cur','')" id="o3g3" class="">周</span>
+					<!-- <span onmouseover="setTab('o3g',2,3,'cur','')" id="o3g2" class="">月</span>
+					<span onmouseover="setTab('o3g',3,3,'cur','')" id="o3g3" class="">周</span> -->
 				</span>
 			</div>
 			<div id="tabData_3">
@@ -455,8 +450,8 @@
 			<div class="toptab" id="top_all_4">
 				<span>${list[3].tname}</span> <span class="tabRight"> <span
 					onmouseover="setTab('o4g',1,3,'cur','')" class="cur" id="o4g1">总</span>
-					<span onmouseover="setTab('o4g',2,3,'cur','')" id="o4g2" class="">月</span>
-					<span onmouseover="setTab('o4g',3,3,'cur','')" id="o4g3" class="">周</span>
+					<!-- <span onmouseover="setTab('o4g',2,3,'cur','')" id="o4g2" class="">月</span>
+					<span onmouseover="setTab('o4g',3,3,'cur','')" id="o4g3" class="">周</span> -->
 				</span>
 			</div>
 			<div id="tabData_4">
@@ -582,8 +577,8 @@
 			<div class="toptab" id="top_all_5">
 				<span>${list[4].tname }</span> <span class="tabRight"> <span
 					onmouseover="setTab('o5g',1,3,'cur','')" class="cur" id="o5g1">总</span>
-					<span onmouseover="setTab('o5g',2,3,'cur','')" id="o5g2" class="">月</span>
-					<span onmouseover="setTab('o5g',3,3,'cur','')" id="o5g3" class="">周</span>
+					<!-- <span onmouseover="setTab('o5g',2,3,'cur','')" id="o5g2" class="">月</span>
+					<span onmouseover="setTab('o5g',3,3,'cur','')" id="o5g3" class="">周</span> -->
 				</span>
 			</div>
 			<div id="tabData_5">
@@ -709,8 +704,8 @@
 			<div class="toptab" id="top_all_6">
 				<span>${list[5].tname }</span> <span class="tabRight"> <span
 					onmouseover="setTab('o6g',1,3,'cur','')" class="cur" id="o6g1">总</span>
-					<span onmouseover="setTab('o6g',2,3,'cur','')" id="o6g2" class="">月</span>
-					<span onmouseover="setTab('o6g',3,3,'cur','')" id="o6g3" class="">周</span>
+					<!-- <span onmouseover="setTab('o6g',2,3,'cur','')" id="o6g2" class="">月</span>
+					<span onmouseover="setTab('o6g',3,3,'cur','')" id="o6g3" class="">周</span> -->
 				</span>
 			</div>
 			<div id="tabData_6">
@@ -842,7 +837,7 @@
 		<div class="footer_link"></div>
 		<div class="footer_cont">
 			<p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
-			<p>Copyright © 2016 笔下文学</p>
+			<p>Copyright © 2017三剑客文学</p>
 			<script>
 				footer();
 			</script>
