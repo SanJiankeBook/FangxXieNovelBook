@@ -39,11 +39,7 @@
 <script  type="text/javascript">
 	$(function(){
 		var datagridObj;
-		/* var editRow = undefined;	//当前正在被编辑的行的索引
-		var op;
-		var flag; */
 		var tid=${Tlist[0].tid};
-		alert(tid);
 		datagridObj=$('#type_showAuthor_info').datagrid({
 			url:'TypeNovel',   
 			queryParams: {tid:tid},
@@ -66,11 +62,10 @@
 							 if(val){
 								 return "<a href='toindex_id/"+row.nid +"' >"+val+"</a>";
 							} 
-						}
-						}, 
+						}}, 
 						{field : 'aname',title : '作者',width : 20,align : 'center'},
-						{field : 'nstatus',title : '小说状态',width : 20,align : 'center'}, 
-					]]	
+						{field : 'nstatus',title : '小说状态',width : 20,align : 'center'}
+					]]
 		});	
 	});
 	</script>
@@ -93,17 +88,12 @@
 					search();
 				</script>
 			</div>
-			<div class="userpanel">
-				<script>
-					banner();
-				</script>
-			</div>
 		</div>
 		<div class="clear"></div>
 		<div class="nav">
 			<ul>
 				<li><a href="toindex_zpd">首页</a></li>
-				<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
+				<li><a rel="nofollow" href="mybook">我的书架</a></li>
 				<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
 				<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
 				<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
@@ -129,17 +119,13 @@
 							</div>
 							<dl>
 								<dt>
-									<span> ${list1.aname}</span> <a href="../toindex_id/${list1.nid}">${list1.nname}</a>
+									<span> ${list1.aname}</span> <a href="toindex_id/${list1.nid}">${list1.nname}</a>
 								</dt>
 								<dd>${list1.ndescription}</dd>
 							</dl>
 							<div class="clear"></div>
 						</div>
 					</c:forEach>
-
-
-
-
 				</div>
 			</div>
 			<table id="type_showAuthor_info"  style="width: 100%; height: 200px; $(this).width() * 0.2"></table>
@@ -152,7 +138,7 @@
 			<div class="footer_link"></div>
 			<div class="footer_cont">
 				<p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
-				<p>Copyright © 2016 笔下文学</p>
+				<p>Copyright © 2017 三剑客文学</p>
 				<script>
 					footer();
 				</script>

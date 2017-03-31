@@ -227,7 +227,7 @@
 						list();
 					</script>
 					<div class="l">
-					<c:forEach items="${novel1 }" var="novel1">
+					<c:forEach items="${novel1}" var="novel1">
 						<div class="item">
                                 <div class="image">
                                     <a href="toindex_id/${novel1.nid}">
@@ -306,7 +306,7 @@
 								<dt>
 									<a href="toindex_id/${n1[0].nid}"> ${n1[0].nname}</a>
 								</dt>
-								<dd>${n[0].ndescription}</dd>
+								<dd>${n1[0].ndescription}</dd>
 							</dl>
 							<div class="clear"></div>
 						</div>
@@ -327,7 +327,7 @@
 								<dt>
 									<a href="toindex_id/${n2[0].nid}"> ${n2[0].nname}</a>
 								</dt>
-								<dd></dd>
+								<dd>${n2[0].ndescription}</dd>
 							</dl>
 							<div class="clear"></div>
 						</div>
@@ -344,20 +344,6 @@
 					<div class="clear"></div>
 				</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 				<div id="novelslist2" class="novelslist">
 					<div class="content">
 						<h2>${list[3].tname}</h2>
@@ -369,7 +355,7 @@
 								<dt>
 									<a href="toindex_id/${n3[0].nid}"> ${n3[0].nname}</a>
 								</dt>
-								<dd></dd>
+								<dd>${n3[0].ndescription}</dd>
 							</dl>
 							<div class="clear"></div>
 						</div>
@@ -394,7 +380,7 @@
 								<dt>
 									<a href="toindex_id/${n4[0].nid}"> ${n4[0].nname}</a>
 								</dt>
-								<dd></dd>
+								<dd>${n4[0].ndescription}</dd>
 							</dl>
 							<div class="clear"></div>
 						</div>
@@ -418,7 +404,7 @@
 								<dt>
 									<a href="toindex_id/${n5[0].nid}"> ${n5[0].nname}</a>
 								</dt>
-								<dd></dd>
+								<dd>${n5[0].ndescription}</dd>
 							</dl>
 							<div class="clear"></div>
 						</div>
@@ -435,7 +421,7 @@
 					<div class="clear"></div>
 				</div>
 				<div id="newscontent">
-					<div class="l">
+					<!-- <div class="l">
 						<h2>最近更新小说列表</h2>
 						<ul>
 
@@ -449,17 +435,14 @@
 
 
 						</ul>
-					</div>
-					<div class="r">
+					</div> -->
+					<!-- <div class="r">
 						<h2>最新入库小说</h2>
 						<ul>
 
 							<li><span class="s1">[都市言情]</span><span class="s2"><a
 									href="http://www.bixia.org/51_51392/">善良的小姨子</a></span><span
 								class="s5">苦哈哈</span></li>
-
-
-
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -467,13 +450,13 @@
 			</div>
 
 			<div id="firendlink">友情连接：</div>
-
+ -->
 
 			<div class="footer">
 				<div class="footer_link"></div>
 				<div class="footer_cont">
 					<p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
-					<p>Copyright © 2016 三剑客文学</p>
+					<p>Copyright © 2017三剑客文学</p>
 					<script>
 						footer();
 					</script>

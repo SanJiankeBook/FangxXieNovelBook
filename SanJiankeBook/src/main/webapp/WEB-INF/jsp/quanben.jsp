@@ -45,15 +45,15 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_1">
-                <span>玄幻排行</span>
+                <span>${list[0].tname}</span>
             </div>
             <div id="tabData_1">
                 
                 <div class="topbooks" id="con_o1g_1" style="display: block;">
                     <ul>
 						<c:forEach items="${listAll }" var="listAll" begin="0" end="14" step="1">
-							<li><span class="hits">${ listAll.panname}</span> <span
-								class="num">${listAll.ranknum}. </span> <a href="toindex_id/${listAll.nid}"
+							<li><span class="hits">${ listAll.panname}</span> 
+							<span class="num">${listAll.ranknum}. </span> <a href="toindex_id/${listAll.nid}"
 								title="儒道至圣" target="_blank">${listAll.novelname}</a></li>
 						</c:forEach>                        
                     </ul>
@@ -66,7 +66,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_2">
-                <span>修仙排行</span>
+                <span>${list[1].tname}</span>
             </div>
             <div id="tabData_2">
                 
@@ -74,7 +74,7 @@
                     <ul>
                         
 						<c:forEach items="${listAll1 }" var="listAll1" begin="0" end="14" step="1">
-							<li><span class="hits">${ listAll1.panname}</span> <span
+							<li><span class="hits">${listAll1.panname}</span> <span
 								class="num">${listAll1.ranknum}. </span> <a href="toindex_id/${listAll1.nid}"
 								title="儒道至圣" target="_blank">${listAll1.novelname}</a></li>
 						</c:forEach>                          
@@ -89,7 +89,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_3">
-                <span>都市排行</span>
+                <span>${list[2].tname }</span>
             </div>
             <div id="tabData_3">
                 
@@ -111,15 +111,15 @@
         
         <div class="index_toplist  mbottom">
             <div class="toptab" id="top_all_4">
-                <span>言情排行</span>
+                <span>${list[3].tname}</span>
             </div>
             <div id="tabData_4">
                 
                 <div class="topbooks" id="con_o4g_1" style="display: block;">
                     <ul>
                          <c:forEach items="${listAll3 }" var="listAll3" begin="0" end="14" step="1">
-							<li><span class="hits">${ listAll3.panname}</span> <span
-								class="num">${listAll3.ranknum}. </span> <a href="toindex_id/${listAll3.nid}"
+							<li><span class="hits">${ listAll3.panname}</span>
+							<span class="num">${listAll3.ranknum}. </span> <a href="toindex_id/${listAll3.nid}"
 								title="儒道至圣" target="_blank">${listAll3.novelname}</a></li>
 						</c:forEach>
                         
@@ -132,7 +132,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_5">
-                <span>轻小说排行</span>
+                <span>${list[4].tname }</span>
             </div>
             <div id="tabData_5">
                 
@@ -153,7 +153,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_6">
-                <span>恐怖排行</span>
+                <span>${list[5].tname }</span>
             </div>
             <div id="tabData_6">
                 

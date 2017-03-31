@@ -87,7 +87,7 @@ function logger() {
         return false;
     }else{
    	 var tel = document.getElementById("standby_1").value;
-   	 var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+   	 var reg = /^0?1[3|4|5|8|7][0-9]\d{8}$/;
    	 if (reg.test(tel)) {
    		$.ajax({
 			url : "sendcode",

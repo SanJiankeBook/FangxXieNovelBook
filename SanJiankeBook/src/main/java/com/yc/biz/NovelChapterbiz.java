@@ -31,5 +31,5 @@ public interface NovelChapterbiz {
 	void UnpassChapter(Integer id);
 	
 	//查看小说章节内容
-	List<NovelChapter> ShowContent(Integer nid,Integer cid);
+	List<NovelChapter> ShowContent(Integer cid);
 }
