@@ -45,7 +45,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_1">
-                <span>玄幻排行</span>
+                <span>${list[0].tname}</span>
             </div>
             <div id="tabData_1">
                 
@@ -66,7 +66,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_2">
-                <span>修仙排行</span>
+                <span>${list[1].tname}</span>
             </div>
             <div id="tabData_2">
                 
@@ -89,7 +89,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_3">
-                <span>都市排行</span>
+                <span>${list[2].tname }</span>
             </div>
             <div id="tabData_3">
                 
@@ -111,7 +111,7 @@
         
         <div class="index_toplist  mbottom">
             <div class="toptab" id="top_all_4">
-                <span>言情排行</span>
+                <span>${list[3].tname}</span>
             </div>
             <div id="tabData_4">
                 
@@ -132,7 +132,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_5">
-                <span>轻小说排行</span>
+                <span>${list[4].tname }</span>
             </div>
             <div id="tabData_5">
                 
@@ -153,7 +153,7 @@
         
         <div class="index_toplist mright mbottom">
             <div class="toptab" id="top_all_6">
-                <span>恐怖排行</span>
+                <span>${list[5].tname }</span>
             </div>
             <div id="tabData_6">
                 

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -211,18 +212,21 @@ public class ZLNovelController {
     * @return
     */
     @RequestMapping(value="adminLogin")
-    public String BackIndex(@RequestParam(value="adnumber") String adnumber,@RequestParam(value="adpassword") String adpassword,HttpServletRequest req){
+    public String BackIndex(@RequestParam String adnumber,@RequestParam String adpassword,HttpSession session){
 		logger.info("this is backLogin .......");
 		
 		List<Admin> list=this.adminbiz.adminLogin(adnumber, adpassword);
 		
-		if(!list.isEmpty()){
+		if(!list.isEmpty() ){
 			return "../../back/BackIndex";
 		}else if(list.isEmpty()){
-			return "404";
+			session.removeAttribute("errmsg");
+			session.setAttribute("errmsg", "用户名或密码错误");
+			return "../../back/Index";
 		}else{
-			return null;
+			return "404";
 		}
+		
     }
     
     
@@ -493,7 +497,7 @@ public class ZLNovelController {
     	}
     }
     
-    //
+    //查看详情
     @RequestMapping(value="/tocaddress_id/{cid}")
     public String ToCaddress(@PathVariable Integer cid, Model model,HttpServletRequest request){
     	logger.info("this is chapterContent");

@@ -88,8 +88,8 @@
 			{field : 'caddress',title : '章节地址',width : 100,align : 'center',formatter: function(val,row,index){
 				 	if(val){
 						 return "<a href='tocaddress_id/"+row.cid+"'>"+val+"</a>";  
-					} 						//model赋值
-					//小说的章节地址是唯一的，查询出小说的id，小说ID可以确定小说，地址可以确定唯一的章节，传nid即可
+					} 
+				 	
 				}
 			}, 
 			{field : 'standby_1',title : '审核状态',width : 50,align : 'center'}, 
@@ -186,7 +186,7 @@
 		if(rows.length<=0){
 			$.messager.alert("温馨提示", "请选中一行数据进行查看", "error");
 		}else{
-var cids="";
+			var cids="";
 			
 			for(var i=0;i<rows.length-1;i++){
 				 cids+=rows[i].cid+",";

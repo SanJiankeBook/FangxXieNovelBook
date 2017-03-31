@@ -9,6 +9,8 @@
 <title>小说章节</title>
 </head>
 <body>
+	<fieldset>
+		<legend>章节详情</legend>
 		<div id="shownvoel_check_info">
 		<c:forEach items="${novelChapter }" var="novelChapter">
 		<p>
@@ -36,5 +38,6 @@
 		</p>
 		</c:forEach>
 	</div>
+	</fieldset>
 </body>
 </html>
