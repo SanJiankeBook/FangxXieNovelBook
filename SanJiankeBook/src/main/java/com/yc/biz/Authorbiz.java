@@ -12,6 +12,9 @@ public interface Authorbiz {
 	//查找作家
 	List<Author> FindAuthor();
 	
+	//根据aid查找作家
+	List<Author> FindAuthorByaid(int aid);
+	
 	//删除作家
 	void DelAuthor(int id);
 

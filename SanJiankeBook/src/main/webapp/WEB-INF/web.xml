@@ -35,4 +35,16 @@
         <servlet-name>golfing</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    
+    <!-- 跳转WB-INFO下 的页面 -->
+	<servlet>
+		<servlet-name>goto</servlet-name>
+		<jsp-file>/WEB-INF/jsp/creatnovel.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>goto</servlet-name>
+		<url-pattern>/creat</url-pattern>
+	</servlet-mapping>
+    
 </web-app>

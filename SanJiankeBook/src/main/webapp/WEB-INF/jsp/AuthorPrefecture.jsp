@@ -168,11 +168,32 @@
 							<h2 id="atel">你的联系方式：${author[0].atel }</h2>
 							<input type="submit" name="editor" value="作者信息编辑" />
 						</form>
+						<a href="/SanJiankeBook/creat" style="font-size:40px;color:#FF0000">创作新小说</a>
 					</div>
 					
 
 		<table id="type_showAuthor_info"  style="width: 100%; height: 200px; $(this).width() * 0.2"></table>
 		<input type="button" onclick="editauthorjsp()" value="编辑小说信息"/>
+		<input type="button" onclick="writenovel()" value="添加小说章节内容"/>
+		
+		
+		
+	<script  type="text/javascript">	
+		function writenovel(){
+			var row = $('#type_showAuthor_info').datagrid('getSelected');
+		    if (row){
+		    	if(row.nid!=null){
+		    		var nid=row.nid;
+		    		window.location="writeNovel/"+nid;
+				}else{
+					alert("请选择其中一天信息");
+				}
+		    }		
+		}
+	</script>
+		
+		
+		
 		
 		<div class="footer">
 			

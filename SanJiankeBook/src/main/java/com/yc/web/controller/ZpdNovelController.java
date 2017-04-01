@@ -794,7 +794,7 @@ public class ZpdNovelController {
 		String atel=request.getParameter("atel");
 		authorbiz.updataAuthor(pan_name, aage, acard, atel, aid);
 		
-		List<Author> list=authorbiz.FindAuthor();	
+		List<Author> list=authorbiz.FindAuthorByaid(aid);	
 		model.addAttribute("author",list);
 	return "AuthorPrefecture";		
 	}
@@ -836,15 +836,19 @@ public class ZpdNovelController {
     	int num=Integer.parseInt(nid);
     	
     	List<Novel> list=novelbiz.ShowTNovel(num);
-    	
-    	/*String nname=list.get(0).getNname();
-    	String npicture=list.get(0).getNpicture();
-    	String nstatus=list.get(0).getNstatus();
-    	int tid=list.get(0).getTid();*/
-    	//novelbiz.UpdateNovel(nname, npicture, nstatus, nid, tid);
     	model.addAttribute("novel",list);
 		return "ENovel";
     }
+	
+	//作家专区小说信息编辑
+		@RequestMapping(value="/writeNovel/{nid}")
+	    public String writeNovel(@PathVariable String nid,Model model){
+	    	logger.info("editNovel.....");	    	
+	    	int num=Integer.parseInt(nid);	
+	    	List<Novel> list=novelbiz.ShowTNovel(num);
+	    	model.addAttribute("novel",list);
+			return "writenovel";
+	    }
 	
 	
 	//作家专区部分显示小说类型

@@ -28,7 +28,7 @@
 <title>作家创作区</title>
 </head>
 <body style="text-align:center; margin:auto auto">
-	<input type="text" id="nid"  value="${novel.nid}" style="display: none"/> 
+	<input type="text" id="nid"  value="${novel[0].nid}" style="display: none"/> 
 	章节名：<input type="text" id="cname"><br/><hr/><br/><br/>
 	<script type="text/javascript" id="editor" style="width:98%;height:300px;"></script>
 	<input type="button" onclick="addGoods()" value="上传章节"/> 
@@ -39,7 +39,7 @@
 		var nid=$("#nid").val();
 		var cname=$("#cname").val();
 		var des=ue.getContent();
-		alert(des);
+		//alert(des);
 			$.ajax({//插入章节
 				url:"insertNovlChapter",
 				type:"post",

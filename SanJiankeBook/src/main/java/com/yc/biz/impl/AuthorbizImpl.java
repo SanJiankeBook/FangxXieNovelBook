@@ -107,4 +107,13 @@ public class AuthorbizImpl implements Authorbiz {
 		return list;
 	}
 
+
+	@Override
+	public List<Author> FindAuthorByaid(int aid) {
+		Author author=new Author();
+		author.setAid(aid);
+		List<Author> list=this.bd.findAll(author, "findAllAuthorByaid");
+		return list;
+	}
+
 }

@@ -19,6 +19,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select aid,uid,aname,pan_name,aage,agrade,acard,atel from author
 	</select>
 	
+	<!-- 根据aid查找所有作者 -->
+	<select id="findAllAuthorByaid" parameterType="Author" resultMap="AuthorResultMap">
+		select aid,uid,aname,pan_name,aage,agrade,acard,atel from author
+		where aid=#{aid}
+	</select>
+	
 	<!-- 删除作者 -->
 	<delete id="delAuthor" parameterType="Author">
 		delete from author where aid in (#{aid})
