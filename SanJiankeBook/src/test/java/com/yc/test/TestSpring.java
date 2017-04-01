@@ -198,13 +198,6 @@ public class TestSpring extends TestCase {
 		System.out.println(list);
 	}
 	
-	public void testCache20() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
-		Authorbiz sb =  (Authorbiz) ac.getBean("authorbizImpl");
-		List<Author> list=sb.inforByu_number("469058");
-		System.out.println(list);
-	}
-	
 	
 	public void TestApp(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext( "beans.xml" );

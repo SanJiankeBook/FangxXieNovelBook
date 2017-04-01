@@ -891,7 +891,7 @@ public class ZpdNovelController {
 	    	    	
 	    	novelbiz.UpdateNovel(nname, npicture1,nstatus,nid,tid);
 	    	//model.addAttribute("novel",list);
-			return "redirect:authorPrefectrue";
+			return "redirect:authorPrefectrue1";
 	    }
 		
 	
@@ -922,8 +922,6 @@ public class ZpdNovelController {
 	//TXT下载
 	@RequestMapping(value = "/txt_id/{nid}")
 	public ResponseEntity<byte[]> Download_txt(@PathVariable int nid, Model model,HttpServletResponse response) throws IOException {
-		ResponseEntity ResponseEntity=new ResponseEntity<byte[]>(null);
-		try {
 			List<Novel> list=novelbiz.ShowNovel_id(nid);
 			String nname=list.get(0).getNname()+".txt";
 			byte[] content=jsoupUtils.Chapter(nid);
@@ -932,11 +930,7 @@ public class ZpdNovelController {
 			headers.setContentDispositionFormData("attachment", fileName);   
 			headers.setContentType(MediaType.TEXT_PLAIN);
 			return new ResponseEntity<byte[]>(content,headers, HttpStatus.CREATED);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;   
+		   
 	}
 
 }

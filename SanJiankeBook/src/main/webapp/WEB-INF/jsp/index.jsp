@@ -26,7 +26,7 @@
 <link rel="stylesheet" type="text/css" href="css/bdsstyle.css" />
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
-<base href="<%=basePath%>"></base>
+<base href="<%=basePath%>">
 <body>
 	<iframe style="display: none;" frameborder="0"></iframe>
 	<div id="bdshare_s" style="display: block;">
@@ -317,12 +317,15 @@
 							</c:forEach>
 						</ul>
 					</div>
-					<div class="content border">
+					<div class="content">
 						<h2>${list[2].tname}</h2>
 
 
 						<div class="top">
-							<div class="image"></div>
+							<div class="image">
+							<img src="${n2[0].npicture}" alt="${n2[0].nname}" width="67"
+									height="82" />
+							</div>
 							<dl>
 								<dt>
 									<a href="toindex_id/${n2[0].nid}"> ${n2[0].nname}</a>
@@ -350,7 +353,10 @@
 
 
 						<div class="top">
-							<div class="image"></div>
+							<div class="image">
+								<img src="${n3[0].npicture}" alt="${n3[0].nname}" width="67"
+									height="82" />
+							</div>
 							<dl>
 								<dt>
 									<a href="toindex_id/${n3[0].nid}"> ${n3[0].nname}</a>
@@ -375,7 +381,10 @@
 
 
 						<div class="top">
-							<div class="image"></div>
+							<div class="image">
+								<img src="${n4[0].npicture}" alt="${n4[0].nname}" width="67"
+									height="82" />
+							</div>
 							<dl>
 								<dt>
 									<a href="toindex_id/${n4[0].nid}"> ${n4[0].nname}</a>
@@ -399,7 +408,10 @@
 
 
 						<div class="top">
-							<div class="image"></div>
+							<div class="image">
+								<img src="${n5[0].npicture}" alt="${n5[0].nname}" width="67"
+									height="82" />
+							</div>
 							<dl>
 								<dt>
 									<a href="toindex_id/${n5[0].nid}"> ${n5[0].nname}</a>

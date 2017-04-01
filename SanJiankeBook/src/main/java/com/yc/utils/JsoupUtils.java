@@ -44,7 +44,7 @@ public class JsoupUtils{
 		
 			String chapter=Chapter.get(i).getCaddress();
 			String url=chapter.substring(0,22);
-			String urll="E:\\apache-tomcat-7.0.47\\webapps\\"+chapter.substring(22); //服务器路径
+			String urll="F:\\apache-tomcat-7.0.47\\webapps\\"+chapter.substring(22); //服务器路径
 			File in = new File(urll);
 			Document doc = Jsoup.parse(in, "UTF-8", url); 
 			//Document doc = Jsoup.connect(chapter).get(); //你要抽取的地址
