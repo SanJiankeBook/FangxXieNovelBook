@@ -324,24 +324,74 @@ public class NovelController {
     		return "-1";
     	}
     }
+    //前往作家注册页面2，已登入在注册
+    @RequestMapping(value="/toauthorUser")
+    public String toauthorUser(){
+    	logger.info("toauthorUser....");
+    	return "authorUser";
+    }
     //前往作家注册页面
     @RequestMapping(value="/toauthor")
     public String author(){
     	logger.info("toauthor.....");
     	return "author";
     }
+    //前往作家登入页面
+    @RequestMapping(value="/toAuthorlogger")
+    public String toAuthorlogger(Model model){
+    	logger.info("toAuthorlogger...");
+    	List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+		model.addAttribute("list1",list1);
+    	return "Authorlogger";
+    }
+    //已有账号注册成为作家
+    @RequestMapping(value="/registauthorUser")
+    @ResponseBody
+    public String registauthorUser(Author author,HttpServletRequest request){
+    	logger.info("registauthorUser.....");
+    	HttpSession session=request.getSession();
+    	User uuser=(User)(session.getAttribute("users"));
+    	if(uuser!=null){
+	    	author.setUid(uuser.getUid());
+	    	//在注册成为一个作家
+	    	author.setPan_name(request.getParameter("uname"));
+	    	author.setAtel(uuser.getStandby_1());
+	    	this.authorbiz.insertAuthor(author);
+	    	StaticContain.USERID=author.getAid();
+	    	return "1";
+    	}else{
+    		return "-1";
+    	}
+    }
     //注册成为作家
     @RequestMapping(value="/registauthor")
+    @ResponseBody
     public String registauthor(Author author,User user){
+    	
     	logger.info("registauthor.....");
     	author.setPan_name(user.getUname());
     	//需要先注册成为一个用户
+    	//注册之前需要验证一拨
+    	User userlist=new User();
+    	userlist.setU_number(user.getU_number());
+		
+		List<User> list_uname=this.userbiz.findUserInfo(userlist);
+		if(!list_uname.isEmpty()){
+			return "-1";//该账号已被注册
+		}
+		userlist.setUname(user.getUname());
+		userlist.setU_number(null);
+		list_uname=this.userbiz.findUserInfo(userlist);
+		if(!list_uname.isEmpty()){
+			return "0" ;//该用户已被注册
+		}
     	this.userbiz.InsertUser(user);
     	author.setUid(user.getUid());
     	//在注册成为一个作家
     	this.authorbiz.insertAuthor(author);
+    	
     	StaticContain.USERID=author.getAid();
-    	return "creatnovel";
+    	return "1";
     }
     @RequestMapping(value="/test")
     public String test(){

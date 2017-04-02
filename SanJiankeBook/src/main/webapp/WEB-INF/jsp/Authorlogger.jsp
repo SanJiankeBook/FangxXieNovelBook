@@ -1,12 +1,19 @@
 <!-- 书架 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ page isELIgnored="false"%>
+<%
+	String path = request.getContextPath();
+	//					http				://		localhost			:	8081				/SpringMvc_Book/
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><title>
 	作家登录
 </title>
+<base href="<%=basePath%>"></base>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
@@ -42,17 +49,17 @@
 <div class="nav">
 			<ul>
 				<li><a href="toindex_zpd">首页</a></li>
-				<li><a rel="nofollow" href="bookcase.jsp">我的书架</a></li>
-				<li><a href="1-1.jsp">玄幻奇幻</a></li>
-				<li><a href="2-1.jsp">武侠仙侠</a></li>
-				<li><a href="3-1.jsp">都市言情</a></li>
-				<li><a href="4-1.jsp">历史军事</a></li>
-				<li><a href="5-1.jsp">科幻灵异</a></li>
-				<li><a href="6-1.jsp">网游竞技</a></li>
-				<li><a href="7-1.jsp">女频频道</a></li>
-				<li><a href="rank.jsp">排行榜单</a></li>
-				<li><a href="quanben.jsp">全本小说</a></li>
-				<li><a rel="nofollow" href="readRecord.jsp">阅读记录</a></li>
+					<li><a rel="nofollow" href="mybook">我的书架</a></li>
+					<li><a href="toindex_Type/${list1[0].tname}">${list1[0].tname}</a></li>
+					<li><a href="toindex_Type/${list1[1].tname}">${list1[1].tname}</a></li>
+					<li><a href="toindex_Type/${list1[2].tname}">${list1[2].tname}</a></li>
+					<li><a href="toindex_Type/${list1[3].tname}">${list1[3].tname}</a></li>
+					<li><a href="toindex_Type/${list1[4].tname}">${list1[4].tname}</a></li>
+					<li><a href="toindex_Type/${list1[5].tname}">${list1[5].tname}</a></li>
+					<li><a href="authorPrefectrue">作者专区</a></li>
+					<li><a href="toindex_type">排行榜单</a></li>
+					<li><a href="jsp/quanben.jsp/">全本小说</a></li>
+					<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
 			</ul>
 		</div>
        <br />
@@ -76,8 +83,7 @@
 	</td>
 </tr>
 
-  <td class="odd" width="25%">&nbsp;</td><td><input type="button" onclick="logger()" name="action" id="action" value="登录" />
-  <form action="toauthor" method="post"><input type="button"  name="d1" id="d1" value="新用户注册" /></form></td>
+  <td class="odd" width="25%">&nbsp;</td><td><input type="button" onclick="logger()" name="action" id="action" value="登录" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="toauthor">注册</a></td>
 </tr>
 </table>
 </form>
@@ -89,9 +95,8 @@ function loadImage(){
 	//加了个随机数后，不会再从缓存拿数据了
 }
 function logger() {
-	 var Exp = /^[1-9]\d{10}$/;
 						$.ajax({
-										url : "register",
+										url : "Alogger",
 										type : "POST",
 										dataType : "JSON",//客户端返回过来的数据类型
 										data : {
@@ -100,14 +105,18 @@ function logger() {
 											'validateCode' : $("#validateCode").val()
 										},
 										success : function(data) {
-											if (data.status == -2) {
+											if (data.status == 1) {
 												//response.sendRedirect("500.jsp");
-												alert("你没有注册为作家，请注册作家");
-											} else if (data.status == 1) {
-												alert("注册成功，请登录");
-												window.location="userlogininfo";
+												alert("成功登录");
+												window.location="authorPrefectrue1";
+											} else if (data.status == 0) {
+												alert("密码错误");
 											} else if(data.status == -1){
-												alert("请填写信息");
+												alert("用户名或密码不能为空");
+											}else if(data.status == -2){
+												alert("您还不是作家，请先注册成为作家");
+											}else if(data.status == -3){
+												alert("验证码错误");
 											}
 										}
 									});

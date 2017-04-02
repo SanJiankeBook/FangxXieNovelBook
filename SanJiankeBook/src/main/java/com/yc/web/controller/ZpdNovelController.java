@@ -520,8 +520,14 @@ public class ZpdNovelController {
 	@ResponseBody
 	public String updatePasswordInfo(HttpServletRequest request){
 		logger.info("updatePasswordInfo....");
-		String xinupassword=request.getParameter("xinupassword");
-		String upassword=request.getParameter("upassword");
+		String xinupassword=null;
+		String upassword=null;
+		try {
+			xinupassword = request.getParameter("xinupassword");
+			upassword = request.getParameter("upassword");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		if(request.getSession().getAttribute("users")!=null){
 			User user=(User) request.getSession().getAttribute("users");
@@ -554,7 +560,7 @@ public class ZpdNovelController {
 			this.userbiz.updateUser(user);
 			return "1";
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return "0";
 		}
@@ -616,7 +622,7 @@ public class ZpdNovelController {
 				@RequestMapping(value="/Alogger",produces = {"application/text;charset=UTF-8"})
 				@ResponseBody
 				public String Alogger(HttpServletRequest request,Model model) {
-					logger.info("register.......");
+					logger.info("Alogger.......");
 					User user=new User();
 					Gson gson=new Gson();
 					HttpSession session = request.getSession();
@@ -625,31 +631,36 @@ public class ZpdNovelController {
 						String randCode=(String) session.getAttribute("rand");
 						if(!validateCode.equals(randCode)){
 							session.setAttribute("errmsg", "验证码错误");
-							user.setStatus("-2");
+							user.setStatus("-3");
 							return gson.toJson(user);
 						}
 					}
 					String u_number=request.getParameter("u_number");
 					String upassword=request.getParameter("upassword");
-					List<Author> list=authorbiz.inforByu_number(u_number);
 					
-					if(u_number!="" || u_number!=null && upassword!="" || upassword!=null){
+					
+					if(u_number!="" && u_number!=null && upassword!="" && upassword!=null){
+						List<User> list=authorbiz.inforByu_number(u_number);
 						if(!list.isEmpty()){
-								Integer uuid=list.get(0).getUid();
-								List<User> ulist=userbiz.findUserById(uuid);
-								user.setUname(ulist.get(0).getUname());
-								user.setUid(ulist.get(0).getUid());
-								user.setU_number(ulist.get(0).getU_number());
-								user.setUpassword(upassword);
-								user.setStatus("1");
-								session.setAttribute("users",user);
-								return gson.toJson(user);	
+								if(list.get(0).getUpassword().equals(upassword)){
+									user.setUname(list.get(0).getUname());
+									
+									user.setUid(list.get(0).getUid());
+									user.setU_number(list.get(0).getU_number());
+									user.setUpassword(upassword);
+									user.setStatus("1");
+									session.setAttribute("users",user);
+									return gson.toJson(user);
+								}else{
+									user.setStatus("0");//密码错误
+									return gson.toJson(user);
+								}
 						}else{
-							user.setStatus("-2");
+							user.setStatus("-2");//还不是作家
 							return gson.toJson(user);
 						}		
 					}else{
-						user.setStatus("-1");
+						user.setStatus("-1");//用户名或密码为空
 						return  gson.toJson(user);
 					}	
 				}	
@@ -726,36 +737,33 @@ public class ZpdNovelController {
 	
 	
 	//作家专区
-	@RequestMapping(value = "/authorPrefectrue")
+	@RequestMapping(value ="/authorPrefectrue1")
 	public String authorPrefectrue(HttpServletRequest request,HttpServletResponse response,Model model) throws IOException{
-		List<NovelType> Tlist= novelTypebizImpl.showType(noveltype); // 小说类型
+		logger.info("authorPrefectrue.....");
+		List<NovelType> list1 = novelTypebizImpl.showType(noveltype); // 小说类型
+		model.addAttribute("list1",list1);
 		List<Author> list=new ArrayList<Author>();	
-		
-		
 		HttpSession session = request.getSession(); //session==null的话会报错，所以判断的时候要信判断session能不能为空
 		User uuser=(User)(session.getAttribute("users"));
 		//Object uuid=session.getAttribute("uuid");
-		if(uuser!=null){
-		
-			if(uuser.getUname()!=null && uuser.getUpassword()!=null){			
+		if(uuser!=null){//表示没有登入不能进
 				Integer uid=Integer.parseInt(String.valueOf(uuser.getUid()));
 				list=authorbiz.inforByunumber(uid);
+				if(!list.isEmpty()){
 				Integer aid=list.get(0).getAid();
 				List<Novel> novel=authorbiz.inforByaid(aid);
-				//System.out.println("进来了");
-				if(list.get(0).getUid()!=null){
-					model.addAttribute("author",list);
-					//model.addAttribute("novel",novel);
+				model.addAttribute("author",list);
+				return "AuthorPrefecture";		
 				}else{
-					response.sendRedirect("toauthor");
+					System.out.println("调到作家注册页面2");
+					return "authorUser";//调到作家注册页面2
 				}
-			}
+			
 		}else{
-			return "userlogin";
+	    	return "Authorlogger";
 		}	
 		
-		model.addAttribute("list",Tlist);
-		return "AuthorPrefecture";		
+	
 	}
 	
 	//作家信息编辑
@@ -786,7 +794,7 @@ public class ZpdNovelController {
 		String atel=request.getParameter("atel");
 		authorbiz.updataAuthor(pan_name, aage, acard, atel, aid);
 		
-		List<Author> list=authorbiz.FindAuthor();	
+		List<Author> list=authorbiz.FindAuthorByaid(aid);	
 		model.addAttribute("author",list);
 	return "AuthorPrefecture";		
 	}
@@ -828,15 +836,19 @@ public class ZpdNovelController {
     	int num=Integer.parseInt(nid);
     	
     	List<Novel> list=novelbiz.ShowTNovel(num);
-    	
-    	/*String nname=list.get(0).getNname();
-    	String npicture=list.get(0).getNpicture();
-    	String nstatus=list.get(0).getNstatus();
-    	int tid=list.get(0).getTid();*/
-    	//novelbiz.UpdateNovel(nname, npicture, nstatus, nid, tid);
     	model.addAttribute("novel",list);
 		return "ENovel";
     }
+	
+	//作家专区小说信息编辑
+		@RequestMapping(value="/writeNovel/{nid}")
+	    public String writeNovel(@PathVariable String nid,Model model){
+	    	logger.info("editNovel.....");	    	
+	    	int num=Integer.parseInt(nid);	
+	    	List<Novel> list=novelbiz.ShowTNovel(num);
+	    	model.addAttribute("novel",list);
+			return "writenovel";
+	    }
 	
 	
 	//作家专区部分显示小说类型
@@ -883,7 +895,7 @@ public class ZpdNovelController {
 	    	    	
 	    	novelbiz.UpdateNovel(nname, npicture1,nstatus,nid,tid);
 	    	//model.addAttribute("novel",list);
-			return "redirect:authorPrefectrue";
+			return "redirect:authorPrefectrue1";
 	    }
 		
 	
@@ -914,8 +926,6 @@ public class ZpdNovelController {
 	//TXT下载
 	@RequestMapping(value = "/txt_id/{nid}")
 	public ResponseEntity<byte[]> Download_txt(@PathVariable int nid, Model model,HttpServletResponse response) throws IOException {
-		ResponseEntity ResponseEntity=new ResponseEntity<byte[]>(null);
-		try {
 			List<Novel> list=novelbiz.ShowNovel_id(nid);
 			String nname=list.get(0).getNname()+".txt";
 			byte[] content=jsoupUtils.Chapter(nid);
@@ -924,11 +934,7 @@ public class ZpdNovelController {
 			headers.setContentDispositionFormData("attachment", fileName);   
 			headers.setContentType(MediaType.TEXT_PLAIN);
 			return new ResponseEntity<byte[]>(content,headers, HttpStatus.CREATED);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;   
+		   
 	}
 
 }

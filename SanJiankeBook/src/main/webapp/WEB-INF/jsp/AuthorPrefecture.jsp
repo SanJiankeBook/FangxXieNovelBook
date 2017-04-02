@@ -144,12 +144,12 @@
 			<ul>
 				<li><a href="toindex_zpd">首页</a></li>
 					<li><a rel="nofollow" href="mybook">我的书架</a></li>
-				<li><a href="toindex_Type/${list[0].tname}">${list[0].tname}</a></li>
-				<li><a href="toindex_Type/${list[1].tname}">${list[1].tname}</a></li>
-				<li><a href="toindex_Type/${list[2].tname}">${list[2].tname}</a></li>
-				<li><a href="toindex_Type/${list[3].tname}">${list[3].tname}</a></li>
-				<li><a href="toindex_Type/${list[4].tname}">${list[4].tname}</a></li>
-				<li><a href="toindex_Type/${list[5].tname}">${list[5].tname}</a></li>
+				<li><a href="toindex_Type/${list1[0].tname}">${list1[0].tname}</a></li>
+				<li><a href="toindex_Type/${list1[1].tname}">${list1[1].tname}</a></li>
+				<li><a href="toindex_Type/${list1[2].tname}">${list1[2].tname}</a></li>
+				<li><a href="toindex_Type/${list1[3].tname}">${list1[3].tname}</a></li>
+				<li><a href="toindex_Type/${list1[4].tname}">${list1[4].tname}</a></li>
+				<li><a href="toindex_Type/${list1[5].tname}">${list1[5].tname}</a></li>
 				<li><a href="authorPrefectrue">作者专区</a></li>
 				<li><a href="toindex_type">排行榜单</a></li>
 				<li><a href="jsp/quanben.jsp/">全本小说</a></li>
@@ -168,11 +168,32 @@
 							<h2 id="atel">你的联系方式：${author[0].atel }</h2>
 							<input type="submit" name="editor" value="作者信息编辑" />
 						</form>
+						<a href="/SanJiankeBook/creat" style="font-size:40px;color:#FF0000">创作新小说</a>
 					</div>
 					
 
 		<table id="type_showAuthor_info"  style="width: 100%; height: 200px; $(this).width() * 0.2"></table>
 		<input type="button" onclick="editauthorjsp()" value="编辑小说信息"/>
+		<input type="button" onclick="writenovel()" value="添加小说章节内容"/>
+		
+		
+		
+	<script  type="text/javascript">	
+		function writenovel(){
+			var row = $('#type_showAuthor_info').datagrid('getSelected');
+		    if (row){
+		    	if(row.nid!=null){
+		    		var nid=row.nid;
+		    		window.location="writeNovel/"+nid;
+				}else{
+					alert("请选择其中一天信息");
+				}
+		    }		
+		}
+	</script>
+		
+		
+		
 		
 		<div class="footer">
 			

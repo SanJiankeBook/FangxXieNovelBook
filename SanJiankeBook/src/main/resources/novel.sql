@@ -363,5 +363,15 @@ commit;
 			inner join author
 			on author.aid=novel.aid
 			where novel.tid=3
-			limit 0,5		
+			limit 0,5
+			
+			
+		select novel.*,aname,tname
+		from novel_type
+		inner join novel
+		on novel_type.tid=novel.tid
+		inner join author
+		on author.aid=novel.aid
+		where novel.tid=1
+		limit 0,5	
 		
