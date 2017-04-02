@@ -28,7 +28,6 @@
 		pageSize:5,
 		pageList:[5,10,15,20,25,30],
 		columns:[[
-			{field:'aids',title:'全选',width:100,align:'center',checkbox:true}, 
 			{field:'aid',title:'作家编号',width:100,align:'center',sortable:true},
 			{field:'uid',title:'用户身份编号',width:100,align:'center',sortable:true},
 			{field:'aname',title:'作家姓名',width:100,align:'center',editor:{type:"text",options:{request:true}}},
@@ -37,7 +36,8 @@
 			{field:'agrade',title:'作者等级',width:100,align:'center'},
 			{field:'acard',title:'身份证号',width:100,align:'center'},
 			{field:'atel',title:'电话',width:100,align:'center'}
-		]],
+		]]
+	/*,
 		toolbar:[{
 			text:'删除',
 			iconCls:'icon-remove',
@@ -69,7 +69,8 @@
 					});
 				}
 			}
-		},'-',{
+		}*/
+		/*,'-',{
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
@@ -110,7 +111,8 @@
 				datagridObj.datagrid("unselectAll");
 				editRow = undefined;
 			}
-		}]
+		}
+		]*/
 	
 	});
 	

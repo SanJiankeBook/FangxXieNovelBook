@@ -47,7 +47,7 @@
 							}
 						}
 					} else if (value != "") {
-						picStr += "<img src='../"+value+"' width='100px' height='100px' />";
+						picStr += "<img src='"+value+"' width='100px' height='100px' />";
 					} else {
 						picStr += "<img src='images/zanwu.jpg' width='100px' height='100px' />";
 					} 
@@ -68,7 +68,7 @@
 				//获取当前用户选中的行
 				var rows = datagridObj.datagrid("getChecked");
 				if(rows.length<=0){	//表示没有选中数据
-					$.messager.show({title:'温馨提示',msg:"请选择您要删除的作家...",timeout:2000,showType:'slide'});
+					$.messager.show({title:'温馨提示',msg:"请选择您要删除的小说...",timeout:2000,showType:'slide'});
 				}else{
 					$.messager.confirm('删除确认','您确定要删除这些数据吗?',function(result){
 						if( result ){
@@ -82,9 +82,9 @@
 													//json
 							$.post("delNovel",{nid:nids},function(data){
 								if( data == "0" ){
-									$.messager.alert('失败提示','作家删除失败!','error');
+									$.messager.alert('失败提示','小说删除失败!','error');
 								}else{
-									$.messager.show({title:'成功提示',msg:'作家删除成功...',timeout:2000,showType:'slide'});
+									$.messager.show({title:'成功提示',msg:'小说删除成功...',timeout:2000,showType:'slide'});
 									//重新加载数据
 									datagridObj.datagrid("reload");
 								}
@@ -93,7 +93,8 @@
 					});
 				}
 			}
-		},'-',{
+		}
+		/*,'-',{
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
@@ -134,7 +135,8 @@
 				datagridObj.datagrid("unselectAll");
 				editRow = undefined;
 			}
-		}]
+		}*/
+		]
 	
 	});
 		

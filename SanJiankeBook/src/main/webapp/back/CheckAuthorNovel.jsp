@@ -41,14 +41,14 @@
 							} else {
 								var patt1 = new RegExp("../");
 								if (patt1.test(value[i])) {
-									picStr += "<img src='../"+value[i]+"' width='100px' height='100px' />";
+									picStr += "<img src='"+value[i]+"' width='100px' height='100px' />";
 								} else {
 									picStr += "<img src='images/"+value[i]+"' width='100px' height='100px' />";
 								}
 							}
 						}
 					} else if (value != "") {
-						picStr += "<img src='../"+value+"' width='100px' height='100px' />";
+						picStr += "<img src='"+value+"' width='100px' height='100px' />";
 					} else {
 						picStr += "<img src='images/zanwu.jpg' width='100px' height='100px' />";
 					} 

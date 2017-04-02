@@ -45,7 +45,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 删除小说 -->
 	<delete id="delNovel" parameterType="Novel">
-		delete from novel where nid=#{nid}
+		<!--delete from novel where nid=#{nid}  -->
+		delete novel.*,novel_chapter.*
+		from novel_chapter left join novel
+		on novel.nid=novel_chapter.nid 
+		where novel_chapter.nid in(#{nid})
 	</delete>
 
 
@@ -210,22 +214,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 显示作品推荐区的数据 -->
 	<select id="novelrecommand"  parameterType="Novel" resultMap="NovelResultMap">
 		select nid,novel_type.tid,novel_type.tname,author.pan_name,nname
-			from novel_type
-			inner join novel
-			on novel_type.tid=novel.tid
-			inner join author
-			on author.aid=novel.aid
-			ORDER BY RAND() LIMIT 9
+		from novel_type
+		inner join novel
+		on novel_type.tid=novel.tid
+		inner join author
+		on author.aid=novel.aid
+		where nid>=( (select max(nid) from novel)-(select min(nid) from novel)  )*RAND()
+		+( select min(nid) from novel ) limit 9;
 	</select>
 	
 	<select id="recommand"  parameterType="Novel" resultMap="NovelResultMap">
 		select nid,novel_type.tid,novel_type.tname,author.pan_name,nname,npicture,ndescription
-			from novel_type
-			inner join novel
-			on novel_type.tid=novel.tid
-			inner join author
-			on author.aid=novel.aid
-			ORDER BY RAND() LIMIT 4
+		from novel_type
+		inner join novel
+		on novel_type.tid=novel.tid
+		inner join author
+		on author.aid=novel.aid
+		where nid>=( (select max(nid) from novel)-(select min(nid) from novel)  )*RAND()
+		+( select min(nid) from novel ) limit 4;
 	</select>
 	
 

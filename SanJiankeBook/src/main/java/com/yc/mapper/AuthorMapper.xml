@@ -27,7 +27,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 删除作者 -->
 	<delete id="delAuthor" parameterType="Author">
-		delete from author where aid in (#{aid})
+		delete author.*,novel.* 
+		from novel left join author
+		on novel.aid=author.aid
+		where novel.aid in (#{aid})
 	</delete>
 	
 	<!--作家登录 -->
