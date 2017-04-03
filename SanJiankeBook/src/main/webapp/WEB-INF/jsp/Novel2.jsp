@@ -297,9 +297,9 @@ function searchNovel() {
 		fitColumns:true,
 		loadMsg:'数据加载中...',
 		pagination : true, //显示分页栏
-		striped:true,		//斑马线效果
+		striped:true,		//斑马线效果,显示条纹
 		nowrap:true,		//超出宽度自动截取
-		rownumber:true,		//显示行数
+		rownumbers:true,		//显示行数
 		sortName:'utdate',		//排序的咧
 		sortOrder:'desc',//排序的方式
 		remoteSort:false,	//前段排序而非服务器的排序，自己的排序
@@ -308,7 +308,7 @@ function searchNovel() {
 		columns:[[
 					{field : 'uname',title : '用户名',width : 30,align : 'center'},
 					{field : 'utcontent',title : '内容',width : 150, align : 'center'},
-					{field : 'utdate',title : '日期',width : 30,align : 'center'} 
+					{field : 'utdate',title : '日期',width : 30,align : 'center'}, 
 				]]
 	});
 }

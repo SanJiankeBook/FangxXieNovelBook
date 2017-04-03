@@ -62,7 +62,7 @@ function searchNovel() {
 		pagination : true, //显示分页栏
 		striped:true,		//斑马线效果
 		nowrap:true,		//超出宽度自动截取
-		rownumber:true,		//显示行数
+		rownumbers:true,		//显示行数
 		sortName:'nid',		//排序的咧
 		remoteSort:false,	//前段排序而非服务器的排序，自己的排序
 		columns:[[

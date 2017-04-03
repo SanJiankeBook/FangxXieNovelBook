@@ -49,15 +49,17 @@
 			queryParams: {aid:aid},
 			fit:true,
 			fitColumns:true,
+			singleSelect:true,
+			border:true,  //显示边框
 			loadMsg:'数据加载中...',
 			pageSize:5,
-			pageList:[5,10,15,20,25,30],
-			pagination : true, //显示分页栏
+			pageList:[5,10,15,20,25],
+			pagination:true, //显示分页栏
 			striped:true,		//斑马线效果
 			nowrap:true,		//超出宽度自动截取
-			rownumber:true,		//显示行数
+			rownumbers:true,	//显示行数
 			sortName:'nid',		//排序的咧
-			remoteSort:false,	//前段排序而非服务器的排序，自己的排序
+			//remoteSort:false,	//前段排序而非服务器的排序，自己的排序
 			columns:[[	
 						{field : 'nnid',checkbox: true },
 						{field : 'nid',title : '小说编号',width : 20,align : 'center',sortable : true,hidden:true},
@@ -94,7 +96,7 @@
 						}
 						}, 
 						{field : 'nstatus',title : '小说状态',width : 20,align : 'center'} 
-					]]	
+					]]
 		});
 		
 		$('#edit').linkbutton({
@@ -172,7 +174,7 @@
 					</div>
 					
 
-		<table id="type_showAuthor_info"  style="width: 100%; height: 200px; $(this).width() * 0.2"></table>
+		<table id="type_showAuthor_info"  style="width: 90%; height: 200px;"></table>
 		<input type="button" onclick="editauthorjsp()" value="编辑小说信息"/>
 		<input type="button" onclick="writenovel()" value="添加小说章节内容"/>
 		
