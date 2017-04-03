@@ -46,7 +46,7 @@
 				data:{"nid":nid,"cname":cname,"des":des},
 				dataType:"JSON",
 				success:function( data ){
-					alert(data.value);
+					alert("上传成功，等待管理员审核");
 				}
 			});
 	}

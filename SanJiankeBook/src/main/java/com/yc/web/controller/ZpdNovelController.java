@@ -56,7 +56,7 @@ import com.yc.biz.impl.NovelTypebizImpl;
 import com.yc.biz.impl.NovelbizImpl;
 
 import com.yc.duanxin.DuanxinJudge;
-
+import com.yc.help.StaticContain;
 import com.yc.utils.JsoupUtils;
 import com.yc.utils.RandomUtils;
 import com.yc.utils.RankUtils;
@@ -650,6 +650,7 @@ public class ZpdNovelController {
 									user.setUpassword(upassword);
 									user.setStatus("1");
 									session.setAttribute("users",user);
+									StaticContain.USERID=user.getAid();
 									return gson.toJson(user);
 								}else{
 									user.setStatus("0");//密码错误
@@ -753,6 +754,7 @@ public class ZpdNovelController {
 				Integer aid=list.get(0).getAid();
 				List<Novel> novel=authorbiz.inforByaid(aid);
 				model.addAttribute("author",list);
+				StaticContain.USERID=aid;
 				return "AuthorPrefecture";		
 				}else{
 					System.out.println("调到作家注册页面2");

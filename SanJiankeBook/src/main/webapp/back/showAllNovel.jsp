@@ -40,7 +40,7 @@
 							} else {
 								var patt1 = new RegExp("../");
 								if (patt1.test(value[i])) {
-									picStr += "<img src='../"+value[i]+"' width='100px' height='100px' />";
+									picStr += "<img src='"+value+"' width='100px' height='100px' />";
 								} else {
 									picStr += "<img src='images/"+value[i]+"' width='100px' height='100px' />";
 								}
@@ -61,6 +61,7 @@
 			{field : 'ndescription',title : '小说简介',width : 100,align : 'center'},
 			{field : 'nstatus',title : '小说状态',width : 50,align : 'center'}, 
 		]],
+		/*
 		toolbar:[{
 			text:'删除',
 			iconCls:'icon-remove',
@@ -135,8 +136,9 @@
 				datagridObj.datagrid("unselectAll");
 				editRow = undefined;
 			}
-		}*/
-		]
+
+		}
+		]*/
 	
 	});
 		

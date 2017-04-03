@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			inner join novel
 			on novel_type.tid=novel.tid
 			inner join author
-			on author.aid=novel.aid
+			on author.aid=novel.aid 
 			limit #{start},#{end}
 		</select>
 		
@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on novel_type.tid=novel.tid
 		inner join author
 		on author.aid=novel.aid
-		where author.aid=#{aaid}
+		where author.aid=#{aaid} and novel.standby_1='通过'
 		limit #{start},#{end}
 	</select>
 	
@@ -74,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on novel_type.tid=novel.tid
 		inner join author
 		on author.aid=novel.aid
-		where novel.tid=#{tid}
+		where novel.tid=#{tid} and novel.standby_1='通过'
 		limit #{start},#{end}
 	</select>
 
@@ -104,12 +104,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 查询小说所有名字 -->
 	<select id="getAllnname" resultType="Novel">
 		select nname,nid
-		from novel
+		from novel where standby_1='通过'
 	</select>
 
 	<!-- 根据id查询小说所有信息 -->
 	<select id="idgetAllnname" resultType="Novel" parameterType="Novel">
-		select * from novel where nid=#{nid}
+		select * from novel where nid=#{nid} and standby_1='通过'
 	</select>
 
 	<!-- 根据id查询小说对应的作者 -->
@@ -131,13 +131,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on novelType.tid=n.tid
 		inner join author a
 		on a.aid=n.aid
-		where novelType.tname=#{novelType.tname}
+		where novelType.tname=#{novelType.tname} and n.standby_1='通过'
 	</select>
 
 
 	<!-- 根据id查询最新小说信息 -->
 	<select id="newChapter" resultType="NovelChapter" parameterType="Novel">
-		select cname from novel_chapter where nid=#{nid} having max(cid);
+		select cname from novel_chapter where nid=#{nid} having max(cid) ;
 	</select>
 	
 	<!-- 根据id查询小说的信息包括小说类型 -->
@@ -147,7 +147,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from novel_type
 		inner join novel
 		on novel_type.tid=novel.tid
-		where nid=#{nid}	
+		where nid=#{nid} and novel.standby_1='通过'	
 	</select>
 	
 	<!-- 根据作者id查找他写的小说 -->

@@ -14,12 +14,25 @@ public class User implements Serializable {
 	private String usex ;//		--用户性别;
 	private String status;// 数据判断
 	private String standby_1;//用户的手机号码
+	private Integer aid ;//	--作者id
 
 	
+	public Integer getAid() {
+		return aid;
+	}
+
+
+
+	public void setAid(Integer aid) {
+		this.aid = aid;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", u_number=" + u_number + ", upassword=" + upassword
-				+ ", usex=" + usex + ", status=" + status + ", standby_1=" + standby_1 + "]";
+				+ ", usex=" + usex + ", status=" + status + ", standby_1=" + standby_1 + ", aid=" + aid + "]";
 	}
 	
 	

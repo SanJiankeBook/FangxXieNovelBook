@@ -93,7 +93,7 @@
 							} 
 						}
 						}, 
-						{field : 'nstatus',title : '小说状态',width : 20,align : 'center'}, 
+						{field : 'nstatus',title : '小说状态',width : 20,align : 'center'} 
 					]]	
 		});
 		

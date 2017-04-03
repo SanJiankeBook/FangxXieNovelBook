@@ -36,6 +36,7 @@
 			{field:'agrade',title:'作者等级',width:100,align:'center'},
 			{field:'acard',title:'身份证号',width:100,align:'center'},
 			{field:'atel',title:'电话',width:100,align:'center'}
+
 		]]
 	/*,
 		toolbar:[{
@@ -111,9 +112,9 @@
 				datagridObj.datagrid("unselectAll");
 				editRow = undefined;
 			}
+
 		}
 		]*/
-	
 	});
 	
 	

@@ -357,7 +357,7 @@ public class NovelController {
 	    	author.setPan_name(request.getParameter("uname"));
 	    	author.setAtel(uuser.getStandby_1());
 	    	this.authorbiz.insertAuthor(author);
-	    	StaticContain.USERID=author.getAid();
+	    
 	    	return "1";
     	}else{
     		return "-1";
@@ -413,7 +413,6 @@ public class NovelController {
     public String InsertNovel(@ModelAttribute Novel novel,@ModelAttribute NovelType noveltype,Model model,HttpServletRequest request) throws IOException{
     	logger.info("InsertNovel....");
     	String npicture="";
-    	
     	if(novel.getNname()!=null ){
 			Map<String,UploadFile> map= UploadFileUtil.uploadFile(request, novel.getPdfsUrl(), pdfRootName);
 			for(Entry<String,UploadFile> entry:map.entrySet()){
@@ -427,22 +426,22 @@ public class NovelController {
 			novel.setStandby_1("待审核");
 			this.novelbiz.InsertNovel(novel);
 			model.addAttribute("novel",novel);
-			return "writenovel";
+			return  "redirect:http://localhost:8081/SanJiankeBook/";
     	}else{
-    		return "index";
+    		return "redirect:http://localhost:8081/SanJiankeBook/";
     	}
     	
     }
     
    
     //插入书籍章节
-    @RequestMapping(value="/insertNovlChapter")
+    @RequestMapping(value="/insertNovlChapter",produces = {"application/text;charset=UTF-8"})
     @ResponseBody
     public String insertNovlChapter(@ModelAttribute NovelChapter novelchapter,@RequestParam String des,HttpServletRequest request,Model model) throws IOException{
     	logger.info("insertNovlChapter....");
     	String caddress=ForFile.createFile(request, des,novelchapter.getCname(),novelchapter,this.novelchapterbiz);
     	novelchapter.setCaddress(caddress);
-    	novelchapter.setStandby_1("待审");
+    	novelchapter.setStandby_1("待审核");
     	String value="";
     	try {
 			this.novelchapterbiz.insertNovelChapter(novelchapter);

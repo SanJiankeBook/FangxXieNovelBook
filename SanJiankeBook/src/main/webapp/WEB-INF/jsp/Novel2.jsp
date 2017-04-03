@@ -210,7 +210,7 @@
 					</p>
 				</div>
 
-				<div id="intro">&nbsp${novel_id[0].ndescription}</div>
+				<div id="intro">简介：&nbsp;&nbsp;&nbsp;{novel_id[0].ndescription}</div>
 
 			</div>
 			<div id="sidebar">
@@ -308,7 +308,7 @@ function searchNovel() {
 		columns:[[
 					{field : 'uname',title : '用户名',width : 30,align : 'center'},
 					{field : 'utcontent',title : '内容',width : 150, align : 'center'},
-					{field : 'utdate',title : '日期',width : 30,align : 'center'}, 
+					{field : 'utdate',title : '日期',width : 30,align : 'center'} 
 				]]
 	});
 }
