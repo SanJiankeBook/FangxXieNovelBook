@@ -37,8 +37,7 @@
 			{field:'acard',title:'身份证号',width:100,align:'center'},
 			{field:'atel',title:'电话',width:100,align:'center'}
 
-		]]
-	/*,
+		]],
 		toolbar:[{
 			text:'删除',
 			iconCls:'icon-remove',
@@ -70,8 +69,7 @@
 					});
 				}
 			}
-		}*/
-		/*,'-',{
+		},'-',{
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
@@ -114,7 +112,7 @@
 			}
 
 		}
-		]*/
+		]
 	});
 	
 	

@@ -35,7 +35,7 @@
  			{field:'u_number',title:'用户账号',width:100,align:'center',sortable:true},
  			{field:'upassword',title:'用户密码',width:100,align:'center',sortable:true},
  			{field:'usex',title:'用户性别',width:100,align:'center',sortable:true}
-		]]/*,
+		]],
 		toolbar:[{
 			text:'删除',
 			iconCls:'icon-remove',
@@ -110,7 +110,6 @@
 				editRow = undefined;
 			}
 		}]
-	*/
 	});
 		
 	</script>

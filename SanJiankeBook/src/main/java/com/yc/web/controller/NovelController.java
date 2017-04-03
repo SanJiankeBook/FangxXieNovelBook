@@ -442,15 +442,18 @@ public class NovelController {
     	String caddress=ForFile.createFile(request, des,novelchapter.getCname(),novelchapter,this.novelchapterbiz);
     	novelchapter.setCaddress(caddress);
     	novelchapter.setStandby_1("待审核");
-    	String value="";
+    	int value=0;
+    	String num="";
     	try {
 			this.novelchapterbiz.insertNovelChapter(novelchapter);
-			value= "上传成功";
+			value= 1;
+			num=String.valueOf(value);
 		} catch (Exception e) {
 			e.printStackTrace();
-			value= "上传失败";
+			value= 0;
+			num=String.valueOf(value);
 		}
-    	return value;
+    	return num;
     }
     
     //produces告诉浏览器我是用utf8格式编码

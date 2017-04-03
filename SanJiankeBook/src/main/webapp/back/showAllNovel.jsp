@@ -61,7 +61,6 @@
 			{field : 'ndescription',title : '小说简介',width : 100,align : 'center'},
 			{field : 'nstatus',title : '小说状态',width : 50,align : 'center'}, 
 		]],
-		/*
 		toolbar:[{
 			text:'删除',
 			iconCls:'icon-remove',
@@ -94,8 +93,7 @@
 					});
 				}
 			}
-		}
-		/*,'-',{
+		},'-',{
 			text:'保存',
 			iconCls:'icon-save',
 			handler:function(){
@@ -138,7 +136,7 @@
 			}
 
 		}
-		]*/
+		]
 	
 	});
 		
