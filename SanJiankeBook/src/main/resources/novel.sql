@@ -81,7 +81,7 @@ values(3,3,'再临123','c:\aii\aa','某一天...','未完结','待审核',1,1);
 
 values(2,2,'再临','jiuxiantu.jpg','某一天...','未完结',1,1,1);
 
-delete from novel where nid=9;
+delete from novel where nid=7;
 
 update novel
 		set nname='再临123',npicture='c:5555555',nstatus='未完结',
@@ -235,6 +235,10 @@ values(1,1,'2016-5-8',1,1,1);
 insert into user_book(nid,uid,ubdate,standby_1,standby_2,standby_3)
 values(3,1,'2016-5-8',1,1,1);
 
+
+select * from user_book
+
+
 	select novel.nid,novel_type.tname,author.pan_name,npicture,ndescription,nstatus ,from
 	select *from
 			user_book 
@@ -281,6 +285,11 @@ create table admin(
 select * from admin;
 insert into admin(adnumber,adpassword) values(1001,'a');
 commit;
+
+
+
+
+
 
 --测试
 	select a.aname 
