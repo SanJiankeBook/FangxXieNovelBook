@@ -46,7 +46,7 @@
 				data:{"nid":nid,"cname":cname,"des":des},
 				dataType:"JSON",
 				success:function( data ){
-					if(data.num==1){
+					if(data==1){
 						alert("上传成功，等待管理员审核");
 					}else{
 						alert("上传失败，请与管理员联系");

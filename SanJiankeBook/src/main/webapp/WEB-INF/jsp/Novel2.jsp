@@ -179,7 +179,7 @@
 					<li><a href="toindex_Type/${list1[3].tname}">${list1[3].tname}</a></li>
 					<li><a href="toindex_Type/${list1[4].tname}">${list1[4].tname}</a></li>
 					<li><a href="toindex_Type/${list1[5].tname}">${list1[5].tname}</a></li>
-					<li><a href="authorPrefectrue">作者专区</a></li>
+					<li><a href="authorPrefectrue1">作者专区</a></li>
 					<li><a href="toindex_type">排行榜单</a></li>
 					<li><a href="jsp/quanben.jsp/">全本小说</a></li>
 					<li><a rel="nofollow" href="jsp/readRecord.jsp">阅读记录</a></li>
